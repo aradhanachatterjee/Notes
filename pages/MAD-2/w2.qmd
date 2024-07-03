@@ -2,14 +2,11 @@
 title: "Modern Application Development II - Week 2"
 format:
       html:
-        highlight: true
-        fig_caption: true
         toc: true
-        toc_float: true
-        code_folding: show
-        number_sections: true
-        theme: cerulean
         toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
 ---
 
 ::: {.callout-note}
