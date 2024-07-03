@@ -2549,6 +2549,22 @@ Note
 </table>
 </div>
 </div>
+<div id="cell-128" class="cell" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="29">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">count(distinct ID)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="set-comparison---some-clause" class="level2">
 <h2 class="anchored" data-anchor-id="set-comparison---some-clause">Set Comparison - “some” Clause</h2>
@@ -2886,7 +2902,7 @@ Note
 <ul>
 <li>Relation course</li>
 </ul>
-<div id="cell-157" class="cell" data-execution_count="31">
+<div id="cell-158" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display" data-execution_count="31">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -2923,7 +2939,7 @@ Note
 <ul>
 <li>Relation prereq</li>
 </ul>
-<div id="cell-160" class="cell" data-execution_count="35">
+<div id="cell-161" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-display" data-execution_count="35">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -2962,7 +2978,7 @@ Note
 <ul>
 <li>course <strong>inner join</strong> prereq</li>
 </ul>
-<div id="cell-164" class="cell" data-execution_count="41">
+<div id="cell-165" class="cell" data-execution_count="41">
 <div class="cell-output cell-output-display" data-execution_count="41">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -2999,7 +3015,7 @@ Note
 <ul>
 <li>If specified as <strong>natural</strong>, the join is on all attributes with the same name</li>
 </ul>
-<div id="cell-167" class="cell" data-execution_count="43">
+<div id="cell-168" class="cell" data-execution_count="43">
 <div class="cell-output cell-output-display" data-execution_count="43">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3044,7 +3060,7 @@ Note
 <ul>
 <li>course <strong>left outer join</strong> prereq</li>
 </ul>
-<div id="cell-171" class="cell" data-execution_count="45">
+<div id="cell-172" class="cell" data-execution_count="45">
 <div class="cell-output cell-output-display" data-execution_count="45">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3092,7 +3108,7 @@ Note
 <ul>
 <li>course <strong>right outer join</strong> prereq</li>
 </ul>
-<div id="cell-174" class="cell" data-execution_count="47">
+<div id="cell-175" class="cell" data-execution_count="47">
 <div class="cell-output cell-output-display" data-execution_count="47">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3156,7 +3172,7 @@ Note
 <ul>
 <li>course <strong>full outer join</strong> prereq</li>
 </ul>
-<div id="cell-178" class="cell" data-execution_count="49">
+<div id="cell-179" class="cell" data-execution_count="49">
 <div class="cell-output cell-output-display" data-execution_count="49">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3213,7 +3229,7 @@ Note
 <li><p>course <strong>inner join</strong> prereq <strong>on</strong></p>
 <p>course.course_id = prereq.course_id</p></li>
 </ul>
-<div id="cell-181" class="cell" data-execution_count="51">
+<div id="cell-182" class="cell" data-execution_count="51">
 <div class="cell-output cell-output-display" data-execution_count="51">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3252,7 +3268,7 @@ Note
 <li><p>course <strong>left outer join</strong> prereq <strong>on</strong></p>
 <p>course.course_id = prereq.course_id</p></li>
 </ul>
-<div id="cell-183" class="cell" data-execution_count="52">
+<div id="cell-184" class="cell" data-execution_count="52">
 <div class="cell-output cell-output-display" data-execution_count="52">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3297,7 +3313,7 @@ Note
 <ul>
 <li>course <strong>natural right outer join</strong> prereq</li>
 </ul>
-<div id="cell-186" class="cell" data-execution_count="54">
+<div id="cell-187" class="cell" data-execution_count="54">
 <div class="cell-output cell-output-display" data-execution_count="54">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3338,7 +3354,7 @@ Note
 <ul>
 <li>course <strong>full outer join</strong> prereq <strong>using</strong> (course_id)</li>
 </ul>
-<div id="cell-189" class="cell" data-execution_count="63">
+<div id="cell-190" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
@@ -3440,12 +3456,6 @@ Note
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">select</span> course_id, room_number</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">from</span> physics_fall_2009</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">where</span> building <span class="op">=</span> <span class="st">'Watson'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><p>One view may be used in the expression defining another view</p></li>
-<li><p>A view relation <span class="math inline">v_1</span> is said to <u><em>depend directly</em></u> on a view relation <span class="math inline">v_2</span> if <span class="math inline">v_2</span> is used in the expression defining <span class="math inline">v_1</span></p></li>
-<li><p>A view relation <span class="math inline">v_1</span> is said to <u><em>depend on</em></u> view relation <span class="math inline">v_2</span> if either <span class="math inline">v_1</span> depends directly on <span class="math inline">v_2</span> or there is a path of dependencies from <span class="math inline">v_1</span> to <span class="math inline">v_2</span></p></li>
-<li><p>A view relation v is said to be <u><em>recursive</em></u> if it depends on itself</p></li>
-</ul>
 </section>
 <section id="view-expansion" class="level2">
 <h2 class="anchored" data-anchor-id="view-expansion">View Expansion</h2>
@@ -3462,6 +3472,10 @@ Note
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>                <span class="kw">and</span> section.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2009</span>)</span>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">where</span> building <span class="op">=</span> <span class="st">'Watson'</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
+<li><p>One view may be used in the expression defining another view</p></li>
+<li><p>A view relation <span class="math inline">v_1</span> is said to <u><em>depend directly</em></u> on a view relation <span class="math inline">v_2</span> if <span class="math inline">v_2</span> is used in the expression defining <span class="math inline">v_1</span></p></li>
+<li><p>A view relation <span class="math inline">v_1</span> is said to <u><em>depend on</em></u> view relation <span class="math inline">v_2</span> if either <span class="math inline">v_1</span> depends directly on <span class="math inline">v_2</span> or there is a path of dependencies from <span class="math inline">v_1</span> to <span class="math inline">v_2</span></p></li>
+<li><p>A view relation v is said to be <u><em>recursive</em></u> if it depends on itself</p></li>
 <li><p>A way to define the meaning of views defined in terms of other views</p></li>
 <li><p>Let view <span class="math inline">v_1</span> be defined by an expression <span class="math inline">e_1</span> that may itself contain uses of view relations</p></li>
 <li><p>View expansion of an expression repeats the following replacement step:</p>
