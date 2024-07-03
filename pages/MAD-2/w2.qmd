@@ -1,0 +1,237 @@
+---
+title: "Modern Application Development II - Week 2"
+format:
+      html:
+        highlight: true
+        fig_caption: true
+        toc: true
+        toc_float: true
+        code_folding: show
+        number_sections: true
+        theme: cerulean
+        toc_depth: 2
+---
+
+::: {.callout-note}
+Click here to view in presentation mode: [Modern Application Development II - Week 2](w2-slides.html)
+:::
+
+# Lecture 2.1 - Introduction to JavaScript Collections
+
+## Basic Arrays
+
+- Collection of objects of any type
+  - Can even be a mix of types (numbers, strings, objects, functions, etc.)
+- Element access
+- Length property
+- Holes
+- Iteration
+
+## Iteration
+
+- Go over all elements in a collection
+- Concepts:
+  - **Iterable**: an object whose contents can be accessed sequentially
+  - **Iterator**: pointer to the next element in the collection
+- Iterable objects:
+  - Arrays
+  - Strings
+  - Maps
+  - Sets
+  - Browser DOM - tree structure
+- Objects: `Object.keys(obj)`, `Object.values(obj)`, `Object.entries(obj)` - helper functions
+
+## Iterations and Transformations
+
+- Functions that take functions as arguments/input
+- `map`, `filter`, `find`
+  - Apply a callback function over each element in the collection
+- Elements of functional programming: create a transformation chain
+
+**Callback**: important concept - a function that is passed as an argument to another function, to be called back for some purpose
+
+## Other Collections
+
+- Maps: proper dictionary-like objects
+- WeakMaps
+- Sets
+
+## Destructuring
+
+- Simple syntax to split an array into multiple variables
+- Easier to pass and collect arguments etc.
+- Also works with objects
+
+## Generators
+
+- Functions that `yield` values one at a time
+- Computed iterables
+- Dynamically generate iterators
+
+# Lecture 2.3 - JavaScript - Modularity
+
+## Modules
+
+- Collect related functions, objects, values together
+- "export" values for use by other scripts
+- "import" values from other scripts, packages
+
+## Ways of implementing
+
+- script - directly include script inside browser
+- CommonJS - introduced for server-side modules
+  - synchronous load: server blocks till module is loaded
+- AMD - asynchronous module definition
+  - used for browser-side modules
+
+ECMAScript 6 and above:
+
+- ES6 modules
+  - Both servers and browsers
+  - Asynchronous loading
+
+## npm
+
+- Node Package Manager
+- Node:
+  - command line interface for JS
+  - Mainly used for backend code, can also be used for testing
+- npm can also be used to package modules for frontend
+  - "Bundle" managers - webpack, rollup, etc.
+
+## Objects
+
+- Everything in JavaScript is an object
+- Object literals
+  - Assign values to named parameters in an object
+- Object methods
+  - Assign functions that can be called on the object
+- Special variable `this` - refers to the object itself
+- Function methods
+  - `call()`, `apply()`, `bind()`
+- `Object.keys()`, `values()`, `entries()`
+  - use as dictionary
+  - iterators
+
+## Prototype based inheritance
+
+- Objects can have a "prototype"
+- Automatically inherit properties and methods of parent object
+- Single inheritance track
+
+## Class
+
+- Better syntax - still prototype based inheritance
+- constructor must explicitly call `super()`
+- Multiple inheritance of Mixins
+
+# Lecture 2.5 - JavaScript - Asynchrony
+
+## Function calls
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+- Function is like a "branch"
+  - but must save present state so we can return
+- Call stack:
+  - Keep track of chain of functions called up to now
+  - Pop back up out of the stack
+
+:::
+
+::: {.column width=50%}
+
+- `main()` on stack - current - calls `f()`
+- `f()` goes on stack - calls `g()`
+- `g()` goes on stack - calls `h()`
+- `h()` goes on stack - executes
+- return from `h` -> pop into `g`
+- return from `g` -> pop into `f`
+- return from `f` -> pop into `main`
+:::
+::::
+
+## Call Stack
+
+[Explanatory video](https://vimeo.com/96425312)
+
+[Visualize the call stack](http://latentflip.com/loupe/)
+
+## Event Loop and Task Queue
+
+- Task Queue: store next task to be executed
+  - Tasks are pushed into the queue by events (clicks, input, network etc.)
+- Event loop:
+  - Wait for call stack to be empty
+  - Pop next task from queue and push onto stack, start executing
+- Run-to-completion
+  - Guarantee from JavaScript runtime
+  - Each task will run to completion before next task is picked up
+
+## Blocking the browser
+
+[https://exploringjs.com/impatient-js/ch_async-js.html#how-to-avoid-blocking-the-javascript-process](https://exploringjs.com/impatient-js/ch_async-js.html#how-to-avoid-blocking-the-javascript-process)
+
+## Why callbacks?
+
+- Long running code
+  - Will block execution till it finishes
+- Push long running code into a separate "thread" or "task"
+  - Let main code proceed
+  - Call back when task is done
+
+## Example: reading files - synchronous
+
+
+```javascript
+const fs = require('fs');
+
+try {
+    const data = fs.readFileSync('file.txt', 'utf8');
+    console.log(data);
+} catch (err) {
+    console.error(err);
+}
+```
+
+## Example: reading files - asynchronous
+
+
+```javascript
+const fs = require('fs');
+
+fs.readFile('file.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+```
+
+## Asynchronous Code
+
+- Very powerful - allows JS to have high performance even though it is single-threaded
+- Can be difficult to comprehend
+  - Focus on using async libraries and functions before writing your own
+- Promises, async function calls, etc.
+  - Important and useful concepts
+  - Deferred for now
+
+# Lecture 2.6 - JavaScript - JSON API
+
+## JSON
+
+- Object Notation - for serialization, communication
+- Notation is frozen
+  - Means even problem cases will remain (trailing "." could ve useful but will not be used)
+- Usage through JSON API
+
+## JSON API
+
+- Global namespace object `JSON`
+- Main methods:
+  - `JSON.stringify()`
+  - `JSON.parse()`

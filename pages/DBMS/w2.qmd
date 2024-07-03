@@ -1,0 +1,532 @@
+---
+title: "Week 2"
+format:
+    html:    
+        code-fold: true
+jupyter: python3
+---
+
+## Lecture 2.1: Introduction to Relational Model/1
+
+### Relational Schema and Instance
+
+-   $A_{1},A_{2},...,A_{n}$ are attributes
+-   $R=(A_{1},A_{2},...,A_{n})$ is a *relational schema*
+    -   Example: $instructor(ID, name, dept_name, salary)$
+-   Formally, given sets $D_{1},D_{2},...,D_{n}$, a *relation* $r$ is a subset of $$
+    D_{1} \times D_{2} \times ... \times D_{n}
+    $$ Thus, a relation is a set of $n$-tuples $(a_{1},a_{2},...,a_{n})$ where each $a_{i} \in D_{i}$
+-   The current values (relation instance) of a relation are specified in a table
+-   Example: $instuctor \equiv (String(5) \times String \times String \times Number+)$, where $ID \in String(5)$, $name \in String$, $dept\_name \in String$, $salary \in Number+$
+
+### Relations are Unordered with Unique Tuples
+
+-   Order of tuples/rows in a relation is irrelevant (tuples may be stored in an arbitrary order)
+-   No two tuples in a relation are the same (i.e., no duplicate tuples)
+-   Example: *instructor* relation with unordered tuples
+
+| ID    | name       | dept_name  | salary |
+|-------|------------|------------|--------|
+| 22222 | Einstein   | Physics    | 95000  |
+| 12121 | Wu         | Finance    | 90000  |
+| 32343 | El Said    | History    | 60000  |
+| 45565 | Katz       | Comp. Sci. | 75000  |
+| 98345 | Kim        | Elec. Eng. | 80000  |
+| 76766 | Crick      | Biology    | 72000  |
+| 10101 | Srinivasan | Comp. Sci. | 65000  |
+| 58583 | Califieri  | History    | 62000  |
+| 82821 | Brandt     | Comp. Sci. | 92000  |
+| 15151 | Mozart     | Music      | 40000  |
+| 33456 | Gold       | Physics    | 87000  |
+| 76543 | Singh      | Finance    | 80000  |
+
+### Keys
+
+-   Let $K \subseteq R$, where $R$ is the set of attributes in the relation.
+-   $K$ is a *superkey* of $R$ if values for $K$ are sufficient to identify a unique tuple of each possible relation $r(R)$
+    -   Example: $\{ID\}$ and $\{ID, name\}$ are both superkeys of $instructor$
+-   Superkey $K$ is a *candidate key* if $K$ is minimal
+    -   Example: $\{ID\}$ is a candidate key for $instructor$
+-   One of the candidate keys is chosen as the *primary key*
+    -   Which one?
+-   A *surrogate key* or *synthetic key* in a database is a unique identifier for either an entity in the modeled world or an object in the database.
+    -   The surrogate key is not derived from application data, unlike a natural (or business) key which is derived from application data.
+
+### Keys - Example
+
+-   *Students = Roll#, First Name, Last Name, DoB, Passport#, Aadhaar#, Department*
+-   *Super Key*: Roll#, {Roll#, DoB}
+-   *Candidate Keys*: Roll#, {First Name, Last Name}, Aadhaar#
+    -   Passport# cannot be a key. Why?
+    -   Null values are allowed for Passport# (a student may not have a passport)
+-   *Primary Key*: Roll#
+    -   Can we use Aadhaar# as the primary key?
+    -   It may suffice for unique identification. But Roll# may have additional useful information. For example: 14CS92P01
+        -   Read 14CS92P01 as 14-CS-92-P-01
+        -   14: Admission in 2014
+        -   CS: Department = CS
+        -   92: Category of Student
+        -   P: Type of admission: *Project*
+        -   01: Serial Number
+
+### Keys (Contd.)
+
+-   *Foreign key constraint*: Value in one relation must appear in another
+    -   *Referencing* relation
+        -   Enrolment: Foreign keys - Roll#, Course#
+    -   *Referenced* relation
+        -   Students, Courses
+-   A *compound key* consists of more than one attribute to uniquely identify an entity occurrence
+    -   Each attribute, which makes up the key, is a simple key in its own right
+    -   {Roll#, Course#}
+
++---------+------------+-----------+---------+-------------+------------+------------+
+| Roll \# | First Name | Last Name | DoB     | Passport \# | Aadhaar \# | Department |
++:=======:+:==========:+:=========:+:=======:+:===========:+:==========:+:==========:+
++---------+------------+-----------+---------+-------------+------------+------------+
+
+: Students
+
+
++-----------+-------------+---------+-------+------------+
+| Course \# | Course Name | Credits | L-T-P | Department |
++:=========:+:===========:+:=======:+:=====:+:==========:+
++-----------+-------------+---------+-------+------------+
+
+
+: Courses
+
+
++---------+-----------+---------------+
+| Roll \# | Course \# | Instructor ID |
++:=======:+:=========:+:=============:+
++---------+-----------+---------------+
+
+: Enrolment
+
+### Relational Query Languages
+
+**Procedural viz-a-viz Non-procedural or Declarative Paradigms** - Procedural programming requires that the programmer specify the exact steps to be taken to solve a problem. - That is, *how* to get the output for the range of required inputs - The programmer must know an appropriate algorithm
+
+-   Declarative programming requires a more descriptive approach.
+    -   The programmer must know *what* relationships hold between various entities
+-   Example - Square root of $n$
+    -   Procedural
+        -   Guess $x_0$ (close to root of $n$)
+        -   $i \leftarrow 0$
+        -   $x_{i+1} \leftarrow \frac{(x_i + \frac{n}{x_i})}{2}$
+        -   Repeat Step 2 if $|x_{i+1} - x_i| > \delta$
+    -   Declarative
+        -   Root of $n$ is $m$ such that $m^2 = n$
+
+## Lecture 2.2: Introduction to Relational Model/2
+
+### Basic Properties of Relations
+
+-   A relation is a set. Hence,
+-   Ordering of tuples is immaterial
+-   All rows/tuples must be distinct
+
+### Select Operation - selection of rows (tuples)
+
+Relation $r$
+
+|   $A$    |   $B$    | $C$  | $D$  |
+|:--------:|:--------:|:----:|:----:|
+| $\alpha$ | $\alpha$ | $1$  | $7$  |
+| $\alpha$ | $\beta$  | $5$  | $7$  |
+| $\beta$  | $\beta$  | $12$ | $3$  |
+| $\beta$  | $\beta$  | $23$ | $10$ |
+
+$\sigma_{A=B \wedge D > 5}(r)$
+
+|   $A$    |   $B$    | $C$  | $D$  |
+|:--------:|:--------:|:----:|:----:|
+| $\alpha$ | $\alpha$ | $1$  | $7$  |
+| $\beta$  | $\beta$  | $23$ | $10$ |
+
+### Project Operation - selection of columns (attributes)
+
+Relation $r$
+
+|   $A$    | $B$  | $C$ |
+|:--------:|:----:|:---:|
+| $\alpha$ | $10$ | $1$ |
+| $\alpha$ | $20$ | $1$ |
+| $\beta$  | $30$ | $1$ |
+| $\beta$  | $40$ | $2$ |
+
+$\pi_{A,C}(r)$
+
+|   $A$    | $C$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\beta$  | $1$ |
+| $\beta$  | $2$ |
+
+### Union of two relations
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\alpha$ | $2$ |
+| $\beta$  | $1$ |
+
+Relation $s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $2$ |
+| $\beta$  | $3$ |
+
+$r \cup s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\alpha$ | $2$ |
+| $\beta$  | $1$ |
+| $\beta$  | $3$ |
+
+### Set Difference of two relations
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\alpha$ | $2$ |
+| $\beta$  | $1$ |
+
+Relation $s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $2$ |
+| $\beta$  | $3$ |
+
+$r - s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\beta$  | $1$ |
+
+### Set Intersection of two relations
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\alpha$ | $2$ |
+| $\beta$  | $1$ |
+
+Relation $s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $2$ |
+| $\beta$  | $3$ |
+
+$r \cap s$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $2$ |
+
+**Note**: $r \cap s = r-(r-s)$
+
+### Joining two relations - Cartesian Product
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\beta$  | $2$ |
+
+Relation $s$
+
+|   $C$    | $D$  |    $E$     |
+|:--------:|:----:|:----------:|
+| $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  | $20$ | $\text{b}$ |
+| $\gamma$ | $10$ | $\text{b}$ |
+
+$r \times s$
+
+|   $A$    | $B$ |   $C$    | $D$  |    $E$     |
+|:--------:|:---:|:--------:|:----:|:----------:|
+| $\alpha$ | $1$ | $\alpha$ | $10$ | $\text{a}$ |
+| $\alpha$ | $1$ | $\beta$  | $10$ | $\text{a}$ |
+| $\alpha$ | $1$ | $\beta$  | $20$ | $\text{b}$ |
+| $\alpha$ | $1$ | $\gamma$ | $10$ | $\text{b}$ |
+| $\beta$  | $2$ | $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $20$ | $\text{b}$ |
+| $\beta$  | $2$ | $\gamma$ | $10$ | $\text{b}$ |
+
+**Cartesian Product**: Naming issue
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\beta$  | $2$ |
+
+Relation $s$
+
+|   $B$    | $D$  |    $E$     |
+|:--------:|:----:|:----------:|
+| $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  | $20$ | $\text{b}$ |
+| $\gamma$ | $10$ | $\text{b}$ |
+
+$r \times s$
+
+|   $A$    | $r.B$ |  $s.B$   | $D$  |    $E$     |
+|:--------:|:-----:|:--------:|:----:|:----------:|
+| $\alpha$ |  $1$  | $\alpha$ | $10$ | $\text{a}$ |
+| $\alpha$ |  $1$  | $\beta$  | $10$ | $\text{a}$ |
+| $\alpha$ |  $1$  | $\beta$  | $20$ | $\text{b}$ |
+| $\alpha$ |  $1$  | $\gamma$ | $10$ | $\text{b}$ |
+| $\beta$  |  $2$  | $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  |  $2$  | $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  |  $2$  | $\beta$  | $20$ | $\text{b}$ |
+| $\beta$  |  $2$  | $\gamma$ | $10$ | $\text{b}$ |
+
+### Renaming a table
+
+Renaming a table allows us to refer to a relation, say $E$, by more than one name. The operator $$ 
+\rho_{X}(E) $$ renames relation $E$ as $X$.
+
+Relation $r$
+
+|   $A$    | $B$ |
+|:--------:|:---:|
+| $\alpha$ | $1$ |
+| $\beta$  | $2$ |
+
+$r \times \rho_{s}(r)$
+
+|  $r.A$   | $r.B$ |  $s.A$   | $s.B$ |
+|:--------:|:-----:|:--------:|:-----:|
+| $\alpha$ |  $1$  | $\alpha$ |  $1$  |
+| $\alpha$ |  $1$  | $\beta$  |  $2$  |
+| $\beta$  |  $2$  | $\alpha$ |  $1$  |
+| $\beta$  |  $2$  | $\beta$  |  $2$  |
+
+### Composition of Operations
+
+Can build expressions using multiple operations
+
+Example: $\sigma_{A=C}(r \times s)$
+
+$r \times s$
+
+|   $A$    | $B$ |   $C$    | $D$  |    $E$     |
+|:--------:|:---:|:--------:|:----:|:----------:|
+| $\alpha$ | $1$ | $\alpha$ | $10$ | $\text{a}$ |
+| $\alpha$ | $1$ | $\beta$  | $10$ | $\text{a}$ |
+| $\alpha$ | $1$ | $\beta$  | $20$ | $\text{b}$ |
+| $\alpha$ | $1$ | $\gamma$ | $10$ | $\text{b}$ |
+| $\beta$  | $2$ | $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $20$ | $\text{b}$ |
+| $\beta$  | $2$ | $\gamma$ | $10$ | $\text{b}$ |
+
+$\sigma_{A=C}(r \times s)$
+
+|   $A$    | $B$ |   $C$    | $D$  |    $E$     |
+|:--------:|:---:|:--------:|:----:|:----------:|
+| $\alpha$ | $1$ | $\alpha$ | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $10$ | $\text{a}$ |
+| $\beta$  | $2$ | $\beta$  | $20$ | $\text{b}$ |
+
+### Joining two relations - Natural Join
+
+-   Let $r$ and $s$ be relations on schemas $R$ and $S$ respectively. Then, the "**natural join**" of relations $R$ and $S$ is a relation on schema $R \cup S$ obtained as follows:
+-   Consider each pair of tuples $t_{r}$ from $r$ and $t_{s}$ from $s$
+-   If $t_{r}$ and $t_{s}$ have the same value on each of the attributes in $R \cap S$, add a tuple $t$ to the result, where
+    -   $t$ has the same value as $t_{r}$ on $r$
+    -   $t$ has the same value as $t_{s}$ on $s$
+
+### Natural Join Example
+
+Relation $r$
+
+|   $A$    | $B$ |   $C$    |    $D$     |
+|:--------:|:---:|:--------:|:----------:|
+| $\alpha$ | $1$ | $\alpha$ | $\text{a}$ |
+| $\beta$  | $2$ | $\gamma$ | $\text{a}$ |
+| $\gamma$ | $4$ | $\beta$  | $\text{b}$ |
+| $\alpha$ | $1$ | $\gamma$ | $\text{a}$ |
+| $\delta$ | $2$ | $\beta$  | $\text{b}$ |
+
+Relation $s$
+
+| $B$ |    $D$     |    $E$     |
+|:---:|:----------:|:----------:|
+| $1$ | $\text{a}$ |  $\alpha$  |
+| $3$ | $\text{a}$ |  $\beta$   |
+| $1$ | $\text{a}$ |  $\gamma$  |
+| $2$ | $\text{b}$ |  $\delta$  |
+| $3$ | $\text{b}$ | $\epsilon$ |
+
+Natural join - $r \bowtie s$
+
+|   $A$    | $B$ |    $C$     |    $D$     |   $E$    |
+|:--------:|:---:|:----------:|:----------:|:--------:|
+| $\alpha$ | $1$ | $\text{a}$ | $\text{a}$ | $\alpha$ |
+| $\alpha$ | $1$ |  $\alpha$  | $\text{a}$ | $\gamma$ |
+| $\alpha$ | $1$ |  $\gamma$  | $\text{a}$ | $\alpha$ |
+| $\alpha$ | $1$ |  $\gamma$  | $\text{a}$ | $\gamma$ |
+| $\delta$ | $2$ |  $\beta$   | $\text{b}$ | $\delta$ |
+
+: $\pi_{A,r.B,C,r.D,E}(\sigma_{r.B=s.B \wedge r.D=s.D}(r \times s))$
+
+### Aggregate Operators
+
+Can compute: - SUM - AVG - MAX - MIN
+
+-   Relational operators always return a relation.
+
+-   
+
+    ## Aggregate operators return a single value.
+
+## Lecture 2.3: Introduction to SQL/1
+
+### History of Query Language
+
+-   IBM developed *Structured English Query Language* (**SEQUEL**) as a part of System R project. Renamed Structured Query Language (**SQL**: pronounced as "sequel")
+-   ANSI and ISO standards for SQL:
+
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SQL-86**   | First formalized by **ANSI**                                                                                                                                                                                                                                                     |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SQL-89       | \+ **Integrity constraints**                                                                                                                                                                                                                                                     |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SQL-92**   | Major revision (**ISO/IEC 9075 standard**), **De-facto Industry Standard**                                                                                                                                                                                                       |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SQL:1999** | \+ **Regular Expression Matching**, **Recursive Queries**, **Triggers**, **Support for Procedural and Control Flow Statements**, Nonscalar types (Arrays), and Some OO features (structured types), **Embedding SQL in Java (SQL/OLB)**, and **Embedding Java in SQL (SQL/JRT)** |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SQL:2003** | \+ **XML features (SQL/XML)**, Window Functions, Standardized Sequences, and Columns with Auto-generated Values (identity columns)                                                                                                                                               |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SQL:2006** | \+ Ways of **importing and storing XML data** in an SQL database, **manipulating** it within the database, and **publishing both XML and conventional SQL-data in XML form**                                                                                                     |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SQL:2008     | Legalizes ORDER BY outside Cursor Definitions\                                                                                                                                                                                                                                   |
+|              | + INSTEAD OF Triggers, TRUNCATE Statement, and FETCH Clause                                                                                                                                                                                                                      |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SQL:2011     | \+ Temporal Data (PERIOD FOR)\                                                                                                                                                                                                                                                   |
+|              | Enhancements to Window Functions, and Enhancements to FETCH Clause                                                                                                                                                                                                               |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SQL:2016     | \+ Row Pattern Matching, Polymorphic Table Functions, and **JSON**                                                                                                                                                                                                               |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SQL:2019     | \+ Multi-Dimensional Arrays (MDarray type and operators)                                                                                                                                                                                                                         |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### History of Query Language (2): Compliance
+
+-   SQL is the de-facto standard today for relational or structured data systems
+-   Commercial systems as well as open systems may be fully or partially compliant to one or more standards from SQL-92 onwards
+-   Not all examples here may work on your particular system. Check your system's SQL documentation
+
+### History of Query Language (3): Alternatives
+
+-   There aren't any alternatives to SQL for speaking to a relational database (that is, SQL as a protocol), but there are many alternatives to writing SQL in the applications
+-   These alternatives have been implemented in the form of frontends for working with relational databases. Some examples of a frontend include (for a section of languages):
+    -   SchemeQL and CLSQL, which are probably the most flexible, owing to their Lisp heritage, but they also look a lot more like SQL than other frontends
+    -   LINQ (in .NET)
+    -   ScalaQL and ScalaQuery (in Scala)
+    -   SqlStatement, ActiveRecord and many others in Ruby
+    -   HaskellDB
+    -   ...the list goes on for many other languages
+
+### History of Query Language (4): Derivatives
+
+-   There are several query languages that are derived from or inspired by SQL. Of these, the most popular and effective is SPARQL.
+    -   SPARQL (pronounced "sparkle", a recursive acronym for SPARQL Protocol and RDF Query Language) is an RDF query language
+        -   A semantic query language for databases - able to retrieve and manipulate data stored in Resource Description Framework (RDF) format.
+        -   It has been standardized by the W3C as key technology of the Semantic Web
+        -   Versions:
+            -   SPARQL 1.0 (January 2008)
+            -   SPARQL 1.1 (March 2013)
+        -   Used as the query language for several NoSQL systems - particularly the graph databases that use RDF as storage format
+
+### Data Definition Language (DDL)
+
+The SQL data definition language (DDL) allwos the specification of information about relations, including: - The Schema for each Relation - The Domain of values associated with each Attribute - Integrity Constraints - Also other information such as: - The set of Indices to be maintained for each relation - Security and Authorization information for each relation - The Physical Storage Structure for each relation on disk
+
+### Domain Types in SQL
+
+-   *char(n)*: Fixed-length character string, with user-specified length $n$
+-   *varchar(n)*: Variable-length character strings, with user-specified maximum length $n$
+-   *int*: Integer (a finite subset of the integers that is machine-dependent)
+-   *smallint(n)*: Small integer (a machine-dependent subset of the integer domain type)
+-   *numeric(p,d)*: Fixed-point number, with user-specified precision of $p$ digits, with $d$ digits to the right of the decimal point. (Example: **numeric**(3,1), allows 44.5 to be stored exactly but not 444.5 or 0.32)
+-   *real, double precision*: Floating-point and double-precision floating-point numbers with machine-dependent precision
+-   *float(n)*: Floating-point number, with user-specified precision of at least $n$ bits
+
+### Create Table Construct
+
+-   An SQL relation is defined using the *create table* command:
+
+    **create table** $r$ (
+       $$ (A_{1}D_{1}, A_{2}D_{2}, ..., A_{n}D_{n}), $$
+       $$ (\text{integrity-constraint}_1), $$
+       $$...$$
+       $$ (\text{integrity-constraint}_k)); $$
+
+    -  $r$ is the name of the relation
+    -  each $A_i$ is an attribute name in the schema of relation $r$
+    -  $D_i$ is the data type of values in the domain of attribute $A_i$
+
+### Based on a question from Practice Assignment 2
+
+Given the schema:
+
+$$ 
+\text{studentInfo}(\text{enrollment\_num}, \text{class}, \text{section}, \text{roll}, \text{name})
+$$
+
+and the candidate keys:
+
+1. $\{\text{enrollment\_num}\}$
+1. $\{\text{class}, \text{section}, \text{roll}\}$
+
+### Superkeys involving $\{\text{enrollment\_num}\}$:
+
+For the candidate key $\{\text{enrollment\_num}\}$, we can form a superkey by combining it with any subset of the remaining attributes $\{\text{class}, \text{section}, \text{roll}, \text{name}\}$. The number of such subsets is $2^4 = 16$, which includes the empty set.
+
+### Superkeys involving $\{\text{class}, \text{section}, \text{roll}\}$:
+
+For the candidate key $\{\text{class}, \text{section}, \text{roll}\}$, we can form a superkey by combining it with any subset of the remaining attributes $\{\text{enrollment\_num}, \text{name}\}$. The number of such subsets is $2^2 = 4$, which includes the empty set.
+
+However, we must ensure we do not double count the combination of both candidate keys. Specifically, the combination $\{\text{enrollment\_num}, \text{class}, \text{section}, \text{roll}\}$ is a superkey common to both sets.
+
+### Correct Count of Superkeys:
+
+1. Superkeys involving $\{\text{enrollment\_num}\}$:
+    - $16$ superkeys (including $\{\text{enrollment\_num}\}$ itself).
+
+2. Superkeys involving $\{\text{class}, \text{section}, \text{roll}\}$:
+    - $4$ superkeys (including $\{\text{class}, \text{section}, \text{roll}\}$ itself).
+
+Totaling these gives us $16 + 4 = 20$ superkeys.
+
+However, we must subtract 2 for the overlap between the two candidate keys:
+
+$$
+20 - 2 = 18
+$$
+
+Thus, the maximum number of possible superkeys of studentInfo is 18.
+
+---

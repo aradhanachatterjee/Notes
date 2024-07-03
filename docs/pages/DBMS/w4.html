@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Course Notes - Week 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/w2.html">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/w4.html">Week 4</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Course Notes</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Statistics-II</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/Stats2/Quiz2_keyterms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quiz 2 Key Terms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/Stats2/Quiz2_practicequestions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quiz 2 Practice Questions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">DBMS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">PDSA</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/w2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">MAD-2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/MAD-2/w1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/MAD-2/w2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/MAD-2/w3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#formal-relational-query-language" id="toc-formal-relational-query-language" class="nav-link active" data-scroll-target="#formal-relational-query-language">Formal Relational Query Language</a>
+  <ul class="collapse">
+  <li><a href="#relational-algebra" id="toc-relational-algebra" class="nav-link" data-scroll-target="#relational-algebra">Relational Algebra</a></li>
+  <li><a href="#select-operation" id="toc-select-operation" class="nav-link" data-scroll-target="#select-operation">Select Operation</a>
+  <ul class="collapse">
+  <li><a href="#select-example" id="toc-select-example" class="nav-link" data-scroll-target="#select-example">Select Example</a></li>
+  </ul></li>
+  <li><a href="#project-operation" id="toc-project-operation" class="nav-link" data-scroll-target="#project-operation">Project Operation</a>
+  <ul class="collapse">
+  <li><a href="#project-example" id="toc-project-example" class="nav-link" data-scroll-target="#project-example">Project Example</a></li>
+  </ul></li>
+  <li><a href="#union-operation" id="toc-union-operation" class="nav-link" data-scroll-target="#union-operation">Union Operation</a>
+  <ul class="collapse">
+  <li><a href="#union-example" id="toc-union-example" class="nav-link" data-scroll-target="#union-example">Union Example</a></li>
+  </ul></li>
+  <li><a href="#difference-operation" id="toc-difference-operation" class="nav-link" data-scroll-target="#difference-operation">Difference Operation</a>
+  <ul class="collapse">
+  <li><a href="#difference-example" id="toc-difference-example" class="nav-link" data-scroll-target="#difference-example">Difference Example</a></li>
+  </ul></li>
+  <li><a href="#intersection-operation" id="toc-intersection-operation" class="nav-link" data-scroll-target="#intersection-operation">Intersection Operation</a>
+  <ul class="collapse">
+  <li><a href="#intersection-example" id="toc-intersection-example" class="nav-link" data-scroll-target="#intersection-example">Intersection Example</a></li>
+  </ul></li>
+  <li><a href="#cartesian-product-operation" id="toc-cartesian-product-operation" class="nav-link" data-scroll-target="#cartesian-product-operation">Cartesian-Product Operation</a>
+  <ul class="collapse">
+  <li><a href="#cartesian-product-example" id="toc-cartesian-product-example" class="nav-link" data-scroll-target="#cartesian-product-example">Cartesian-Product Example</a></li>
+  </ul></li>
+  <li><a href="#rename-operation" id="toc-rename-operation" class="nav-link" data-scroll-target="#rename-operation">Rename Operation</a>
+  <ul class="collapse">
+  <li><a href="#rename-example" id="toc-rename-example" class="nav-link" data-scroll-target="#rename-example">Rename Example</a></li>
+  </ul></li>
+  <li><a href="#division-operation" id="toc-division-operation" class="nav-link" data-scroll-target="#division-operation">Division Operation</a>
+  <ul class="collapse">
+  <li><a href="#division-examples" id="toc-division-examples" class="nav-link" data-scroll-target="#division-examples">Division Examples</a></li>
+  </ul></li>
+  <li><a href="#predicate-logic" id="toc-predicate-logic" class="nav-link" data-scroll-target="#predicate-logic">Predicate Logic</a></li>
+  <li><a href="#predicate" id="toc-predicate" class="nav-link" data-scroll-target="#predicate">Predicate</a></li>
+  <li><a href="#quantifiers" id="toc-quantifiers" class="nav-link" data-scroll-target="#quantifiers">Quantifiers</a></li>
+  <li><a href="#universal-quantifier" id="toc-universal-quantifier" class="nav-link" data-scroll-target="#universal-quantifier">Universal Quantifier</a></li>
+  <li><a href="#existential-quantifier" id="toc-existential-quantifier" class="nav-link" data-scroll-target="#existential-quantifier">Existential Quantifier</a></li>
+  <li><a href="#tuple-relational-calculus" id="toc-tuple-relational-calculus" class="nav-link" data-scroll-target="#tuple-relational-calculus">Tuple Relational Calculus</a></li>
+  <li><a href="#predicate-calculus-formula" id="toc-predicate-calculus-formula" class="nav-link" data-scroll-target="#predicate-calculus-formula">Predicate Calculus Formula</a>
+  <ul class="collapse">
+  <li><a href="#trc-example" id="toc-trc-example" class="nav-link" data-scroll-target="#trc-example">TRC Example</a></li>
+  </ul></li>
+  <li><a href="#safety-of-expressions" id="toc-safety-of-expressions" class="nav-link" data-scroll-target="#safety-of-expressions">Safety of Expressions</a></li>
+  <li><a href="#domain-relational-calculus" id="toc-domain-relational-calculus" class="nav-link" data-scroll-target="#domain-relational-calculus">Domain Relational Calculus</a></li>
+  <li><a href="#equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus" id="toc-equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus" class="nav-link" data-scroll-target="#equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus">Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus</a>
+  <ul class="collapse">
+  <li><a href="#select-operation-1" id="toc-select-operation-1" class="nav-link" data-scroll-target="#select-operation-1">Select Operation</a></li>
+  <li><a href="#project-operation-1" id="toc-project-operation-1" class="nav-link" data-scroll-target="#project-operation-1">Project Operation</a></li>
+  <li><a href="#combining-operations" id="toc-combining-operations" class="nav-link" data-scroll-target="#combining-operations">Combining Operations</a></li>
+  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union">Union</a></li>
+  <li><a href="#set-difference" id="toc-set-difference" class="nav-link" data-scroll-target="#set-difference">Set Difference</a></li>
+  <li><a href="#intersection" id="toc-intersection" class="nav-link" data-scroll-target="#intersection">Intersection</a></li>
+  <li><a href="#cartesiancross-product" id="toc-cartesiancross-product" class="nav-link" data-scroll-target="#cartesiancross-product">Cartesian/Cross Product</a></li>
+  <li><a href="#natural-join" id="toc-natural-join" class="nav-link" data-scroll-target="#natural-join">Natural Join</a></li>
+  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division">Division</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/w2.html">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/w4.html">Week 4</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Week 4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="formal-relational-query-language" class="level1">
+<h1>Formal Relational Query Language</h1>
+<ul>
+<li>Relational Algebra
+<ul>
+<li>Procedural and Algebra based</li>
+</ul></li>
+<li>Tuple Relational Calculus
+<ul>
+<li>Non-Procedural (Declarative) and Predicate Calculus based</li>
+</ul></li>
+<li>Domain Relational Calculus
+<ul>
+<li>Non-Procedural (Declarative) and Predicate Calculus based</li>
+</ul></li>
+</ul>
+<section id="relational-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="relational-algebra">Relational Algebra</h2>
+<ul>
+<li>Relational algebra is a procedural query language which takes relations as input and returns relation as output.</li>
+<li>It was created by Edgar F. Codd at IBM in 1970.</li>
+<li>Six basic operators of relational algebra are:
+<ul>
+<li>Select (<span class="math inline">\sigma</span>)</li>
+<li>Project (<span class="math inline">\Pi</span>)</li>
+<li>Union (<span class="math inline">\cup</span>)</li>
+<li>Set Difference (<span class="math inline">-</span>)</li>
+<li>Cartesian Product (<span class="math inline">\times</span>)</li>
+<li>Rename (<span class="math inline">\rho</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="select-operation" class="level2">
+<h2 class="anchored" data-anchor-id="select-operation">Select Operation</h2>
+<ul>
+<li><p>Notation: <span class="math inline">\sigma_{p}(r)</span></p></li>
+<li><p><span class="math inline">p</span> is called the <em>selection predicate</em></p></li>
+<li><p>Definition: <span class="math display">
+  \sigma_{p}(r) = \{t \mid t \in r \text{ and } p(t) \}
+  </span></p>
+<p>where <span class="math inline">p</span> is a formula in propositional calculus consisting of terms connected by: <span class="math inline">\land</span> (<strong>and</strong>), <span class="math inline">\lor</span> (<strong>or</strong>), and <span class="math inline">\lnot</span> (<strong>not</strong>).</p>
+<p>Each <em>term</em> is one of:</p>
+<p>&lt; <em>attribute</em> &gt; op &lt; <em>attribute</em> &gt; or &lt; <em>constant</em> &gt;</p>
+<p>where op is one of: <span class="math inline">=</span>, <span class="math inline">\neq</span>, <span class="math inline">&lt;</span>, <span class="math inline">\leq</span>, <span class="math inline">&gt;</span>, <span class="math inline">\geq</span></p></li>
+</ul>
+<section id="select-example" class="level3">
+<h3 class="anchored" data-anchor-id="select-example">Select Example</h3>
+<div id="7552115b" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>α</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>β</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>β</td>
+<td>12</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>β</td>
+<td>23</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="2d2bc910" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>α</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>β</td>
+<td>23</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+\sigma_{A=B\wedge D&gt;5}(r)
+</span></p>
+</section>
+</section>
+<section id="project-operation" class="level2">
+<h2 class="anchored" data-anchor-id="project-operation">Project Operation</h2>
+<ul>
+<li><p>Notation: <span class="math inline">\Pi_{A_1, A_2, \ldots, A_k}(r)</span></p>
+<p>where <span class="math inline">A_1, A_2, \ldots, A_k</span> are attributes of relation <span class="math inline">r</span></p></li>
+<li><p>The result is defined as the relation of <span class="math inline">k</span> columns obtained by deleting columns other than <span class="math inline">A_1, A_2, \ldots, A_k</span> from <span class="math inline">r</span></p></li>
+<li><p>Duplicate rows are automatically eliminated, since the result is a set</p></li>
+</ul>
+<section id="project-example" class="level3">
+<h3 class="anchored" data-anchor-id="project-example">Project Example</h3>
+<div id="41e1f1a3" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>10</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>30</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>40</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="556c969c" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+\Pi_{A, C}(r)
+</span></p>
+</section>
+</section>
+<section id="union-operation" class="level2">
+<h2 class="anchored" data-anchor-id="union-operation">Union Operation</h2>
+<ul>
+<li>Notation: <span class="math inline">r \cup s</span></li>
+<li>Defined as: <span class="math inline">r \cup s = \{t \mid t \in r \text{ or } t \in s \}</span></li>
+<li>For <span class="math inline">r \cup s</span> to be valid
+<ul>
+<li><span class="math inline">r</span> and <span class="math inline">s</span> must have the same <em>arity</em> (same number of attributes)</li>
+<li>The attribute domains must be <em>compatible</em> (same type)</li>
+</ul></li>
+</ul>
+<section id="union-example" class="level3">
+<h3 class="anchored" data-anchor-id="union-example">Union Example</h3>
+<div id="44830e24" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="e5bef021" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+s
+</span></p>
+<div id="0f16ef5d" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ```{python}
+import matplotlib.pyplot as plt
+
+# initialize a figure
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+# set the title
+ax.set_title('Union Operation')
+
+#create a table
+ax.table(cellText=union_df.values, colLabels=union_df.columns, cellLoc = 'center', loc='center')
+
+# hide the axes
+ax.axis('off')
+``` -->
+<p><span class="math display">
+r \cup s
+</span></p>
+</section>
+</section>
+<section id="difference-operation" class="level2">
+<h2 class="anchored" data-anchor-id="difference-operation">Difference Operation</h2>
+<ul>
+<li>Notation: <span class="math inline">r - s</span></li>
+<li>Defined as: <span class="math inline">r - s = \{t \mid t \in r \text{ and } t \notin s \}</span></li>
+<li>Set differences must be taken between <strong>compatible</strong> relations
+<ul>
+<li><span class="math inline">r</span> and <span class="math inline">s</span> must have the same <em>arity</em></li>
+<li>The attribute domains must be <em>compatible</em></li>
+</ul></li>
+</ul>
+<section id="difference-example" class="level3">
+<h3 class="anchored" data-anchor-id="difference-example">Difference Example</h3>
+<div id="85d6e6e4" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="814c6371" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+s
+</span></p>
+<div id="c7276dd7" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r - s
+</span></p>
+</section>
+</section>
+<section id="intersection-operation" class="level2">
+<h2 class="anchored" data-anchor-id="intersection-operation">Intersection Operation</h2>
+<ul>
+<li>Notation: <span class="math inline">r \cap s</span></li>
+<li>Defined as: <span class="math inline">r \cap s = \{t \mid t \in r \text{ and } t \in s \}</span></li>
+<li>Assume:
+<ul>
+<li><span class="math inline">r</span>, <span class="math inline">s</span> have the same <em>arity</em></li>
+<li>Attributes of <span class="math inline">r</span> and <span class="math inline">s</span> are <em>compatible</em></li>
+</ul></li>
+<li>Note: <span class="math inline">r \cap s = r - (r - s)</span></li>
+</ul>
+<section id="intersection-example" class="level3">
+<h3 class="anchored" data-anchor-id="intersection-example">Intersection Example</h3>
+<div id="59d0b29d" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="274551f7" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+s
+</span></p>
+<div id="591054b7" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r \cap s
+</span></p>
+</section>
+</section>
+<section id="cartesian-product-operation" class="level2">
+<h2 class="anchored" data-anchor-id="cartesian-product-operation">Cartesian-Product Operation</h2>
+<ul>
+<li>Notation: <span class="math inline">r \times s</span></li>
+<li>Defined as: <span class="math inline">r \times s = \{t_1, t_2 \mid t_1 \in r \text{ and } t_2 \in s \}</span></li>
+<li>Assume that attributes of <span class="math inline">r</span> and <span class="math inline">s</span> are <em>disjoint</em> (no common attributes)</li>
+<li>If attributes are not disjoint, use <em>rename</em> operation to make them disjoint</li>
+</ul>
+<section id="cartesian-product-example" class="level3">
+<h3 class="anchored" data-anchor-id="cartesian-product-example">Cartesian-Product Example</h3>
+<div id="5cbbc631" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="82bbecc8" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>20</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td>γ</td>
+<td>10</td>
+<td>b</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+s
+</span></p>
+<div id="97ff17f4" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+<td>α</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>1</td>
+<td>β</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+<td>β</td>
+<td>20</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>1</td>
+<td>γ</td>
+<td>10</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>2</td>
+<td>α</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>2</td>
+<td>β</td>
+<td>10</td>
+<td>a</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>2</td>
+<td>β</td>
+<td>20</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>2</td>
+<td>γ</td>
+<td>10</td>
+<td>b</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r \times s
+</span></p>
+</section>
+</section>
+<section id="rename-operation" class="level2">
+<h2 class="anchored" data-anchor-id="rename-operation">Rename Operation</h2>
+<ul>
+<li><p>Allows us to name, and therefore to refer to, the result of a relational-algebra expression</p></li>
+<li><p>Allows us to refer to a relation by more than one name</p></li>
+<li><p>Example:</p>
+<p><span class="math inline">\rho_{X}(E)</span></p>
+<p>returns the relation <span class="math inline">E</span> under the name <span class="math inline">X</span></p></li>
+<li><p>If a relational-algebra expression <span class="math inline">E</span> has arity <span class="math inline">n</span>, then <span class="math display">
+  \rho_{X(A_1, A_2, \ldots, A_n)}(E)
+  </span> returns the result of the expression <span class="math inline">E</span> under the name <span class="math inline">X</span>, and with the attributes renamed to <span class="math display">
+  A_1, A_2, \ldots, A_n
+  </span></p></li>
+</ul>
+<section id="rename-example" class="level3">
+<h3 class="anchored" data-anchor-id="rename-example">Rename Example</h3>
+<div id="ebbe8dae" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r
+</span></p>
+<div id="38aabebf" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">r.A</th>
+<th data-quarto-table-cell-role="th">r.B</th>
+<th data-quarto-table-cell-role="th">s.A</th>
+<th data-quarto-table-cell-role="th">s.B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td>1</td>
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>α</td>
+<td>1</td>
+<td>β</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>β</td>
+<td>2</td>
+<td>α</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>β</td>
+<td>2</td>
+<td>β</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+r \times \rho_{s}(r)
+</span></p>
+</section>
+</section>
+<section id="division-operation" class="level2">
+<h2 class="anchored" data-anchor-id="division-operation">Division Operation</h2>
+<ul>
+<li>The division operation is applied to two relations</li>
+<li><span class="math inline">R(Z) \div S(X)</span>, where <span class="math inline">X</span> is a subset of <span class="math inline">Z</span>. Let <span class="math inline">Y = Z - X</span> (hence <span class="math inline">Z = X \cup Y</span>); that is, let <span class="math inline">Y</span> be the set of attributes of <span class="math inline">R</span> that are not in <span class="math inline">S</span></li>
+<li>The result of the division operation is a relation <span class="math inline">T(Y)</span> that includes a tuple <span class="math inline">t</span> if tuples <span class="math inline">t_R</span> appear in <span class="math inline">R</span> with <span class="math inline">t_R[Y] = t</span>, and with
+<ul>
+<li><span class="math inline">t_R[X] = t_S</span> for all tuples <span class="math inline">t_S</span> in <span class="math inline">S</span></li>
+</ul></li>
+<li>For a tuple <span class="math inline">t</span> to appear in the result <span class="math inline">T</span> of the division operation, the values in <span class="math inline">t</span> must appear in <span class="math inline">R</span> with all possible combinations of values in <span class="math inline">S</span></li>
+<li>Division is a derived operation, and can be expressed in terms of the basic operations of relational algebra</li>
+<li><span class="math inline">r \div s \equiv \Pi_{R - S}(r) - \Pi_{R - S}(r)((\Pi_{R - S}(r) \times s) - \Pi_{R-S,S}(r))</span></li>
+</ul>
+<section id="division-examples" class="level3">
+<h3 class="anchored" data-anchor-id="division-examples">Division Examples</h3>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
+<div id="5a83583e" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Lecturer</th>
+<th data-quarto-table-cell-role="th">Module</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Brown</td>
+<td>Compilers</td>
+</tr>
+<tr class="even">
+<td>Brown</td>
+<td>Databases</td>
+</tr>
+<tr class="odd">
+<td>Green</td>
+<td>Prolog</td>
+</tr>
+<tr class="even">
+<td>Green</td>
+<td>Databases</td>
+</tr>
+<tr class="odd">
+<td>Lewis</td>
+<td>Prolog</td>
+</tr>
+<tr class="even">
+<td>Smith</td>
+<td>Databases</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+R
+</span></p>
+<div id="8566e529" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="20">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Subject</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prolog</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+S
+</span></p>
+<div id="e8122011" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Lecturer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Green</td>
+</tr>
+<tr class="even">
+<td>Lewis</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+R \mid S
+</span></p>
+</section>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example 2</h4>
+<div id="275b9c5f" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="22">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Lecturer</th>
+<th data-quarto-table-cell-role="th">Module</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Brown</td>
+<td>Compilers</td>
+</tr>
+<tr class="even">
+<td>Brown</td>
+<td>Databases</td>
+</tr>
+<tr class="odd">
+<td>Green</td>
+<td>Prolog</td>
+</tr>
+<tr class="even">
+<td>Green</td>
+<td>Databases</td>
+</tr>
+<tr class="odd">
+<td>Lewis</td>
+<td>Prolog</td>
+</tr>
+<tr class="even">
+<td>Smith</td>
+<td>Databases</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+R
+</span></p>
+<div id="8c7a8b7f" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="23">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Subject</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Databases</td>
+</tr>
+<tr class="even">
+<td>Prolog</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+S
+</span></p>
+<div id="f3a7ab90" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Lecturer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Green</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">
+R \mid S
+</span></p>
+</section>
+</section>
+</section>
+<section id="predicate-logic" class="level2">
+<h2 class="anchored" data-anchor-id="predicate-logic">Predicate Logic</h2>
+<p><strong>Predicate Logic</strong> or <strong>Predicate Calculus</strong> is an extension of <strong>Propositional Logic</strong> or <strong>Boolean Algebra</strong>.</p>
+<p>It adds the concept of predicates and quantifiers to better capture the meaning of statements that cannot be adequately expressed using propositional logic.</p>
+<p><strong>Tuple Relational Calculus</strong> and <strong>Domain Relational Calculus</strong> are based on <strong>Predicate Calculus</strong>.</p>
+</section>
+<section id="predicate" class="level2">
+<h2 class="anchored" data-anchor-id="predicate">Predicate</h2>
+<ul>
+<li>Consider the statement, “<span class="math inline">x</span> is greater than 3”. It has two parts. The first part, the variable <span class="math inline">x</span>, is the subject of the statement. The second part, “is greater than 3”, is the predicate. It refers to a property that the subject of the statement can have.</li>
+<li>The statement “<span class="math inline">x</span> is greater than 3” can be denoted by <span class="math inline">P(x)</span> where <span class="math inline">P</span> denotes the predicate “is greater than 3” and <span class="math inline">x</span> is the variable.</li>
+<li>The predicate <span class="math inline">P</span> can be considered as a function. It tells the truth value of the statement <span class="math inline">P(x)</span> at <span class="math inline">x</span>. Once a value has been assigned to the variable <span class="math inline">x</span>, the statement <span class="math inline">P(x)</span> becomes a proposition and has a truth or false value.</li>
+<li>In general, a statement involving <span class="math inline">n</span> variables <span class="math inline">x_1, x_2, x_3, \ldots , x_n</span> and a predicate <span class="math inline">P</span> can be denoted by <span class="math inline">P(x_1, x_2, x_3, \ldots , x_n)</span>. Here <span class="math inline">P</span> is also referred to as n-place predicate or a <span class="math inline">n</span>-ary predicate.</li>
+</ul>
+</section>
+<section id="quantifiers" class="level2">
+<h2 class="anchored" data-anchor-id="quantifiers">Quantifiers</h2>
+<p>In predicate logic, predicates are used alongside quantifiers to express the extent to which a predicate is true over a range of elements. Using <em>quantifiers</em> to create such propositions is called <em>quantification</em>. There are two types of quantifiers:</p>
+<ul>
+<li><strong>Universal Quantifier</strong></li>
+<li><strong>Existential Quantifier</strong></li>
+</ul>
+</section>
+<section id="universal-quantifier" class="level2">
+<h2 class="anchored" data-anchor-id="universal-quantifier">Universal Quantifier</h2>
+<p><strong>Universal Quantification</strong>: Mathematical statements sometimes assert that a property is true for all the values of a variable in a particular domain, called the <strong>domain of discourse</strong></p>
+<ul>
+<li><p>Such a statement is expressed using universal quantification.</p></li>
+<li><p>The universal quantification of <span class="math inline">P(x)</span> for a particular domain is the proposition that asserts that <span class="math inline">P(x)</span> is true for all values of <span class="math inline">x</span> in this domain</p></li>
+<li><p>The domain is very important here since it decides the possible values of <span class="math inline">x</span></p></li>
+<li><p>Formally, The universal quantification of <span class="math inline">P(x)</span> is the statement “<span class="math inline">P(x)</span> for all values of <span class="math inline">x</span> in the domain”</p></li>
+<li><p>The notation <span class="math inline">\forall P(x)</span> denotes the universal quantification of <span class="math inline">P(x)</span>. Here <span class="math inline">\forall</span> is called the universal quantifier. <span class="math inline">\forall P(x)</span> is read as “for all <span class="math inline">x</span> <span class="math inline">P(x)</span>”.</p></li>
+<li><p>Example: Let <span class="math inline">P(x)</span> be the statement “<span class="math inline">x + 2 &gt; x</span>”. What is the truth value of the statement <span class="math inline">\forall x P(x)</span>?</p>
+<p>Solution: As <span class="math inline">x + 2</span> is greater than <span class="math inline">x</span> for any real number, so <span class="math inline">P(x) \equiv T</span> for all <span class="math inline">x</span> or <span class="math inline">\forall x P(x) \equiv T</span></p></li>
+</ul>
+</section>
+<section id="existential-quantifier" class="level2">
+<h2 class="anchored" data-anchor-id="existential-quantifier">Existential Quantifier</h2>
+<p><strong>Existential Quantification</strong>: Some mathematical statements assert that there is an element with a certain property. Such statements are expressed by existential quantification. Existential quantification can be used to form a proposition that is true if and only if <span class="math inline">P(x)</span> is true for at least one value of <span class="math inline">x</span> in the domain.</p>
+<ul>
+<li><p>Formally, the existential quantification of <span class="math inline">P(x)</span> is the statement “There exists an element <span class="math inline">x</span> in the domain such that <span class="math inline">P(x)</span>”.</p></li>
+<li><p>The notation <span class="math inline">\exists P(x)</span> denotes the existential quantification of <span class="math inline">P(x)</span>. Here <span class="math inline">\exists</span> is called the existential quantifier. <span class="math inline">\exists P(x)</span> is read as “There is at least one <span class="math inline">x</span> such that <span class="math inline">P(x)</span>”.</p></li>
+<li><p>Example: Let <span class="math inline">P(x)</span> be the statement “<span class="math inline">x^2 = 4</span>”. What is the truth value of the statement <span class="math inline">\exists x P(x)</span>?</p>
+<p>Solution: The statement <span class="math inline">x^2 = 4</span> is true for <span class="math inline">x = 2</span> and <span class="math inline">x = -2</span>. So, <span class="math inline">\exists x</span> <span class="math inline">P(x) \equiv T</span></p></li>
+</ul>
+</section>
+<section id="tuple-relational-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="tuple-relational-calculus">Tuple Relational Calculus</h2>
+<p>TRC is a non-procedural query language, where each query is of the form</p>
+<p><span class="math display">
+\{t \mid P(t)\}
+</span></p>
+<p>where <span class="math inline">t =</span> resulting tuples, <span class="math inline">P(t) =</span> known as predicate and these are the conditions that are used to fetch <span class="math inline">t</span>. <span class="math inline">P(t)</span> may have various conditions connected by logical connectives like AND (<span class="math inline">\land</span>), OR (<span class="math inline">\lor</span>), and NOT (<span class="math inline">\lnot</span>).</p>
+<p>It also uses quantifiers: <span class="math inline">\exists t \in r(Q(t)) =</span> “there exists” a tuple <span class="math inline">t</span> in relation <span class="math inline">r</span> such that <span class="math inline">Q(t)</span> is true. <span class="math inline">\forall t \in r(Q(t)) =</span> “for all” tuples <span class="math inline">t</span> in relation <span class="math inline">r</span>, <span class="math inline">Q(t)</span> is true.</p>
+</section>
+<section id="predicate-calculus-formula" class="level2">
+<h2 class="anchored" data-anchor-id="predicate-calculus-formula">Predicate Calculus Formula</h2>
+<ul>
+<li>Set of attributes and constants</li>
+<li>Set of comparison operators: (<span class="math inline">=</span>, <span class="math inline">\neq</span>, <span class="math inline">&lt;</span>, <span class="math inline">\leq</span>, <span class="math inline">&gt;</span>, <span class="math inline">\geq</span>)</li>
+<li>Set of logical connectives: and (<span class="math inline">\land</span>), or(<span class="math inline">\lor</span>), not (<span class="math inline">\lnot</span>)</li>
+<li>Implication (<span class="math inline">\implies</span>) : <span class="math inline">x \implies y</span>, if <span class="math inline">x</span> then <span class="math inline">y</span></li>
+<li>Set of quantifiers:
+<ul>
+<li><span class="math inline">\exists t \in r(Q(t)) \equiv</span> “there exists” a tuple <span class="math inline">t</span> in relation <span class="math inline">r</span> such that <span class="math inline">Q(t)</span> is true.</li>
+<li><span class="math inline">\forall t \in r(Q(t)) \equiv</span> <span class="math inline">Q</span> is true “for all” tuples <span class="math inline">t</span> in relation <span class="math inline">r</span></li>
+</ul></li>
+</ul>
+<section id="trc-example" class="level3">
+<h3 class="anchored" data-anchor-id="trc-example">TRC Example</h3>
+<table class="table">
+<caption>Student</caption>
+<thead>
+<tr class="header">
+<th>Fname</th>
+<th>Lname</th>
+<th>Age</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>David</td>
+<td>Sharma</td>
+<td>27</td>
+<td>DBMS</td>
+</tr>
+<tr class="even">
+<td>Aaron</td>
+<td>Lilly</td>
+<td>17</td>
+<td>Java</td>
+</tr>
+<tr class="odd">
+<td>Sahil</td>
+<td>Khan</td>
+<td>19</td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td>Sachin</td>
+<td>Rao</td>
+<td>20</td>
+<td>DBMS</td>
+</tr>
+<tr class="odd">
+<td>Varun</td>
+<td>George</td>
+<td>23</td>
+<td>Java</td>
+</tr>
+<tr class="even">
+<td>Simi</td>
+<td>Verma</td>
+<td>22</td>
+<td>Java</td>
+</tr>
+</tbody>
+</table>
+<p>Obtain the first name of students whose age is greater than 21.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">
+  \{t.Fname \mid Student(t) \land t.Age &gt; 21\}
+  </span> <span class="math display">
+  \{t.Fname \mid t \in Student \land t.Age &gt; 21\}
+  </span> <span class="math display">
+  \{t \mid \exists s \in Student(s.Age &gt; 21 \land t.Fname = s.Fname)\}
+  </span></p>
+</section>
+</section>
+<section id="safety-of-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="safety-of-expressions">Safety of Expressions</h2>
+<ul>
+<li>It is possible to write tuple calculus expressions that generate infinite relations</li>
+<li>For example, <span class="math inline">\{t \mid \lnot t \in r\}</span> results in an infinite relation if the domain of any attribute of relation <span class="math inline">r</span> is infinite</li>
+<li>To guard against the problem, we restrict the set of allowable expressions to safe expressions</li>
+<li>An expression <span class="math inline">\{t \mid P(t)\}</span> in the tuple relational calculus is safe if every component of <span class="math inline">t</span> appears in one of the relations, tuples, or constants that appear in <span class="math inline">P</span>.
+<ul>
+<li>NOTE: this is more than just a syntax condition</li>
+<li>E.g. <span class="math inline">\{t \mid t[A] = 5 \lor \text{true}\}</span> is not safe — it defines an infinite set with attribute values that do not appear in any relation or tuples or constants in <span class="math inline">P</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="domain-relational-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="domain-relational-calculus">Domain Relational Calculus</h2>
+<ul>
+<li><p>A non-procedural query language equivalent in power to tuple relational calculus</p></li>
+<li><p>Each query is of the form</p>
+<p><span class="math display">
+  \{&lt; x_1, x_2, \ldots, x_n &gt; \mid P(x_1, x_2, \ldots, x_n)\}
+  </span></p>
+<ul>
+<li><span class="math inline">x_1, x_2, \ldots, x_n</span> represent domain variables</li>
+<li><span class="math inline">P</span> represents a formula similar to that of the predicate calculus</li>
+</ul></li>
+</ul>
+</section>
+<section id="equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus">Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus</h2>
+<section id="select-operation-1" class="level3">
+<h3 class="anchored" data-anchor-id="select-operation-1">Select Operation</h3>
+<p><span class="math inline">R = (A, B)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">\sigma_{A = 5}(r)</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid t \in r \land A = 5\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b &gt; \mid &lt;a, b&gt; \in r \land a = 5\}</span></p></li>
+</ul>
+</section>
+<section id="project-operation-1" class="level3">
+<h3 class="anchored" data-anchor-id="project-operation-1">Project Operation</h3>
+<p><span class="math inline">R = (A, B)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">\Pi_{A}(r)</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid t \exists p \in r(t[A]=p[A])\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a &gt; \mid \exists b(&lt;a, b&gt; \in r)\}</span></p></li>
+</ul>
+</section>
+<section id="combining-operations" class="level3">
+<h3 class="anchored" data-anchor-id="combining-operations">Combining Operations</h3>
+<p><span class="math inline">R = (A, B)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">\Pi_{A}(\sigma_{B = 5}(r))</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid \exists p \in r(t[A] = p[A] \land p[B] = 5)\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a &gt; \mid \exists b(&lt;a, b&gt; \in r \land b = 5)\}</span></p></li>
+</ul>
+</section>
+<section id="union" class="level3">
+<h3 class="anchored" data-anchor-id="union">Union</h3>
+<p><span class="math inline">R = (A, B, C)</span>, <span class="math inline">S = (A, B, C)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r \cup s</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid t \in r \lor t \in s\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b, c &gt; \mid &lt;a, b, c&gt; \in r \lor &lt;a, b, c&gt; \in s\}</span></p></li>
+</ul>
+</section>
+<section id="set-difference" class="level3">
+<h3 class="anchored" data-anchor-id="set-difference">Set Difference</h3>
+<p><span class="math inline">R = (A, B, C)</span>, <span class="math inline">S = (A, B, C)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r - s</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid t \in r \land t \notin s\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b, c &gt; \mid &lt;a, b, c&gt; \in r \land &lt;a, b, c&gt; \notin s\}</span></p></li>
+</ul>
+</section>
+<section id="intersection" class="level3">
+<h3 class="anchored" data-anchor-id="intersection">Intersection</h3>
+<p><span class="math inline">R = (A, B, C)</span>, <span class="math inline">S = (A, B, C)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r \cap s</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid t \in r \land t \in s\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b, c &gt; \mid &lt;a, b, c&gt; \in r \land &lt;a, b, c&gt; \in s\}</span></p></li>
+</ul>
+</section>
+<section id="cartesiancross-product" class="level3">
+<h3 class="anchored" data-anchor-id="cartesiancross-product">Cartesian/Cross Product</h3>
+<p><span class="math inline">R = (A, B)</span>, <span class="math inline">S = (C, D)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r \times s</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid \exists p \in r \exists q \in s(t[A] = p[A] \land t[B] = p[B] \land t[C] = q[C] \land t[D] = q[D])\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b, c, d &gt; \mid (&lt;a, b&gt; \in r \land &lt;c, d&gt; \in s)\}</span></p></li>
+</ul>
+</section>
+<section id="natural-join" class="level3">
+<h3 class="anchored" data-anchor-id="natural-join">Natural Join</h3>
+<p><span class="math inline">R = (A, B, C, D)</span>, <span class="math inline">S = (B, D, E)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r \bowtie s</span> <span class="math display">
+\Pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B \land r.D = s.D}(r \times s))
+</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid \exists p \in r \exists q \in s(t[A] = p[A] \land t[B] = p[B] \land t[C] = p[C] \land t[D] = p[D] \land t[E] = q[E] \land p[B] = q[B] \land p[D]=q[D])\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a, b, c, d, e &gt; \mid &lt;a, b, c, d&gt; \in r \land &lt;b, d, e&gt; \in s\}</span></p></li>
+</ul>
+</section>
+<section id="division" class="level3">
+<h3 class="anchored" data-anchor-id="division">Division</h3>
+<p><span class="math inline">R = (A, B)</span>, <span class="math inline">S = (B)</span></p>
+<ul>
+<li><p>Relational Algebra: <span class="math inline">r \div s</span></p></li>
+<li><p>Tuple Relational Calculus: <span class="math inline">\{t \mid \exists p \in r(\forall q \in s(p[B] = q[B] \implies t[A] = p[A]))\}</span></p></li>
+<li><p>Domain Relational Calculus: <span class="math inline">\{&lt; a &gt; \mid &lt; a &gt; \in r \land \forall &lt;b&gt;(&lt; b &gt; \in s \implies &lt; a, b &gt; \in r)\}</span></p></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

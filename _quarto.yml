@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Notes"
+  sidebar:
+    collapse-level: 1
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      # - section: "Statistics-II"
+      #   contents:
+      #     - href: pages/Stats2/Quiz2_keyterms.qmd
+      #       text: Quiz 2 Key Terms
+      #     - href: pages/Stats2/Quiz2_practicequestions.qmd
+      #       text: Quiz 2 Practice Questions
+      - section: "DBMS"
+        contents:
+          - href: pages/DBMS/w2.qmd
+            text: Week 2
+          - href: pages/DBMS/w3.ipynb
+            text: Week 3
+          - href: pages/DBMS/w4.qmd
+            text: Week 4
+      - section: "PDSA"
+        contents:
+          - href: pages/PDSA/w2.qmd
+            text: Week 2
+      - section: "MAD-2"
+        contents:
+          - href: pages/MAD-2/w1.qmd
+            text: Week 1
+          - href: pages/MAD-2/w2.qmd
+            text: Week 2
+          - href: pages/MAD-2/w3.qmd
+            text: Week 3
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    html-math-method: katex

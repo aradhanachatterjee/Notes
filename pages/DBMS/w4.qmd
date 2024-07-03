@@ -1,0 +1,776 @@
+---
+title: "Week 4"
+format:
+    html:    
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+execute: 
+  echo: false
+jupyter: python3
+ipynb-shell-interactivity: all
+---
+
+# Formal Relational Query Language
+
+- Relational Algebra
+  - Procedural and Algebra based
+- Tuple Relational Calculus
+  - Non-Procedural (Declarative) and Predicate Calculus based
+- Domain Relational Calculus
+  - Non-Procedural (Declarative) and Predicate Calculus based
+
+## Relational Algebra
+
+- Relational algebra is a procedural query language which takes relations as input and returns relation as output.
+- It was created by Edgar F. Codd at IBM in 1970.
+- Six basic operators of relational algebra are:
+  - Select ($\sigma$)
+  - Project ($\Pi$)
+  - Union ($\cup$)
+  - Set Difference ($-$)
+  - Cartesian Product ($\times$)
+  - Rename ($\rho$)
+
+## Select Operation
+
+- Notation: $\sigma_{p}(r)$
+
+- $p$ is called the *selection predicate*
+
+- Definition: $$
+    \sigma_{p}(r) = \{t \mid t \in r \text{ and } p(t) \}
+    $$
+
+    where $p$ is a formula in propositional calculus consisting of terms connected by: $\land$ (**and**), $\lor$ (**or**), and $\lnot$ (**not**).
+
+    Each *term* is one of:
+
+    \< *attribute* \> op \< *attribute* \> or \< *constant* \>
+
+    where op is one of: $=$, $\neq$, $<$, $\leq$, $>$, $\geq$
+
+### Select Example
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+data1 = {
+    'A': ['α', 'α', 'β', 'β'],
+    'B': ['α', 'β', 'β', 'β'],
+    'C': [1, 5, 12, 23],
+    'D': [7, 7, 3, 10]
+}
+
+# Create DataFrame
+df1 = pd.DataFrame(data1)
+
+# Display the DataFrame without the index
+HTML(df1.to_html(index=False))
+# print(df1.to_string(index=False))
+```
+
+$$
+r
+$$
+
+```{python}
+# Selection operation: A = B and D > 5
+selected_df_1 = df1[(df1['A'] == df1['B']) & (df1['D'] > 5)]
+
+# Display the DataFrame without the index
+HTML(selected_df_1.to_html(index=False))
+```
+
+$$
+\sigma_{A=B\wedge D>5}(r)
+$$
+
+## Project Operation
+
+- Notation: $\Pi_{A_1, A_2, \ldots, A_k}(r)$
+
+    where $A_1, A_2, \ldots, A_k$ are attributes of relation $r$
+
+- The result is defined as the relation of $k$ columns obtained by deleting columns other than $A_1, A_2, \ldots, A_k$ from $r$
+
+- Duplicate rows are automatically eliminated, since the result is a set
+
+### Project Example
+
+```{python}
+relation2 = {
+    'A': ['α', 'α', 'β', 'β'],
+    'B': [10, 20, 30, 40],
+    'C': [1, 1, 1, 2]
+}
+
+# Create DataFrame
+df2 = pd.DataFrame(relation2)
+
+# Display the DataFrame without the index
+HTML(df2.to_html(index=False))
+```
+
+$$
+r
+$$
+
+```{python}
+projected_df_1 = df2[['A', 'C']].drop_duplicates()
+
+# Display the projected DataFrame without duplicates
+HTML(projected_df_1.to_html(index=False))
+```
+
+$$
+\Pi_{A, C}(r)
+$$
+
+## Union Operation
+
+- Notation: $r \cup s$
+- Defined as: $r \cup s = \{t \mid t \in r \text{ or } t \in s \}$
+- For $r \cup s$ to be valid
+  - $r$ and $s$ must have the same *arity* (same number of attributes)
+  - The attribute domains must be *compatible* (same type)
+
+### Union Example
+
+```{python}
+r = {
+    'A': ['α', 'α', 'β'],
+    'B': [1, 2, 1]
+}
+
+# Create DataFrame
+df_r = pd.DataFrame(r)
+
+
+s = {
+    'A': ['α', 'β'],
+    'B': [2, 3]
+}
+
+# Create DataFrame
+df_s = pd.DataFrame(s)
+
+# Display the DataFrame without the index
+HTML(df_r.to_html(index=False))
+```
+
+$$
+r
+$$
+
+```{python}
+# Display the DataFrame without the index
+HTML(df_s.to_html(index=False))
+```
+
+$$
+s
+$$
+
+```{python}
+# Union operation
+union_df = pd.concat([df_r, df_s]).drop_duplicates()
+
+# Display the DataFrame without the index
+HTML(union_df.to_html(index=False))
+```
+
+````{=html}
+<!-- ```{python}
+import matplotlib.pyplot as plt
+
+# initialize a figure
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+# set the title
+ax.set_title('Union Operation')
+
+#create a table
+ax.table(cellText=union_df.values, colLabels=union_df.columns, cellLoc = 'center', loc='center')
+
+# hide the axes
+ax.axis('off')
+``` -->
+````
+
+$$
+r \cup s
+$$
+
+## Difference Operation
+
+- Notation: $r - s$
+- Defined as: $r - s = \{t \mid t \in r \text{ and } t \notin s \}$
+- Set differences must be taken between **compatible** relations
+  - $r$ and $s$ must have the same *arity*
+  - The attribute domains must be *compatible*
+
+### Difference Example
+
+```{python}
+r = {
+    'A': ['α', 'α', 'β'],
+    'B': [1, 2, 1]
+}
+
+# Create DataFrame
+df_r = pd.DataFrame(r)
+
+s = {
+    'A': ['α', 'β'],
+    'B': [2, 3]
+}
+
+# Create DataFrame
+df_s = pd.DataFrame(s)
+
+# Display the DataFrame without the index
+HTML(df_r.to_html(index=False))
+```
+
+$$
+r
+$$
+
+```{python}
+# Display the DataFrame without the index
+HTML(df_s.to_html(index=False))
+```
+
+$$
+s
+$$
+
+```{python}
+# Difference operation
+difference_df = df_r.merge(df_s, on=['A', 'B'], how='left', indicator=True).query('_merge == "left_only"').drop(columns=['_merge'])
+
+# Display the set difference DataFrame without the index
+display(HTML(difference_df.to_html(index=False)))
+```
+
+$$
+r - s
+$$
+
+## Intersection Operation
+
+- Notation: $r \cap s$
+- Defined as: $r \cap s = \{t \mid t \in r \text{ and } t \in s \}$
+- Assume:
+  - $r$, $s$ have the same *arity*
+  - Attributes of $r$ and $s$ are *compatible*
+- Note: $r \cap s = r - (r - s)$
+
+### Intersection Example
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+
+# Relation r
+r = {
+    'A': ['α', 'α', 'β'],
+    'B': [1, 2, 1]
+}
+
+# Create DataFrame for r
+df_r = pd.DataFrame(r)
+
+# Relation s
+s = {
+    'A': ['α', 'β'],
+    'B': [2, 3]
+}
+
+# Create DataFrame for s
+df_s = pd.DataFrame(s)
+
+# Display the DataFrame without the index
+HTML(df_r.to_html(index=False))
+```
+
+$$
+r
+$$
+
+```{python}
+# Display the DataFrame without the index
+HTML(df_s.to_html(index=False))
+```
+
+$$
+s
+$$
+
+```{python}
+# Intersection operation
+intersection_df = pd.merge(df_r, df_s, on=['A', 'B'], how='inner')
+
+# Display the intersection DataFrame without the index
+display(HTML(intersection_df.to_html(index=False)))
+```
+
+$$
+r \cap s
+$$
+
+## Cartesian-Product Operation
+
+- Notation: $r \times s$
+- Defined as: $r \times s = \{t_1, t_2 \mid t_1 \in r \text{ and } t_2 \in s \}$
+- Assume that attributes of $r$ and $s$ are *disjoint* (no common attributes)
+- If attributes are not disjoint, use *rename* operation to make them disjoint
+
+### Cartesian-Product Example
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+
+# Relation r
+r = {
+    'A': ['α', 'β'],
+    'B': [1, 2]
+}
+
+# Create DataFrame for r
+df_r = pd.DataFrame(r)
+
+# Relation s
+s = {
+    'C': ['α', 'β', 'β', 'γ'],
+    'D': [10, 10, 20, 10],
+    'E': ['a', 'a', 'b', 'b']
+}
+
+# Create DataFrame for s
+df_s = pd.DataFrame(s)
+
+# Display the original DataFrames without the index
+display(HTML(df_r.to_html(index=False)))
+```
+
+$$
+r
+$$
+
+```{python}
+display(HTML(df_s.to_html(index=False)))
+```
+
+$$
+s
+$$
+
+```{python}
+# Cartesian product of df_r and df_s
+cartesian_product_df = pd.merge(df_r.assign(key=1), df_s.assign(key=1), on='key').drop('key', axis=1)
+
+# Display the Cartesian product DataFrame without the index
+display(HTML(cartesian_product_df.to_html(index=False)))
+```
+
+$$
+r \times s
+$$
+
+## Rename Operation
+
+- Allows us to name, and therefore to refer to, the result of a relational-algebra expression
+
+- Allows us to refer to a relation by more than one name
+
+- Example:
+
+    $\rho_{X}(E)$
+
+    returns the relation $E$ under the name $X$
+
+- If a relational-algebra expression $E$ has arity $n$, then $$
+    \rho_{X(A_1, A_2, \ldots, A_n)}(E)
+    $$ returns the result of the expression $E$ under the name $X$, and with the attributes renamed to $$
+    A_1, A_2, \ldots, A_n
+    $$
+
+### Rename Example
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+
+# Relation r
+r = {
+    'A': ['α', 'β'],
+    'B': [1, 2]
+}
+
+# Create DataFrame for r
+df_r = pd.DataFrame(r)
+
+# Relation r's duplicate relation s
+df_s = pd.DataFrame(r)
+
+# Display the original DataFrame without the index
+display(HTML(df_r.to_html(index=False)))
+```
+
+$$
+r
+$$
+
+```{python}
+# Cartesian product of df_r and df_s
+cartesian_product_df = pd.merge(df_r.assign(key=1), df_s.assign(key=1), on='key').drop('key', axis=1)
+
+# Rename the columns to make them unique
+cartesian_product_df.columns = ['r.A', 'r.B', 's.A','s.B']
+
+# Display the Cartesian product DataFrame without the index
+display(HTML(cartesian_product_df.to_html(index=False)))
+```
+
+$$
+r \times \rho_{s}(r)
+$$
+
+## Division Operation
+
+- The division operation is applied to two relations
+- $R(Z) \div S(X)$, where $X$ is a subset of $Z$. Let $Y = Z - X$ (hence $Z = X \cup Y$); that is, let $Y$ be the set of attributes of $R$ that are not in $S$
+- The result of the division operation is a relation $T(Y)$ that includes a tuple $t$ if tuples $t_R$ appear in $R$ with $t_R[Y] = t$, and with
+  - $t_R[X] = t_S$ for all tuples $t_S$ in $S$
+- For a tuple $t$ to appear in the result $T$ of the division operation, the values in $t$ must appear in $R$ with all possible combinations of values in $S$
+- Division is a derived operation, and can be expressed in terms of the basic operations of relational algebra
+- $r \div s \equiv \Pi_{R - S}(r) - \Pi_{R - S}(r)((\Pi_{R - S}(r) \times s) - \Pi_{R-S,S}(r))$
+
+### Division Examples
+
+#### Example 1
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+data1 = {
+    'Lecturer': ['Brown', 'Brown', 'Green', 'Green', 'Lewis', 'Smith'],
+    'Module': ['Compilers', 'Databases', 'Prolog', 'Databases', 'Prolog', 'Databases']
+}
+
+# Create DataFrame
+df1 = pd.DataFrame(data1)
+
+# Display the DataFrame without the index
+HTML(df1.to_html(index=False))
+```
+
+$$
+R
+$$
+
+```{python}
+data2 = {
+    'Subject': ['Prolog']
+}
+
+# Create DataFrame
+df2 = pd.DataFrame(data2)
+
+# Display the DataFrame without the index
+HTML(df2.to_html(index=False))
+```
+
+$$
+S
+$$
+
+```{python}
+# Division operation
+division_df = df1.groupby('Lecturer').Module.apply(set).reset_index()
+division_df = division_df[division_df['Module'].apply(lambda x: df2['Subject'].values[0] in x)]
+division_df = division_df.drop(columns='Module')
+
+# Display the division DataFrame without the index
+display(HTML(division_df.to_html(index=False)))
+```
+
+$$
+R \mid S
+$$
+
+#### Example 2
+
+```{python}
+import pandas as pd
+from IPython.display import HTML
+data1 = {
+    'Lecturer': ['Brown', 'Brown', 'Green', 'Green', 'Lewis', 'Smith'],
+    'Module': ['Compilers', 'Databases', 'Prolog', 'Databases', 'Prolog', 'Databases']
+}
+
+# Create DataFrame
+df1 = pd.DataFrame(data1)
+
+# Display the DataFrame without the index
+HTML(df1.to_html(index=False))
+```
+
+$$
+R
+$$
+
+```{python}
+data2 = {
+    'Subject': ['Databases', 'Prolog']
+}
+
+# Create DataFrame
+df2 = pd.DataFrame(data2)
+
+# Display the DataFrame without the index
+HTML(df2.to_html(index=False))
+```
+
+$$
+S
+$$
+
+```{python}
+# Division operation
+division_df = df1.groupby('Lecturer').Module.apply(set).reset_index()
+division_df = division_df[division_df['Module'].apply(lambda x: set(df2['Subject'].values).issubset(x))]
+
+division_df = division_df.drop(columns='Module')
+# Display the division DataFrame without the index
+display(HTML(division_df.to_html(index=False)))
+```
+
+$$
+R \mid S
+$$
+
+## Predicate Logic
+
+**Predicate Logic** or **Predicate Calculus** is an extension of **Propositional Logic** or **Boolean Algebra**.
+
+It adds the concept of predicates and quantifiers to better capture the meaning of statements that cannot be adequately expressed using propositional logic.
+
+**Tuple Relational Calculus** and **Domain Relational Calculus** are based on **Predicate Calculus**.
+
+## Predicate
+
+- Consider the statement, “$x$ is greater than 3”. It has two parts. The first part, the variable $x$, is the subject of the statement. The second part, “is greater than 3”, is the predicate. It refers to a property that the subject of the statement can have.
+- The statement “$x$ is greater than 3” can be denoted by $P(x)$ where $P$ denotes the predicate “is greater than 3” and $x$ is the variable.
+- The predicate $P$ can be considered as a function. It tells the truth value of the statement $P(x)$ at $x$. Once a value has been assigned to the variable $x$, the statement $P(x)$ becomes a proposition and has a truth or false value.
+- In general, a statement involving $n$ variables $x_1, x_2, x_3, \ldots , x_n$ and a predicate $P$ can be denoted by $P(x_1, x_2, x_3, \ldots , x_n)$. Here $P$ is also referred to as n-place predicate or a $n$-ary predicate.
+
+## Quantifiers
+
+In predicate logic, predicates are used alongside quantifiers to express the extent to which a predicate is true over a range of elements. Using *quantifiers* to create such propositions is called *quantification*. There are two types of quantifiers:
+
+- **Universal Quantifier**
+- **Existential Quantifier**
+
+## Universal Quantifier
+
+**Universal Quantification**: Mathematical statements sometimes assert that a property is true for all the values of a variable in a particular domain, called the **domain of discourse**
+
+- Such a statement is expressed using universal quantification.
+
+- The universal quantification of $P(x)$ for a particular domain is the proposition that asserts that $P(x)$ is true for all values of $x$ in this domain
+
+- The domain is very important here since it decides the possible values of $x$
+
+- Formally, The universal quantification of $P(x)$ is the statement “$P(x)$ for all values of $x$ in the domain”
+
+- The notation $\forall P(x)$ denotes the universal quantification of $P(x)$. Here $\forall$ is called the universal quantifier. $\forall P(x)$ is read as “for all $x$ $P(x)$”.
+
+- Example: Let $P(x)$ be the statement "$x + 2 > x$". What is the truth value of the statement $\forall x P(x)$?
+
+    Solution: As $x + 2$ is greater than $x$ for any real number, so $P(x) \equiv T$ for all $x$ or $\forall x P(x) \equiv T$
+
+## Existential Quantifier
+
+**Existential Quantification**: Some mathematical statements assert that there is an element with a certain property. Such statements are expressed by existential quantification. Existential quantification can be used to form a proposition that is true if and only if $P(x)$ is true for at least one value of $x$ in the domain.
+
+- Formally, the existential quantification of $P(x)$ is the statement "There exists an element $x$ in the domain such that $P(x)$".
+
+- The notation $\exists P(x)$ denotes the existential quantification of $P(x)$. Here $\exists$ is called the existential quantifier. $\exists P(x)$ is read as "There is at least one $x$ such that $P(x)$".
+
+- Example: Let $P(x)$ be the statement "$x^2 = 4$". What is the truth value of the statement $\exists x P(x)$?
+
+    Solution: The statement $x^2 = 4$ is true for $x = 2$ and $x = -2$. So, $\exists x$ $P(x) \equiv T$
+
+## Tuple Relational Calculus
+
+TRC is a non-procedural query language, where each query is of the form
+
+$$
+\{t \mid P(t)\}
+$$
+
+where $t =$ resulting tuples, $P(t) =$ known as predicate and these are the conditions that are used to fetch $t$. $P(t)$ may have various conditions connected by logical connectives like AND ($\land$), OR ($\lor$), and NOT ($\lnot$).
+
+It also uses quantifiers: $\exists t \in r(Q(t)) =$ "there exists" a tuple $t$ in relation $r$ such that $Q(t)$ is true. $\forall t \in r(Q(t)) =$ "for all" tuples $t$ in relation $r$, $Q(t)$ is true.
+
+## Predicate Calculus Formula
+
+- Set of attributes and constants
+- Set of comparison operators: ($=$, $\neq$, $<$, $\leq$, $>$, $\geq$)
+- Set of logical connectives: and ($\land$), or($\lor$), not ($\lnot$)
+- Implication ($\implies$) : $x \implies y$, if $x$ then $y$
+- Set of quantifiers:
+  - $\exists t \in r(Q(t)) \equiv$ "there exists" a tuple $t$ in relation $r$ such that $Q(t)$ is true.
+  - $\forall t \in r(Q(t)) \equiv$ $Q$ is true "for all" tuples $t$ in relation $r$
+
+### TRC Example
+
+| Fname  | Lname  | Age | Course |
+|--------|--------|-----|--------|
+| David  | Sharma | 27  | DBMS   |
+| Aaron  | Lilly  | 17  | Java   |
+| Sahil  | Khan   | 19  | Python |
+| Sachin | Rao    | 20  | DBMS   |
+| Varun  | George | 23  | Java   |
+| Simi   | Verma  | 22  | Java   |
+
+: Student
+
+Obtain the first name of students whose age is greater than 21.
+
+**Solution:**
+
+  $$
+  \{t.Fname \mid Student(t) \land t.Age > 21\}
+  $$
+  $$
+  \{t.Fname \mid t \in Student \land t.Age > 21\}
+  $$
+  $$
+  \{t \mid \exists s \in Student(s.Age > 21 \land t.Fname = s.Fname)\}
+  $$
+
+## Safety of Expressions
+
+- It is possible to write tuple calculus expressions that generate infinite relations
+- For example, $\{t \mid \lnot t \in r\}$ results in an infinite relation if the domain of any attribute of relation $r$ is infinite
+- To guard against the problem, we restrict the set of allowable expressions to safe expressions
+- An expression $\{t \mid P(t)\}$ in the tuple relational calculus is safe if every component of $t$ appears in one of the relations, tuples, or constants that appear in $P$.
+  - NOTE: this is more than just a syntax condition
+  - E.g. $\{t \mid t[A] = 5 \lor \text{true}\}$ is not safe — it defines an infinite set with attribute values that do not appear in any relation or tuples or constants in $P$
+
+
+## Domain Relational Calculus
+
+- A non-procedural query language equivalent in power to tuple relational calculus
+- Each query is of the form
+
+    $$
+    \{< x_1, x_2, \ldots, x_n > \mid P(x_1, x_2, \ldots, x_n)\}
+    $$
+
+  - $x_1, x_2, \ldots, x_n$ represent domain variables
+  - $P$ represents a formula similar to that of the predicate calculus
+
+## Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus
+
+### Select Operation
+
+$R = (A, B)$
+
+- Relational Algebra: $\sigma_{A = 5}(r)$
+
+- Tuple Relational Calculus: $\{t \mid t \in r \land A = 5\}$
+
+- Domain Relational Calculus: $\{< a, b > \mid <a, b> \in r \land a = 5\}$
+
+### Project Operation
+
+$R = (A, B)$
+
+- Relational Algebra: $\Pi_{A}(r)$
+
+- Tuple Relational Calculus: $\{t \mid t \exists p \in r(t[A]=p[A])\}$
+
+- Domain Relational Calculus: $\{< a > \mid \exists b(<a, b> \in r)\}$
+
+### Combining Operations
+
+$R = (A, B)$
+
+- Relational Algebra: $\Pi_{A}(\sigma_{B = 5}(r))$
+
+- Tuple Relational Calculus: $\{t \mid \exists p \in r(t[A] = p[A] \land p[B] = 5)\}$
+
+- Domain Relational Calculus: $\{< a > \mid \exists b(<a, b> \in r \land b = 5)\}$
+
+### Union
+
+$R = (A, B, C)$, $S = (A, B, C)$
+
+- Relational Algebra: $r \cup s$
+
+- Tuple Relational Calculus: $\{t \mid t \in r \lor t \in s\}$
+
+- Domain Relational Calculus: $\{< a, b, c > \mid <a, b, c> \in r \lor <a, b, c> \in s\}$
+
+### Set Difference
+
+$R = (A, B, C)$, $S = (A, B, C)$
+
+- Relational Algebra: $r - s$
+
+- Tuple Relational Calculus: $\{t \mid t \in r \land t \notin s\}$
+
+- Domain Relational Calculus: $\{< a, b, c > \mid <a, b, c> \in r \land <a, b, c> \notin s\}$
+
+### Intersection
+
+$R = (A, B, C)$, $S = (A, B, C)$
+
+- Relational Algebra: $r \cap s$
+
+- Tuple Relational Calculus: $\{t \mid t \in r \land t \in s\}$
+
+- Domain Relational Calculus: $\{< a, b, c > \mid <a, b, c> \in r \land <a, b, c> \in s\}$
+
+### Cartesian/Cross Product
+
+$R = (A, B)$, $S = (C, D)$
+
+- Relational Algebra: $r \times s$
+
+- Tuple Relational Calculus: $\{t \mid \exists p \in r \exists q \in s(t[A] = p[A] \land t[B] = p[B] \land t[C] = q[C] \land t[D] = q[D])\}$
+
+- Domain Relational Calculus: $\{< a, b, c, d > \mid (<a, b> \in r \land <c, d> \in s)\}$
+
+### Natural Join
+
+$R = (A, B, C, D)$, $S = (B, D, E)$
+
+- Relational Algebra: $r \bowtie s$
+  $$
+  \Pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B \land r.D = s.D}(r \times s))
+  $$
+
+- Tuple Relational Calculus: $\{t \mid \exists p \in r \exists q \in s(t[A] = p[A] \land t[B] = p[B] \land t[C] = p[C] \land t[D] = p[D] \land t[E] = q[E] \land p[B] = q[B] \land p[D]=q[D])\}$
+
+- Domain Relational Calculus: $\{< a, b, c, d, e > \mid <a, b, c, d> \in r \land <b, d, e> \in s\}$
+
+### Division
+
+$R = (A, B)$, $S = (B)$
+
+- Relational Algebra: $r \div s$
+
+- Tuple Relational Calculus: $\{t \mid \exists p \in r(\forall q \in s(p[B] = q[B] \implies t[A] = p[A]))\}$
+
+- Domain Relational Calculus: $\{< a > \mid < a > \in r \land \forall <b>(< b > \in s \implies < a, b > \in r)\}$
+
