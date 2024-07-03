@@ -1,3 +1,3 @@
-# Course Notes
+# Notes
 
 Archive of my notes.
