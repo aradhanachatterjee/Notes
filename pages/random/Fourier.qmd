@@ -1,0 +1,21 @@
+---
+# title: "Fourier Series Representations"
+format:
+      html:
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+---
+
+Some handwritten notes on Fourier Series Representations
+
+![1](fourier-pages/1.png)
+![2](fourier-pages/2.png)
+![3](fourier-pages/3.png)
+![4](fourier-pages/4.png)
+![5](fourier-pages/5.png)
+![6](fourier-pages/6.png)
+![7](fourier-pages/7.png)
+

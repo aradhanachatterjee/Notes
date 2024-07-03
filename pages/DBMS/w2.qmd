@@ -2,8 +2,14 @@
 title: "Week 2"
 format:
     html:    
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
         code-fold: true
-jupyter: python3
+execute: 
+  echo: false
+
 ---
 
 ## Lecture 2.1: Introduction to Relational Model/1

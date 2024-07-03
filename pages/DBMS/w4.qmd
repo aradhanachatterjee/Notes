@@ -9,8 +9,6 @@ format:
         code-fold: true
 execute: 
   echo: false
-jupyter: python3
-ipynb-shell-interactivity: all
 ---
 
 # Formal Relational Query Language

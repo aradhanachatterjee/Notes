@@ -5,7 +5,7 @@ project:
 website:
   title: "Notes"
   sidebar:
-    collapse-level: 1
+    collapse-level: 2
     style: "docked"
     search: true
     contents:
@@ -37,6 +37,12 @@ website:
             text: Week 2
           - href: pages/MAD-2/w3.qmd
             text: Week 3
+      - section: "Random"
+        contents:
+          - href: pages/random/Fourier.qmd
+            text: Fourier Series Representations
+            
+
 format:
   html:
     theme:

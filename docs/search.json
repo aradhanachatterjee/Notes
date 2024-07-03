@@ -21,22 +21,14 @@
     "href": "pages/Stats2/Quiz2_keyterms.html",
     "title": "Quiz 2 - Key Terms",
     "section": "",
-    "text": "X - CRV, with CDF F_X and PDF f_X\nY = g(X), with CDF F_Y, such that F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\nFor monotonic, differentiable functions Y=g(X):\nf_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y))",
-    "crumbs": [
-      "Statistics-II",
-      "Quiz 2 Key Terms"
-    ]
+    "text": "X - CRV, with CDF F_X and PDF f_X\nY = g(X), with CDF F_Y, such that F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\nFor monotonic, differentiable functions Y=g(X):\nf_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y))"
   },
   {
     "objectID": "pages/Stats2/Quiz2_keyterms.html#functions-of-a-continuous-random-variable",
     "href": "pages/Stats2/Quiz2_keyterms.html#functions-of-a-continuous-random-variable",
     "title": "Quiz 2 - Key Terms",
     "section": "",
-    "text": "X - CRV, with CDF F_X and PDF f_X\nY = g(X), with CDF F_Y, such that F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\nFor monotonic, differentiable functions Y=g(X):\nf_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y))",
-    "crumbs": [
-      "Statistics-II",
-      "Quiz 2 Key Terms"
-    ]
+    "text": "X - CRV, with CDF F_X and PDF f_X\nY = g(X), with CDF F_Y, such that F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\nFor monotonic, differentiable functions Y=g(X):\nf_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y))"
   },
   {
     "objectID": "pages/DBMS/w4.html",
@@ -263,7 +255,7 @@
     "href": "pages/PDSA/w2.html",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n6600\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n$10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance",
+    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -296,7 +288,7 @@
     "href": "pages/PDSA/w2.html#orders-of-magnitude",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "When comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n6600\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n$10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-",
+    "text": "When comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -362,7 +354,7 @@
     "href": "pages/PDSA/w2.html#upper-bounds",
     "title": "PDSA - Week 2",
     "section": "Upper bounds",
-    "text": "Upper bounds\n\nf(x) is said to be O(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is an upper bound for f(x) for x beyond x_0\nf(x) \\leq cg(x) for every x \\geq x_0\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Define the functions\ndef g(x):\n    return x * np.sin(x)**3 + x**1.5\n\ndef f(x):\n    return 2 * np.sin(3*x) + 3.5\n\n# Create a figure and axis\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Define the x values\nx = np.linspace(0, 8, 400) # sample data\n\n # Plotting the functions\nax.plot(x, f(x), 'r', label='f(x)')\nax.plot(x, g(x), 'b', label='cg(x)')\n\n\n# Marking the point X0\n\nx0 = 4.6\nax.scatter(x0, g(x0), color='black', marker='o', s=50)\nax.text(x0, g(x0), 'X0', fontsize=15, verticalalignment='bottom', horizontalalignment='right')\n\n\n\n# Adding labels and title\nax.set_xlabel('x')\nax.set_ylabel('y')\nax.set_title('Graph of f(x) and cg(x)')\nax.legend()\n\n\n# plt.grid(True)\n\n# Show the plot\nplt.show()\n\n\nText(4.6, 5.352416888786347, 'X0')\n\n\nText(0.5, 0, 'x')\n\n\nText(0, 0.5, 'y')\n\n\nText(0.5, 1.0, 'Graph of f(x) and cg(x)')",
+    "text": "Upper bounds\n\nf(x) is said to be O(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is an upper bound for f(x) for x beyond x_0\nf(x) \\leq cg(x) for every x \\geq x_0",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -483,7 +475,7 @@
     "href": "pages/PDSA/w2.html#example-5-contd.",
     "title": "PDSA - Week 2",
     "section": "Example 5 (contd.)",
-    "text": "Example 5 (contd.)\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n  M( n) & =\\ 2M( n-1) +1\\\\\n   & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n   & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n   & \\dotsc \\\\\n   & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n   & \\dotsc \\\\\n   & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n   & =\\ 2^{n-1} +2^{n-1} -1\\\\\n   & =\\ 2^{n} -1\n  \\end{aligned}",
+    "text": "Example 5 (contd.)\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n    M( n) & =\\ 2M( n-1) +1\\\\\n     & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n     & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n     & =\\ 2^{n-1} +2^{n-1} -1\\\\\n     & =\\ 2^{n} -1\n    \\end{aligned}",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -538,7 +530,7 @@
     "href": "pages/PDSA/w2.html#alternative-calculation",
     "title": "PDSA - Week 2",
     "section": "Alternative calculation",
-    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \\begin{aligned}\n  T( n) & =\\ T( n//2) +1\\\\\n   & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n   & =\\ \\dotsc \\\\\n   & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n   & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n   & =\\ ( T( 0) +1) +\\log n\\\\\n   & =\\ 2+\\log n\n  \\end{aligned}\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])",
+    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \\begin{aligned}\n    T( n) & =\\ T( n//2) +1\\\\\n     & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n     & =\\ \\dotsc \\\\\n     & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n     & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n     & =\\ ( T( 0) +1) +\\log n\\\\\n     & =\\ 2+\\log n\n    \\end{aligned}\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -571,7 +563,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-1",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64",
+    "text": "Sorting a list\n\n\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 2\n\nMove the first paper to a new pile\nSecond paper\n\nLower marks than the first paper? Place it below the first paper in new pile\nHigher marks than the first paper? Place it above the first paper in new pile\n\nThird paper\n\nInsert into correct position with respect to the first two papers\n\nDo this for the remaining papers\n\nInsert each one into the correct position in the second pile",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -582,7 +574,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-2",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21",
+    "text": "Sorting a list\n\n\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 2\n\nMove the first paper to a new pile\nSecond paper\n\nLower marks than the first paper? Place it below the first paper in new pile\nHigher marks than the first paper? Place it above the first paper in new pile\n\nThird paper\n\nInsert into correct position with respect to the first two papers\n\nDo this for the remaining papers\n\nInsert each one into the correct position in the second pile",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -593,7 +585,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-3",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21 32",
+    "text": "Sorting a list\n74 32 89 55 21 64",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -604,7 +596,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-4",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55",
+    "text": "Sorting a list\n74 32 89 55 21 64\n74",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -615,7 +607,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-5",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55 64",
+    "text": "Sorting a list\n74 32 89 55 21 64\n32 74",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -626,7 +618,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-6",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55 64 74",
+    "text": "Sorting a list\n74 32 89 55 21 64\n32 74 89",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -637,7 +629,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-7",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55 64 74 89",
+    "text": "Sorting a list\n74 32 89 55 21 64\n32 55 74 89",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -681,7 +673,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-8",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n\n\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 2\n\nMove the first paper to a new pile\nSecond paper\n\nLower marks than the first paper? Place it below the first paper in new pile\nHigher marks than the first paper? Place it above the first paper in new pile\n\nThird paper\n\nInsert into correct position with respect to the first two papers\n\nDo this for the remaining papers\n\nInsert each one into the correct position in the second pile",
+    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55 74 89",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -692,7 +684,7 @@
     "href": "pages/PDSA/w2.html#sorting-a-list-9",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n74 32 89 55 21 64",
+    "text": "Sorting a list\n74 32 89 55 21 64\n21 32 55 64 74 89",
     "crumbs": [
       "PDSA",
       "Week 2"
@@ -4473,5 +4465,16 @@
     "title": "PDSA - Week 2",
     "section": "Summary",
     "text": "Summary\n\nMerge sort takes time \\(O(n \\log n)\\) so can be used effectively on large inputs\nVariations on merge are possible\n\nUnion of two sorted lists — discard duplicates, if A[i] == B[j] move just one copy to C and increment both i and j\nIntersection of two sorted lists — when A[i] == B[j], move one copy to C, otherwise discard the smaller of A[i], B[j]\nList difference — elements in A but not in B\n\nMerge needs to create a new list to hold the merged elements\n\nNo obvious way to efficiently merge two lists in place\nExtra storage can be costly\n\nInherently recursive\n\nRecursive calls and returns are expensive"
+  },
+  {
+    "objectID": "pages/random/Fourier.html",
+    "href": "pages/random/Fourier.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Some handwritten notes on Fourier Series Representations",
+    "crumbs": [
+      "Random",
+      "Fourier Series Representations"
+    ]
   }
 ]

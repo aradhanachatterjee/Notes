@@ -7,8 +7,8 @@ format:
         number_sections: true
         smooth-scroll: true
         code-fold: true
-jupyter: python3
-ipynb-shell-interactivity: all
+execute: 
+  echo: false
 ---
 
 # Lecture 2.1: Analysis of Algorithms
@@ -37,21 +37,9 @@ ipynb-shell-interactivity: all
   - Running time $t(n)$
 - Different inputs of the same size $n$ can have different running times
 
-*Example 1*: SIM cards vs Aadhaar cards
-- $n \approx 10^9$ - number of cards
-- Naive algorithm: $t(n) \approx n^2$
-- Clever algorithm: $t(n) \approx n \log_{2} n$
-  - $log_{2}n$ - number of times you need to divide $n$ by $2$ to reach $1$
-  - $log_{2}n = k \implies n = 2^k$
+*Example 1*: SIM cards vs Aadhaar cards - $n \approx 10^9$ - number of cards - Naive algorithm: $t(n) \approx n^2$ - Clever algorithm: $t(n) \approx n \log_{2} n$ - $log_{2}n$ - number of times you need to divide $n$ by $2$ to reach $1$ - $log_{2}n = k \implies n = 2^k$
 
-*Example 2*: Video game
-- Several objects on screen
-- Basic step: find closest pair of objects
-- $n$ objects - naive algorithm is $n^2$
-  - For each pair of objects, calculate distance
-  - Report minimum distance across all pairs
-- There is a clever algorithm that takes $n \log_{2} n$
-
+*Example 2*: Video game - Several objects on screen - Basic step: find closest pair of objects - $n$ objects - naive algorithm is $n^2$ - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes $n \log_{2} n$
 
 - High resolution gaming console may have $4000 \times 2000$ pixels
   - $8 \times 10^6$ points - $8$ million
@@ -75,40 +63,42 @@ ipynb-shell-interactivity: all
     - Note: $\log n$ means $\log_{2}n$ by default
   - Logarithmic, polynomial, exponential, ...
 
-| Input size | $\log n$| $n$| $n \log n$| $n^2$| $n^3$| $2^n$| $n!$|
-|------------|-------|---|---------|-----|-----|-----|----|
-| $10$         | $3.3$   | $10$| $33$      | $100$ | $1000$| $1000$| $10^6$|
-| $100$        | $6.6$   | $100$| $6600$   | $10^4$| $10^6$| $10^{30}$|$10^{157}$|
-| $1000$       | $10$    | $1000$| $10^4$  | $10^6$| $10^9$| -   | - |
-| $10^4$       | $13$    | $10^4$| $$10^5$  | $10^8$| $10^{12}$| -  | - |
-| $10^5$       | $17$    | $10^5$| $10^6$  | $10^{10}$| -  | -   | - |
-| $10^6$       | $20$    | $10^6$| $10^7$  | $10^{12}$| -  | -   | - |
-| $10^7$       | $23$    | $10^7$| $10^8$  | -   | -  | -   | - |
-| $10^8$       | $27$    | $10^8$| $10^9$  | -   | -  | -   | - |
-| $10^9$       | $30$    | $10^9$| $10^{10}$ | -   | -  | -   | - |
-| $10^{10}$      | $33$    | $10^{10}$| $10^{11}$| -   | -  | -   | - |
-
+| Input size | $\log n$ |    $n$    | $n \log n$ |   $n^2$   |   $n^3$   |   $2^n$   |    $n!$    |
+|:----------:|:--------:|:---------:|:----------:|:---------:|:---------:|:---------:|:----------:|
+|    $10$    |  $3.3$   |   $10$    |    $33$    |   $100$   |  $1000$   |  $1000$   |   $10^6$   |
+|   $100$    |  $6.6$   |   $100$   |   $660$    |  $10^4$   |  $10^6$   | $10^{30}$ | $10^{157}$ |
+|   $1000$   |   $10$   |  $1000$   |   $10^4$   |  $10^6$   |  $10^9$   |    \-     |     \-     |
+|   $10^4$   |   $13$   |  $10^4$   |   $10^5$   |  $10^8$   | $10^{12}$ |    \-     |     \-     |
+|   $10^5$   |   $17$   |  $10^5$   |   $10^6$   | $10^{10}$ |    \-     |    \-     |     \-     |
+|   $10^6$   |   $20$   |  $10^6$   |   $10^7$   | $10^{12}$ |    \-     |    \-     |     \-     |
+|   $10^7$   |   $23$   |  $10^7$   |   $10^8$   |    \-     |    \-     |    \-     |     \-     |
+|   $10^8$   |   $27$   |  $10^8$   |   $10^9$   |    \-     |    \-     |    \-     |     \-     |
+|   $10^9$   |   $30$   |  $10^9$   | $10^{10}$  |    \-     |    \-     |    \-     |     \-     |
+| $10^{10}$  |   $33$   | $10^{10}$ | $10^{11}$  |    \-     |    \-     |    \-     |     \-     |
 
 ## Measuring running time
 
 - Analysis should be independent of the underlying hardware
+
   - Don't use actual time
   - Measure in terms of *basic operations*
+
 - Typical basic operations
+
   - Compare two values
   - Assign a value to a variable
+
 - Exchange a pair of values?
 
-  :::: {.columns}
-
-  ::: {.column}
-  
+  ::: columns
+  ::: {.column width="50%"}
+ 
   `(x,y)=(y,x)`
-  
+
   :::
-  
-  ::: {.column}
-  
+
+  ::: {.column width="50%"}
+
   `t=x`
 
   `x=y`
@@ -116,8 +106,7 @@ ipynb-shell-interactivity: all
   `y=t`
 
   :::
-  
-  ::::
+  :::
 
   - If we ignore constants, focus on orders of magnitude, both are within a factor of $3$
   - Need not be very precise about defining basic operations
@@ -215,7 +204,7 @@ ax.set_title('Graph of f(x) and cg(x)')
 ax.legend()
 
 
-# plt.grid(True)
+plt.grid(True)
 
 # Show the plot
 plt.show()
@@ -224,22 +213,31 @@ plt.show()
 ## Examples
 
 - $100n+5$ is $O(n^2)$
+
   - $100n+5 \leq 100n+n=101n$, for $n \geq 5$
   - $101n \leq 101n^2$
   - Choose $n_0=5$ and $c=101$
+
 - Alternatively
+
   - $100n+5 \leq 100n +5n =105n$, for $n \geq 1$
   - $105n \leq 105n^2$
   - Choose $n_0=1$ and $c=105$
+
 - Choice of $c$ and $n_0$ is not unique
 
 - $100n^2 + 20n +5$ is $O(n^2)$
+
   - $100n^2 + 20n +5 \leq 100n^2 + 20n^2 +5n^2$, for $n \geq 1$
   - $100n^2 + 20n^2 +5n^2 \leq 125n^2$, for $n \geq 1$
   - Choose $n_0=1$ and $c=125$
+
 - What matters is the highest term
+
   - $20n+5$ is dominated by $100n^2$
+
 - $n^3$ is not $O(n^2)$
+
   - No matter what $c$ we choose, $cn^2$ will be dominated by $n^3$ for $n \geq c$
 
 ## Useful properties
@@ -258,7 +256,6 @@ plt.show()
   - Phase B takes time $O(g_{B}(n))$
 - Algorithm as a whole takes time $\max(O(g_{A}(n),g_{B}(n)))$
 - Least efficient phase is the upper bound for the whole algorithm
-
 
 ## Lower bounds
 
@@ -422,16 +419,16 @@ Towers of Hanoi
   - $M(1) = 1$
   - $M(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1$
 - Unwind and solve $$\begin{aligned}
-    M( n) & =\ 2M( n-1) +1\\
-     & =\ 2( 2M( n-2) +1) +1=\ 2^{2} M( n-2) +( 2+1)\\
-     & =\ 2^{2}( 2M( n-3) +1) +( 2+1) =\ 2^{3} M( n-3) \ +\ ( 4+2+1)\\
-     & \dotsc \\
-     & =\ 2^{k} M( n-k) +\left( 2^{k} -1\right)\\
-     & \dotsc \\
-     & =\ 2^{n-1} M( 1) +\left( 2^{n-1} -1\right)\\
-     & =\ 2^{n-1} +2^{n-1} -1\\
-     & =\ 2^{n} -1
-    \end{aligned}$$
+      M( n) & =\ 2M( n-1) +1\\
+       & =\ 2( 2M( n-2) +1) +1=\ 2^{2} M( n-2) +( 2+1)\\
+       & =\ 2^{2}( 2M( n-3) +1) +( 2+1) =\ 2^{3} M( n-3) \ +\ ( 4+2+1)\\
+       & \dotsc \\
+       & =\ 2^{k} M( n-k) +\left( 2^{k} -1\right)\\
+       & \dotsc \\
+       & =\ 2^{n-1} M( 1) +\left( 2^{n-1} -1\right)\\
+       & =\ 2^{n-1} +2^{n-1} -1\\
+       & =\ 2^{n} -1
+      \end{aligned}$$
 
 ## Summary
 
@@ -520,14 +517,14 @@ def binarysearch(v, l):
   - $T(0) = 1$
   - $T(n) = T(n//2) + 1$, $n>0$
 - Solve by "unwinding" $$\begin{aligned}
-    T( n) & =\ T( n//2) +1\\
-     & =\ ( T( n//4) +1) +1=\ T\left( n//2^{2}\right) +\underbrace{1+1}_{2}\\
-     & =\ \dotsc \\
-     & =\ T\left( n//2^{k}\right) +\underbrace{1+\dots +1} _{k}\\
-     & =\ T( 1) +k,\ \text{for} \ k=\log n\\
-     & =\ ( T( 0) +1) +\log n\\
-     & =\ 2+\log n
-    \end{aligned}$$
+      T( n) & =\ T( n//2) +1\\
+       & =\ ( T( n//4) +1) +1=\ T\left( n//2^{2}\right) +\underbrace{1+1}_{2}\\
+       & =\ \dotsc \\
+       & =\ T\left( n//2^{k}\right) +\underbrace{1+\dots +1} _{k}\\
+       & =\ T( 1) +k,\ \text{for} \ k=\log n\\
+       & =\ ( T( 0) +1) +\log n\\
+       & =\ 2+\log n
+      \end{aligned}$$
 :::
 
 ::: {.column width="40%"}
@@ -586,46 +583,6 @@ def bsearch(v, l):
   - Eventually, the new pile is sorted in descending order of marks
 :::
 :::
-
-## Sorting a list
-
-74 32 89 55 21 64
-
-## Sorting a list
-
-74 32 89 55 ~~21~~ 64
-
-21
-
-## Sorting a list
-
-74 ~~32~~ 89 55 ~~21~~ 64
-
-21 32
-
-## Sorting a list
-
-74 ~~32~~ 89 ~~55~~ ~~21~~ 64
-
-21 32 55
-
-## Sorting a list
-
-74 ~~32~~ 89 ~~55~~ ~~21~~ ~~64~~
-
-21 32 55 64
-
-## Sorting a list
-
-~~74~~ ~~32~~ 89 ~~55~~ ~~21~~ ~~64~~
-
-21 32 55 64 74
-
-## Sorting a list
-
-~~74~~ ~~32~~ ~~89~~ ~~55~~ ~~21~~ ~~64~~
-
-21 32 55 64 74 89
 
 ## Selection Sort
 
@@ -738,50 +695,9 @@ def SelectionSort(L):
 :::
 :::
 
-## Sorting a list
-
-74 32 89 55 21 64
-
-## Sorting a list
-
-~~74~~ 32 89 55 21 64
-
-74
-
-## Sorting a list
-
-~~74~~ ~~32~~ 89 55 21 64
-
-32 74
-
-## Sorting a list
-
-~~74~~ ~~32~~ ~~89~~ 55 21 64
-
-32 74 89
-
-## Sorting a list
-
-~~74~~ ~~32~~ ~~89~~ ~~55~~ 21 64
-
-32 55 74 89
-
-## Sorting a list
-
-~~74~~ ~~32~~ ~~89~~ ~~55~~ ~~21~~ 64
-
-21 32 55 74 89
-
-## Sorting a list
-
-~~74~~ ~~32~~ ~~89~~ ~~55~~ ~~21~~ ~~64~~
-
-21 32 55 64 74 89
-
 ## Insertion Sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - Start building a new sorted list
@@ -792,7 +708,6 @@ def SelectionSort(L):
 - A recursive formulation
   - Inductively sort `L[:i]`
   - Insert `L[i]` in `L[:i]`
-
 :::
 
 ::: {.column width="50%"}
@@ -814,13 +729,11 @@ def InsertionSort(L):
 ```
 
 :::
-
-::::
+:::
 
 ## Analysis of iterative Insertion Sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - Correctness follows from the invariant
@@ -830,7 +743,6 @@ def InsertionSort(L):
   - $T(n) = 0 + 1 + · · · + (n − 1)$
   - $T(n) = \frac{n(n-1)}{2}$
 - Insertion sort is $O(n^2)$
-
 :::
 
 ::: {.column width="50%"}
@@ -852,13 +764,11 @@ def InsertionSort(L):
 ```
 
 :::
-
-::::
+:::
 
 ## Analysis of recursive Insertion Sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - For input of size $n$, let
@@ -895,8 +805,7 @@ def ISort(L):
 ```
 
 :::
-
-::::
+:::
 
 ## Summary
 
@@ -907,7 +816,7 @@ def ISort(L):
   - Unlike selection sort, not all cases take time $n^2$
   - If list is already sorted, `Insert` stops in $1$ step
   - Overall time can be close to $O(n)$
-  
+
 # Lecture 2.7: Merge Sort
 
 ## Beating the $O(n^2)$ barrier
@@ -932,64 +841,9 @@ Strategy 3
   - Repeat till you exhaust `A` and `B`
 - **Merging** `A` and `B`
 
-## Combining two sorted lists
-
-32 74 89
-
-21 55 64
-
-## Combining two sorted lists
-
-32 74 89
-
-~~21~~ 55 64
-
-21
-
-## Combining two sorted lists
-
-~~32~~ 74 89
-
-~~21~~ 55 64
-
-21 32
-
-## Combining two sorted lists
-
-~~32~~ 74 89
-
-~~21~~ ~~55~~ 64
-
-21 32 55
-
-## Combining two sorted lists
-
-~~32~~ 74 89
-
-~~21~~ ~~55~~ ~~64~~
-
-21 32 55 64
-
-## Combining two sorted lists
-
-~~32~~ ~~74~~ 89
-
-~~21~~ ~~55~~ ~~64~~
-
-21 32 55 64 74
-
-## Combining two sorted lists
-
-~~32~~ ~~74~~ ~~89~~
-
-~~21~~ ~~55~~ ~~64~~
-
-21 32 55 64 74 89
-
 ## Merge sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - Let $n$ be the length of $L$
@@ -998,7 +852,6 @@ Strategy 3
 - Merge the sorted halves into `B`
 - How do we sort `A[:n//2]` and `A[n//2:]`?
   - Recursively, same strategy!
-
 :::
 
 ::: {.column width="50%"}
@@ -1007,15 +860,12 @@ Strategy 3
   - Break up the problem into disjoint parts
   - Solve each part separately
   - Combine the solutions efficiently
-
 :::
-
-::::
+:::
 
 ## Merging sorted lists
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - Combine two sorted lists `A` and `B` into `C`
@@ -1024,12 +874,11 @@ Strategy 3
   - Otherwise, compare first elements of `A` and `B`
     - Move the smaller of the two to `C`
   - Repeat till all elements of `A` and `B` have been moved
-
 :::
 
 ::: {.column width="50%"}
 
-```python
+``` python
 def merge(A,B):
     (m,n) = (len(A),len(B))
     (C,i,j,k) = ([],0,0,0)
@@ -1050,13 +899,11 @@ def merge(A,B):
 ```
 
 :::
-
-::::
+:::
 
 ## Merge sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - To sort `A` into `B`, both of length $n$
@@ -1065,12 +912,11 @@ def merge(A,B):
   - Sort `A[:n//2]` into `L`
   - Sort `A[n//2:]` into `R`
   - Merge `L` and `R` into `B`
-
 :::
 
 ::: {.column width="50%"}
 
-```python
+``` python
 def mergesort(A):
     n = len(A)
     if n <= 1:
@@ -1082,8 +928,7 @@ def mergesort(A):
 ```
 
 :::
-
-::::
+:::
 
 ## Summary
 
@@ -1097,8 +942,7 @@ def mergesort(A):
 
 ## Merge sort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - To sort `A` into `B`, both of length $n$
@@ -1107,7 +951,6 @@ def mergesort(A):
   - Sort `A[:n//2]` into `L`
   - Sort `A[n//2:]` into `R`
   - Merge `L` and `R` into `B`
-
 :::
 
 ::: {.column width="50%"}
@@ -1118,15 +961,12 @@ def mergesort(A):
   - Otherwise, compare first elements of `A` and `B`
     - Move the smaller of the two to `C`
   - Repeat till all elements of `A` and `B` have been moved
-
 :::
-
-::::
+:::
 
 ## Analysing merge
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 
 - Merge `A` of length $m$, `B` of length $n$
@@ -1135,12 +975,11 @@ def mergesort(A):
 - Hence `merge` takes time $O(m + n)$
 - Recall that $m + n \leq 2(max(m, n))$
 - If $m \approx n$, merge take time $O(n)$
-
 :::
 
 ::: {.column width="50%"}
 
-```python
+``` python
 def merge(A,B):
     (m,n) = (len(A),len(B))
     (C,i,j,k) = ([],0,0,0)
@@ -1161,13 +1000,11 @@ def merge(A,B):
 ```
 
 :::
-
-::::
+:::
 
 ## Analysing mergesort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
 
 - Let $T(n)$ be the time taken for input of size $n$
@@ -1178,12 +1015,11 @@ def merge(A,B):
     - Solve two subproblems of size $\frac{n}{2}$
     - Merge the solutions in time $\frac{n}{2} + \frac{n}{2} = n$
 - Unwind the recurrence to solve
-
 :::
 
 ::: {.column width="40%"}
 
-```python
+``` python
 def mergesort(A):
     n = len(A)
     if n <= 1:
@@ -1195,13 +1031,11 @@ def mergesort(A):
 ```
 
 :::
-
-::::
+:::
 
 ## Analysing mergesort
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
 
 - Recurrence
@@ -1219,7 +1053,7 @@ def mergesort(A):
 
 ::: {.column width="40%"}
 
-```python
+``` python
 def mergesort(A):
     n = len(A)
     if n <= 1:
@@ -1231,8 +1065,7 @@ def mergesort(A):
 ```
 
 :::
-
-::::
+:::
 
 ## Summary
 
