@@ -7,11 +7,15 @@ format:
         number_sections: true
         smooth-scroll: true
         code-fold: true
+      revealjs:
+        smaller: true
+        center: false
+        scrollable: true
+        slideNumber: true
+        code-line-numbers: false
+        footer: '<a href="w1.qmd">Complete notes</a>'
+        output-file: w1-revealjs.html
 ---
-
-::: {.callout-note}
-Click here to view in presentation mode: [Modern Application Development II - Week 1](w1-slides.html)
-:::
 
 # Lecture 1.1 - Review of Modern Application Development - I and what next?
 

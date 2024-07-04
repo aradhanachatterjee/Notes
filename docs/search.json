@@ -1801,7 +1801,7 @@
     "href": "pages/MAD-2/w3.html",
     "title": "Modern Application Development II - Week 3",
     "section": "",
-    "text": "Note\n\n\n\nClick here to view in presentation mode: Modern Application Development II - Week 3",
+    "text": "User-facing part of the application\n\nUser Interface (UI) and User Experience (UX)\n\nRequirements\n\nAvoid complex logic - application logic should be in the backend\nNo data storage\nWork with stateless nature of HTTP\n\nDesirable\n\nAesthetically pleasing\nResponsive - no lag/latency\nAdaptive - different screens\n\n\n\n\n\n\nImperative: sequence of actions to achieve final result\n\nDraw boxes for navigation, main text, fill in text, wait for clicks etc.\nFunctions for each step, composition of functions\n\nDeclarative: specify desired result\n\nCompiler/Interpreter knows how to achieve result\nFunction integration automated\n\n\n\n\n\n\nCredit: Flutter documentation “Start thinking declaratively”\n\n\n\n\n\n\nInternal details of system: memory\nReproducibility\n\nGiven a “system state”, the system should always respond the same way to input\n\nComplexity\n\nAny non-trivial application needs internal state\n\n\n\n\n\n\nComplete database of amazon.in, flipkart.com\n\nStocks of available items, prices, logged in/register users, etc.\n\nAll news articles ever published on toi.com, thehindu.com, bbc.com\nAll students, courses, marks, certificates, etc. for NPTEL\n\nTypically huge, but comprehensive\n\nCompletely independent of the user interface/frontend!\n\n\n\n\nApplication:\n\nSystem as seen by an individual user/session\nIncludes interactivity, session management\n\nExamples:\n\nShopping cart, user preferences, theme\nFollowed news items, recommendations\nDashboard displays\n\n\n\n\nUI:\n\nPart of application actually seen/intereacted with\nEphemeral - “lasting for a very short time” (term used by Flutter)\n\nExamples:\n\nLoading icons\nCurrently selected tab in multi-tab document/page\n\n\n\n\n\nHTTP is stateless\nHow to convey state between client and server?\n\nClient maintains state - sends requests to server for specific items\nServer maintains state - only specific requests allowed to client\n\n\n\n\n\n\nWhat to display on screen?\nWho determines the display?\nHow should user input be collected and processed?",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1811,8 +1811,8 @@
     "objectID": "pages/MAD-2/w3.html#what-is-the-frontend",
     "href": "pages/MAD-2/w3.html#what-is-the-frontend",
     "title": "Modern Application Development II - Week 3",
-    "section": "What is the frontend?",
-    "text": "What is the frontend?\n\nUser-facing part of the application\n\nUser Interface (UI) and User Experience (UX)\n\nRequirements\n\nAvoid complex logic - application logic should be in the backend\nNo data storage\nWork with stateless nature of HTTP\n\nDesirable\n\nAesthetically pleasing\nResponsive - no lag/latency\nAdaptive - different screens",
+    "section": "",
+    "text": "User-facing part of the application\n\nUser Interface (UI) and User Experience (UX)\n\nRequirements\n\nAvoid complex logic - application logic should be in the backend\nNo data storage\nWork with stateless nature of HTTP\n\nDesirable\n\nAesthetically pleasing\nResponsive - no lag/latency\nAdaptive - different screens",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1822,8 +1822,8 @@
     "objectID": "pages/MAD-2/w3.html#programming-styles",
     "href": "pages/MAD-2/w3.html#programming-styles",
     "title": "Modern Application Development II - Week 3",
-    "section": "Programming Styles",
-    "text": "Programming Styles\n\nImperative: sequence of actions to achieve final result\n\nDraw boxes for navigation, main text, fill in text, wait for clicks etc.\nFunctions for each step, composition of functions\n\nDeclarative: specify desired result\n\nCompiler/Interpreter knows how to achieve result\nFunction integration automated\n\n\n\n\n\n\nCredit: Flutter documentation “Start thinking declaratively”",
+    "section": "",
+    "text": "Imperative: sequence of actions to achieve final result\n\nDraw boxes for navigation, main text, fill in text, wait for clicks etc.\nFunctions for each step, composition of functions\n\nDeclarative: specify desired result\n\nCompiler/Interpreter knows how to achieve result\nFunction integration automated\n\n\n\n\n\n\nCredit: Flutter documentation “Start thinking declaratively”",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1833,8 +1833,8 @@
     "objectID": "pages/MAD-2/w3.html#state",
     "href": "pages/MAD-2/w3.html#state",
     "title": "Modern Application Development II - Week 3",
-    "section": "State?",
-    "text": "State?\n\nInternal details of system: memory\nReproducibility\n\nGiven a “system state”, the system should always respond the same way to input\n\nComplexity\n\nAny non-trivial application needs internal state",
+    "section": "",
+    "text": "Internal details of system: memory\nReproducibility\n\nGiven a “system state”, the system should always respond the same way to input\n\nComplexity\n\nAny non-trivial application needs internal state",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1844,8 +1844,8 @@
     "objectID": "pages/MAD-2/w3.html#system-state",
     "href": "pages/MAD-2/w3.html#system-state",
     "title": "Modern Application Development II - Week 3",
-    "section": "System State",
-    "text": "System State\n\nComplete database of amazon.in, flipkart.com\n\nStocks of available items, prices, logged in/register users, etc.\n\nAll news articles ever published on toi.com, thehindu.com, bbc.com\nAll students, courses, marks, certificates, etc. for NPTEL\n\nTypically huge, but comprehensive\n\nCompletely independent of the user interface/frontend!",
+    "section": "",
+    "text": "Complete database of amazon.in, flipkart.com\n\nStocks of available items, prices, logged in/register users, etc.\n\nAll news articles ever published on toi.com, thehindu.com, bbc.com\nAll students, courses, marks, certificates, etc. for NPTEL\n\nTypically huge, but comprehensive\n\nCompletely independent of the user interface/frontend!",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1855,8 +1855,8 @@
     "objectID": "pages/MAD-2/w3.html#application-state",
     "href": "pages/MAD-2/w3.html#application-state",
     "title": "Modern Application Development II - Week 3",
-    "section": "Application State",
-    "text": "Application State\nApplication:\n\nSystem as seen by an individual user/session\nIncludes interactivity, session management\n\nExamples:\n\nShopping cart, user preferences, theme\nFollowed news items, recommendations\nDashboard displays",
+    "section": "",
+    "text": "Application:\n\nSystem as seen by an individual user/session\nIncludes interactivity, session management\n\nExamples:\n\nShopping cart, user preferences, theme\nFollowed news items, recommendations\nDashboard displays",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1866,8 +1866,8 @@
     "objectID": "pages/MAD-2/w3.html#ui-state-ephemeral-state",
     "href": "pages/MAD-2/w3.html#ui-state-ephemeral-state",
     "title": "Modern Application Development II - Week 3",
-    "section": "UI State (Ephemeral State)",
-    "text": "UI State (Ephemeral State)\nUI:\n\nPart of application actually seen/intereacted with\nEphemeral - “lasting for a very short time” (term used by Flutter)\n\nExamples:\n\nLoading icons\nCurrently selected tab in multi-tab document/page",
+    "section": "",
+    "text": "UI:\n\nPart of application actually seen/intereacted with\nEphemeral - “lasting for a very short time” (term used by Flutter)\n\nExamples:\n\nLoading icons\nCurrently selected tab in multi-tab document/page",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1877,8 +1877,8 @@
     "objectID": "pages/MAD-2/w3.html#application-and-ui-management",
     "href": "pages/MAD-2/w3.html#application-and-ui-management",
     "title": "Modern Application Development II - Week 3",
-    "section": "Application and UI management",
-    "text": "Application and UI management\n\nHTTP is stateless\nHow to convey state between client and server?\n\nClient maintains state - sends requests to server for specific items\nServer maintains state - only specific requests allowed to client",
+    "section": "",
+    "text": "HTTP is stateless\nHow to convey state between client and server?\n\nClient maintains state - sends requests to server for specific items\nServer maintains state - only specific requests allowed to client",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -1888,8 +1888,8 @@
     "objectID": "pages/MAD-2/w3.html#example-tic-tac-toe",
     "href": "pages/MAD-2/w3.html#example-tic-tac-toe",
     "title": "Modern Application Development II - Week 3",
-    "section": "Example: Tic-Tac-Toe",
-    "text": "Example: Tic-Tac-Toe\n\nWhat to display on screen?\nWho determines the display?\nHow should user input be collected and processed?",
+    "section": "",
+    "text": "What to display on screen?\nWho determines the display?\nHow should user input be collected and processed?",
     "crumbs": [
       "MAD-2",
       "Week 3"
@@ -2243,7 +2243,7 @@
     "href": "pages/MAD-2/w1.html",
     "title": "Modern Application Development - II — Week 1",
     "section": "",
-    "text": "Note\n\n\n\nClick here to view in presentation mode: Modern Application Development II - Week 1",
+    "text": "What is an app (at least in our context):\n\nAn application or program used for interacting with a computing system\nAllow the user to perform some tasks useful to them\n\nComponents:\n\nBackend: Store data, processing logic, relation between data elements etc.\nFrontend: User-facing views, abstract for machine interaction\nNaturally implies a client-server or request-response type of architecture\n\nWhy Web:\n\nClose to universal platform with clear client-server architecture\nLow barrier to entry - trivial to implement simple pages and interaction\nHigh degree of flexibility - possible to implement highly complex systems\n\n\n\n\n\n\nPresentation - HTML for semantic content, CSS for styling\nLogic - Backend logic highly flexible - we used Python with Flask\nApplication architecture:\n\nModel - View - Controller. Good compromise between understandability and flexibility\n\nSystem architecture:\n\nREST principles + sessions - how to build stateful applications over stateless protocols\nAPIs: separate data from view\nRESTful? APIs - useful for basic understanding, but not strict adherence to REST\n\nOthers:\n\nSecurity, Validation, Logins and RBAC, database and frontend choices etc.\n\n\n\n\n\n\nAdvanced Frontend Development\n\nExploring JavaScript and how to use it\nJavaScript, APIs, Markup - the JAMStack\nVueJS as a candidate frontend framework\n\nOther topics of interest\n\nAsynchronous messaging, Email\nMobile / Standalone apps, PWA/SPA\nPerformance measurement, benchmarking, optimization\nAlternatives to REST\netc.",
     "crumbs": [
       "MAD-2",
       "Week 1"
@@ -2253,8 +2253,8 @@
     "objectID": "pages/MAD-2/w1.html#review-of-mad-i",
     "href": "pages/MAD-2/w1.html#review-of-mad-i",
     "title": "Modern Application Development - II — Week 1",
-    "section": "Review of MAD-I",
-    "text": "Review of MAD-I\n\nWhat is an app (at least in our context):\n\nAn application or program used for interacting with a computing system\nAllow the user to perform some tasks useful to them\n\nComponents:\n\nBackend: Store data, processing logic, relation between data elements etc.\nFrontend: User-facing views, abstract for machine interaction\nNaturally implies a client-server or request-response type of architecture\n\nWhy Web:\n\nClose to universal platform with clear client-server architecture\nLow barrier to entry - trivial to implement simple pages and interaction\nHigh degree of flexibility - possible to implement highly complex systems",
+    "section": "",
+    "text": "What is an app (at least in our context):\n\nAn application or program used for interacting with a computing system\nAllow the user to perform some tasks useful to them\n\nComponents:\n\nBackend: Store data, processing logic, relation between data elements etc.\nFrontend: User-facing views, abstract for machine interaction\nNaturally implies a client-server or request-response type of architecture\n\nWhy Web:\n\nClose to universal platform with clear client-server architecture\nLow barrier to entry - trivial to implement simple pages and interaction\nHigh degree of flexibility - possible to implement highly complex systems",
     "crumbs": [
       "MAD-2",
       "Week 1"
@@ -2264,8 +2264,8 @@
     "objectID": "pages/MAD-2/w1.html#review-of-the-web-application-development-model",
     "href": "pages/MAD-2/w1.html#review-of-the-web-application-development-model",
     "title": "Modern Application Development - II — Week 1",
-    "section": "Review of the Web Application Development Model",
-    "text": "Review of the Web Application Development Model\n\nPresentation - HTML for semantic content, CSS for styling\nLogic - Backend logic highly flexible - we used Python with Flask\nApplication architecture:\n\nModel - View - Controller. Good compromise between understandability and flexibility\n\nSystem architecture:\n\nREST principles + sessions - how to build stateful applications over stateless protocols\nAPIs: separate data from view\nRESTful? APIs - useful for basic understanding, but not strict adherence to REST\n\nOthers:\n\nSecurity, Validation, Logins and RBAC, database and frontend choices etc.",
+    "section": "",
+    "text": "Presentation - HTML for semantic content, CSS for styling\nLogic - Backend logic highly flexible - we used Python with Flask\nApplication architecture:\n\nModel - View - Controller. Good compromise between understandability and flexibility\n\nSystem architecture:\n\nREST principles + sessions - how to build stateful applications over stateless protocols\nAPIs: separate data from view\nRESTful? APIs - useful for basic understanding, but not strict adherence to REST\n\nOthers:\n\nSecurity, Validation, Logins and RBAC, database and frontend choices etc.",
     "crumbs": [
       "MAD-2",
       "Week 1"
@@ -2275,8 +2275,8 @@
     "objectID": "pages/MAD-2/w1.html#moving-forward",
     "href": "pages/MAD-2/w1.html#moving-forward",
     "title": "Modern Application Development - II — Week 1",
-    "section": "Moving Forward",
-    "text": "Moving Forward\n\nAdvanced Frontend Development\n\nExploring JavaScript and how to use it\nJavaScript, APIs, Markup - the JAMStack\nVueJS as a candidate frontend framework\n\nOther topics of interest\n\nAsynchronous messaging, Email\nMobile / Standalone apps, PWA/SPA\nPerformance measurement, benchmarking, optimization\nAlternatives to REST\netc.",
+    "section": "",
+    "text": "Advanced Frontend Development\n\nExploring JavaScript and how to use it\nJavaScript, APIs, Markup - the JAMStack\nVueJS as a candidate frontend framework\n\nOther topics of interest\n\nAsynchronous messaging, Email\nMobile / Standalone apps, PWA/SPA\nPerformance measurement, benchmarking, optimization\nAlternatives to REST\netc.",
     "crumbs": [
       "MAD-2",
       "Week 1"
@@ -2529,7 +2529,7 @@
     "href": "pages/MAD-2/w2.html",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Note\n\n\n\nClick here to view in presentation mode: Modern Application Development II - Week 2",
+    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration\n\n\n\n\n\nGo over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions\n\n\n\n\n\nFunctions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose\n\n\n\n\nMaps: proper dictionary-like objects\nWeakMaps\nSets\n\n\n\n\n\nSimple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects\n\n\n\n\n\nFunctions that yield values one at a time\nComputed iterables\nDynamically generate iterators",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2539,8 +2539,8 @@
     "objectID": "pages/MAD-2/w2.html#basic-arrays",
     "href": "pages/MAD-2/w2.html#basic-arrays",
     "title": "Modern Application Development II - Week 2",
-    "section": "Basic Arrays",
-    "text": "Basic Arrays\n\nCollection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration",
+    "section": "",
+    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2550,8 +2550,8 @@
     "objectID": "pages/MAD-2/w2.html#iteration",
     "href": "pages/MAD-2/w2.html#iteration",
     "title": "Modern Application Development II - Week 2",
-    "section": "Iteration",
-    "text": "Iteration\n\nGo over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions",
+    "section": "",
+    "text": "Go over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2561,8 +2561,8 @@
     "objectID": "pages/MAD-2/w2.html#iterations-and-transformations",
     "href": "pages/MAD-2/w2.html#iterations-and-transformations",
     "title": "Modern Application Development II - Week 2",
-    "section": "Iterations and Transformations",
-    "text": "Iterations and Transformations\n\nFunctions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose",
+    "section": "",
+    "text": "Functions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2572,8 +2572,8 @@
     "objectID": "pages/MAD-2/w2.html#other-collections",
     "href": "pages/MAD-2/w2.html#other-collections",
     "title": "Modern Application Development II - Week 2",
-    "section": "Other Collections",
-    "text": "Other Collections\n\nMaps: proper dictionary-like objects\nWeakMaps\nSets",
+    "section": "",
+    "text": "Maps: proper dictionary-like objects\nWeakMaps\nSets",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2583,8 +2583,8 @@
     "objectID": "pages/MAD-2/w2.html#destructuring",
     "href": "pages/MAD-2/w2.html#destructuring",
     "title": "Modern Application Development II - Week 2",
-    "section": "Destructuring",
-    "text": "Destructuring\n\nSimple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects",
+    "section": "",
+    "text": "Simple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -2594,8 +2594,8 @@
     "objectID": "pages/MAD-2/w2.html#generators",
     "href": "pages/MAD-2/w2.html#generators",
     "title": "Modern Application Development II - Week 2",
-    "section": "Generators",
-    "text": "Generators\n\nFunctions that yield values one at a time\nComputed iterables\nDynamically generate iterators",
+    "section": "",
+    "text": "Functions that yield values one at a time\nComputed iterables\nDynamically generate iterators",
     "crumbs": [
       "MAD-2",
       "Week 2"
@@ -5190,5 +5190,523 @@
     "title": "Week 3",
     "section": "How to use triggers? (2)",
     "text": "How to use triggers? (2)\n\nTriggers can become dangerous when:\n\nThere are too many\nTrigger code becomes complex\nTriggers go cross-server - across databases over network\nTriggers call triggers\nRecursive triggers are set to ON. This database-level setting is set to off by default\nFunctions, stored procedures, or views are in triggers\nIteration occurs\n\n\n\n\n\nComplete notes"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#review-of-mad-i",
+    "href": "pages/MAD-2/w1-revealjs.html#review-of-mad-i",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Review of MAD-I",
+    "text": "Review of MAD-I\n\nWhat is an app (at least in our context):\n\nAn application or program used for interacting with a computing system\nAllow the user to perform some tasks useful to them\n\nComponents:\n\nBackend: Store data, processing logic, relation between data elements etc.\nFrontend: User-facing views, abstract for machine interaction\nNaturally implies a client-server or request-response type of architecture\n\nWhy Web:\n\nClose to universal platform with clear client-server architecture\nLow barrier to entry - trivial to implement simple pages and interaction\nHigh degree of flexibility - possible to implement highly complex systems"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#review-of-the-web-application-development-model",
+    "href": "pages/MAD-2/w1-revealjs.html#review-of-the-web-application-development-model",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Review of the Web Application Development Model",
+    "text": "Review of the Web Application Development Model\n\nPresentation - HTML for semantic content, CSS for styling\nLogic - Backend logic highly flexible - we used Python with Flask\nApplication architecture:\n\nModel - View - Controller. Good compromise between understandability and flexibility\n\nSystem architecture:\n\nREST principles + sessions - how to build stateful applications over stateless protocols\nAPIs: separate data from view\nRESTful? APIs - useful for basic understanding, but not strict adherence to REST\n\nOthers:\n\nSecurity, Validation, Logins and RBAC, database and frontend choices etc."
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#moving-forward",
+    "href": "pages/MAD-2/w1-revealjs.html#moving-forward",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Moving Forward",
+    "text": "Moving Forward\n\nAdvanced Frontend Development\n\nExploring JavaScript and how to use it\nJavaScript, APIs, Markup - the JAMStack\nVueJS as a candidate frontend framework\n\nOther topics of interest\n\nAsynchronous messaging, Email\nMobile / Standalone apps, PWA/SPA\nPerformance measurement, benchmarking, optimization\nAlternatives to REST\netc."
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#origins",
+    "href": "pages/MAD-2/w1-revealjs.html#origins",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Origins",
+    "text": "Origins\n\nOriginally created in 1995 as scripting language for Netscape Navigator\nIntended as “glue” language\n\nStick modules from other languages together\nNot really meant for much code\n\nPrimarily meant to assist “applets” in Java - hence JavaScript\n\nTrademark issues, name changes, …\n\nIssues:\n\nSlow\nLimited capability"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#power",
+    "href": "pages/MAD-2/w1-revealjs.html#power",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Power",
+    "text": "Power\n\nGlue was useful, but…\nThen Google Maps, Google Suggest etc. (~ 2005)\n\nPan around map, zoom in/out seamlessly - fluid user interface:\nLoad only what is needed!\n\nDescribed and Named Ajax - Garrett 2005\n\nAsynchronous Javascript and XML\n\nAllowed true “web applications” that behave like desktop applications\nEvolved considerably since then\n\nMuch more on this approach moving forward"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#standardization",
+    "href": "pages/MAD-2/w1-revealjs.html#standardization",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Standardization",
+    "text": "Standardization\n\nMove beyond Netscape needed\nECMA (European Computer Manufacturers Association) - standard 262\nSubsequently called ECMAScript\n\nAvoid trademark issues with Java\n\nIn practice:\n\nLanguage standard called ECMAScript (versions)\nImplementation and use: JavaScript\n\nSignificant changes in ES6 - 2015\n\nYearly releases since then\n“Feature readiness” oriented approach"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#what-version-to-use",
+    "href": "pages/MAD-2/w1-revealjs.html#what-version-to-use",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "What version to use?",
+    "text": "What version to use?\n\nES6 has most features of modern languages (modules, scoping, class etc.)\nSome older browsers may not support all of this\nPossible approaches:\n\nIgnore old browsers and ask user to upgrade\nPackage browser along with application - useful for limited cases, like VSCode (Electron apps)\nPolyfills: include libraries that emulate newer functionality for older browsers\nCompilers: BabelJS - convert new code to older compatible versions\n\nBackend\n\nNode.js, Deno: directly use JS as a scripting language like Python"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#implications-of-js-origins",
+    "href": "pages/MAD-2/w1-revealjs.html#implications-of-js-origins",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Implications of JS Origins",
+    "text": "Implications of JS Origins\n\nEase of use given priority over performance (to start with)\nHighly tolerant of errors - fail silently\n\nDebugging difficult!\nStrict mode: “use strict”;\n\nAmbiguous syntax variants\n\nAutomatic semicolon insertion\nObject literals vs Code blocks {}\nFunction: statement or expression? Impacts parsing\n\nLimited IO support: errors “logged” to “console”\nClosely integrates with presentation layer: DOM APIs\nAsynchronous processing and the Event Loop - very powerful!"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#using-js",
+    "href": "pages/MAD-2/w1-revealjs.html#using-js",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Using JS",
+    "text": "Using JS\n\nNot originally meant for direct scripting\n\nUsually not run from command line like Python for instance\n\nNeed HTML file to load the JS as a script\n\nRequires browser to serve the files\nLinks and script tags etc.\nMay not directly work when loaded as a file\n\nNodeJS allows execution from command line"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#dom",
+    "href": "pages/MAD-2/w1-revealjs.html#dom",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "DOM",
+    "text": "DOM\n\nDocument Object Model\n\nStructure of the document shown on the browser\n\nDOM can be manipulated through JS APIs\nOne of the most powerful aspects of JavaScript\nInput: clicks, textboxes, mouseover, …\nOutput: text, colours/styles, drawing, …"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#references",
+    "href": "pages/MAD-2/w1-revealjs.html#references",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "References",
+    "text": "References\n\nExploring JavaScript - exploringjs.com\n\ndetailed reference material, focused on language, not frontend or GUI - very up to date\n\nMozilla Developer Network\n\nseveral examples and compatibility hints\n\nLearn JavaScript Online - interactive tutorial\n\nUtilities\n\nBabelJS - Compiler converts new JS to older compatible forms\nJS Console - interactive console to try out code\nRepl.it - complete application development"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#basic-frontend-usage",
+    "href": "pages/MAD-2/w1-revealjs.html#basic-frontend-usage",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Basic Frontend Usage",
+    "text": "Basic Frontend Usage\n\nFrontend JavaScript: must be invoked from HTML page\n\nIn context of a “Document”\nwill not execute if loaded directly\n\nScripting language - no compilation step\nLoosely structured - no specific header, body etc."
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#identifiers---the-words-of-the-language",
+    "href": "pages/MAD-2/w1-revealjs.html#identifiers---the-words-of-the-language",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Identifiers - the words of the language",
+    "text": "Identifiers - the words of the language\nReserved words:\n`await` `break` `case` `catch` `class` `const` `continue` `debugger` `default` `delete` `do` `else` `export` `extends` `finally` `for` `function` `if` `import` `in` `instanceof` `let` `new` `return` `static` `super` `switch` `this` `throw` `try` `typeof` `var` `void` `while` `with` `yield`\nLiterals (values):\n`true` `false` `null`\nOthers to avoid\n`enum` `implements` `package` `protected` `interface` `private` `public` `Infinity` `NaN` `undefined` `async`"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#statements-and-expressions",
+    "href": "pages/MAD-2/w1-revealjs.html#statements-and-expressions",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Statements and Expressions",
+    "text": "Statements and Expressions\n\n\n\nStatements:\n\nPiece of code that can be executed\n    if ( ... ) {\n        // do something\n    }\nStandalone operation or side effects\n\n\n\n\nExpressions:\n\nPiece of code that can be executed to obtain a value to be returned\n    x = 10;\n    \"Hello world\"\nAnywhere you need a “value” - function argument, math expression etc."
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#data-types",
+    "href": "pages/MAD-2/w1-revealjs.html#data-types",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Data Types",
+    "text": "Data Types\n\nPrimitive data types: built into the language\n\nundefined, null, boolean, number, string (+bigint, symbol)\n\nObjects:\n\nCompound pieces of data\n\nFunctions:\n\nCan be handled like objects\nObjects can have functions: methods\nFunctions can have objects???"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#strings",
+    "href": "pages/MAD-2/w1-revealjs.html#strings",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Strings",
+    "text": "Strings\n\nSource code is expected to be in Unicode\n\nmost engines expect UTF-16 encoding\n\nString functions like length can give surprising results on non-ASCII words\nCan have variables in other languages!\n\nBut best avoided… keep readability in mind"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#non-values",
+    "href": "pages/MAD-2/w1-revealjs.html#non-values",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Non-Values",
+    "text": "Non-Values\n\nundefined\n\nUsually implies not initialized\nDefault unknown state\n\nnull\n\nExplicitly set to a non-value\n\n\nVery similar and may be used interchangeably in most places - keep context in mind when using for clarity of code"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#operators-and-comparisons",
+    "href": "pages/MAD-2/w1-revealjs.html#operators-and-comparisons",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Operators and Comparisons",
+    "text": "Operators and Comparisons\n\nAddition, subtraction etc.\n\nNumbers, Strings\n\nCoercion\n\nConvert to similar type where operation is defined\nCan lead to problems - needs care\n\nComparison:\n\nLoose equality: == tries to coerce\nStrict equality: === no coercion\n\nImportant for iteration, conditions"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#variables-and-scoping",
+    "href": "pages/MAD-2/w1-revealjs.html#variables-and-scoping",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Variables and Scoping",
+    "text": "Variables and Scoping\n\nAny non-reserved identifier can be used as a “placeholder” or “variable”\nScope:\n\nShould the variable be visible everywhere in all scripts or only in a specific area?\nNamespaces and limiting scope\n\nlet, const are used for declaring variables\n\nUnlike Python, variables MUST be declared\nUnlike C, their type need NOT be declared\nvar was originally used for declaring variables, but has function level scope - avoid"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#let-and-const",
+    "href": "pages/MAD-2/w1-revealjs.html#let-and-const",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "let and const",
+    "text": "let and const\n\nconst : declares an immutable object\n\nValue cannot be changed once assigned\nBut only within scope\n\nlet: variable that can be updated\n\nindex variable in for loops\ngeneral variables"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#control-flow",
+    "href": "pages/MAD-2/w1-revealjs.html#control-flow",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Control Flow",
+    "text": "Control Flow\n\nConditional execution:\n\nif , else\n\nIteration\n\nfor , while\n\nChange in flow\n\nbreak, continue\n\nChoice\n\nswitch"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#functions",
+    "href": "pages/MAD-2/w1-revealjs.html#functions",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Functions",
+    "text": "Functions\n\nReusable block of code\nCan take parameters or arguments and perform computation\nFunctions are themselves objects that can be assigned!"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#function-notation",
+    "href": "pages/MAD-2/w1-revealjs.html#function-notation",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Function Notation",
+    "text": "Function Notation\n\n\nRegular declaration\n    function add(x, y)\n    {\n    return x + y;\n    }\n    // Statement\n\nNamed variable\n    let add =\n    function(x, y) {\n    return x + y;\n    }\n    // Expression\n\nArrow function\n    let add =\n    (x, y) =&gt; x + y;\n\n    // Expression"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#anonymous-functions-and-iifes",
+    "href": "pages/MAD-2/w1-revealjs.html#anonymous-functions-and-iifes",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Anonymous Functions and IIFEs",
+    "text": "Anonymous Functions and IIFEs\n    let x = function() { return \"hello\"} // Anonymous bound\n\n    (function() { return \"hello\"})() // Declare and invoke\nWhy? Older JS versions did not have good scoping rules. - Avoid IIFEs in modern code - poor readability"
+  },
+  {
+    "objectID": "pages/MAD-2/w1-revealjs.html#interaction",
+    "href": "pages/MAD-2/w1-revealjs.html#interaction",
+    "title": "Modern Application Development - II — Week 1",
+    "section": "Interaction",
+    "text": "Interaction\n\nconsole.log is very limited\n\nvariants for error logging etc.\nBut mostly useful only for limited form of debugging - not production use\n\nBut JS was designed for document manipulation!\nInputs from DOM: mouse, text, clicks\nOutputs to DOM: manipulation of text, colours etc.\n\n\n\n\nComplete notes"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#basic-arrays",
+    "href": "pages/MAD-2/w2-revealjs.html#basic-arrays",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Basic Arrays",
+    "text": "Basic Arrays\n\nCollection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#iteration",
+    "href": "pages/MAD-2/w2-revealjs.html#iteration",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Iteration",
+    "text": "Iteration\n\nGo over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#iterations-and-transformations",
+    "href": "pages/MAD-2/w2-revealjs.html#iterations-and-transformations",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Iterations and Transformations",
+    "text": "Iterations and Transformations\n\nFunctions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#other-collections",
+    "href": "pages/MAD-2/w2-revealjs.html#other-collections",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Other Collections",
+    "text": "Other Collections\n\nMaps: proper dictionary-like objects\nWeakMaps\nSets"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#destructuring",
+    "href": "pages/MAD-2/w2-revealjs.html#destructuring",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Destructuring",
+    "text": "Destructuring\n\nSimple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#generators",
+    "href": "pages/MAD-2/w2-revealjs.html#generators",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Generators",
+    "text": "Generators\n\nFunctions that yield values one at a time\nComputed iterables\nDynamically generate iterators"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#modules",
+    "href": "pages/MAD-2/w2-revealjs.html#modules",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Modules",
+    "text": "Modules\n\nCollect related functions, objects, values together\n“export” values for use by other scripts\n“import” values from other scripts, packages"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#ways-of-implementing",
+    "href": "pages/MAD-2/w2-revealjs.html#ways-of-implementing",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Ways of implementing",
+    "text": "Ways of implementing\n\nscript - directly include script inside browser\nCommonJS - introduced for server-side modules\n\nsynchronous load: server blocks till module is loaded\n\nAMD - asynchronous module definition\n\nused for browser-side modules\n\n\nECMAScript 6 and above:\n\nES6 modules\n\nBoth servers and browsers\nAsynchronous loading"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#npm",
+    "href": "pages/MAD-2/w2-revealjs.html#npm",
+    "title": "Modern Application Development II - Week 2",
+    "section": "npm",
+    "text": "npm\n\nNode Package Manager\nNode:\n\ncommand line interface for JS\nMainly used for backend code, can also be used for testing\n\nnpm can also be used to package modules for frontend\n\n“Bundle” managers - webpack, rollup, etc."
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#objects",
+    "href": "pages/MAD-2/w2-revealjs.html#objects",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Objects",
+    "text": "Objects\n\nEverything in JavaScript is an object\nObject literals\n\nAssign values to named parameters in an object\n\nObject methods\n\nAssign functions that can be called on the object\n\nSpecial variable this - refers to the object itself\nFunction methods\n\ncall(), apply(), bind()\n\nObject.keys(), values(), entries()\n\nuse as dictionary\niterators"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#prototype-based-inheritance",
+    "href": "pages/MAD-2/w2-revealjs.html#prototype-based-inheritance",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Prototype based inheritance",
+    "text": "Prototype based inheritance\n\nObjects can have a “prototype”\nAutomatically inherit properties and methods of parent object\nSingle inheritance track"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#class",
+    "href": "pages/MAD-2/w2-revealjs.html#class",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Class",
+    "text": "Class\n\nBetter syntax - still prototype based inheritance\nconstructor must explicitly call super()\nMultiple inheritance of Mixins"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#function-calls",
+    "href": "pages/MAD-2/w2-revealjs.html#function-calls",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Function calls",
+    "text": "Function calls\n\n\n\nFunction is like a “branch”\n\nbut must save present state so we can return\n\nCall stack:\n\nKeep track of chain of functions called up to now\nPop back up out of the stack\n\n\n\n\nmain() on stack - current - calls f()\nf() goes on stack - calls g()\ng() goes on stack - calls h()\nh() goes on stack - executes\nreturn from h -&gt; pop into g\nreturn from g -&gt; pop into f\nreturn from f -&gt; pop into main"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#call-stack",
+    "href": "pages/MAD-2/w2-revealjs.html#call-stack",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Call Stack",
+    "text": "Call Stack\nExplanatory video\nVisualize the call stack"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#event-loop-and-task-queue",
+    "href": "pages/MAD-2/w2-revealjs.html#event-loop-and-task-queue",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Event Loop and Task Queue",
+    "text": "Event Loop and Task Queue\n\nTask Queue: store next task to be executed\n\nTasks are pushed into the queue by events (clicks, input, network etc.)\n\nEvent loop:\n\nWait for call stack to be empty\nPop next task from queue and push onto stack, start executing\n\nRun-to-completion\n\nGuarantee from JavaScript runtime\nEach task will run to completion before next task is picked up"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#blocking-the-browser",
+    "href": "pages/MAD-2/w2-revealjs.html#blocking-the-browser",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Blocking the browser",
+    "text": "Blocking the browser\nhttps://exploringjs.com/impatient-js/ch_async-js.html#how-to-avoid-blocking-the-javascript-process"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#why-callbacks",
+    "href": "pages/MAD-2/w2-revealjs.html#why-callbacks",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Why callbacks?",
+    "text": "Why callbacks?\n\nLong running code\n\nWill block execution till it finishes\n\nPush long running code into a separate “thread” or “task”\n\nLet main code proceed\nCall back when task is done"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#example-reading-files---synchronous",
+    "href": "pages/MAD-2/w2-revealjs.html#example-reading-files---synchronous",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Example: reading files - synchronous",
+    "text": "Example: reading files - synchronous\nconst fs = require('fs');\n\ntry {\n    const data = fs.readFileSync('file.txt', 'utf8');\n    console.log(data);\n} catch (err) {\n    console.error(err);\n}"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#example-reading-files---asynchronous",
+    "href": "pages/MAD-2/w2-revealjs.html#example-reading-files---asynchronous",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Example: reading files - asynchronous",
+    "text": "Example: reading files - asynchronous\nconst fs = require('fs');\n\nfs.readFile('file.txt', 'utf8', (err, data) =&gt; {\n    if (err) {\n        console.error(err);\n        return;\n    }\n    console.log(data);\n});"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#asynchronous-code",
+    "href": "pages/MAD-2/w2-revealjs.html#asynchronous-code",
+    "title": "Modern Application Development II - Week 2",
+    "section": "Asynchronous Code",
+    "text": "Asynchronous Code\n\nVery powerful - allows JS to have high performance even though it is single-threaded\nCan be difficult to comprehend\n\nFocus on using async libraries and functions before writing your own\n\nPromises, async function calls, etc.\n\nImportant and useful concepts\nDeferred for now"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#json",
+    "href": "pages/MAD-2/w2-revealjs.html#json",
+    "title": "Modern Application Development II - Week 2",
+    "section": "JSON",
+    "text": "JSON\n\nObject Notation - for serialization, communication\nNotation is frozen\n\nMeans even problem cases will remain (trailing “.” could ve useful but will not be used)\n\nUsage through JSON API"
+  },
+  {
+    "objectID": "pages/MAD-2/w2-revealjs.html#json-api",
+    "href": "pages/MAD-2/w2-revealjs.html#json-api",
+    "title": "Modern Application Development II - Week 2",
+    "section": "JSON API",
+    "text": "JSON API\n\nGlobal namespace object JSON\nMain methods:\n\nJSON.stringify()\nJSON.parse()\n\n\n\n\n\nComplete notes"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#what-is-the-frontend",
+    "href": "pages/MAD-2/w3-revealjs.html#what-is-the-frontend",
+    "title": "Modern Application Development II - Week 3",
+    "section": "What is the frontend?",
+    "text": "What is the frontend?\n\nUser-facing part of the application\n\nUser Interface (UI) and User Experience (UX)\n\nRequirements\n\nAvoid complex logic - application logic should be in the backend\nNo data storage\nWork with stateless nature of HTTP\n\nDesirable\n\nAesthetically pleasing\nResponsive - no lag/latency\nAdaptive - different screens"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#programming-styles",
+    "href": "pages/MAD-2/w3-revealjs.html#programming-styles",
+    "title": "Modern Application Development II - Week 3",
+    "section": "Programming Styles",
+    "text": "Programming Styles\n\nImperative: sequence of actions to achieve final result\n\nDraw boxes for navigation, main text, fill in text, wait for clicks etc.\nFunctions for each step, composition of functions\n\nDeclarative: specify desired result\n\nCompiler/Interpreter knows how to achieve result\nFunction integration automated"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#state",
+    "href": "pages/MAD-2/w3-revealjs.html#state",
+    "title": "Modern Application Development II - Week 3",
+    "section": "State?",
+    "text": "State?\n\nInternal details of system: memory\nReproducibility\n\nGiven a “system state”, the system should always respond the same way to input\n\nComplexity\n\nAny non-trivial application needs internal state"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#system-state",
+    "href": "pages/MAD-2/w3-revealjs.html#system-state",
+    "title": "Modern Application Development II - Week 3",
+    "section": "System State",
+    "text": "System State\n\nComplete database of amazon.in, flipkart.com\n\nStocks of available items, prices, logged in/register users, etc.\n\nAll news articles ever published on toi.com, thehindu.com, bbc.com\nAll students, courses, marks, certificates, etc. for NPTEL\n\nTypically huge, but comprehensive\n\nCompletely independent of the user interface/frontend!"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#application-state",
+    "href": "pages/MAD-2/w3-revealjs.html#application-state",
+    "title": "Modern Application Development II - Week 3",
+    "section": "Application State",
+    "text": "Application State\nApplication:\n\nSystem as seen by an individual user/session\nIncludes interactivity, session management\n\nExamples:\n\nShopping cart, user preferences, theme\nFollowed news items, recommendations\nDashboard displays"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#ui-state-ephemeral-state",
+    "href": "pages/MAD-2/w3-revealjs.html#ui-state-ephemeral-state",
+    "title": "Modern Application Development II - Week 3",
+    "section": "UI State (Ephemeral State)",
+    "text": "UI State (Ephemeral State)\nUI:\n\nPart of application actually seen/intereacted with\nEphemeral - “lasting for a very short time” (term used by Flutter)\n\nExamples:\n\nLoading icons\nCurrently selected tab in multi-tab document/page"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#application-and-ui-management",
+    "href": "pages/MAD-2/w3-revealjs.html#application-and-ui-management",
+    "title": "Modern Application Development II - Week 3",
+    "section": "Application and UI management",
+    "text": "Application and UI management\n\nHTTP is stateless\nHow to convey state between client and server?\n\nClient maintains state - sends requests to server for specific items\nServer maintains state - only specific requests allowed to client"
+  },
+  {
+    "objectID": "pages/MAD-2/w3-revealjs.html#example-tic-tac-toe",
+    "href": "pages/MAD-2/w3-revealjs.html#example-tic-tac-toe",
+    "title": "Modern Application Development II - Week 3",
+    "section": "Example: Tic-Tac-Toe",
+    "text": "Example: Tic-Tac-Toe\n\nWhat to display on screen?\nWho determines the display?\nHow should user input be collected and processed?\n\n\n\n\nComplete notes"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#relational-algebra",
+    "href": "pages/DBMS/w4-revealjs.html#relational-algebra",
+    "title": "Week 4",
+    "section": "Relational Algebra",
+    "text": "Relational Algebra\n\nRelational algebra is a procedural query language which takes relations as input and returns relation as output.\nIt was created by Edgar F. Codd at IBM in 1970.\nSix basic operators of relational algebra are:\n\nSelect (\\(\\sigma\\))\nProject (\\(\\Pi\\))\nUnion (\\(\\cup\\))\nSet Difference (\\(-\\))\nCartesian Product (\\(\\times\\))\nRename (\\(\\rho\\))"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#select-operation",
+    "href": "pages/DBMS/w4-revealjs.html#select-operation",
+    "title": "Week 4",
+    "section": "Select Operation",
+    "text": "Select Operation\n\nNotation: \\(\\sigma_{p}(r)\\)\n\\(p\\) is called the selection predicate\nDefinition: \\[\n  \\sigma_{p}(r) = \\{t \\mid t \\in r \\text{ and } p(t) \\}\n  \\]\nwhere \\(p\\) is a formula in propositional calculus consisting of terms connected by: \\(\\land\\) (and), \\(\\lor\\) (or), and \\(\\lnot\\) (not).\nEach term is one of:\n&lt; attribute &gt; op &lt; attribute &gt; or &lt; constant &gt;\nwhere op is one of: \\(=\\), \\(\\neq\\), \\(&lt;\\), \\(\\leq\\), \\(&gt;\\), \\(\\geq\\)\n\nSelect Example\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\nα\nα\n1\n7\n\n\nα\nβ\n5\n7\n\n\nβ\nβ\n12\n3\n\n\nβ\nβ\n23\n10\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\nα\nα\n1\n7\n\n\nβ\nβ\n23\n10\n\n\n\n\n\n\\[\n\\sigma_{A=B\\wedge D&gt;5}(r)\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#project-operation",
+    "href": "pages/DBMS/w4-revealjs.html#project-operation",
+    "title": "Week 4",
+    "section": "Project Operation",
+    "text": "Project Operation\n\nNotation: \\(\\Pi_{A_1, A_2, \\ldots, A_k}(r)\\)\nwhere \\(A_1, A_2, \\ldots, A_k\\) are attributes of relation \\(r\\)\nThe result is defined as the relation of \\(k\\) columns obtained by deleting columns other than \\(A_1, A_2, \\ldots, A_k\\) from \\(r\\)\nDuplicate rows are automatically eliminated, since the result is a set\n\nProject Example\n\n\n\n\n\nA\nB\nC\n\n\n\n\nα\n10\n1\n\n\nα\n20\n1\n\n\nβ\n30\n1\n\n\nβ\n40\n2\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nA\nC\n\n\n\n\nα\n1\n\n\nβ\n1\n\n\nβ\n2\n\n\n\n\n\n\\[\n\\Pi_{A, C}(r)\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#union-operation",
+    "href": "pages/DBMS/w4-revealjs.html#union-operation",
+    "title": "Week 4",
+    "section": "Union Operation",
+    "text": "Union Operation\n\nNotation: \\(r \\cup s\\)\nDefined as: \\(r \\cup s = \\{t \\mid t \\in r \\text{ or } t \\in s \\}\\)\nFor \\(r \\cup s\\) to be valid\n\n\\(r\\) and \\(s\\) must have the same arity (same number of attributes)\nThe attribute domains must be compatible (same type)\n\n\nUnion Example\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nα\n2\n\n\nβ\n1\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n2\n\n\nβ\n3\n\n\n\n\n\n\\[\ns\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nα\n2\n\n\nβ\n1\n\n\nβ\n3\n\n\n\n\n\n\n\\[\nr \\cup s\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#difference-operation",
+    "href": "pages/DBMS/w4-revealjs.html#difference-operation",
+    "title": "Week 4",
+    "section": "Difference Operation",
+    "text": "Difference Operation\n\nNotation: \\(r - s\\)\nDefined as: \\(r - s = \\{t \\mid t \\in r \\text{ and } t \\notin s \\}\\)\nSet differences must be taken between compatible relations\n\n\\(r\\) and \\(s\\) must have the same arity\nThe attribute domains must be compatible\n\n\nDifference Example\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nα\n2\n\n\nβ\n1\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n2\n\n\nβ\n3\n\n\n\n\n\n\\[\ns\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nβ\n1\n\n\n\n\n\n\\[\nr - s\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#intersection-operation",
+    "href": "pages/DBMS/w4-revealjs.html#intersection-operation",
+    "title": "Week 4",
+    "section": "Intersection Operation",
+    "text": "Intersection Operation\n\nNotation: \\(r \\cap s\\)\nDefined as: \\(r \\cap s = \\{t \\mid t \\in r \\text{ and } t \\in s \\}\\)\nAssume:\n\n\\(r\\), \\(s\\) have the same arity\nAttributes of \\(r\\) and \\(s\\) are compatible\n\nNote: \\(r \\cap s = r - (r - s)\\)\n\nIntersection Example\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nα\n2\n\n\nβ\n1\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n2\n\n\nβ\n3\n\n\n\n\n\n\\[\ns\n\\]\n\n\n\n\n\nA\nB\n\n\n\n\nα\n2\n\n\n\n\n\n\\[\nr \\cap s\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#cartesian-product-operation",
+    "href": "pages/DBMS/w4-revealjs.html#cartesian-product-operation",
+    "title": "Week 4",
+    "section": "Cartesian-Product Operation",
+    "text": "Cartesian-Product Operation\n\nNotation: \\(r \\times s\\)\nDefined as: \\(r \\times s = \\{t_1, t_2 \\mid t_1 \\in r \\text{ and } t_2 \\in s \\}\\)\nAssume that attributes of \\(r\\) and \\(s\\) are disjoint (no common attributes)\nIf attributes are not disjoint, use rename operation to make them disjoint\n\nCartesian-Product Example\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nβ\n2\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nC\nD\nE\n\n\n\n\nα\n10\na\n\n\nβ\n10\na\n\n\nβ\n20\nb\n\n\nγ\n10\nb\n\n\n\n\n\n\\[\ns\n\\]\n\n\n\n\n\nA\nB\nC\nD\nE\n\n\n\n\nα\n1\nα\n10\na\n\n\nα\n1\nβ\n10\na\n\n\nα\n1\nβ\n20\nb\n\n\nα\n1\nγ\n10\nb\n\n\nβ\n2\nα\n10\na\n\n\nβ\n2\nβ\n10\na\n\n\nβ\n2\nβ\n20\nb\n\n\nβ\n2\nγ\n10\nb\n\n\n\n\n\n\\[\nr \\times s\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#rename-operation",
+    "href": "pages/DBMS/w4-revealjs.html#rename-operation",
+    "title": "Week 4",
+    "section": "Rename Operation",
+    "text": "Rename Operation\n\nAllows us to name, and therefore to refer to, the result of a relational-algebra expression\nAllows us to refer to a relation by more than one name\nExample:\n\\(\\rho_{X}(E)\\)\nreturns the relation \\(E\\) under the name \\(X\\)\nIf a relational-algebra expression \\(E\\) has arity \\(n\\), then \\[\n  \\rho_{X(A_1, A_2, \\ldots, A_n)}(E)\n  \\] returns the result of the expression \\(E\\) under the name \\(X\\), and with the attributes renamed to \\[\n  A_1, A_2, \\ldots, A_n\n  \\]\n\nRename Example\n\n\n\n\n\nA\nB\n\n\n\n\nα\n1\n\n\nβ\n2\n\n\n\n\n\n\\[\nr\n\\]\n\n\n\n\n\nr.A\nr.B\ns.A\ns.B\n\n\n\n\nα\n1\nα\n1\n\n\nα\n1\nβ\n2\n\n\nβ\n2\nα\n1\n\n\nβ\n2\nβ\n2\n\n\n\n\n\n\\[\nr \\times \\rho_{s}(r)\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#division-operation",
+    "href": "pages/DBMS/w4-revealjs.html#division-operation",
+    "title": "Week 4",
+    "section": "Division Operation",
+    "text": "Division Operation\n\nThe division operation is applied to two relations\n\\(R(Z) \\div S(X)\\), where \\(X\\) is a subset of \\(Z\\). Let \\(Y = Z - X\\) (hence \\(Z = X \\cup Y\\)); that is, let \\(Y\\) be the set of attributes of \\(R\\) that are not in \\(S\\)\nThe result of the division operation is a relation \\(T(Y)\\) that includes a tuple \\(t\\) if tuples \\(t_R\\) appear in \\(R\\) with \\(t_R[Y] = t\\), and with\n\n\\(t_R[X] = t_S\\) for all tuples \\(t_S\\) in \\(S\\)\n\nFor a tuple \\(t\\) to appear in the result \\(T\\) of the division operation, the values in \\(t\\) must appear in \\(R\\) with all possible combinations of values in \\(S\\)\nDivision is a derived operation, and can be expressed in terms of the basic operations of relational algebra\n\\(r \\div s \\equiv \\Pi_{R - S}(r) - \\Pi_{R - S}(r)((\\Pi_{R - S}(r) \\times s) - \\Pi_{R-S,S}(r))\\)\n\nDivision Examples\nExample 1\n\n\n\n\n\nLecturer\nModule\n\n\n\n\nBrown\nCompilers\n\n\nBrown\nDatabases\n\n\nGreen\nProlog\n\n\nGreen\nDatabases\n\n\nLewis\nProlog\n\n\nSmith\nDatabases\n\n\n\n\n\n\\[\nR\n\\]\n\n\n\n\n\nSubject\n\n\n\n\nProlog\n\n\n\n\n\n\\[\nS\n\\]\n\n\n\n\n\nLecturer\n\n\n\n\nGreen\n\n\nLewis\n\n\n\n\n\n\\[\nR \\mid S\n\\]\nExample 2\n\n\n\n\n\nLecturer\nModule\n\n\n\n\nBrown\nCompilers\n\n\nBrown\nDatabases\n\n\nGreen\nProlog\n\n\nGreen\nDatabases\n\n\nLewis\nProlog\n\n\nSmith\nDatabases\n\n\n\n\n\n\\[\nR\n\\]\n\n\n\n\n\nSubject\n\n\n\n\nDatabases\n\n\nProlog\n\n\n\n\n\n\\[\nS\n\\]\n\n\n\n\n\nLecturer\n\n\n\n\nGreen\n\n\n\n\n\n\\[\nR \\mid S\n\\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#predicate-logic",
+    "href": "pages/DBMS/w4-revealjs.html#predicate-logic",
+    "title": "Week 4",
+    "section": "Predicate Logic",
+    "text": "Predicate Logic\nPredicate Logic or Predicate Calculus is an extension of Propositional Logic or Boolean Algebra.\nIt adds the concept of predicates and quantifiers to better capture the meaning of statements that cannot be adequately expressed using propositional logic.\nTuple Relational Calculus and Domain Relational Calculus are based on Predicate Calculus."
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#predicate",
+    "href": "pages/DBMS/w4-revealjs.html#predicate",
+    "title": "Week 4",
+    "section": "Predicate",
+    "text": "Predicate\n\nConsider the statement, “\\(x\\) is greater than 3”. It has two parts. The first part, the variable \\(x\\), is the subject of the statement. The second part, “is greater than 3”, is the predicate. It refers to a property that the subject of the statement can have.\nThe statement “\\(x\\) is greater than 3” can be denoted by \\(P(x)\\) where \\(P\\) denotes the predicate “is greater than 3” and \\(x\\) is the variable.\nThe predicate \\(P\\) can be considered as a function. It tells the truth value of the statement \\(P(x)\\) at \\(x\\). Once a value has been assigned to the variable \\(x\\), the statement \\(P(x)\\) becomes a proposition and has a truth or false value.\nIn general, a statement involving \\(n\\) variables \\(x_1, x_2, x_3, \\ldots , x_n\\) and a predicate \\(P\\) can be denoted by \\(P(x_1, x_2, x_3, \\ldots , x_n)\\). Here \\(P\\) is also referred to as n-place predicate or a \\(n\\)-ary predicate."
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#quantifiers",
+    "href": "pages/DBMS/w4-revealjs.html#quantifiers",
+    "title": "Week 4",
+    "section": "Quantifiers",
+    "text": "Quantifiers\nIn predicate logic, predicates are used alongside quantifiers to express the extent to which a predicate is true over a range of elements. Using quantifiers to create such propositions is called quantification. There are two types of quantifiers:\n\nUniversal Quantifier\nExistential Quantifier"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#universal-quantifier",
+    "href": "pages/DBMS/w4-revealjs.html#universal-quantifier",
+    "title": "Week 4",
+    "section": "Universal Quantifier",
+    "text": "Universal Quantifier\nUniversal Quantification: Mathematical statements sometimes assert that a property is true for all the values of a variable in a particular domain, called the domain of discourse\n\nSuch a statement is expressed using universal quantification.\nThe universal quantification of \\(P(x)\\) for a particular domain is the proposition that asserts that \\(P(x)\\) is true for all values of \\(x\\) in this domain\nThe domain is very important here since it decides the possible values of \\(x\\)\nFormally, The universal quantification of \\(P(x)\\) is the statement “\\(P(x)\\) for all values of \\(x\\) in the domain”\nThe notation \\(\\forall P(x)\\) denotes the universal quantification of \\(P(x)\\). Here \\(\\forall\\) is called the universal quantifier. \\(\\forall P(x)\\) is read as “for all \\(x\\) \\(P(x)\\)”.\nExample: Let \\(P(x)\\) be the statement “\\(x + 2 &gt; x\\)”. What is the truth value of the statement \\(\\forall x P(x)\\)?\nSolution: As \\(x + 2\\) is greater than \\(x\\) for any real number, so \\(P(x) \\equiv T\\) for all \\(x\\) or \\(\\forall x P(x) \\equiv T\\)"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#existential-quantifier",
+    "href": "pages/DBMS/w4-revealjs.html#existential-quantifier",
+    "title": "Week 4",
+    "section": "Existential Quantifier",
+    "text": "Existential Quantifier\nExistential Quantification: Some mathematical statements assert that there is an element with a certain property. Such statements are expressed by existential quantification. Existential quantification can be used to form a proposition that is true if and only if \\(P(x)\\) is true for at least one value of \\(x\\) in the domain.\n\nFormally, the existential quantification of \\(P(x)\\) is the statement “There exists an element \\(x\\) in the domain such that \\(P(x)\\)”.\nThe notation \\(\\exists P(x)\\) denotes the existential quantification of \\(P(x)\\). Here \\(\\exists\\) is called the existential quantifier. \\(\\exists P(x)\\) is read as “There is at least one \\(x\\) such that \\(P(x)\\)”.\nExample: Let \\(P(x)\\) be the statement “\\(x^2 = 4\\)”. What is the truth value of the statement \\(\\exists x P(x)\\)?\nSolution: The statement \\(x^2 = 4\\) is true for \\(x = 2\\) and \\(x = -2\\). So, \\(\\exists x\\) \\(P(x) \\equiv T\\)"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#tuple-relational-calculus",
+    "href": "pages/DBMS/w4-revealjs.html#tuple-relational-calculus",
+    "title": "Week 4",
+    "section": "Tuple Relational Calculus",
+    "text": "Tuple Relational Calculus\nTRC is a non-procedural query language, where each query is of the form\n\\[\n\\{t \\mid P(t)\\}\n\\]\nwhere \\(t =\\) resulting tuples, \\(P(t) =\\) known as predicate and these are the conditions that are used to fetch \\(t\\). \\(P(t)\\) may have various conditions connected by logical connectives like AND (\\(\\land\\)), OR (\\(\\lor\\)), and NOT (\\(\\lnot\\)).\nIt also uses quantifiers: \\(\\exists t \\in r(Q(t)) =\\) “there exists” a tuple \\(t\\) in relation \\(r\\) such that \\(Q(t)\\) is true. \\(\\forall t \\in r(Q(t)) =\\) “for all” tuples \\(t\\) in relation \\(r\\), \\(Q(t)\\) is true."
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#predicate-calculus-formula",
+    "href": "pages/DBMS/w4-revealjs.html#predicate-calculus-formula",
+    "title": "Week 4",
+    "section": "Predicate Calculus Formula",
+    "text": "Predicate Calculus Formula\n\nSet of attributes and constants\nSet of comparison operators: (\\(=\\), \\(\\neq\\), \\(&lt;\\), \\(\\leq\\), \\(&gt;\\), \\(\\geq\\))\nSet of logical connectives: and (\\(\\land\\)), or(\\(\\lor\\)), not (\\(\\lnot\\))\nImplication (\\(\\implies\\)) : \\(x \\implies y\\), if \\(x\\) then \\(y\\)\nSet of quantifiers:\n\n\\(\\exists t \\in r(Q(t)) \\equiv\\) “there exists” a tuple \\(t\\) in relation \\(r\\) such that \\(Q(t)\\) is true.\n\\(\\forall t \\in r(Q(t)) \\equiv\\) \\(Q\\) is true “for all” tuples \\(t\\) in relation \\(r\\)\n\n\nTRC Example\n\nStudent\n\n\nFname\nLname\nAge\nCourse\n\n\n\n\nDavid\nSharma\n27\nDBMS\n\n\nAaron\nLilly\n17\nJava\n\n\nSahil\nKhan\n19\nPython\n\n\nSachin\nRao\n20\nDBMS\n\n\nVarun\nGeorge\n23\nJava\n\n\nSimi\nVerma\n22\nJava\n\n\n\nObtain the first name of students whose age is greater than 21.\nSolution:\n\\[\n  \\{t.Fname \\mid Student(t) \\land t.Age &gt; 21\\}\n  \\] \\[\n  \\{t.Fname \\mid t \\in Student \\land t.Age &gt; 21\\}\n  \\] \\[\n  \\{t \\mid \\exists s \\in Student(s.Age &gt; 21 \\land t.Fname = s.Fname)\\}\n  \\]"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#safety-of-expressions",
+    "href": "pages/DBMS/w4-revealjs.html#safety-of-expressions",
+    "title": "Week 4",
+    "section": "Safety of Expressions",
+    "text": "Safety of Expressions\n\nIt is possible to write tuple calculus expressions that generate infinite relations\nFor example, \\(\\{t \\mid \\lnot t \\in r\\}\\) results in an infinite relation if the domain of any attribute of relation \\(r\\) is infinite\nTo guard against the problem, we restrict the set of allowable expressions to safe expressions\nAn expression \\(\\{t \\mid P(t)\\}\\) in the tuple relational calculus is safe if every component of \\(t\\) appears in one of the relations, tuples, or constants that appear in \\(P\\).\n\nNOTE: this is more than just a syntax condition\nE.g. \\(\\{t \\mid t[A] = 5 \\lor \\text{true}\\}\\) is not safe — it defines an infinite set with attribute values that do not appear in any relation or tuples or constants in \\(P\\)"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#domain-relational-calculus",
+    "href": "pages/DBMS/w4-revealjs.html#domain-relational-calculus",
+    "title": "Week 4",
+    "section": "Domain Relational Calculus",
+    "text": "Domain Relational Calculus\n\nA non-procedural query language equivalent in power to tuple relational calculus\nEach query is of the form\n\\[\n  \\{&lt; x_1, x_2, \\ldots, x_n &gt; \\mid P(x_1, x_2, \\ldots, x_n)\\}\n  \\]\n\n\\(x_1, x_2, \\ldots, x_n\\) represent domain variables\n\\(P\\) represents a formula similar to that of the predicate calculus"
+  },
+  {
+    "objectID": "pages/DBMS/w4-revealjs.html#equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus",
+    "href": "pages/DBMS/w4-revealjs.html#equivalence-of-relational-algebra-tuple-relational-calculus-and-domain-relational-calculus",
+    "title": "Week 4",
+    "section": "Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus",
+    "text": "Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus\nSelect Operation\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\sigma_{A = 5}(r)\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land A = 5\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b &gt; \\mid &lt;a, b&gt; \\in r \\land a = 5\\}\\)\n\nProject Operation\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\Pi_{A}(r)\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\exists p \\in r(t[A]=p[A])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid \\exists b(&lt;a, b&gt; \\in r)\\}\\)\n\nCombining Operations\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\Pi_{A}(\\sigma_{B = 5}(r))\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r(t[A] = p[A] \\land p[B] = 5)\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid \\exists b(&lt;a, b&gt; \\in r \\land b = 5)\\}\\)\n\nUnion\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r \\cup s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\lor t \\in s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\lor &lt;a, b, c&gt; \\in s\\}\\)\n\nSet Difference\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r - s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land t \\notin s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\land &lt;a, b, c&gt; \\notin s\\}\\)\n\nIntersection\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r \\cap s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land t \\in s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\land &lt;a, b, c&gt; \\in s\\}\\)\n\nCartesian/Cross Product\n\\(R = (A, B)\\), \\(S = (C, D)\\)\n\nRelational Algebra: \\(r \\times s\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r \\exists q \\in s(t[A] = p[A] \\land t[B] = p[B] \\land t[C] = q[C] \\land t[D] = q[D])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c, d &gt; \\mid (&lt;a, b&gt; \\in r \\land &lt;c, d&gt; \\in s)\\}\\)\n\nNatural Join\n\\(R = (A, B, C, D)\\), \\(S = (B, D, E)\\)\n\nRelational Algebra: \\(r \\bowtie s\\) \\[\n\\Pi_{r.A, r.B, r.C, r.D, s.E}(\\sigma_{r.B = s.B \\land r.D = s.D}(r \\times s))\n\\]\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r \\exists q \\in s(t[A] = p[A] \\land t[B] = p[B] \\land t[C] = p[C] \\land t[D] = p[D] \\land t[E] = q[E] \\land p[B] = q[B] \\land p[D]=q[D])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c, d, e &gt; \\mid &lt;a, b, c, d&gt; \\in r \\land &lt;b, d, e&gt; \\in s\\}\\)\n\nDivision\n\\(R = (A, B)\\), \\(S = (B)\\)\n\nRelational Algebra: \\(r \\div s\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r(\\forall q \\in s(p[B] = q[B] \\implies t[A] = p[A]))\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid &lt; a &gt; \\in r \\land \\forall &lt;b&gt;(&lt; b &gt; \\in s \\implies &lt; a, b &gt; \\in r)\\}\\)\n\n\n\n\nComplete notes"
   }
 ]

@@ -2,11 +2,11 @@
 title: "Week 4"
 format:
     html:    
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        smooth-scroll: true
-        code-fold: true
+      toc: true
+      toc_depth: 2
+      number_sections: true
+      smooth-scroll: true
+      code-fold: true
 execute: 
   echo: false
 ---

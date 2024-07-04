@@ -7,11 +7,15 @@ format:
         number_sections: true
         smooth-scroll: true
         code-fold: true
+      revealjs:
+        smaller: true
+        center: false
+        scrollable: true
+        slideNumber: true
+        code-line-numbers: false
+        footer: '<a href="w2.qmd">Complete notes</a>'
+        output-file: w2-revealjs.html
 ---
-
-::: {.callout-note}
-Click here to view in presentation mode: [Modern Application Development II - Week 2](w2-slides.html)
-:::
 
 # Lecture 2.1 - Introduction to JavaScript Collections
 
