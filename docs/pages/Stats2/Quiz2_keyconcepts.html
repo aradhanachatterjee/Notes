@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes</title>
+<title>Notes - Key concepts in Statistics-II from Week 5 to Week 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,8 +68,50 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -83,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/random/Fourier.html">Random</a></li><li class="breadcrumb-item"><a href="../../pages/random/Fourier.html">Fourier Series Representations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Statistics-II</a></li><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Key concepts in Statistics-II from Week 5 to Week 8</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -128,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Key concepts in Statistics-II from Week 5 to Week 8</span></a>
   </div>
 </li>
@@ -174,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Series Representations</span></a>
   </div>
 </li>
@@ -186,18 +228,85 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#lecture-5.1-functions-of-a-continuous-random-variable" id="toc-lecture-5.1-functions-of-a-continuous-random-variable" class="nav-link active" data-scroll-target="#lecture-5.1-functions-of-a-continuous-random-variable">Lecture 5.1: Functions of a continuous random variable</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Statistics-II</a></li><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Key concepts in Statistics-II from Week 5 to Week 8</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Key concepts in Statistics-II from Week 5 to Week 8</h1>
+</div>
 
 
 
-<p>Some handwritten notes on Fourier Series Representations</p>
-<p><img src="fourier-pages/1.png" class="img-fluid" alt="1"> <img src="fourier-pages/2.png" class="img-fluid" alt="2"> <img src="fourier-pages/3.png" class="img-fluid" alt="3"> <img src="fourier-pages/4.png" class="img-fluid" alt="4"> <img src="fourier-pages/5.png" class="img-fluid" alt="5"> <img src="fourier-pages/6.png" class="img-fluid" alt="6"> <img src="fourier-pages/7.png" class="img-fluid" alt="7"></p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="lecture-5.1-functions-of-a-continuous-random-variable" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-5.1-functions-of-a-continuous-random-variable">Lecture 5.1: Functions of a continuous random variable</h2>
+<ul>
+<li><p>The CDF <span class="math inline">F_Y</span> of <span class="math inline">Y = g(X)</span>, where <span class="math inline">X</span> is a continuous random variable with PDF <span class="math inline">f_X</span>, is given by: <span class="math display">F_y(y) = P(Y \leq y) = P(g(X) \leq y) = P(X \in \{x:g(x) \leq y\})</span></p>
+<ul>
+<li>To evaluate the above probability,
+<ul>
+<li>Convert the subset <span class="math inline">A_y = \{x:g(x) \leq y\}</span> into intervasl in real line</li>
+<li>Find the probability of <span class="math inline">X</span> falling in the interval</li>
+<li><span class="math inline">F_Y(y) = P(X \in A_y) = \int_{A_y} f_X(x) dx</span></li>
+</ul></li>
+</ul></li>
+<li><p>For monotonic, differentiable functions <span class="math inline">Y=g(X)</span> <strong>only</strong>, the PDF of <span class="math inline">Y</span> is given by: <span class="math display">f_Y(y) = \frac{1}{\left | g'(g^{-1}(y)) \right|} \cdot f_X(g^{-1}(y)) </span></p>
+<ul>
+<li>Translation: <span class="math inline">Y=X+a</span> <span class="math display">f_Y(y) = f_X(y-a)</span></li>
+<li>Scaling: <span class="math inline">Y=aX</span> <span class="math display">f_Y(y) = \frac{1}{|a|} f_X(\frac{y}{a})</span></li>
+<li>Affine: <span class="math inline">Y=aX+b</span> <span class="math display">f_Y(y) = \frac{1}{|a|} f_X(\frac{y-b}{a})</span></li>
+</ul></li>
+<li><p>Affine transformation of normal distributions</p>
+<ul>
+<li><p><span class="math inline">X \sim N(0,1)</span> (Standard normal) <span class="math display">f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}</span></p>
+<ul>
+<li><span class="math inline">Y = \sigma X + \mu</span> <span class="math display">f_Y(y) = \frac{1}{\sigma\sqrt{2\pi}} e^{-(y-\mu)^2/2\sigma^2}</span>
+<ul>
+<li><span class="math inline">Y \sim N(\mu, \sigma^2)</span></li>
+</ul></li>
+</ul></li>
+<li><p><span class="math inline">X \sim N(\mu, \sigma^2)</span></p>
+<ul>
+<li><span class="math inline">Y=\frac{X-\mu}{\sigma} \sim N(0,1)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Result
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Affine transformation of a normal random variable is also a normal random variable.</p>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -736,5 +845,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

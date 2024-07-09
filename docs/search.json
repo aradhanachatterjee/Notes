@@ -255,319 +255,203 @@
     "href": "pages/PDSA/w2.html",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance"
   },
   {
     "objectID": "pages/PDSA/w2.html#measuring-performance",
     "href": "pages/PDSA/w2.html#measuring-performance",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space"
   },
   {
     "objectID": "pages/PDSA/w2.html#input-size",
     "href": "pages/PDSA/w2.html#input-size",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Running time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Running time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second"
   },
   {
     "objectID": "pages/PDSA/w2.html#orders-of-magnitude",
     "href": "pages/PDSA/w2.html#orders-of-magnitude",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "When comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "When comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-"
   },
   {
     "objectID": "pages/PDSA/w2.html#measuring-running-time",
     "href": "pages/PDSA/w2.html#measuring-running-time",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Analysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations"
   },
   {
     "objectID": "pages/PDSA/w2.html#what-is-the-input-size",
     "href": "pages/PDSA/w2.html#what-is-the-input-size",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Typically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Typically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b"
   },
   {
     "objectID": "pages/PDSA/w2.html#which-inputs-should-we-consider",
     "href": "pages/PDSA/w2.html#which-inputs-should-we-consider",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Performance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Performance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary",
     "href": "pages/PDSA/w2.html#summary",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Two important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Two important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance"
   },
   {
     "objectID": "pages/PDSA/w2.html#orders-of-magnitude-1",
     "href": "pages/PDSA/w2.html#orders-of-magnitude-1",
     "title": "PDSA - Week 2",
     "section": "Orders of magnitude",
-    "text": "Orders of magnitude\n\nWhen comparing t(n), focus on orders of magnitude\n\nIgnore constant factors\n\nf(n)=n^3 eventually dominates g(n)=5000n^2\nHow do we compare functions with respect to orders of magnitude?",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Orders of magnitude\n\nWhen comparing t(n), focus on orders of magnitude\n\nIgnore constant factors\n\nf(n)=n^3 eventually dominates g(n)=5000n^2\nHow do we compare functions with respect to orders of magnitude?"
   },
   {
     "objectID": "pages/PDSA/w2.html#upper-bounds",
     "href": "pages/PDSA/w2.html#upper-bounds",
     "title": "PDSA - Week 2",
     "section": "Upper bounds",
-    "text": "Upper bounds\n\nf(x) is said to be O(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is an upper bound for f(x) for x beyond x_0\nf(x) \\leq cg(x) for every x \\geq x_0",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Upper bounds\n\nf(x) is said to be O(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is an upper bound for f(x) for x beyond x_0\nf(x) \\leq cg(x) for every x \\geq x_0"
   },
   {
     "objectID": "pages/PDSA/w2.html#examples",
     "href": "pages/PDSA/w2.html#examples",
     "title": "PDSA - Week 2",
     "section": "Examples",
-    "text": "Examples\n\n100n+5 is O(n^2)\n\n100n+5 \\leq 100n+n=101n, for n \\geq 5\n101n \\leq 101n^2\nChoose n_0=5 and c=101\n\nAlternatively\n\n100n+5 \\leq 100n +5n =105n, for n \\geq 1\n105n \\leq 105n^2\nChoose n_0=1 and c=105\n\nChoice of c and n_0 is not unique\n100n^2 + 20n +5 is O(n^2)\n\n100n^2 + 20n +5 \\leq 100n^2 + 20n^2 +5n^2, for n \\geq 1\n100n^2 + 20n^2 +5n^2 \\leq 125n^2, for n \\geq 1\nChoose n_0=1 and c=125\n\nWhat matters is the highest term\n\n20n+5 is dominated by 100n^2\n\nn^3 is not O(n^2)\n\nNo matter what c we choose, cn^2 will be dominated by n^3 for n \\geq c",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Examples\n\n100n+5 is O(n^2)\n\n100n+5 \\leq 100n+n=101n, for n \\geq 5\n101n \\leq 101n^2\nChoose n_0=5 and c=101\n\nAlternatively\n\n100n+5 \\leq 100n +5n =105n, for n \\geq 1\n105n \\leq 105n^2\nChoose n_0=1 and c=105\n\nChoice of c and n_0 is not unique\n100n^2 + 20n +5 is O(n^2)\n\n100n^2 + 20n +5 \\leq 100n^2 + 20n^2 +5n^2, for n \\geq 1\n100n^2 + 20n^2 +5n^2 \\leq 125n^2, for n \\geq 1\nChoose n_0=1 and c=125\n\nWhat matters is the highest term\n\n20n+5 is dominated by 100n^2\n\nn^3 is not O(n^2)\n\nNo matter what c we choose, cn^2 will be dominated by n^3 for n \\geq c"
   },
   {
     "objectID": "pages/PDSA/w2.html#useful-properties",
     "href": "pages/PDSA/w2.html#useful-properties",
     "title": "PDSA - Week 2",
     "section": "Useful properties",
-    "text": "Useful properties\n\nIf f_{1}(n) is O(g_{1}(n)) and f_{2}(n) is O(g_{2}(n)), then f_{1}(n)+f_{2}(n) is O(\\max(g_{1}(n),g_{2}(n)))\nProof\n\nf_{1}(n) \\leq c_{1}g_{1}(n) for n \\geq n_{1}\nf_{2}(n) \\leq c_{2}g_{2}(n) for n \\geq n_{2}\nLet c_{3} = \\max(c_{1},c_{2}), n_{3} = \\max(n_{1},n_{2})\nFor n \\geq n_{3}, f_{1}(n)+f_{2}(n)\n\n\\leq c_{1}g_{1}(n)+c_{2}g_{2}(n)\n\\leq c_{3}g_{1}(n)+c_{3}g_{2}(n)\n\\leq 2c_{3}(\\max(g_{1}(n),g_{2}(n)))\n\n\nAlgorithm has two phases\n\nPhase A takes time O(g_{A}(n))\nPhase B takes time O(g_{B}(n))\n\nAlgorithm as a whole takes time \\max(O(g_{A}(n),g_{B}(n)))\nLeast efficient phase is the upper bound for the whole algorithm",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Useful properties\n\nIf f_{1}(n) is O(g_{1}(n)) and f_{2}(n) is O(g_{2}(n)), then f_{1}(n)+f_{2}(n) is O(\\max(g_{1}(n),g_{2}(n)))\nProof\n\nf_{1}(n) \\leq c_{1}g_{1}(n) for n \\geq n_{1}\nf_{2}(n) \\leq c_{2}g_{2}(n) for n \\geq n_{2}\nLet c_{3} = \\max(c_{1},c_{2}), n_{3} = \\max(n_{1},n_{2})\nFor n \\geq n_{3}, f_{1}(n)+f_{2}(n)\n\n\\leq c_{1}g_{1}(n)+c_{2}g_{2}(n)\n\\leq c_{3}g_{1}(n)+c_{3}g_{2}(n)\n\\leq 2c_{3}(\\max(g_{1}(n),g_{2}(n)))\n\n\nAlgorithm has two phases\n\nPhase A takes time O(g_{A}(n))\nPhase B takes time O(g_{B}(n))\n\nAlgorithm as a whole takes time \\max(O(g_{A}(n),g_{B}(n)))\nLeast efficient phase is the upper bound for the whole algorithm"
   },
   {
     "objectID": "pages/PDSA/w2.html#lower-bounds",
     "href": "pages/PDSA/w2.html#lower-bounds",
     "title": "PDSA - Week 2",
     "section": "Lower bounds",
-    "text": "Lower bounds\n\nf(x) is said to be \\Omega(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is a lower bound for f(x) for x beyond x_0\n\nf(x) \\geq cg(x) for every x \\geq x_0\n\nn^3 is \\Omega(n^2)\n\nn^3 &gt; n^2 for all n, so n_0=1, c=1\n\nTypically we establish lower bounds for a problem rather than an individual algorithm\n\nIf we sort a list by comparing elements and swapping them, we require \\Omega(n \\log n) comparisons\nThis is independent of the sorting algorithm",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Lower bounds\n\nf(x) is said to be \\Omega(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is a lower bound for f(x) for x beyond x_0\n\nf(x) \\geq cg(x) for every x \\geq x_0\n\nn^3 is \\Omega(n^2)\n\nn^3 &gt; n^2 for all n, so n_0=1, c=1\n\nTypically we establish lower bounds for a problem rather than an individual algorithm\n\nIf we sort a list by comparing elements and swapping them, we require \\Omega(n \\log n) comparisons\nThis is independent of the sorting algorithm"
   },
   {
     "objectID": "pages/PDSA/w2.html#tight-bounds",
     "href": "pages/PDSA/w2.html#tight-bounds",
     "title": "PDSA - Week 2",
     "section": "Tight bounds",
-    "text": "Tight bounds\n\nf(x) is said to be \\Theta(g(x)) if f(x) is both O(g(x)) and \\Omega(g(x))\n\nFind constants c_1, c_2, x_0 such that c_{1}g(x) \\leq f(x) \\leq c_{2}g(x) for every x \\geq x_0\n\n\\frac{n(n-1)}{2} is \\Theta(n^2)\n\nUpper bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\leq \\frac{n^2}{2} for all n \\geq 0\n\nLower bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\geq \\frac{n^2}{2} - (\\frac{n}{2} \\times \\frac{n}{2}) \\geq \\frac{n^2}{4} for n \\geq 2\n\nChoose n_0 = 2, c_1 = \\frac{1}{4}, c_2 = \\frac{1}{2}",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Tight bounds\n\nf(x) is said to be \\Theta(g(x)) if f(x) is both O(g(x)) and \\Omega(g(x))\n\nFind constants c_1, c_2, x_0 such that c_{1}g(x) \\leq f(x) \\leq c_{2}g(x) for every x \\geq x_0\n\n\\frac{n(n-1)}{2} is \\Theta(n^2)\n\nUpper bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\leq \\frac{n^2}{2} for all n \\geq 0\n\nLower bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\geq \\frac{n^2}{2} - (\\frac{n}{2} \\times \\frac{n}{2}) \\geq \\frac{n^2}{4} for n \\geq 2\n\nChoose n_0 = 2, c_1 = \\frac{1}{4}, c_2 = \\frac{1}{2}"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-1",
     "href": "pages/PDSA/w2.html#summary-1",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nf(n) is O(g(n)) means f(n) is bounded above by g(n)\n\nUseful to describe asymptotic worst case running time\n\nf(n) is \\Omega(g(n)) means f(n) is bounded below by g(n)\n\nTypically used for a problem as a whole, rather than an individual algorithm\n\nf(n) is \\Theta(g(n)) means f(n) is bounded both above and below by g(n)\n\nWe have found an optimal algorithm for the problem",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nf(n) is O(g(n)) means f(n) is bounded above by g(n)\n\nUseful to describe asymptotic worst case running time\n\nf(n) is \\Omega(g(n)) means f(n) is bounded below by g(n)\n\nTypically used for a problem as a whole, rather than an individual algorithm\n\nf(n) is \\Theta(g(n)) means f(n) is bounded both above and below by g(n)\n\nWe have found an optimal algorithm for the problem"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-1",
     "href": "pages/PDSA/w2.html#example-1",
     "title": "PDSA - Week 2",
     "section": "Example 1",
-    "text": "Example 1\n\n\nFind the maximum element in a list\n\nInput size is the length of the list\nSingle loop scans all elements\nAlways takes n steps\nOverall time is O(n)\n\n\ndef maxElement(L):\n    maxval = L[0]\n    for i in range(len(L)):\n        if L[i] &gt; maxval:\n            maxval = L[i]\n    return maxval",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 1\n\n\nFind the maximum element in a list\n\nInput size is the length of the list\nSingle loop scans all elements\nAlways takes n steps\nOverall time is O(n)\n\n\ndef maxElement(L):\n    maxval = L[0]\n    for i in range(len(L)):\n        if L[i] &gt; maxval:\n            maxval = L[i]\n    return maxval"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-2",
     "href": "pages/PDSA/w2.html#example-2",
     "title": "PDSA - Week 2",
     "section": "Example 2",
-    "text": "Example 2\n\n\nCheck whether a list contains duplicates\n\nInput size is the length of the list\nNested loop scans all pairs of elements\nA duplicate may be found in the very first iteration\nWorst case - no duplicates, both loops run fully\nTime is (n-1)+(n-2)+...+1=\\frac{n(n-1)}{2}\nOverall time is O(n^2)\n\n\ndef noDuplicates(L):\n    for i in range(len(L)):\n        for j in range(i+1, len(L)):\n            if L[i] == L[j]:\n                return False\n    return True",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 2\n\n\nCheck whether a list contains duplicates\n\nInput size is the length of the list\nNested loop scans all pairs of elements\nA duplicate may be found in the very first iteration\nWorst case - no duplicates, both loops run fully\nTime is (n-1)+(n-2)+...+1=\\frac{n(n-1)}{2}\nOverall time is O(n^2)\n\n\ndef noDuplicates(L):\n    for i in range(len(L)):\n        for j in range(i+1, len(L)):\n            if L[i] == L[j]:\n                return False\n    return True"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-3",
     "href": "pages/PDSA/w2.html#example-3",
     "title": "PDSA - Week 2",
     "section": "Example 3",
-    "text": "Example 3\n\n\nMatrix multiplication\n\nMatrix is represented as a list of lists\n\n\\begin{pmatrix}1 & 2 & 3\\\\4 & 5 & 6\\end{pmatrix}\n[[1, 2, 3], [4, 5, 6]]\n\nInput matrices have size m \\times n, n \\times p\nOutput matrix is m \\times p\nThree nested loops\nOverall time is O(mnp) - O(n^3) if both are n \\times n\n\n\ndef matrixMultiply(A, B):\n    (m, n, p) = (len(A), len(B), len(B[0]))\n    C = [[0 for i in range(p)]\n            for j in range(m)]\n    for i in range(m):\n        for j in range(p):\n            for k in range(n):\n                C[i][j] = C[i][j] + A[i][k] * B[k][j]\n    return C",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 3\n\n\nMatrix multiplication\n\nMatrix is represented as a list of lists\n\n\\begin{pmatrix}1 & 2 & 3\\\\4 & 5 & 6\\end{pmatrix}\n[[1, 2, 3], [4, 5, 6]]\n\nInput matrices have size m \\times n, n \\times p\nOutput matrix is m \\times p\nThree nested loops\nOverall time is O(mnp) - O(n^3) if both are n \\times n\n\n\ndef matrixMultiply(A, B):\n    (m, n, p) = (len(A), len(B), len(B[0]))\n    C = [[0 for i in range(p)]\n            for j in range(m)]\n    for i in range(m):\n        for j in range(p):\n            for k in range(n):\n                C[i][j] = C[i][j] + A[i][k] * B[k][j]\n    return C"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-4",
     "href": "pages/PDSA/w2.html#example-4",
     "title": "PDSA - Week 2",
     "section": "Example 4",
-    "text": "Example 4\n\n\nNumber of bits in binary representation of n\n\n\\log n steps for n to reach 1\nFor number theoretic problems, input size is number of digits\nThis algorithm is linear in input size\n\n\ndef numberOfBits(n):\n    count = 1\n    while n &gt; 1:\n        count += 1\n        n = n // 2\n    return count",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 4\n\n\nNumber of bits in binary representation of n\n\n\\log n steps for n to reach 1\nFor number theoretic problems, input size is number of digits\nThis algorithm is linear in input size\n\n\ndef numberOfBits(n):\n    count = 1\n    while n &gt; 1:\n        count += 1\n        n = n // 2\n    return count"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-5",
     "href": "pages/PDSA/w2.html#example-5",
     "title": "PDSA - Week 2",
     "section": "Example 5",
-    "text": "Example 5\nTowers of Hanoi\n\nThree pegs A, B, C\nMove n disks from A to B, use C as transit peg\nNever place a larger disk on a smaller one\nRecursive solution\n\nMove n-1 disks from A to C, use B as transit peg\nMove the largest disk from A to B\nMove n-1 disks from C to B, use A as transit peg",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 5\nTowers of Hanoi\n\nThree pegs A, B, C\nMove n disks from A to B, use C as transit peg\nNever place a larger disk on a smaller one\nRecursive solution\n\nMove n-1 disks from A to C, use B as transit peg\nMove the largest disk from A to B\nMove n-1 disks from C to B, use A as transit peg"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-5-contd.",
     "href": "pages/PDSA/w2.html#example-5-contd.",
     "title": "PDSA - Week 2",
     "section": "Example 5 (contd.)",
-    "text": "Example 5 (contd.)\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n    M( n) & =\\ 2M( n-1) +1\\\\\n     & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n     & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n     & =\\ 2^{n-1} +2^{n-1} -1\\\\\n     & =\\ 2^{n} -1\n    \\end{aligned}",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Example 5 (contd.)\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n    M( n) & =\\ 2M( n-1) +1\\\\\n     & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n     & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n     & =\\ 2^{n-1} +2^{n-1} -1\\\\\n     & =\\ 2^{n} -1\n    \\end{aligned}"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-2",
     "href": "pages/PDSA/w2.html#summary-2",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nIterative programs\n\nFocus on loops\n\nRecursive programs\n\nWrite and solve a recurrence\n\nNeed to be clear about accounting for “basic” operations",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nIterative programs\n\nFocus on loops\n\nRecursive programs\n\nWrite and solve a recurrence\n\nNeed to be clear about accounting for “basic” operations"
   },
   {
     "objectID": "pages/PDSA/w2.html#search-problem",
     "href": "pages/PDSA/w2.html#search-problem",
     "title": "PDSA - Week 2",
     "section": "Search problem",
-    "text": "Search problem\n\n\n\nIs a value v present in a list l?\nNaive solution scans the list\nInput size n, the length of the list\nWorst case is when v is not in l\nWorst case complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Search problem\n\n\n\nIs a value v present in a list l?\nNaive solution scans the list\nInput size n, the length of the list\nWorst case is when v is not in l\nWorst case complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False"
   },
   {
     "objectID": "pages/PDSA/w2.html#searching-a-sorted-list",
     "href": "pages/PDSA/w2.html#searching-a-sorted-list",
     "title": "PDSA - Week 2",
     "section": "Searching a sorted list",
-    "text": "Searching a sorted list\n\n\n\nWhat if l is sorted in ascending order?\nCompare v with the midpoint of l\n\nIf midpoint is v, the value is found\nIf v is less than midpoint, search the first half\nIf v greater than midpoint, search the second half\nStop when the interval to search becomes empty\n\n\n\ndef binarysearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return binarysearch(v, l[:m])\n    else:\n        return binarysearch(v, l[m+1:])",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Searching a sorted list\n\n\n\nWhat if l is sorted in ascending order?\nCompare v with the midpoint of l\n\nIf midpoint is v, the value is found\nIf v is less than midpoint, search the first half\nIf v greater than midpoint, search the second half\nStop when the interval to search becomes empty\n\n\n\ndef binarysearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return binarysearch(v, l[:m])\n    else:\n        return binarysearch(v, l[m+1:])"
   },
   {
     "objectID": "pages/PDSA/w2.html#binary-search",
     "href": "pages/PDSA/w2.html#binary-search",
     "title": "PDSA - Week 2",
     "section": "Binary search",
-    "text": "Binary search\n\nHow long does this take?\n\nEach call halves the interval to search\nStop when the interval becomes empty\n\n\\log n - number of times to divide n by 2 to reach 1\n\n1//2 =0, so next call reaches empty interval\n\nO(\\log n) steps",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Binary search\n\nHow long does this take?\n\nEach call halves the interval to search\nStop when the interval becomes empty\n\n\\log n - number of times to divide n by 2 to reach 1\n\n1//2 =0, so next call reaches empty interval\n\nO(\\log n) steps"
   },
   {
     "objectID": "pages/PDSA/w2.html#alternative-calculation",
     "href": "pages/PDSA/w2.html#alternative-calculation",
     "title": "PDSA - Week 2",
     "section": "Alternative calculation",
-    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \\begin{aligned}\n    T( n) & =\\ T( n//2) +1\\\\\n     & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n     & =\\ \\dotsc \\\\\n     & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n     & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n     & =\\ ( T( 0) +1) +\\log n\\\\\n     & =\\ 2+\\log n\n    \\end{aligned}\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \\begin{aligned}\n    T( n) & =\\ T( n//2) +1\\\\\n     & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n     & =\\ \\dotsc \\\\\n     & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n     & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n     & =\\ ( T( 0) +1) +\\log n\\\\\n     & =\\ 2+\\log n\n    \\end{aligned}\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-3",
     "href": "pages/PDSA/w2.html#summary-3",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nSearch in an unsorted list takes time O(n)\n\nNeed to scan the entire list\nWorst case is when the value is not in the list\n\nFor a sorted list, binary search takes time O(\\log n)\n\nHalve the interval to search each time\n\nIn a sorted list, we can determine that v is absent by examining just \\log n values!",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nSearch in an unsorted list takes time O(n)\n\nNeed to scan the entire list\nWorst case is when the value is not in the list\n\nFor a sorted list, binary search takes time O(\\log n)\n\nHalve the interval to search each time\n\nIn a sorted list, we can determine that v is absent by examining just \\log n values!"
   },
   {
     "objectID": "pages/PDSA/w2.html#sorting-a-list",
     "href": "pages/PDSA/w2.html#sorting-a-list",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n\n\n\nSorting a list makes many other computations easier\n\nBinary search\nFinding the median\nChecking for duplicates\nBuilding a histogram\n\nHow do we sort a list?\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 1\n\nScan the entire pile and find the paper with the minimum marks\nMove this paper to a new pile\nRepeat with the remaining papers\n\nAdd the paper with the next minimum marks to the second pile each time\n\nEventually, the new pile is sorted in descending order of marks",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Sorting a list\n\n\n\nSorting a list makes many other computations easier\n\nBinary search\nFinding the median\nChecking for duplicates\nBuilding a histogram\n\nHow do we sort a list?\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 1\n\nScan the entire pile and find the paper with the minimum marks\nMove this paper to a new pile\nRepeat with the remaining papers\n\nAdd the paper with the next minimum marks to the second pile each time\n\nEventually, the new pile is sorted in descending order of marks"
   },
   {
     "objectID": "pages/PDSA/w2.html#sorting-a-list-1",
     "href": "pages/PDSA/w2.html#sorting-a-list-1",
     "title": "PDSA - Week 2",
     "section": "Sorting a list",
-    "text": "Sorting a list\n\n\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 2\n\nMove the first paper to a new pile\nSecond paper\n\nLower marks than the first paper? Place it below the first paper in new pile\nHigher marks than the first paper? Place it above the first paper in new pile\n\nThird paper\n\nInsert into correct position with respect to the first two papers\n\nDo this for the remaining papers\n\nInsert each one into the correct position in the second pile",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Sorting a list\n\n\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers in random order of marks\nYour task is to arrange the papers in descending order of marks\n\n\n\n\nStrategy 2\n\nMove the first paper to a new pile\nSecond paper\n\nLower marks than the first paper? Place it below the first paper in new pile\nHigher marks than the first paper? Place it above the first paper in new pile\n\nThird paper\n\nInsert into correct position with respect to the first two papers\n\nDo this for the remaining papers\n\nInsert each one into the correct position in the second pile"
   },
   {
     "objectID": "pages/PDSA/w2.html#sorting-a-list-2",
@@ -640,33 +524,21 @@
     "href": "pages/PDSA/w2.html#selection-sort",
     "title": "PDSA - Week 2",
     "section": "Selection Sort",
-    "text": "Selection Sort\n\n\n\nSelect the next element in sorted order\nAppend it to the final sorted list\nAvoid using a second list\n\nSwap the minimum element into the first position\nSwap the second minimum element into the second position\n…\n\nEventually the list is rearranged in place in ascending order\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Selection Sort\n\n\n\nSelect the next element in sorted order\nAppend it to the final sorted list\nAvoid using a second list\n\nSwap the minimum element into the first position\nSwap the second minimum element into the second position\n…\n\nEventually the list is rearranged in place in ascending order\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysis-of-selection-sort",
     "href": "pages/PDSA/w2.html#analysis-of-selection-sort",
     "title": "PDSA - Week 2",
     "section": "Analysis of Selection Sort",
-    "text": "Analysis of Selection Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop runs n times\nInner loop runs n-i times to find minimum in L[i:]\nT(n) = n + (n-1) + (n-2) + \\ldots + 1\nT(n) = \\frac{n(n+1)}{2}\n\nSelection sort is O(n^2)\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysis of Selection Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop runs n times\nInner loop runs n-i times to find minimum in L[i:]\nT(n) = n + (n-1) + (n-2) + \\ldots + 1\nT(n) = \\frac{n(n+1)}{2}\n\nSelection sort is O(n^2)\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-4",
     "href": "pages/PDSA/w2.html#summary-4",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nSelection sort is an intuitive algorithm to sort a list\nRepeatedly find the minimum (or maximum) and append to sorted list\nWorst case complexity is O(n^2)\n\nEvery input takes this much time\nNo advantage even if list is arranged carefully before sorting",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nSelection sort is an intuitive algorithm to sort a list\nRepeatedly find the minimum (or maximum) and append to sorted list\nWorst case complexity is O(n^2)\n\nEvery input takes this much time\nNo advantage even if list is arranged carefully before sorting"
   },
   {
     "objectID": "pages/PDSA/w2.html#sorting-a-list-8",
@@ -761,66 +633,42 @@
     "href": "pages/PDSA/w2.html#insertion-sort",
     "title": "PDSA - Week 2",
     "section": "Insertion Sort",
-    "text": "Insertion Sort\n\n\n\nStart building a new sorted list\nPick next element and insert it into the sorted list\nAn iterative formulation\n\nAssume L[:i] is sorted\nInsert L[i] in L[:i]\n\nA recursive formulation\n\nInductively sort L[:i]\nInsert L[i] in L[:i]\n\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Insertion Sort\n\n\n\nStart building a new sorted list\nPick next element and insert it into the sorted list\nAn iterative formulation\n\nAssume L[:i] is sorted\nInsert L[i] in L[:i]\n\nA recursive formulation\n\nInductively sort L[:i]\nInsert L[i] in L[:i]\n\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysis-of-iterative-insertion-sort",
     "href": "pages/PDSA/w2.html#analysis-of-iterative-insertion-sort",
     "title": "PDSA - Week 2",
     "section": "Analysis of iterative Insertion Sort",
-    "text": "Analysis of iterative Insertion Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop iterates n times\nInner loop: i steps to insert L[i] in L[:i]\nT(n) = 0 + 1 + · · · + (n − 1)\nT(n) = \\frac{n(n-1)}{2}\n\nInsertion sort is O(n^2)\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysis of iterative Insertion Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop iterates n times\nInner loop: i steps to insert L[i] in L[:i]\nT(n) = 0 + 1 + · · · + (n − 1)\nT(n) = \\frac{n(n-1)}{2}\n\nInsertion sort is O(n^2)\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysis-of-recursive-insertion-sort",
     "href": "pages/PDSA/w2.html#analysis-of-recursive-insertion-sort",
     "title": "PDSA - Week 2",
     "section": "Analysis of recursive Insertion Sort",
-    "text": "Analysis of recursive Insertion Sort\n\n\n\nFor input of size n, let\n\nTI(n) be the time taken by Insert\nTS(n) be the time taken by ISort\n\nFirst calculate TI(n) for Insert\n\nTI(0) = 1\nTI(n) = TI(n − 1) + 1\nUnwind to get TI(n) = n\n\nSet up a recurrence for TS(n)\n\nTS(0) = 1\nTS(n) = TS(n − 1) + TI(n − 1)\n\nUnwind to get 1 + 2 + · · · + n − 1\n\n\ndef Insert(L,v):\n    n = len(L)\n    if n == 0:\n        return([v])\n    if v &gt;= L[-1]:\n        return(L+[v])\n    else:\n        return(Insert(L[:-1],v)+L[-1:])\n\ndef ISort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    L = Insert(ISort(L[:-1]),L[-1])\n    return(L)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysis of recursive Insertion Sort\n\n\n\nFor input of size n, let\n\nTI(n) be the time taken by Insert\nTS(n) be the time taken by ISort\n\nFirst calculate TI(n) for Insert\n\nTI(0) = 1\nTI(n) = TI(n − 1) + 1\nUnwind to get TI(n) = n\n\nSet up a recurrence for TS(n)\n\nTS(0) = 1\nTS(n) = TS(n − 1) + TI(n − 1)\n\nUnwind to get 1 + 2 + · · · + n − 1\n\n\ndef Insert(L,v):\n    n = len(L)\n    if n == 0:\n        return([v])\n    if v &gt;= L[-1]:\n        return(L+[v])\n    else:\n        return(Insert(L[:-1],v)+L[-1:])\n\ndef ISort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    L = Insert(ISort(L[:-1]),L[-1])\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-5",
     "href": "pages/PDSA/w2.html#summary-5",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nInsertion sort is another intuitive algorithm to sort a list\nCreate a new sorted list\nRepeatedly insert elements into the sorted list\nWorst case complexity is O(n^2)\n\nUnlike selection sort, not all cases take time n^2\nIf list is already sorted, Insert stops in 1 step\nOverall time can be close to O(n)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nInsertion sort is another intuitive algorithm to sort a list\nCreate a new sorted list\nRepeatedly insert elements into the sorted list\nWorst case complexity is O(n^2)\n\nUnlike selection sort, not all cases take time n^2\nIf list is already sorted, Insert stops in 1 step\nOverall time can be close to O(n)"
   },
   {
     "objectID": "pages/PDSA/w2.html#beating-the-on2-barrier",
     "href": "pages/PDSA/w2.html#beating-the-on2-barrier",
     "title": "PDSA - Week 2",
     "section": "Beating the O(n^2) barrier",
-    "text": "Beating the O(n^2) barrier\n\nBoth selection sort and insertion sort take time O(n^2)\nThis is infeasible for n &gt; 10000\nHow can we bring the complexity below O(n^2)?\n\n. . .\nStrategy 3\n\nDivide the list into two halves\nSeparately sort the left and right half\nCombine the two sorted halves to get a fully sorted list",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Beating the O(n^2) barrier\n\nBoth selection sort and insertion sort take time O(n^2)\nThis is infeasible for n &gt; 10000\nHow can we bring the complexity below O(n^2)?\n\n. . .\nStrategy 3\n\nDivide the list into two halves\nSeparately sort the left and right half\nCombine the two sorted halves to get a fully sorted list"
   },
   {
     "objectID": "pages/PDSA/w2.html#combining-two-sorted-lists",
     "href": "pages/PDSA/w2.html#combining-two-sorted-lists",
     "title": "PDSA - Week 2",
     "section": "Combining two sorted lists",
-    "text": "Combining two sorted lists\n\nCombine two sorted lists A and B into a single sorted list C\n\nCompare first elements of A and B\nMove the smaller of the two to C\nRepeat till you exhaust A and B\n\nMerging A and B",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Combining two sorted lists\n\nCombine two sorted lists A and B into a single sorted list C\n\nCompare first elements of A and B\nMove the smaller of the two to C\nRepeat till you exhaust A and B\n\nMerging A and B"
   },
   {
     "objectID": "pages/PDSA/w2.html#combining-two-sorted-lists-1",
@@ -904,99 +752,63 @@
     "href": "pages/PDSA/w2.html#merge-sort",
     "title": "PDSA - Week 2",
     "section": "Merge sort",
-    "text": "Merge sort\n\n\n\nLet n be the length of L\nSort A[:n//2]\nSort A[n//2:]\nMerge the sorted halves into B\nHow do we sort A[:n//2] and A[n//2:]?\n\nRecursively, same strategy!\n\n\n\n\nDivide and conquer\n\nBreak up the problem into disjoint parts\nSolve each part separately\nCombine the solutions efficiently",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Merge sort\n\n\n\nLet n be the length of L\nSort A[:n//2]\nSort A[n//2:]\nMerge the sorted halves into B\nHow do we sort A[:n//2] and A[n//2:]?\n\nRecursively, same strategy!\n\n\n\n\nDivide and conquer\n\nBreak up the problem into disjoint parts\nSolve each part separately\nCombine the solutions efficiently"
   },
   {
     "objectID": "pages/PDSA/w2.html#merging-sorted-lists",
     "href": "pages/PDSA/w2.html#merging-sorted-lists",
     "title": "PDSA - Week 2",
     "section": "Merging sorted lists",
-    "text": "Merging sorted lists\n\n\n\nCombine two sorted lists A and B into C\n\nIf A is empty, copy B into C\nIf B is empty, copy A into C\nOtherwise, compare first elements of A and B\n\nMove the smaller of the two to C\n\nRepeat till all elements of A and B have been moved\n\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Merging sorted lists\n\n\n\nCombine two sorted lists A and B into C\n\nIf A is empty, copy B into C\nIf B is empty, copy A into C\nOtherwise, compare first elements of A and B\n\nMove the smaller of the two to C\n\nRepeat till all elements of A and B have been moved\n\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)"
   },
   {
     "objectID": "pages/PDSA/w2.html#merge-sort-1",
     "href": "pages/PDSA/w2.html#merge-sort-1",
     "title": "PDSA - Week 2",
     "section": "Merge sort",
-    "text": "Merge sort\n\n\n\nTo sort A into B, both of length n\nIf n \\leq 1, nothing to be done\nOtherwise\n\nSort A[:n//2] into L\nSort A[n//2:] into R\nMerge L and R into B\n\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Merge sort\n\n\n\nTo sort A into B, both of length n\nIf n \\leq 1, nothing to be done\nOtherwise\n\nSort A[:n//2] into L\nSort A[n//2:] into R\nMerge L and R into B\n\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-6",
     "href": "pages/PDSA/w2.html#summary-6",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nMerge sort using divide and conquer to sort a list\nDivide the list into two halves\nSort each half\nMerge the sorted halves\nNext, we have to check that the complexity is less than O(n^2)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nMerge sort using divide and conquer to sort a list\nDivide the list into two halves\nSort each half\nMerge the sorted halves\nNext, we have to check that the complexity is less than O(n^2)"
   },
   {
     "objectID": "pages/PDSA/w2.html#merge-sort-2",
     "href": "pages/PDSA/w2.html#merge-sort-2",
     "title": "PDSA - Week 2",
     "section": "Merge sort",
-    "text": "Merge sort\n\n\n\nTo sort A into B, both of length n\nIf n \\leq 1, nothing to be done\nOtherwise\n\nSort A[:n//2] into L\nSort A[n//2:] into R\nMerge L and R into B\n\n\n\n\nMerging two sorted lists A and B into C\n\nIf A is empty, copy B into C\nIf B is empty, copy A into C\nOtherwise, compare first elements of A and B\n\nMove the smaller of the two to C\n\nRepeat till all elements of A and B have been moved",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Merge sort\n\n\n\nTo sort A into B, both of length n\nIf n \\leq 1, nothing to be done\nOtherwise\n\nSort A[:n//2] into L\nSort A[n//2:] into R\nMerge L and R into B\n\n\n\n\nMerging two sorted lists A and B into C\n\nIf A is empty, copy B into C\nIf B is empty, copy A into C\nOtherwise, compare first elements of A and B\n\nMove the smaller of the two to C\n\nRepeat till all elements of A and B have been moved"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysing-merge",
     "href": "pages/PDSA/w2.html#analysing-merge",
     "title": "PDSA - Week 2",
     "section": "Analysing merge",
-    "text": "Analysing merge\n\n\n\nMerge A of length m, B of length n\nOutput list C has length m + n\nIn each iteration we add (at least) one element to C\nHence merge takes time O(m + n)\nRecall that m + n \\leq 2(max(m, n))\nIf m \\approx n, merge take time O(n)\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysing merge\n\n\n\nMerge A of length m, B of length n\nOutput list C has length m + n\nIn each iteration we add (at least) one element to C\nHence merge takes time O(m + n)\nRecall that m + n \\leq 2(max(m, n))\nIf m \\approx n, merge take time O(n)\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysing-mergesort",
     "href": "pages/PDSA/w2.html#analysing-mergesort",
     "title": "PDSA - Week 2",
     "section": "Analysing mergesort",
-    "text": "Analysing mergesort\n\n\n\nLet T(n) be the time taken for input of size n\n\nFor simplicity, assume n = 2^k for some k\n\nRecurrence\n\nT(0) = T(1) = 1\nT(n) = 2T(\\frac{n}{2}) + n\n\nSolve two subproblems of size \\frac{n}{2}\nMerge the solutions in time \\frac{n}{2} + \\frac{n}{2} = n\n\n\nUnwind the recurrence to solve\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysing mergesort\n\n\n\nLet T(n) be the time taken for input of size n\n\nFor simplicity, assume n = 2^k for some k\n\nRecurrence\n\nT(0) = T(1) = 1\nT(n) = 2T(\\frac{n}{2}) + n\n\nSolve two subproblems of size \\frac{n}{2}\nMerge the solutions in time \\frac{n}{2} + \\frac{n}{2} = n\n\n\nUnwind the recurrence to solve\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysing-mergesort-1",
     "href": "pages/PDSA/w2.html#analysing-mergesort-1",
     "title": "PDSA - Week 2",
     "section": "Analysing mergesort",
-    "text": "Analysing mergesort\n\n\n\nRecurrence\n\nT(0) = T(1) = 1\nT(n) = 2T(\\frac{n}{2}) + n\n\nT(n) = 2T(\\frac{n}{2}) + n\n\n= 2[2T(\\frac{n}{4}) + \\frac{n}{2}] + n = 2^2T(\\frac{n}{2^2}) + 2n\n= 2^{2}[2T(\\frac{n}{2^3}) + \\frac{n}{2^2}] + 2n = 2^3T(\\frac{n}{2^3}) + 3n\n\\ldots\n= 2^kT(\\frac{n}{2^k}) + kn\n\nWhen k = \\log n, T(\\frac{n}{2^k})=T(1)=1\nT(n) = 2^{\\log n}T(1) + n\\log n = n + n\\log n\nHence merge sort is O(n\\log n)\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Analysing mergesort\n\n\n\nRecurrence\n\nT(0) = T(1) = 1\nT(n) = 2T(\\frac{n}{2}) + n\n\nT(n) = 2T(\\frac{n}{2}) + n\n\n= 2[2T(\\frac{n}{4}) + \\frac{n}{2}] + n = 2^2T(\\frac{n}{2^2}) + 2n\n= 2^{2}[2T(\\frac{n}{2^3}) + \\frac{n}{2^2}] + 2n = 2^3T(\\frac{n}{2^3}) + 3n\n\\ldots\n= 2^kT(\\frac{n}{2^k}) + kn\n\nWhen k = \\log n, T(\\frac{n}{2^k})=T(1)=1\nT(n) = 2^{\\log n}T(1) + n\\log n = n + n\\log n\nHence merge sort is O(n\\log n)\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-7",
     "href": "pages/PDSA/w2.html#summary-7",
     "title": "PDSA - Week 2",
     "section": "Summary",
-    "text": "Summary\n\nMerge sort takes time O(n \\log n) so can be used effectively on large inputs\nVariations on merge are possible\n\nUnion of two sorted lists — discard duplicates, if A[i] == B[j] move just one copy to C and increment both i and j\nIntersection of two sorted lists — when A[i] == B[j], move one copy to C, otherwise discard the smaller of A[i], B[j]\nList difference — elements in A but not in B\n\nMerge needs to create a new list to hold the merged elements\n\nNo obvious way to efficiently merge two lists in place\nExtra storage can be costly\n\nInherently recursive\n\nRecursive calls and returns are expensive",
-    "crumbs": [
-      "PDSA",
-      "Week 2"
-    ]
+    "text": "Summary\n\nMerge sort takes time O(n \\log n) so can be used effectively on large inputs\nVariations on merge are possible\n\nUnion of two sorted lists — discard duplicates, if A[i] == B[j] move just one copy to C and increment both i and j\nIntersection of two sorted lists — when A[i] == B[j], move one copy to C, otherwise discard the smaller of A[i], B[j]\nList difference — elements in A but not in B\n\nMerge needs to create a new list to hold the merged elements\n\nNo obvious way to efficiently merge two lists in place\nExtra storage can be costly\n\nInherently recursive\n\nRecursive calls and returns are expensive"
   },
   {
     "objectID": "pages/DBMS/w3-slides.html",
@@ -5708,5 +5520,34 @@
     "title": "Week 4",
     "section": "Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus",
     "text": "Equivalence of Relational Algebra, Tuple Relational Calculus, and Domain Relational Calculus\nSelect Operation\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\sigma_{A = 5}(r)\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land A = 5\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b &gt; \\mid &lt;a, b&gt; \\in r \\land a = 5\\}\\)\n\nProject Operation\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\Pi_{A}(r)\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\exists p \\in r(t[A]=p[A])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid \\exists b(&lt;a, b&gt; \\in r)\\}\\)\n\nCombining Operations\n\\(R = (A, B)\\)\n\nRelational Algebra: \\(\\Pi_{A}(\\sigma_{B = 5}(r))\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r(t[A] = p[A] \\land p[B] = 5)\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid \\exists b(&lt;a, b&gt; \\in r \\land b = 5)\\}\\)\n\nUnion\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r \\cup s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\lor t \\in s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\lor &lt;a, b, c&gt; \\in s\\}\\)\n\nSet Difference\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r - s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land t \\notin s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\land &lt;a, b, c&gt; \\notin s\\}\\)\n\nIntersection\n\\(R = (A, B, C)\\), \\(S = (A, B, C)\\)\n\nRelational Algebra: \\(r \\cap s\\)\nTuple Relational Calculus: \\(\\{t \\mid t \\in r \\land t \\in s\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c &gt; \\mid &lt;a, b, c&gt; \\in r \\land &lt;a, b, c&gt; \\in s\\}\\)\n\nCartesian/Cross Product\n\\(R = (A, B)\\), \\(S = (C, D)\\)\n\nRelational Algebra: \\(r \\times s\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r \\exists q \\in s(t[A] = p[A] \\land t[B] = p[B] \\land t[C] = q[C] \\land t[D] = q[D])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c, d &gt; \\mid (&lt;a, b&gt; \\in r \\land &lt;c, d&gt; \\in s)\\}\\)\n\nNatural Join\n\\(R = (A, B, C, D)\\), \\(S = (B, D, E)\\)\n\nRelational Algebra: \\(r \\bowtie s\\) \\[\n\\Pi_{r.A, r.B, r.C, r.D, s.E}(\\sigma_{r.B = s.B \\land r.D = s.D}(r \\times s))\n\\]\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r \\exists q \\in s(t[A] = p[A] \\land t[B] = p[B] \\land t[C] = p[C] \\land t[D] = p[D] \\land t[E] = q[E] \\land p[B] = q[B] \\land p[D]=q[D])\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a, b, c, d, e &gt; \\mid &lt;a, b, c, d&gt; \\in r \\land &lt;b, d, e&gt; \\in s\\}\\)\n\nDivision\n\\(R = (A, B)\\), \\(S = (B)\\)\n\nRelational Algebra: \\(r \\div s\\)\nTuple Relational Calculus: \\(\\{t \\mid \\exists p \\in r(\\forall q \\in s(p[B] = q[B] \\implies t[A] = p[A]))\\}\\)\nDomain Relational Calculus: \\(\\{&lt; a &gt; \\mid &lt; a &gt; \\in r \\land \\forall &lt;b&gt;(&lt; b &gt; \\in s \\implies &lt; a, b &gt; \\in r)\\}\\)\n\n\n\n\nComplete notes"
+  },
+  {
+    "objectID": "pages/Stats2/Quiz2_keyconcepts.html",
+    "href": "pages/Stats2/Quiz2_keyconcepts.html",
+    "title": "Key concepts in Statistics-II from Week 5 to Week 8",
+    "section": "",
+    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervasl in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable.",
+    "crumbs": [
+      "Statistics-II",
+      "Key concepts in Statistics-II from Week 5 to Week 8"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Quiz2_keyconcepts.html#functions-of-a-continuous-random-variable",
+    "href": "pages/Stats2/Quiz2_keyconcepts.html#functions-of-a-continuous-random-variable",
+    "title": "Quiz 2 - Key Concepts",
+    "section": "",
+    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervasl in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a has f_Y(y) = f_X(y-a)\nScaling: Y=aX has f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b has f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1)"
+  },
+  {
+    "objectID": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.1-functions-of-a-continuous-random-variable",
+    "href": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.1-functions-of-a-continuous-random-variable",
+    "title": "Key concepts in Statistics-II from Week 5 to Week 8",
+    "section": "",
+    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervasl in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable.",
+    "crumbs": [
+      "Statistics-II",
+      "Key concepts in Statistics-II from Week 5 to Week 8"
+    ]
   }
 ]
