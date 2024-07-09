@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Notes",
     "section": "",
-    "text": "An attempt to archive my notes from various courses.",
+    "text": "Notes",
     "crumbs": [
       "Home"
     ]
@@ -5545,6 +5545,17 @@
     "title": "Key concepts in Statistics-II from Week 5 to Week 8",
     "section": "",
     "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervasl in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable.",
+    "crumbs": [
+      "Statistics-II",
+      "Key concepts in Statistics-II from Week 5 to Week 8"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.2-expectations-of-continuous-random-variable",
+    "href": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.2-expectations-of-continuous-random-variable",
+    "title": "Key concepts in Statistics-II from Week 5 to Week 8",
+    "section": "Lecture 5.2: Expectations of continuous random variable",
+    "text": "Lecture 5.2: Expectations of continuous random variable",
     "crumbs": [
       "Statistics-II",
       "Key concepts in Statistics-II from Week 5 to Week 8"
