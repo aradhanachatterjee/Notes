@@ -13,7 +13,7 @@ format:
   $$F_y(y) = P(Y \leq y) = P(g(X) \leq y) = P(X \in \{x:g(x) \leq y\})$$
 
   - To evaluate the above probability,
-    - Convert the subset $A_y = \{x:g(x) \leq y\}$ into intervasl in real line
+    - Convert the subset $A_y = \{x:g(x) \leq y\}$ into intervals in real line
     - Find the probability of $X$ falling in the interval
     - $F_Y(y) = P(X \in A_y) = \int_{A_y} f_X(x) dx$
 
