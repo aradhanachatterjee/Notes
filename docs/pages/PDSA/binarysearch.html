@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes - Key concepts in Statistics-II from Week 5 to Week 8</title>
+<title>Notes - Binary Search</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,6 +102,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Statistics-II</a></li><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Key concepts in Statistics-II from Week 5 to Week 8</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/binarysearch.html">Binary Search</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -170,7 +205,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Key concepts in Statistics-II from Week 5 to Week 8</span></a>
   </div>
 </li>
@@ -220,6 +255,12 @@ window.Quarto = {
  <span class="menu-text">Analysis of Algorithms</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Binary Search</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -248,18 +289,23 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#searching-in-a-list" id="toc-searching-in-a-list" class="nav-link active" data-scroll-target="#searching-in-a-list">Searching in a list</a></li>
+  <li><a href="#searching-in-a-sorted-list" id="toc-searching-in-a-sorted-list" class="nav-link" data-scroll-target="#searching-in-a-sorted-list">Searching in a <em>sorted</em> list</a></li>
+  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search">Binary search</a>
   <ul class="collapse">
-  <li><a href="#lecture-5.1-functions-of-a-continuous-random-variable" id="toc-lecture-5.1-functions-of-a-continuous-random-variable" class="nav-link active" data-scroll-target="#lecture-5.1-functions-of-a-continuous-random-variable">Lecture 5.1: Functions of a continuous random variable</a></li>
-  <li><a href="#lecture-5.2-expectations-of-continuous-random-variable" id="toc-lecture-5.2-expectations-of-continuous-random-variable" class="nav-link" data-scroll-target="#lecture-5.2-expectations-of-continuous-random-variable">Lecture 5.2: Expectations of continuous random variable</a></li>
+  <li><a href="#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" id="toc-an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" class="nav-link" data-scroll-target="#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences">An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Statistics-II</a></li><li class="breadcrumb-item"><a href="../../pages/Stats2/Quiz2_keyconcepts.html">Key concepts in Statistics-II from Week 5 to Week 8</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/binarysearch.html">Binary Search</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Key concepts in Statistics-II from Week 5 to Week 8</h1>
+<h1 class="title">Binary Search</h1>
 </div>
 
 
@@ -276,60 +322,159 @@ window.Quarto = {
 </header>
 
 
-<section id="lecture-5.1-functions-of-a-continuous-random-variable" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-5.1-functions-of-a-continuous-random-variable">Lecture 5.1: Functions of a continuous random variable</h2>
+<section id="searching-in-a-list" class="level2">
+<h2 class="anchored" data-anchor-id="searching-in-a-list">Searching in a list</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li><p>The CDF <span class="math inline">F_Y</span> of <span class="math inline">Y = g(X)</span>, where <span class="math inline">X</span> is a continuous random variable with PDF <span class="math inline">f_X</span>, is given by: <span class="math display">F_y(y) = P(Y \leq y) = P(g(X) \leq y) = P(X \in \{x:g(x) \leq y\})</span></p>
+<li>Is a value <code>v</code> present in a list <code>l</code>?</li>
+<li>Naive search: check each element in the list</li>
+<li>Input size is <code>n</code>, the number of elements in the list</li>
+<li>Worst case scenario: <code>v</code> is not in the list</li>
+<li>Worst-case time complexity is <code>O(n)</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> naivesearch(v, l):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> l:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v <span class="op">==</span> x:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="searching-in-a-sorted-list" class="level2">
+<h2 class="anchored" data-anchor-id="searching-in-a-sorted-list">Searching in a <em>sorted</em> list</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>To evaluate the above probability,
+<li>If the list is sorted in ascending order, we can do better.</li>
+<li>Compare <code>v</code> with the midpoint of the list.
 <ul>
-<li>Convert the subset <span class="math inline">A_y = \{x:g(x) \leq y\}</span> into intervals in real line</li>
-<li>Find the probability of <span class="math inline">X</span> falling in the interval</li>
-<li><span class="math inline">F_Y(y) = P(X \in A_y) = \int_{A_y} f_X(x) dx</span></li>
-</ul></li>
-</ul></li>
-<li><p>For monotonic, differentiable functions <span class="math inline">Y=g(X)</span> <strong>only</strong>, the PDF of <span class="math inline">Y</span> is given by: <span class="math display">f_Y(y) = \frac{1}{\left | g'(g^{-1}(y)) \right|} \cdot f_X(g^{-1}(y)) </span></p>
-<ul>
-<li>Translation: <span class="math inline">Y=X+a</span> <span class="math display">f_Y(y) = f_X(y-a)</span></li>
-<li>Scaling: <span class="math inline">Y=aX</span> <span class="math display">f_Y(y) = \frac{1}{|a|} f_X(\frac{y}{a})</span></li>
-<li>Affine: <span class="math inline">Y=aX+b</span> <span class="math display">f_Y(y) = \frac{1}{|a|} f_X(\frac{y-b}{a})</span></li>
-</ul></li>
-<li><p>Affine transformation of normal distributions</p>
-<ul>
-<li><p><span class="math inline">X \sim N(0,1)</span> (Standard normal) <span class="math display">f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}</span></p>
-<ul>
-<li><span class="math inline">Y = \sigma X + \mu</span> <span class="math display">f_Y(y) = \frac{1}{\sigma\sqrt{2\pi}} e^{-(y-\mu)^2/2\sigma^2}</span>
-<ul>
-<li><span class="math inline">Y \sim N(\mu, \sigma^2)</span></li>
-</ul></li>
-</ul></li>
-<li><p><span class="math inline">X \sim N(\mu, \sigma^2)</span></p>
-<ul>
-<li><span class="math inline">Y=\frac{X-\mu}{\sigma} \sim N(0,1)</span></li>
-</ul></li>
+<li>If <code>v</code> is equal to the midpoint, the value is found.</li>
+<li>If <code>v</code> is less than the midpoint, search the left half.</li>
+<li>If <code>v</code> is greater than the midpoint, search the right half.</li>
+<li>Repeat the process until the value is found or the list is empty.</li>
 </ul></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binarysearch(v, l):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> []:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(l) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> l[m]:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">&lt;</span> l[m]:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> binarysearch(v, l[:m])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> binarysearch(v, l[m<span class="op">+</span><span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="binary-search" class="level2">
+<h2 class="anchored" data-anchor-id="binary-search">Binary search</h2>
+<ul>
+<li>How long does it take to search for a value in a list of size <span class="math inline">n</span>?
+<ul>
+<li>In the worst case, the list is halved at each step.</li>
+<li>The number of steps is the number of times we can halve <span class="math inline">n</span> before reaching <span class="math inline">1</span>, which is <span class="math inline">O(\log n)</span></li>
+</ul></li>
+<li>Calculating <span class="math inline">T(n)</span> - the time to search in a list of size <span class="math inline">n</span>
+<ul>
+<li>Identify the basic operation: the comparison <code>v == l[m]</code>
+<ul>
+<li>Let the time taken to perform the basic operation be <span class="math inline">T(1)=1</span></li>
+</ul></li>
+<li>Recurrence relation: <span class="math inline">T(n) = T(\frac{n}{2}) + 1</span></li>
+</ul></li>
+<li>Solve by “unwinding” <span class="math display">
+\begin{aligned}
+  T(n) &amp;= T(\frac{n}{2}) + 1 \\
+  &amp;=\ (T(\frac{n}{4}) + 1) + 1 =\ T\left(\frac{n}{2^2}\right) + \underbrace{1 + 1}_{2} \\
+  &amp;=\ \dotsc \\
+  &amp;=\ T\left(\frac{n}{2^k}\right) + \underbrace{1 +\dots + 1}_{k} \\
+  &amp;=\ T(1) + k, \text{ for } \ k = \log n \\
+  &amp;=\ 1 + \log n = O(\log n) \\
+  \end{aligned}
+</span></li>
+</ul>
+<section id="an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" class="level3">
+<h3 class="anchored" data-anchor-id="an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences">An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences</h3>
+<ul>
+<li><p><strong>Identify the Basic Operation</strong>: <code>v == l[m]</code></p></li>
+<li><p><strong>Determine the Number of Subproblems and Their Size</strong>:</p>
+<ul>
+<li>Each recursive call splits the list in half.</li>
+<li>The size of each subproblem is approximately half the size of the original problem: <span class="math inline">\frac{n}{2}</span>.</li>
+</ul></li>
+<li><p><strong>Form the Recurrence Relation</strong>:</p>
+<ul>
+<li><p>The recurrence relation for the running time <span class="math inline">T(n)</span> of binary search can be written as: <span class="math display">
+T(n) = T\left(\frac{n}{2}\right) + O(1)
+</span></p></li>
+<li><p>Here, <span class="math inline">T(\frac{n}{2})</span> represents the time complexity of searching in a sublist of size <span class="math inline">\frac{n}{2}</span>, and <span class="math inline">O(1)</span> is the time complexity of the basic operation (comparison).</p></li>
+</ul></li>
+<li><p><strong>Solve the Recurrence Relation</strong>:</p>
+<ul>
+<li>This type of recurrence relation is a common form and can be solved using the <strong>Master Theorem</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+</ul></li>
+</ul>
+<div id="master-theorem" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Result
+Master Theorem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Affine transformation of a normal random variable is also a normal random variable.</p>
+<p>The Master Theorem applies to recurrences of the form: <span class="math display">
+T(n) = aT\left(\frac{n}{b}\right) + f(n)
+</span> where:</p>
+<ul>
+<li><span class="math inline">a \geq 1</span> is the number of subproblems in the recursion.</li>
+<li><span class="math inline">\frac{n}{b}</span> is the size of each subproblem.</li>
+<li><span class="math inline">f(n)</span> is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.</li>
+</ul>
+<p>According to the Master Theorem:</p>
+<ul>
+<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c &lt; \log_b{a}</span>, then <span class="math inline">T(n) = O(n^{\log_b{a}})</span>.</li>
+<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c = \log_b{a}</span>, then <span class="math inline">T(n) = O(n^{\log_b{a}} \log{n})</span>.</li>
+<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c &gt; \log_b{a}</span>, then <span class="math inline">T(n) = O(f(n))</span>.</li>
+</ul>
 </div>
 </div>
+<ul>
+<li><p>For binary search</p>
+<ul>
+<li><span class="math inline">a=1</span> (one subproblem)</li>
+<li><span class="math inline">b=2</span> (each subproblem is half the size of the original problem)</li>
+<li><span class="math inline">\log_b{a} = \log_2{1} = 0</span></li>
+<li><span class="math inline">f(n) = O(1)</span> (constant time for the basic operation), is <span class="math inline">O(n^0)</span></li>
+<li>Here, <span class="math inline">c = 0 = \log_b{a}</span>, so the second case of the Master Theorem applies.
+<ul>
+<li><span class="math inline">T(n) = O(n^0 \log{n}) = O(\log{n})</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
-<section id="lecture-5.2-expectations-of-continuous-random-variable" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-5.2-expectations-of-continuous-random-variable">Lecture 5.2: Expectations of continuous random variable</h2>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<ul>
+<li>The time complexity of binary search is <span class="math inline">O(\log n)</span>.</li>
+</ul>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Cormen, T. H., Leiserson, C. E., Rivest, R. L., Stein, C. <a href="http://lccn.loc.gov/2021037260">Introduction to Algorithms</a>, Fourth Edition. MIT Press, 2022. Sections 4.5 (The master method for solving recurrences) and 4.6 (Proof of the continuous master theorem), pp.&nbsp;101–115.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -866,4 +1011,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

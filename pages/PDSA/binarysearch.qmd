@@ -1,0 +1,148 @@
+---
+title: "Binary Search"
+format: 
+    html: 
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+execute:
+    echo: false
+---
+
+## Searching in a list
+
+::: columns
+::: {.column width="50%"}
+
+- Is a value `v` present in a list `l`?
+- Naive search: check each element in the list
+- Input size is `n`, the number of elements in the list
+- Worst case scenario: `v` is not in the list
+- Worst-case time complexity is `O(n)`
+
+:::
+
+::: {.column width="50%"}
+
+``` python
+def naivesearch(v, l):
+    for x in l:
+        if v == x:
+            return True
+    return False
+```
+
+:::
+:::
+
+## Searching in a *sorted* list
+
+::: columns
+::: {.column width="50%"}
+
+- If the list is sorted in ascending order, we can do better.
+- Compare `v` with the midpoint of the list.
+  - If `v` is equal to the midpoint, the value is found.
+  - If `v` is less than the midpoint, search the left half.
+  - If `v` is greater than the midpoint, search the right half.
+  - Repeat the process until the value is found or the list is empty.
+
+:::
+
+::: {.column width="50%"}
+
+``` python
+def binarysearch(v, l):
+    if l == []:
+        return False
+    m = len(l) // 2
+    if v == l[m]:
+        return True
+    if v < l[m]:
+        return binarysearch(v, l[:m])
+    else:
+        return binarysearch(v, l[m+1:])
+```
+
+:::
+:::
+
+## Binary search
+
+- How long does it take to search for a value in a list of size $n$?
+  - In the worst case, the list is halved at each step.
+  - The number of steps is the number of times we can halve $n$ before reaching $1$, which is $O(\log n)$
+
+- Calculating $T(n)$ - the time to search in a list of size $n$
+  - Identify the basic operation: the comparison `v == l[m]`
+    - Let the time taken to perform the basic operation be $T(1)=1$
+  - Recurrence relation: $T(n) = T(\frac{n}{2}) + 1$
+
+- Solve by "unwinding"
+$$
+ \begin{aligned}
+    T(n) &= T(\frac{n}{2}) + 1 \\
+    &=\ (T(\frac{n}{4}) + 1) + 1 =\ T\left(\frac{n}{2^2}\right) + \underbrace{1 + 1}_{2} \\
+    &=\ \dotsc \\
+    &=\ T\left(\frac{n}{2^k}\right) + \underbrace{1 +\dots + 1}_{k} \\
+    &=\ T(1) + k, \text{ for } \ k = \log n \\
+    &=\ 1 + \log n = O(\log n) \\
+    \end{aligned}
+$$
+
+### An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences
+
+- **Identify the Basic Operation**: `v == l[m]`
+
+- **Determine the Number of Subproblems and Their Size**:
+   - Each recursive call splits the list in half.
+   - The size of each subproblem is approximately half the size of the original problem: $\frac{n}{2}$.
+
+- **Form the Recurrence Relation**:
+  - The recurrence relation for the running time $T(n)$ of binary search can be written as:
+    $$
+    T(n) = T\left(\frac{n}{2}\right) + O(1)
+    $$
+  
+  - Here, $T(\frac{n}{2})$ represents the time complexity of searching in a sublist of size $\frac{n}{2}$, and $O(1)$ is the time complexity of the basic operation (comparison).
+
+- **Solve the Recurrence Relation**:
+   - This type of recurrence relation is a common form and can be solved using the **Master Theorem**[^1].
+
+::: {#master-theorem .callout-tip}
+## Master Theorem
+
+The Master Theorem applies to recurrences of the form:
+$$
+T(n) = aT\left(\frac{n}{b}\right) + f(n)
+$$
+where:
+
+  - $a \geq 1$ is the number of subproblems in the recursion.
+  - $\frac{n}{b}$ is the size of each subproblem.
+  - $f(n)$ is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.
+
+According to the Master Theorem:
+
+  - If $f(n) = O(n^c)$ where $c < \log_b{a}$, then $T(n) = O(n^{\log_b{a}})$.
+  - If $f(n) = O(n^c)$ where $c = \log_b{a}$, then $T(n) = O(n^{\log_b{a}} \log{n})$.
+  - If $f(n) = O(n^c)$ where $c > \log_b{a}$, then $T(n) = O(f(n))$.
+
+:::
+
+- For binary search
+
+  - $a=1$ (one subproblem)
+  - $b=2$ (each subproblem is half the size of the original problem)
+  - $\log_b{a} = \log_2{1} = 0$
+  - $f(n) = O(1)$ (constant time for the basic operation), is $O(n^0)$
+  - Here, $c = 0 = \log_b{a}$, so the second case of the Master Theorem applies.
+    - $T(n) = O(n^0 \log{n}) = O(\log{n})$.
+
+## Conclusion
+
+- The time complexity of binary search is $O(\log n)$.
+
+[^1]: Cormen, T. H., Leiserson, C. E., Rivest, R. L., Stein, C. [Introduction to Algorithms](http://lccn.loc.gov/2021037260), Fourth Edition. MIT Press, 2022. Sections 4.5 (The master method for solving recurrences) and 4.6 (Proof of the continuous master theorem), pp. 101–115.

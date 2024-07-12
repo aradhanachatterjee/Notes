@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notes - Analysis of Algorithms</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">Analysis of Algorithms</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Notes</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Statistics-II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Key concepts in Statistics-II from Week 5 to Week 8</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">DBMS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/w4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">PDSA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Analysis of Algorithms</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Random</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Series Representations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#measuring-performance-of-algorithms" id="toc-measuring-performance-of-algorithms" class="nav-link active" data-scroll-target="#measuring-performance-of-algorithms">Measuring performance of algorithms</a></li>
+  <li><a href="#measuring-running-time" id="toc-measuring-running-time" class="nav-link" data-scroll-target="#measuring-running-time">Measuring running time</a></li>
+  <li><a href="#input-size" id="toc-input-size" class="nav-link" data-scroll-target="#input-size">Input size</a>
+  <ul class="collapse">
+  <li><a href="#what-is-the-input-size-for-an-algorithm" id="toc-what-is-the-input-size-for-an-algorithm" class="nav-link" data-scroll-target="#what-is-the-input-size-for-an-algorithm">What is the input size for an algorithm?</a></li>
+  <li><a href="#which-input-size-to-consider" id="toc-which-input-size-to-consider" class="nav-link" data-scroll-target="#which-input-size-to-consider">Which input size to consider?</a></li>
+  </ul></li>
+  <li><a href="#orders-of-magnitude" id="toc-orders-of-magnitude" class="nav-link" data-scroll-target="#orders-of-magnitude">Orders of magnitude</a>
+  <ul class="collapse">
+  <li><a href="#upper-bounds" id="toc-upper-bounds" class="nav-link" data-scroll-target="#upper-bounds">Upper bounds</a></li>
+  <li><a href="#lower-bounds" id="toc-lower-bounds" class="nav-link" data-scroll-target="#lower-bounds">Lower bounds</a></li>
+  <li><a href="#tight-bounds" id="toc-tight-bounds" class="nav-link" data-scroll-target="#tight-bounds">Tight bounds</a></li>
+  </ul></li>
+  <li><a href="#calculating-time-complexity---examples" id="toc-calculating-time-complexity---examples" class="nav-link" data-scroll-target="#calculating-time-complexity---examples">Calculating time complexity - Examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1---find-the-maximum-element-in-a-list" id="toc-example-1---find-the-maximum-element-in-a-list" class="nav-link" data-scroll-target="#example-1---find-the-maximum-element-in-a-list">Example 1 - Find the maximum element in a list</a></li>
+  <li><a href="#example-2---check-whether-a-list-contains-duplicates" id="toc-example-2---check-whether-a-list-contains-duplicates" class="nav-link" data-scroll-target="#example-2---check-whether-a-list-contains-duplicates">Example 2 - Check whether a list contains duplicates</a></li>
+  <li><a href="#example-3---matrix-multiplication" id="toc-example-3---matrix-multiplication" class="nav-link" data-scroll-target="#example-3---matrix-multiplication">Example 3 - Matrix multiplication</a></li>
+  <li><a href="#example-4---number-of-bits-in-binary-representation-of-a-number" id="toc-example-4---number-of-bits-in-binary-representation-of-a-number" class="nav-link" data-scroll-target="#example-4---number-of-bits-in-binary-representation-of-a-number">Example 4 - Number of bits in binary representation of a number</a></li>
+  <li><a href="#example-5---towers-of-hanoi" id="toc-example-5---towers-of-hanoi" class="nav-link" data-scroll-target="#example-5---towers-of-hanoi">Example 5 - Towers of Hanoi</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">Analysis of Algorithms</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Analysis of Algorithms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="measuring-performance-of-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-performance-of-algorithms">Measuring performance of algorithms</h2>
+<ul>
+<li>Two main factors to consider when measuring the performance of an algorithm are:
+<ul>
+<li>Running time - how long does the algorithm take to run?</li>
+<li>Space requirements - how much memory does the algorithm use?</li>
+</ul></li>
+<li>Time depends on the processing power, which is impossible to change for the given hardware. Also, enhancements in the hardware has very limited impact at a practical level.</li>
+<li>Storage space is limited by the amount of memory available on the machine. This is easier to upgrade than processing power, but still has limitations.</li>
+<li>Therefore, when measuring the performance of an algorithm, we focus on the time rather than space.</li>
+</ul>
+</section>
+<section id="measuring-running-time" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-running-time">Measuring running time</h2>
+<ul>
+<li><p>Analysis should be independent of the hardware and software environment.</p></li>
+<li><p>Running time is measured in terms of the number of basic operations performed by the algorithm.</p></li>
+<li><p>Typical basic operations include:</p>
+<ul>
+<li>Assign a value to a variable - <code>a = 5</code></li>
+<li>Compare two values - <code>if a &gt; b</code></li>
+</ul></li>
+<li><p>Exchange a pair of values?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><code>(x,y)=(y,x)</code></p>
+</div><div class="column" style="width:50%;">
+<p><code>t=x</code></p>
+<p><code>x=y</code></p>
+<p><code>y=t</code></p>
+</div>
+</div>
+<ul>
+<li>If we ignore constants, focus on orders of magnitude, both are within a factor of <span class="math inline">3</span>. Therefore, we can consider them as a single basic operation.
+<ul>
+<li>We do not need to be <em>extremely</em> precise about defining basic operations.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="input-size" class="level2">
+<h2 class="anchored" data-anchor-id="input-size">Input size</h2>
+<ul>
+<li>The time taken by an algorithm to run is dependent on the size of the input data.</li>
+<li>Measure time efficiency as a function of the input size
+<ul>
+<li>Input size <span class="math inline">n</span></li>
+<li>Running time <span class="math inline">t(n)</span></li>
+</ul></li>
+<li>Different algorithms may have different time complexities for the same input size.
+<ul>
+<li>For example, if we are arranging a given list of numbers in ascending order, and the list is already sorted, the time taken by the algorithm will be less than if the list is in descending order.</li>
+</ul></li>
+</ul>
+<section id="what-is-the-input-size-for-an-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-input-size-for-an-algorithm">What is the input size for an algorithm?</h3>
+<ul>
+<li>Typically, the input size is the number of elements in the input data.</li>
+<li>For numerical algorithms, the input size is the number of digits in the input data.
+<ul>
+<li>Same as <span class="math inline">\log_{b}n</span> where <span class="math inline">b</span> is the base of the number system.</li>
+</ul></li>
+</ul>
+</section>
+<section id="which-input-size-to-consider" class="level3">
+<h3 class="anchored" data-anchor-id="which-input-size-to-consider">Which input size to consider?</h3>
+<ul>
+<li>Ideally, we want an input that is representative of the typical data that the algorithm will process, and that will give us a good idea of the algorithm’s average performance.
+<ul>
+<li>However, “average” is difficult to define and compute.</li>
+<li>Average over what? All possible inputs? All possible distributions of inputs? - Not practical.</li>
+</ul></li>
+<li>Therefore, we often consider the worst-case input size.
+<ul>
+<li>It is the input which forces the algorithm to take the longest time.</li>
+<li>It is easier to compute than the average case.</li>
+<li>Upper bound for worst-case input <em>guarantees</em> good performance for all inputs.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="orders-of-magnitude" class="level2">
+<h2 class="anchored" data-anchor-id="orders-of-magnitude">Orders of magnitude</h2>
+<ul>
+<li>When comparing <span class="math inline">t(n)</span>, focus on the order of magnitude
+<ul>
+<li>Ignore constants factors.</li>
+</ul></li>
+<li>Focus on the <strong>asymptotic complexity</strong> of the algorithm
+<ul>
+<li>How does the running time grow as the input size increases?</li>
+<li>What happens in the limit as <span class="math inline">n</span> becomes large/approaches infinity?</li>
+</ul></li>
+<li>Typical growth functions
+<ul>
+<li>Is <span class="math inline">t(n)</span> proportional to <span class="math inline">\log n</span>, …, <span class="math inline">n^2</span>, <span class="math inline">n^3</span>, …, <span class="math inline">2^n</span>?
+<ul>
+<li>Note: <span class="math inline">\log n</span> means <span class="math inline">\log_{2}n</span> by default.</li>
+</ul></li>
+</ul></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Input size</th>
+<th style="text-align: center;"><span class="math inline">\log n</span></th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;"><span class="math inline">n \log n</span></th>
+<th style="text-align: center;"><span class="math inline">n^2</span></th>
+<th style="text-align: center;"><span class="math inline">n^3</span></th>
+<th style="text-align: center;"><span class="math inline">2^n</span></th>
+<th style="text-align: center;"><span class="math inline">n!</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">3.3</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">33</span></td>
+<td style="text-align: center;"><span class="math inline">100</span></td>
+<td style="text-align: center;"><span class="math inline">1000</span></td>
+<td style="text-align: center;"><span class="math inline">1000</span></td>
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">100</span></td>
+<td style="text-align: center;"><span class="math inline">6.6</span></td>
+<td style="text-align: center;"><span class="math inline">100</span></td>
+<td style="text-align: center;"><span class="math inline">660</span></td>
+<td style="text-align: center;"><span class="math inline">10^4</span></td>
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+<td style="text-align: center;"><span class="math inline">10^{30}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{157}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">1000</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">1000</span></td>
+<td style="text-align: center;"><span class="math inline">10^4</span></td>
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+<td style="text-align: center;"><span class="math inline">10^9</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">10^4</span></td>
+<td style="text-align: center;"><span class="math inline">13</span></td>
+<td style="text-align: center;"><span class="math inline">10^4</span></td>
+<td style="text-align: center;"><span class="math inline">10^5</span></td>
+<td style="text-align: center;"><span class="math inline">10^8</span></td>
+<td style="text-align: center;"><span class="math inline">10^{12}</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">10^5</span></td>
+<td style="text-align: center;"><span class="math inline">17</span></td>
+<td style="text-align: center;"><span class="math inline">10^5</span></td>
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+<td style="text-align: center;"><span class="math inline">10^{10}</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">10^6</span></td>
+<td style="text-align: center;"><span class="math inline">10^7</span></td>
+<td style="text-align: center;"><span class="math inline">10^{12}</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">10^7</span></td>
+<td style="text-align: center;"><span class="math inline">23</span></td>
+<td style="text-align: center;"><span class="math inline">10^7</span></td>
+<td style="text-align: center;"><span class="math inline">10^8</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">10^8</span></td>
+<td style="text-align: center;"><span class="math inline">27</span></td>
+<td style="text-align: center;"><span class="math inline">10^8</span></td>
+<td style="text-align: center;"><span class="math inline">10^9</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">10^9</span></td>
+<td style="text-align: center;"><span class="math inline">30</span></td>
+<td style="text-align: center;"><span class="math inline">10^9</span></td>
+<td style="text-align: center;"><span class="math inline">10^{10}</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">10^{10}</span></td>
+<td style="text-align: center;"><span class="math inline">33</span></td>
+<td style="text-align: center;"><span class="math inline">10^{10}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{11}</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The table above shows the growth of different functions as the input size increases.</p></li>
+<li><p>How do we compare functions with respect to orders of magnitude?</p></li>
+</ul>
+<section id="upper-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="upper-bounds">Upper bounds</h3>
+<ul>
+<li><span class="math inline">f(x)</span> is said to be <span class="math inline">O(g(x))</span> if we can find constants <span class="math inline">c</span> and <span class="math inline">x_0</span> such that <span class="math inline">c \cdot g(x)</span> is an upper bound for <span class="math inline">f(x)</span> for <span class="math inline">x</span> beyond <span class="math inline">x_0</span></li>
+<li><span class="math inline">f(x) \leq cg(x)</span> for every <span class="math inline">x \geq x_0</span></li>
+</ul>
+<div id="019c18f7" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_of_algorithms_files/figure-html/cell-2-output-1.png" width="808" height="523" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="examples" class="level4">
+<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+<ul>
+<li><p><span class="math inline">100n+5</span> is <span class="math inline">O(n^2)</span></p>
+<ul>
+<li><span class="math inline">100n+5 \leq 100n+n=101n</span>, for <span class="math inline">n \geq 5</span></li>
+<li><span class="math inline">101n \leq 101n^2</span></li>
+<li>Choose <span class="math inline">n_0=5</span> and <span class="math inline">c=101</span></li>
+</ul></li>
+<li><p>Alternatively</p>
+<ul>
+<li><span class="math inline">100n+5 \leq 100n +5n =105n</span>, for <span class="math inline">n \geq 1</span></li>
+<li><span class="math inline">105n \leq 105n^2</span></li>
+<li>Choose <span class="math inline">n_0=1</span> and <span class="math inline">c=105</span></li>
+</ul></li>
+<li><p>Choice of <span class="math inline">c</span> and <span class="math inline">n_0</span> is not unique</p></li>
+<li><p><span class="math inline">100n^2 + 20n +5</span> is <span class="math inline">O(n^2)</span></p>
+<ul>
+<li><span class="math inline">100n^2 + 20n +5 \leq 100n^2 + 20n^2 +5n^2</span>, for <span class="math inline">n \geq 1</span></li>
+<li><span class="math inline">100n^2 + 20n^2 +5n^2 \leq 125n^2</span>, for <span class="math inline">n \geq 1</span></li>
+<li>Choose <span class="math inline">n_0=1</span> and <span class="math inline">c=125</span></li>
+</ul></li>
+<li><p>What matters is the highest term</p>
+<ul>
+<li><span class="math inline">20n+5</span> is dominated by <span class="math inline">100n^2</span></li>
+</ul></li>
+<li><p><span class="math inline">n^3</span> is not <span class="math inline">O(n^2)</span></p>
+<ul>
+<li>No matter what <span class="math inline">c</span> we choose, <span class="math inline">cn^2</span> will be dominated by <span class="math inline">n^3</span> for <span class="math inline">n \geq c</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="useful-properties-of-o-notation" class="level4">
+<h4 class="anchored" data-anchor-id="useful-properties-of-o-notation">Useful properties of <span class="math inline">O</span> notation</h4>
+<ul>
+<li>If <span class="math inline">f_{1}(n)</span> is <span class="math inline">O(g_{1}(n))</span> and <span class="math inline">f_{2}(n)</span> is <span class="math inline">O(g_{2}(n))</span>, then <span class="math inline">f_{1}(n)+f_{2}(n)</span> is <span class="math inline">O(\max(g_{1}(n),g_{2}(n)))</span></li>
+<li>Proof
+<ul>
+<li><span class="math inline">f_{1}(n) \leq c_{1}g_{1}(n)</span> for <span class="math inline">n \geq n_{1}</span></li>
+<li><span class="math inline">f_{2}(n) \leq c_{2}g_{2}(n)</span> for <span class="math inline">n \geq n_{2}</span></li>
+<li>Let <span class="math inline">c_{3} = \max(c_{1},c_{2})</span>, <span class="math inline">n_{3} = \max(n_{1},n_{2})</span></li>
+<li>For <span class="math inline">n \geq n_{3}</span>, <span class="math inline">f_{1}(n)+f_{2}(n)</span>
+<ul>
+<li><span class="math inline">\leq c_{1}g_{1}(n)+c_{2}g_{2}(n)</span></li>
+<li><span class="math inline">\leq c_{3}g_{1}(n)+c_{3}g_{2}(n)</span></li>
+<li><span class="math inline">\leq 2c_{3}(\max(g_{1}(n),g_{2}(n)))</span></li>
+</ul></li>
+</ul></li>
+<li>Algorithm has two phases
+<ul>
+<li>Phase A takes time <span class="math inline">O(g_{A}(n))</span></li>
+<li>Phase B takes time <span class="math inline">O(g_{B}(n))</span></li>
+</ul></li>
+<li>Algorithm as a whole takes time <span class="math inline">\max(O(g_{A}(n),g_{B}(n)))</span></li>
+<li>Least efficient phase is the upper bound for the whole algorithm</li>
+</ul>
+</section>
+</section>
+<section id="lower-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="lower-bounds">Lower bounds</h3>
+<ul>
+<li><span class="math inline">f(x)</span> is said to be <span class="math inline">\Omega(g(x))</span> if we can find constants <span class="math inline">c</span> and <span class="math inline">x_0</span> such that <span class="math inline">c \cdot g(x)</span> is a lower bound for <span class="math inline">f(x)</span> for <span class="math inline">x</span> beyond <span class="math inline">x_0</span>
+<ul>
+<li><span class="math inline">f(x) \geq cg(x)</span> for every <span class="math inline">x \geq x_0</span></li>
+</ul></li>
+<li><span class="math inline">n^3</span> is <span class="math inline">\Omega(n^2)</span>
+<ul>
+<li><span class="math inline">n^3 &gt; n^2</span> for all <span class="math inline">n</span>, so <span class="math inline">n_0=1</span>, <span class="math inline">c=1</span></li>
+</ul></li>
+<li>Typically we establish lower bounds for a problem rather than an individual algorithm
+<ul>
+<li>If we sort a list by comparing elements and swapping them, we require <span class="math inline">\Omega(n \log n)</span> comparisons</li>
+<li>This is <em>independent</em> of the sorting algorithm</li>
+</ul></li>
+</ul>
+</section>
+<section id="tight-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="tight-bounds">Tight bounds</h3>
+<ul>
+<li><span class="math inline">f(x)</span> is said to be <span class="math inline">\Theta(g(x))</span> if <span class="math inline">f(x)</span> is both <span class="math inline">O(g(x))</span> and <span class="math inline">\Omega(g(x))</span>
+<ul>
+<li>Find constants <span class="math inline">c_1</span>, <span class="math inline">c_2</span>, <span class="math inline">x_0</span> such that <span class="math inline">c_{1}g(x) \leq f(x) \leq c_{2}g(x)</span> for every <span class="math inline">x \geq x_0</span></li>
+</ul></li>
+<li><span class="math inline">\frac{n(n-1)}{2}</span> is <span class="math inline">\Theta(n^2)</span>
+<ul>
+<li>Upper bound
+<ul>
+<li><span class="math inline">\frac{n(n-1)}{2} = \frac{n^2}{2} - \frac{n}{2} \leq \frac{n^2}{2}</span> for all <span class="math inline">n \geq 0</span></li>
+</ul></li>
+<li>Lower bound
+<ul>
+<li><span class="math inline">\frac{n(n-1)}{2} = \frac{n^2}{2} - \frac{n}{2} \geq \frac{n^2}{2} - (\frac{n}{2} \times \frac{n}{2}) \geq \frac{n^2}{4}</span> for <span class="math inline">n \geq 2</span></li>
+</ul></li>
+<li>Choose <span class="math inline">n_0 = 2</span>, <span class="math inline">c_1 = \frac{1}{4}</span>, <span class="math inline">c_2 = \frac{1}{2}</span></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="calculating-time-complexity---examples" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-time-complexity---examples">Calculating time complexity - Examples</h2>
+<section id="example-1---find-the-maximum-element-in-a-list" class="level3">
+<h3 class="anchored" data-anchor-id="example-1---find-the-maximum-element-in-a-list">Example 1 - Find the maximum element in a list</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Input size is the length of the list</li>
+<li>Single loop scans all elements</li>
+<li>Always takes <span class="math inline">n</span> steps</li>
+<li>Overall time is <span class="math inline">O(n)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maxElement(L):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    maxval <span class="op">=</span> L[<span class="dv">0</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(L)):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> L[i] <span class="op">&gt;</span> maxval:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            maxval <span class="op">=</span> L[i]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> maxval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="example-2---check-whether-a-list-contains-duplicates" class="level3">
+<h3 class="anchored" data-anchor-id="example-2---check-whether-a-list-contains-duplicates">Example 2 - Check whether a list contains duplicates</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Input size is the length of the list</li>
+<li>Nested loop scans all pairs of elements</li>
+<li>A duplicate may be found in the very first iteration</li>
+<li>Worst case - no duplicates, both loops run fully</li>
+<li>Time is <span class="math inline">(n-1)+(n-2)+...+1=\frac{n(n-1)}{2}</span></li>
+<li>Overall time is <span class="math inline">O(n^2)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> noDuplicates(L):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(L)):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, <span class="bu">len</span>(L)):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[i] <span class="op">==</span> L[j]:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="example-3---matrix-multiplication" class="level3">
+<h3 class="anchored" data-anchor-id="example-3---matrix-multiplication">Example 3 - Matrix multiplication</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Matrix is represented as a list of lists
+<ul>
+<li><span class="math inline">\begin{pmatrix}1 &amp; 2 &amp; 3\\4 &amp; 5 &amp; 6\end{pmatrix}</span></li>
+<li><code>[[1, 2, 3], [4, 5, 6]]</code></li>
+</ul></li>
+<li>Input matrices have size <span class="math inline">m \times n</span>, <span class="math inline">n \times p</span></li>
+<li>Output matrix is <span class="math inline">m \times p</span></li>
+<li>Three nested loops</li>
+<li>Overall time is <span class="math inline">O(mnp)</span> - <span class="math inline">O(n^3)</span> if both are <span class="math inline">n \times n</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrixMultiply(A, B):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    (m, n, p) <span class="op">=</span> (<span class="bu">len</span>(A), <span class="bu">len</span>(B), <span class="bu">len</span>(B[<span class="dv">0</span>]))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(p)]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(p):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                C[i][j] <span class="op">=</span> C[i][j] <span class="op">+</span> A[i][k] <span class="op">*</span> B[k][j]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="example-4---number-of-bits-in-binary-representation-of-a-number" class="level3">
+<h3 class="anchored" data-anchor-id="example-4---number-of-bits-in-binary-representation-of-a-number">Example 4 - Number of bits in binary representation of a number</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><span class="math inline">\log n</span> steps for <span class="math inline">n</span> to reach <span class="math inline">1</span></li>
+<li>For number theoretic problems, input size is number of digits</li>
+<li>This algorithm is linear in input size</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numberOfBits(n):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> n <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> n <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="example-5---towers-of-hanoi" class="level3">
+<h3 class="anchored" data-anchor-id="example-5---towers-of-hanoi">Example 5 - Towers of Hanoi</h3>
+<ul>
+<li>Three pegs A, B, C</li>
+<li>Move <span class="math inline">n</span> disks from A to B, use C as transit peg</li>
+<li>Never place a larger disk on a smaller one</li>
+<li><em>Recursive solution</em>
+<ul>
+<li>Move <span class="math inline">n-1</span> disks from A to C, use B as transit peg</li>
+<li>Move the largest disk from A to B</li>
+<li>Move <span class="math inline">n-1</span> disks from C to B, use A as transit peg</li>
+</ul></li>
+<li>Recurrence
+<ul>
+<li><span class="math inline">M(n)</span> - number of moves to transfer <span class="math inline">n</span> disks</li>
+<li><span class="math inline">M(1) = 1</span></li>
+<li><span class="math inline">M(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1</span></li>
+</ul></li>
+<li>Unwind and solve <span class="math display">\begin{aligned}
+    M(n) &amp; =\ 2M( n-1) +1\\
+     &amp; =\ 2( 2M( n-2) +1) +1=\ 2^{2} M( n-2) +( 2+1)\\
+     &amp; =\ 2^{2}( 2M( n-3) +1) +( 2+1) =\ 2^{3} M( n-3) \ +\ ( 4+2+1)\\
+     &amp; \dotsc \\
+     &amp; =\ 2^{k} M( n-k) +\left( 2^{k} -1\right)\\
+     &amp; \dotsc \\
+     &amp; =\ 2^{n-1} M( 1) +\left( 2^{n-1} -1\right)\\
+     &amp; =\ 2^{n-1} +2^{n-1} -1\\
+     &amp; =\ 2^{n} -1
+    \end{aligned}</span></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

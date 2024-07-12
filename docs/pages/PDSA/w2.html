@@ -207,14 +207,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/Stats2/Quiz2_keyterms.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quiz 2 Key Terms</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../pages/Stats2/Quiz2_practicequestions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quiz 2 Practice Questions</span></a>
+  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Key concepts in Statistics-II from Week 5 to Week 8</span></a>
   </div>
 </li>
       </ul>
@@ -251,12 +245,29 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Random</span></a>
+ <span class="menu-text">PDSA</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of Algorithms</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Random</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
@@ -302,7 +313,6 @@ window.Quarto = {
   <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
   <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
   <li><a href="#example-5" id="toc-example-5" class="nav-link" data-scroll-target="#example-5">Example 5</a></li>
-  <li><a href="#example-5-contd." id="toc-example-5-contd." class="nav-link" data-scroll-target="#example-5-contd.">Example 5 (contd.)</a></li>
   <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2">Summary</a></li>
   </ul></li>
   <li><a href="#lecture-2.4-searching-in-a-list" id="toc-lecture-2.4-searching-in-a-list" class="nav-link" data-scroll-target="#lecture-2.4-searching-in-a-list">Lecture 2.4: Searching in a List</a>
@@ -414,20 +424,15 @@ window.Quarto = {
 <li>Different inputs of the same size <span class="math inline">n</span> can have different running times</li>
 </ul>
 <p><em>Example 1</em>: SIM cards vs Aadhaar cards - <span class="math inline">n \approx 10^9</span> - number of cards - Naive algorithm: <span class="math inline">t(n) \approx n^2</span> - Clever algorithm: <span class="math inline">t(n) \approx n \log_{2} n</span> - <span class="math inline">log_{2}n</span> - number of times you need to divide <span class="math inline">n</span> by <span class="math inline">2</span> to reach <span class="math inline">1</span> - <span class="math inline">log_{2}n = k \implies n = 2^k</span></p>
-<p><em>Example 2</em>: Video game - Several objects on screen - Basic step: find closest pair of objects - <span class="math inline">n</span> objects - naive algorithm is <span class="math inline">n^2</span> - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes <span class="math inline">n \log_{2} n</span></p>
-<ul>
-<li>High resolution gaming console may have <span class="math inline">4000 \times 2000</span> pixels
-<ul>
-<li><span class="math inline">8 \times 10^6</span> points - <span class="math inline">8</span> million</li>
-</ul></li>
-<li>Suppose we have <span class="math inline">100,000 = 1 \times 10^5</span> objects</li>
-<li>Naive algorithm takes <span class="math inline">10^{10}</span> steps
-<ul>
-<li><span class="math inline">1000</span> seconds, or <span class="math inline">16.7</span> minutes in Python</li>
-<li>Unacceptable for a video game!</li>
-</ul></li>
-<li><span class="math inline">\log_{2}100,000</span> is under <span class="math inline">20</span>, so <span class="math inline">n \log_{2}n</span> takes a fraction of a second</li>
-</ul>
+<!-- *Example 2*: Video game - Several objects on screen - Basic step: find closest pair of objects - $n$ objects - naive algorithm is $n^2$ - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes $n \log_{2} n$
+
+- High resolution gaming console may have $4000 \times 2000$ pixels
+  - $8 \times 10^6$ points - $8$ million
+- Suppose we have $100,000 = 1 \times 10^5$ objects
+- Naive algorithm takes $10^{10}$ steps
+  - $1000$ seconds, or $16.7$ minutes in Python
+  - Unacceptable for a video game!
+- $\log_{2}100,000$ is under $20$, so $n \log_{2}n$ takes a fraction of a second -->
 </section>
 <section id="orders-of-magnitude" class="level2">
 <h2 class="anchored" data-anchor-id="orders-of-magnitude">Orders of magnitude</h2>
@@ -699,7 +704,7 @@ window.Quarto = {
 <li><span class="math inline">f(x)</span> is said to be <span class="math inline">O(g(x))</span> if we can find constants <span class="math inline">c</span> and <span class="math inline">x_0</span> such that <span class="math inline">c \cdot g(x)</span> is an upper bound for <span class="math inline">f(x)</span> for <span class="math inline">x</span> beyond <span class="math inline">x_0</span></li>
 <li><span class="math inline">f(x) \leq cg(x)</span> for every <span class="math inline">x \geq x_0</span></li>
 </ul>
-<div id="9183f934" class="cell" data-execution_count="1">
+<div id="2b114c8e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -931,11 +936,6 @@ window.Quarto = {
 <li>Move the largest disk from A to B</li>
 <li>Move <span class="math inline">n-1</span> disks from C to B, use A as transit peg</li>
 </ul></li>
-</ul>
-</section>
-<section id="example-5-contd." class="level2">
-<h2 class="anchored" data-anchor-id="example-5-contd.">Example 5 (contd.)</h2>
-<ul>
 <li>Recurrence
 <ul>
 <li><span class="math inline">M(n)</span> - number of moves to transfer <span class="math inline">n</span> disks</li>
@@ -1050,7 +1050,8 @@ window.Quarto = {
 <li><span class="math inline">T(0) = 1</span></li>
 <li><span class="math inline">T(n) = T(n//2) + 1</span>, <span class="math inline">n&gt;0</span></li>
 </ul></li>
-<li>Solve by “unwinding” <span class="math display">\begin{aligned}
+<li>Solve by “unwinding” <span class="math display">
+\begin{aligned}
     T( n) &amp; =\ T( n//2) +1\\
      &amp; =\ ( T( n//4) +1) +1=\ T\left( n//2^{2}\right) +\underbrace{1+1}_{2}\\
      &amp; =\ \dotsc \\
@@ -1058,7 +1059,8 @@ window.Quarto = {
      &amp; =\ T( 1) +k,\ \text{for} \ k=\log n\\
      &amp; =\ ( T( 0) +1) +\log n\\
      &amp; =\ 2+\log n
-    \end{aligned}</span></li>
+    \end{aligned}
+</span></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bsearch(v, l):</span>

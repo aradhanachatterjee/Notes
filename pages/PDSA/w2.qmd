@@ -39,7 +39,7 @@ execute:
 
 *Example 1*: SIM cards vs Aadhaar cards - $n \approx 10^9$ - number of cards - Naive algorithm: $t(n) \approx n^2$ - Clever algorithm: $t(n) \approx n \log_{2} n$ - $log_{2}n$ - number of times you need to divide $n$ by $2$ to reach $1$ - $log_{2}n = k \implies n = 2^k$
 
-*Example 2*: Video game - Several objects on screen - Basic step: find closest pair of objects - $n$ objects - naive algorithm is $n^2$ - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes $n \log_{2} n$
+<!-- *Example 2*: Video game - Several objects on screen - Basic step: find closest pair of objects - $n$ objects - naive algorithm is $n^2$ - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes $n \log_{2} n$
 
 - High resolution gaming console may have $4000 \times 2000$ pixels
   - $8 \times 10^6$ points - $8$ million
@@ -47,7 +47,7 @@ execute:
 - Naive algorithm takes $10^{10}$ steps
   - $1000$ seconds, or $16.7$ minutes in Python
   - Unacceptable for a video game!
-- $\log_{2}100,000$ is under $20$, so $n \log_{2}n$ takes a fraction of a second
+- $\log_{2}100,000$ is under $20$, so $n \log_{2}n$ takes a fraction of a second -->
 
 ## Orders of magnitude
 
@@ -412,8 +412,6 @@ Towers of Hanoi
   - Move the largest disk from A to B
   - Move $n-1$ disks from C to B, use A as transit peg
 
-## Example 5 (contd.)
-
 - Recurrence
   - $M(n)$ - number of moves to transfer $n$ disks
   - $M(1) = 1$
@@ -516,7 +514,9 @@ def binarysearch(v, l):
 - Recurrence for $T(n)$
   - $T(0) = 1$
   - $T(n) = T(n//2) + 1$, $n>0$
-- Solve by "unwinding" $$\begin{aligned}
+- Solve by "unwinding"
+  $$
+  \begin{aligned}
       T( n) & =\ T( n//2) +1\\
        & =\ ( T( n//4) +1) +1=\ T\left( n//2^{2}\right) +\underbrace{1+1}_{2}\\
        & =\ \dotsc \\
@@ -524,7 +524,8 @@ def binarysearch(v, l):
        & =\ T( 1) +k,\ \text{for} \ k=\log n\\
        & =\ ( T( 0) +1) +\log n\\
        & =\ 2+\log n
-      \end{aligned}$$
+      \end{aligned}
+  $$
 :::
 
 ::: {.column width="40%"}

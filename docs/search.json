@@ -255,7 +255,7 @@
     "href": "pages/PDSA/w2.html",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance"
+    "text": "Example of validating SIM cards against Aadhaar data\n\nNaive approach takes thousands of years\n\nSmarter solution takes a few minutes\n\n\nTwo main resources of interest\n\nRunning time - how long the algorithm takes\nSpace - memory requirement\n\nTime depends on processing power\n\nImpossible to change for given hardware\nEnhancing hardware has only a limited impact at a practical level\n\nStorage is limited by available memory\n\nEasier to configure, augment\n\nTypically, we focus on time rather than space\n\n\n\n\n\nRunning time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\n\n\n\n\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors\n\nf(n) = n^3 eventually grows faster than g(n) = 5000n^2\n\nFor small values of n, f(n) &lt; g(n)\nAfter n=5000, f(n) overtakes g(n)\n\nAsymptotic complexity\n\nWhat happens in the limit as n becomes large\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default\n\nLogarithmic, polynomial, exponential, …\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\n\n\n\nAnalysis should be independent of the underlying hardware\n\nDon’t use actual time\nMeasure in terms of basic operations\n\nTypical basic operations\n\nCompare two values\nAssign a value to a variable\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3\nNeed not be very precise about defining basic operations\n\n\n\n\n\n\nTypically a natural parameter\n\nSize of a list/array that we want to search or sort\nNumber of objects we want to rearrange\nNumber of vertices and number of edges in a graph\n\nWhat about numeric problems? Is n a prime?\n\nMagnitude of n is not the correct measure\nArithmetic operations are performed digit by digit\n\nAddition with carry, subtraction with borrow, multiplication, long division…\n\nNumber of digits is a natural measure of input size\n\nSame as log_{b}n, when we write n in base b\n\n\n\n\n\n\n\nPerformance varies across input instances\n\nBy luck, the value we are searching for is the first element we examine in an array\n\nIdeally, want the “average” behaviour\n\nDifficult to compute\nAverage over what? Are all inputs equally likely?\nNeed a probability distribution over inputs\n\nInstead, worst case input\n\nInput that forces algorithm to take the longest time\n\nSearch for a value that is not present in an unsorted list\nMust scan all elements\n\nPessimistic - worst case may be rare\nUpper bound for worst case guarantees good performance\n\n\n\n\n\n\nTwo important parameters when measuring algorithm performance\n\nRunning time, memory requirement (space)\nWe mainly focus on time\n\nRunning time t(n) is a function of input size n\n\nCompare algorithms by their order of magnitude\nAsymptotic complexity, as n becomes large\n\nFrom running time, we can estimate feasible input sizes\nWe focus on worst case inputs\n\nPessimistic, but easier to compute than average case\nUpper bound on worst case gives us an overall guarantee of performance"
   },
   {
     "objectID": "pages/PDSA/w2.html#measuring-performance",
@@ -269,7 +269,7 @@
     "href": "pages/PDSA/w2.html#input-size",
     "title": "PDSA - Week 2",
     "section": "",
-    "text": "Running time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k\nExample 2: Video game - Several objects on screen - Basic step: find closest pair of objects - n objects - naive algorithm is n^2 - For each pair of objects, calculate distance - Report minimum distance across all pairs - There is a clever algorithm that takes n \\log_{2} n\n\nHigh resolution gaming console may have 4000 \\times 2000 pixels\n\n8 \\times 10^6 points - 8 million\n\nSuppose we have 100,000 = 1 \\times 10^5 objects\nNaive algorithm takes 10^{10} steps\n\n1000 seconds, or 16.7 minutes in Python\nUnacceptable for a video game!\n\n\\log_{2}100,000 is under 20, so n \\log_{2}n takes a fraction of a second"
+    "text": "Running time depends on input size\n\nLarger arrays will take longer to sort\n\nMeasure time efficiency as a function of input size\n\nInput size n\nRunning time t(n)\n\nDifferent inputs of the same size n can have different running times\n\nExample 1: SIM cards vs Aadhaar cards - n \\approx 10^9 - number of cards - Naive algorithm: t(n) \\approx n^2 - Clever algorithm: t(n) \\approx n \\log_{2} n - log_{2}n - number of times you need to divide n by 2 to reach 1 - log_{2}n = k \\implies n = 2^k"
   },
   {
     "objectID": "pages/PDSA/w2.html#orders-of-magnitude",
@@ -388,7 +388,7 @@
     "href": "pages/PDSA/w2.html#example-5",
     "title": "PDSA - Week 2",
     "section": "Example 5",
-    "text": "Example 5\nTowers of Hanoi\n\nThree pegs A, B, C\nMove n disks from A to B, use C as transit peg\nNever place a larger disk on a smaller one\nRecursive solution\n\nMove n-1 disks from A to C, use B as transit peg\nMove the largest disk from A to B\nMove n-1 disks from C to B, use A as transit peg"
+    "text": "Example 5\nTowers of Hanoi\n\nThree pegs A, B, C\nMove n disks from A to B, use C as transit peg\nNever place a larger disk on a smaller one\nRecursive solution\n\nMove n-1 disks from A to C, use B as transit peg\nMove the largest disk from A to B\nMove n-1 disks from C to B, use A as transit peg\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n    M( n) & =\\ 2M( n-1) +1\\\\\n     & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n     & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n     & =\\ 2^{n-1} +2^{n-1} -1\\\\\n     & =\\ 2^{n} -1\n    \\end{aligned}"
   },
   {
     "objectID": "pages/PDSA/w2.html#example-5-contd.",
@@ -430,7 +430,7 @@
     "href": "pages/PDSA/w2.html#alternative-calculation",
     "title": "PDSA - Week 2",
     "section": "Alternative calculation",
-    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \\begin{aligned}\n    T( n) & =\\ T( n//2) +1\\\\\n     & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n     & =\\ \\dotsc \\\\\n     & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n     & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n     & =\\ ( T( 0) +1) +\\log n\\\\\n     & =\\ 2+\\log n\n    \\end{aligned}\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])"
+    "text": "Alternative calculation\n\n\n\nT(n): the time to search a list of length n\n\nIf n=0, we exit, so T(0) = 1\nIf n&gt;0, T(n)=T(n//2)+1\n\nRecurrence for T(n)\n\nT(0) = 1\nT(n) = T(n//2) + 1, n&gt;0\n\nSolve by “unwinding” \n\\begin{aligned}\n    T( n) & =\\ T( n//2) +1\\\\\n     & =\\ ( T( n//4) +1) +1=\\ T\\left( n//2^{2}\\right) +\\underbrace{1+1}_{2}\\\\\n     & =\\ \\dotsc \\\\\n     & =\\ T\\left( n//2^{k}\\right) +\\underbrace{1+\\dots +1} _{k}\\\\\n     & =\\ T( 1) +k,\\ \\text{for} \\ k=\\log n\\\\\n     & =\\ ( T( 0) +1) +\\log n\\\\\n     & =\\ 2+\\log n\n    \\end{aligned}\n\n\n\ndef bsearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return bsearch(v, l[:m])\n    else:\n        return bsearch(v, l[m+1:])"
   },
   {
     "objectID": "pages/PDSA/w2.html#summary-3",
@@ -5559,6 +5559,173 @@
     "crumbs": [
       "Statistics-II",
       "Key concepts in Statistics-II from Week 5 to Week 8"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html",
+    "href": "pages/PDSA/analysis_of_algorithms.html",
+    "title": "Analysis of Algorithms",
+    "section": "",
+    "text": "Two main factors to consider when measuring the performance of an algorithm are:\n\nRunning time - how long does the algorithm take to run?\nSpace requirements - how much memory does the algorithm use?\n\nTime depends on the processing power, which is impossible to change for the given hardware. Also, enhancements in the hardware has very limited impact at a practical level.\nStorage space is limited by the amount of memory available on the machine. This is easier to upgrade than processing power, but still has limitations.\nTherefore, when measuring the performance of an algorithm, we focus on the time rather than space.",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html#measuring-performance-of-algorithms",
+    "href": "pages/PDSA/analysis_of_algorithms.html#measuring-performance-of-algorithms",
+    "title": "Analysis of Algorithms",
+    "section": "",
+    "text": "Two main factors to consider when measuring the performance of an algorithm are:\n\nRunning time - how long does the algorithm take to run?\nSpace requirements - how much memory does the algorithm use?\n\nTime depends on the processing power, which is impossible to change for the given hardware. Also, enhancements in the hardware has very limited impact at a practical level.\nStorage space is limited by the amount of memory available on the machine. This is easier to upgrade than processing power, but still has limitations.\nTherefore, when measuring the performance of an algorithm, we focus on the time rather than space.",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html#input-size",
+    "href": "pages/PDSA/analysis_of_algorithms.html#input-size",
+    "title": "Analysis of Algorithms",
+    "section": "Input size",
+    "text": "Input size\n\nThe time taken by an algorithm to run is dependent on the size of the input data.\nMeasure time efficiency as a function of the input size\n\nInput size n\nRunning time t(n)\n\nDifferent algorithms may have different time complexities for the same input size.\n\nFor example, if we are arranging a given list of numbers in ascending order, and the list is already sorted, the time taken by the algorithm will be less than if the list is in descending order.\n\n\n\nWhat is the input size for an algorithm?\n\nTypically, the input size is the number of elements in the input data.\nFor numerical algorithms, the input size is the number of digits in the input data.\n\nSame as \\log_{b}n where b is the base of the number system.\n\n\n\n\nWhich input size to consider?\n\nIdeally, we want an input that is representative of the typical data that the algorithm will process, and that will give us a good idea of the algorithm’s average performance.\n\nHowever, “average” is difficult to define and compute.\nAverage over what? All possible inputs? All possible distributions of inputs? - Not practical.\n\nTherefore, we often consider the worst-case input size.\n\nIt is the input which forces the algorithm to take the longest time.\nIt is easier to compute than the average case.\nUpper bound for worst-case input guarantees good performance for all inputs.",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html#measuring-running-time",
+    "href": "pages/PDSA/analysis_of_algorithms.html#measuring-running-time",
+    "title": "Analysis of Algorithms",
+    "section": "Measuring running time",
+    "text": "Measuring running time\n\nAnalysis should be independent of the hardware and software environment.\nRunning time is measured in terms of the number of basic operations performed by the algorithm.\nTypical basic operations include:\n\nAssign a value to a variable - a = 5\nCompare two values - if a &gt; b\n\nExchange a pair of values?\n\n\n(x,y)=(y,x)\n\nt=x\nx=y\ny=t\n\n\n\nIf we ignore constants, focus on orders of magnitude, both are within a factor of 3. Therefore, we can consider them as a single basic operation.\n\nWe do not need to be extremely precise about defining basic operations.",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html#orders-of-magnitude",
+    "href": "pages/PDSA/analysis_of_algorithms.html#orders-of-magnitude",
+    "title": "Analysis of Algorithms",
+    "section": "Orders of magnitude",
+    "text": "Orders of magnitude\n\nWhen comparing t(n), focus on the order of magnitude\n\nIgnore constants factors.\n\nFocus on the asymptotic complexity of the algorithm\n\nHow does the running time grow as the input size increases?\nWhat happens in the limit as n becomes large/approaches infinity?\n\nTypical growth functions\n\nIs t(n) proportional to \\log n, …, n^2, n^3, …, 2^n?\n\nNote: \\log n means \\log_{2}n by default.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInput size\n\\log n\nn\nn \\log n\nn^2\nn^3\n2^n\nn!\n\n\n\n\n10\n3.3\n10\n33\n100\n1000\n1000\n10^6\n\n\n100\n6.6\n100\n660\n10^4\n10^6\n10^{30}\n10^{157}\n\n\n1000\n10\n1000\n10^4\n10^6\n10^9\n-\n-\n\n\n10^4\n13\n10^4\n10^5\n10^8\n10^{12}\n-\n-\n\n\n10^5\n17\n10^5\n10^6\n10^{10}\n-\n-\n-\n\n\n10^6\n20\n10^6\n10^7\n10^{12}\n-\n-\n-\n\n\n10^7\n23\n10^7\n10^8\n-\n-\n-\n-\n\n\n10^8\n27\n10^8\n10^9\n-\n-\n-\n-\n\n\n10^9\n30\n10^9\n10^{10}\n-\n-\n-\n-\n\n\n10^{10}\n33\n10^{10}\n10^{11}\n-\n-\n-\n-\n\n\n\n\nThe table above shows the growth of different functions as the input size increases.\nHow do we compare functions with respect to orders of magnitude?\n\n\nUpper bounds\n\nf(x) is said to be O(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is an upper bound for f(x) for x beyond x_0\nf(x) \\leq cg(x) for every x \\geq x_0\n\n\n\n\n\n\n\n\n\n\n\nExamples\n\n100n+5 is O(n^2)\n\n100n+5 \\leq 100n+n=101n, for n \\geq 5\n101n \\leq 101n^2\nChoose n_0=5 and c=101\n\nAlternatively\n\n100n+5 \\leq 100n +5n =105n, for n \\geq 1\n105n \\leq 105n^2\nChoose n_0=1 and c=105\n\nChoice of c and n_0 is not unique\n100n^2 + 20n +5 is O(n^2)\n\n100n^2 + 20n +5 \\leq 100n^2 + 20n^2 +5n^2, for n \\geq 1\n100n^2 + 20n^2 +5n^2 \\leq 125n^2, for n \\geq 1\nChoose n_0=1 and c=125\n\nWhat matters is the highest term\n\n20n+5 is dominated by 100n^2\n\nn^3 is not O(n^2)\n\nNo matter what c we choose, cn^2 will be dominated by n^3 for n \\geq c\n\n\n\n\nUseful properties of O notation\n\nIf f_{1}(n) is O(g_{1}(n)) and f_{2}(n) is O(g_{2}(n)), then f_{1}(n)+f_{2}(n) is O(\\max(g_{1}(n),g_{2}(n)))\nProof\n\nf_{1}(n) \\leq c_{1}g_{1}(n) for n \\geq n_{1}\nf_{2}(n) \\leq c_{2}g_{2}(n) for n \\geq n_{2}\nLet c_{3} = \\max(c_{1},c_{2}), n_{3} = \\max(n_{1},n_{2})\nFor n \\geq n_{3}, f_{1}(n)+f_{2}(n)\n\n\\leq c_{1}g_{1}(n)+c_{2}g_{2}(n)\n\\leq c_{3}g_{1}(n)+c_{3}g_{2}(n)\n\\leq 2c_{3}(\\max(g_{1}(n),g_{2}(n)))\n\n\nAlgorithm has two phases\n\nPhase A takes time O(g_{A}(n))\nPhase B takes time O(g_{B}(n))\n\nAlgorithm as a whole takes time \\max(O(g_{A}(n),g_{B}(n)))\nLeast efficient phase is the upper bound for the whole algorithm\n\n\n\n\nLower bounds\n\nf(x) is said to be \\Omega(g(x)) if we can find constants c and x_0 such that c \\cdot g(x) is a lower bound for f(x) for x beyond x_0\n\nf(x) \\geq cg(x) for every x \\geq x_0\n\nn^3 is \\Omega(n^2)\n\nn^3 &gt; n^2 for all n, so n_0=1, c=1\n\nTypically we establish lower bounds for a problem rather than an individual algorithm\n\nIf we sort a list by comparing elements and swapping them, we require \\Omega(n \\log n) comparisons\nThis is independent of the sorting algorithm\n\n\n\n\nTight bounds\n\nf(x) is said to be \\Theta(g(x)) if f(x) is both O(g(x)) and \\Omega(g(x))\n\nFind constants c_1, c_2, x_0 such that c_{1}g(x) \\leq f(x) \\leq c_{2}g(x) for every x \\geq x_0\n\n\\frac{n(n-1)}{2} is \\Theta(n^2)\n\nUpper bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\leq \\frac{n^2}{2} for all n \\geq 0\n\nLower bound\n\n\\frac{n(n-1)}{2} = \\frac{n^2}{2} - \\frac{n}{2} \\geq \\frac{n^2}{2} - (\\frac{n}{2} \\times \\frac{n}{2}) \\geq \\frac{n^2}{4} for n \\geq 2\n\nChoose n_0 = 2, c_1 = \\frac{1}{4}, c_2 = \\frac{1}{2}",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/analysis_of_algorithms.html#calculating-time-complexity---examples",
+    "href": "pages/PDSA/analysis_of_algorithms.html#calculating-time-complexity---examples",
+    "title": "Analysis of Algorithms",
+    "section": "Calculating time complexity - Examples",
+    "text": "Calculating time complexity - Examples\n\nExample 1 - Find the maximum element in a list\n\n\n\nInput size is the length of the list\nSingle loop scans all elements\nAlways takes n steps\nOverall time is O(n)\n\n\ndef maxElement(L):\n    maxval = L[0]\n    for i in range(len(L)):\n        if L[i] &gt; maxval:\n            maxval = L[i]\n    return maxval\n\n\n\n\nExample 2 - Check whether a list contains duplicates\n\n\n\nInput size is the length of the list\nNested loop scans all pairs of elements\nA duplicate may be found in the very first iteration\nWorst case - no duplicates, both loops run fully\nTime is (n-1)+(n-2)+...+1=\\frac{n(n-1)}{2}\nOverall time is O(n^2)\n\n\ndef noDuplicates(L):\n    for i in range(len(L)):\n        for j in range(i+1, len(L)):\n            if L[i] == L[j]:\n                return False\n    return True\n\n\n\n\nExample 3 - Matrix multiplication\n\n\n\nMatrix is represented as a list of lists\n\n\\begin{pmatrix}1 & 2 & 3\\\\4 & 5 & 6\\end{pmatrix}\n[[1, 2, 3], [4, 5, 6]]\n\nInput matrices have size m \\times n, n \\times p\nOutput matrix is m \\times p\nThree nested loops\nOverall time is O(mnp) - O(n^3) if both are n \\times n\n\n\ndef matrixMultiply(A, B):\n    (m, n, p) = (len(A), len(B), len(B[0]))\n    C = [[0 for i in range(p)]\n            for j in range(m)]\n    for i in range(m):\n        for j in range(p):\n            for k in range(n):\n                C[i][j] = C[i][j] + A[i][k] * B[k][j]\n    return C\n\n\n\n\nExample 4 - Number of bits in binary representation of a number\n\n\n\n\\log n steps for n to reach 1\nFor number theoretic problems, input size is number of digits\nThis algorithm is linear in input size\n\n\ndef numberOfBits(n):\n    count = 1\n    while n &gt; 1:\n        count += 1\n        n = n // 2\n    return count\n\n\n\n\nExample 5 - Towers of Hanoi\n\nThree pegs A, B, C\nMove n disks from A to B, use C as transit peg\nNever place a larger disk on a smaller one\nRecursive solution\n\nMove n-1 disks from A to C, use B as transit peg\nMove the largest disk from A to B\nMove n-1 disks from C to B, use A as transit peg\n\nRecurrence\n\nM(n) - number of moves to transfer n disks\nM(1) = 1\nM(n) = M(n-1) + 1 + M(n-1) = 2M(n-1)+1\n\nUnwind and solve \\begin{aligned}\n    M(n) & =\\ 2M( n-1) +1\\\\\n     & =\\ 2( 2M( n-2) +1) +1=\\ 2^{2} M( n-2) +( 2+1)\\\\\n     & =\\ 2^{2}( 2M( n-3) +1) +( 2+1) =\\ 2^{3} M( n-3) \\ +\\ ( 4+2+1)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{k} M( n-k) +\\left( 2^{k} -1\\right)\\\\\n     & \\dotsc \\\\\n     & =\\ 2^{n-1} M( 1) +\\left( 2^{n-1} -1\\right)\\\\\n     & =\\ 2^{n-1} +2^{n-1} -1\\\\\n     & =\\ 2^{n} -1\n    \\end{aligned}",
+    "crumbs": [
+      "PDSA",
+      "Analysis of Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binary_search.html",
+    "href": "pages/PDSA/binary_search.html",
+    "title": "Binary Search",
+    "section": "",
+    "text": "Is a value v present in a list l?\nNaive search: check each element in the list\nInput size is n, the number of elements in the list\nWorst case scenario: v is not in the list\nWorst-case time complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False"
+  },
+  {
+    "objectID": "pages/PDSA/binary_search.html#searching-in-a-list",
+    "href": "pages/PDSA/binary_search.html#searching-in-a-list",
+    "title": "Binary Search",
+    "section": "",
+    "text": "Is a value v present in a list l?\nNaive search: check each element in the list\nInput size is n, the number of elements in the list\nWorst case scenario: v is not in the list\nWorst-case time complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False"
+  },
+  {
+    "objectID": "pages/PDSA/binary_search.html#searching-in-a-sorted-list",
+    "href": "pages/PDSA/binary_search.html#searching-in-a-sorted-list",
+    "title": "Binary Search",
+    "section": "Searching in a sorted list",
+    "text": "Searching in a sorted list\n\n\n\nIf the list is sorted in ascending order, we can do better.\nCompare v with the midpoint of the list.\n\nIf v is equal to the midpoint, the value is found.\nIf v is less than the midpoint, search the left half.\nIf v is greater than the midpoint, search the right half.\nRepeat the process until the value is found or the list is empty.\n\n\n\ndef binarysearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return binarysearch(v, l[:m])\n    else:\n        return binarysearch(v, l[m+1:])"
+  },
+  {
+    "objectID": "pages/PDSA/binary_search.html#binary-search",
+    "href": "pages/PDSA/binary_search.html#binary-search",
+    "title": "Binary Search",
+    "section": "Binary search",
+    "text": "Binary search\n\nHow long does it take to search for a value in a list of size n?\n\nIn the worst case, the list is halved at each step.\nThe number of steps is the number of times we can halve n before reaching 1, which is O(\\log n)\n\nCalculating T(n) - the time to search in a list of size n\n\nIdentify the basic operation: the comparison v == l[m]\n\nLet the time taken to perform the basic operation be T(1)=1\n\nRecurrence relation: T(n) = T(\\frac{n}{2}) + 1\n\nSolve by “unwinding” \n\\begin{aligned}\n  T(n) &= T(\\frac{n}{2}) + 1 \\\\\n  &=\\ (T(\\frac{n}{4}) + 1) + 1 =\\ T\\left(\\frac{n}{2^2}\\right) + \\underbrace{1 + 1}_{2} \\\\\n  &=\\ \\dotsc \\\\\n  &=\\ T\\left(\\frac{n}{2^k}\\right) + \\underbrace{1 +\\dots + 1}_{k} \\\\\n  &=\\ T(1) + k, \\text{ for } \\ k = \\log n \\\\\n  &=\\ 1 + \\log n = O(\\log n) \\\\\n  \\end{aligned}\n\n\n\nAn alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences\n\nIdentify the Basic Operation: v == l[m]\nDetermine the Number of Subproblems and Their Size:\n\nEach recursive call splits the list in half.\nThe size of each subproblem is approximately half the size of the original problem: \\frac{n}{2}.\n\nForm the Recurrence Relation:\n\nThe recurrence relation for the running time T(n) of binary search can be written as: \nT(n) = T\\left(\\frac{n}{2}\\right) + O(1)\n\nHere, T(\\frac{n}{2}) represents the time complexity of searching in a sublist of size \\frac{n}{2}, and O(1) is the time complexity of the basic operation (comparison).\n\nSolve the Recurrence Relation:\n\nThis type of recurrence relation is a common form and can be solved using the @master-theorem.\n\n\n\n\n\n\n\n\nMaster Theorem\n\n\n\n\n\nThe Master Theorem applies to recurrences of the form: \nT(n) = aT\\left(\\frac{n}{b}\\right) + f(n)\n where:\n\na \\geq 1 is the number of subproblems in the recursion.\n\\frac{n}{b} is the size of each subproblem.\nf(n) is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.\n\nAccording to the Master Theorem:\n\nIf f(n) = O(n^c) where c &lt; \\log_b{a}, then T(n) = O(n^{\\log_b{a}}).\nIf f(n) = O(n^c) where c = \\log_b{a}, then T(n) = O(n^{\\log_b{a}} \\log{n}).\nIf f(n) = O(n^c) where c &gt; \\log_b{a}, then T(n) = O(f(n)).\n\n\n\n\n\nFor binary search: - a = 1, b = 2, \\log_b{a} = \\log_2{1} = 0. - ( f(n) = O(1) ), which is ( O(n^0) ).\nHere, ( c = 0 ) and ( _b{a} = 0 ), so they are equal. Therefore, according to the Master Theorem, ( T(n) = O(n^0 ) = O() ).\n\n\nConclusion\nThe time complexity of the recursive binary search is ( O() )."
+  },
+  {
+    "objectID": "pages/PDSA/binary_search.html#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences",
+    "href": "pages/PDSA/binary_search.html#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences",
+    "title": "Binary Search",
+    "section": "An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences",
+    "text": "An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences\n\nIdentify the Basic Operation: v == l[m]\nDetermine the Number of Subproblems and Their Size:\n\nEach recursive call splits the list in half.\nThe size of each subproblem is approximately half the size of the original problem: \\frac{n}{2}.\n\nForm the Recurrence Relation:\n\nThe recurrence relation for the running time T(n) of binary search can be written as: \nT(n) = T\\left(\\frac{n}{2}\\right) + O(1)\n\nHere, T(\\frac{n}{2}) represents the time complexity of searching in a sublist of size \\frac{n}{2}, and O(1) is the time complexity of the basic operation (comparison).\n\nSolve the Recurrence Relation:\n\nThis type of recurrence relation is a common form and can be solved using the @master-theorem.\n\n\n\n\n\n\n\n\nMaster Theorem\n\n\n\n\n\nThe Master Theorem applies to recurrences of the form: \nT(n) = aT\\left(\\frac{n}{b}\\right) + f(n)\n where:\n\na \\geq 1 is the number of subproblems in the recursion.\n\\frac{n}{b} is the size of each subproblem.\nf(n) is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.\n\nAccording to the Master Theorem:\n\nIf f(n) = O(n^c) where c &lt; \\log_b{a}, then T(n) = O(n^{\\log_b{a}}).\nIf f(n) = O(n^c) where c = \\log_b{a}, then T(n) = O(n^{\\log_b{a}} \\log{n}).\nIf f(n) = O(n^c) where c &gt; \\log_b{a}, then T(n) = O(f(n)).\n\n\n\n\n\nFor binary search: - a = 1, b = 2, \\log_b{a} = \\log_2{1} = 0. - ( f(n) = O(1) ), which is ( O(n^0) ).\nHere, ( c = 0 ) and ( _b{a} = 0 ), so they are equal. Therefore, according to the Master Theorem, ( T(n) = O(n^0 ) = O() ).\n\nConclusion\nThe time complexity of the recursive binary search is ( O() )."
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html",
+    "href": "pages/PDSA/binarysearch.html",
+    "title": "Binary Search",
+    "section": "",
+    "text": "Is a value v present in a list l?\nNaive search: check each element in the list\nInput size is n, the number of elements in the list\nWorst case scenario: v is not in the list\nWorst-case time complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html#searching-in-a-list",
+    "href": "pages/PDSA/binarysearch.html#searching-in-a-list",
+    "title": "Binary Search",
+    "section": "",
+    "text": "Is a value v present in a list l?\nNaive search: check each element in the list\nInput size is n, the number of elements in the list\nWorst case scenario: v is not in the list\nWorst-case time complexity is O(n)\n\n\ndef naivesearch(v, l):\n    for x in l:\n        if v == x:\n            return True\n    return False",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html#searching-in-a-sorted-list",
+    "href": "pages/PDSA/binarysearch.html#searching-in-a-sorted-list",
+    "title": "Binary Search",
+    "section": "Searching in a sorted list",
+    "text": "Searching in a sorted list\n\n\n\nIf the list is sorted in ascending order, we can do better.\nCompare v with the midpoint of the list.\n\nIf v is equal to the midpoint, the value is found.\nIf v is less than the midpoint, search the left half.\nIf v is greater than the midpoint, search the right half.\nRepeat the process until the value is found or the list is empty.\n\n\n\ndef binarysearch(v, l):\n    if l == []:\n        return False\n    m = len(l) // 2\n    if v == l[m]:\n        return True\n    if v &lt; l[m]:\n        return binarysearch(v, l[:m])\n    else:\n        return binarysearch(v, l[m+1:])",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html#binary-search",
+    "href": "pages/PDSA/binarysearch.html#binary-search",
+    "title": "Binary Search",
+    "section": "Binary search",
+    "text": "Binary search\n\nHow long does it take to search for a value in a list of size n?\n\nIn the worst case, the list is halved at each step.\nThe number of steps is the number of times we can halve n before reaching 1, which is O(\\log n)\n\nCalculating T(n) - the time to search in a list of size n\n\nIdentify the basic operation: the comparison v == l[m]\n\nLet the time taken to perform the basic operation be T(1)=1\n\nRecurrence relation: T(n) = T(\\frac{n}{2}) + 1\n\nSolve by “unwinding” \n\\begin{aligned}\n  T(n) &= T(\\frac{n}{2}) + 1 \\\\\n  &=\\ (T(\\frac{n}{4}) + 1) + 1 =\\ T\\left(\\frac{n}{2^2}\\right) + \\underbrace{1 + 1}_{2} \\\\\n  &=\\ \\dotsc \\\\\n  &=\\ T\\left(\\frac{n}{2^k}\\right) + \\underbrace{1 +\\dots + 1}_{k} \\\\\n  &=\\ T(1) + k, \\text{ for } \\ k = \\log n \\\\\n  &=\\ 1 + \\log n = O(\\log n) \\\\\n  \\end{aligned}\n\n\n\nAn alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences\n\nIdentify the Basic Operation: v == l[m]\nDetermine the Number of Subproblems and Their Size:\n\nEach recursive call splits the list in half.\nThe size of each subproblem is approximately half the size of the original problem: \\frac{n}{2}.\n\nForm the Recurrence Relation:\n\nThe recurrence relation for the running time T(n) of binary search can be written as: \nT(n) = T\\left(\\frac{n}{2}\\right) + O(1)\n\nHere, T(\\frac{n}{2}) represents the time complexity of searching in a sublist of size \\frac{n}{2}, and O(1) is the time complexity of the basic operation (comparison).\n\nSolve the Recurrence Relation:\n\nThis type of recurrence relation is a common form and can be solved using the Master Theorem1.\n\n\n\n\n\n\n\n\nMaster Theorem\n\n\n\nThe Master Theorem applies to recurrences of the form: \nT(n) = aT\\left(\\frac{n}{b}\\right) + f(n)\n where:\n\na \\geq 1 is the number of subproblems in the recursion.\n\\frac{n}{b} is the size of each subproblem.\nf(n) is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.\n\nAccording to the Master Theorem:\n\nIf f(n) = O(n^c) where c &lt; \\log_b{a}, then T(n) = O(n^{\\log_b{a}}).\nIf f(n) = O(n^c) where c = \\log_b{a}, then T(n) = O(n^{\\log_b{a}} \\log{n}).\nIf f(n) = O(n^c) where c &gt; \\log_b{a}, then T(n) = O(f(n)).\n\n\n\n\nFor binary search\n\na=1 (one subproblem)\nb=2 (each subproblem is half the size of the original problem)\n\\log_b{a} = \\log_2{1} = 0\nf(n) = O(1) (constant time for the basic operation), is O(n^0)\nHere, c = 0 = \\log_b{a}, so the second case of the Master Theorem applies.\n\nT(n) = O(n^0 \\log{n}) = O(\\log{n}).",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html#conclusion",
+    "href": "pages/PDSA/binarysearch.html#conclusion",
+    "title": "Binary Search",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nThe time complexity of binary search is O(\\log n).",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/binarysearch.html#footnotes",
+    "href": "pages/PDSA/binarysearch.html#footnotes",
+    "title": "Binary Search",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCormen, T. H., Leiserson, C. E., Rivest, R. L., Stein, C. Introduction to Algorithms, Fourth Edition. MIT Press, 2022. Sections 4.5 (The master method for solving recurrences) and 4.6 (Proof of the continuous master theorem), pp. 101–115.↩︎",
+    "crumbs": [
+      "PDSA",
+      "Binary Search"
     ]
   }
 ]

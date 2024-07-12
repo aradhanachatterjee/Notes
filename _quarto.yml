@@ -25,10 +25,14 @@ website:
             text: Week 3
           - href: pages/DBMS/w4.qmd
             text: Week 4
-      # - section: "PDSA"
-      #   contents:
-      #     - href: pages/PDSA/w2.qmd
-      #       text: Week 2
+      - section: "PDSA"
+        contents:
+          # - href: pages/PDSA/w2.qmd
+          #   text: Week 2
+          - href: pages/PDSA/analysis_of_algorithms.qmd
+            text: Analysis of Algorithms
+          - href: pages/PDSA/binarysearch.qmd
+            text: Binary Search
       # - section: "MAD-2"
       #   contents:
       #     - href: pages/MAD-2/w1.qmd
@@ -41,6 +45,7 @@ website:
         contents:
           - href: pages/random/Fourier.qmd
             text: Fourier Series Representations
+  # open-graph: true
             
 
 format:
@@ -51,3 +56,4 @@ format:
     css: styles.css
     toc: true
     html-math-method: katex
+    code-overflow: wrap
