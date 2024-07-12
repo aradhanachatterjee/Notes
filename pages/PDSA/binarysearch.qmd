@@ -6,7 +6,6 @@ format:
         toc_depth: 2
         number_sections: true
         smooth-scroll: true
-        code-fold: true
 execute:
     echo: false
 ---
