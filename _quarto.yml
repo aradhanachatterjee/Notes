@@ -11,20 +11,20 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - section: "Statistics-II"
-        contents:
-          - href: pages/Stats2/Quiz2_keyconcepts.qmd
-            text: Key concepts in Statistics-II from Week 5 to Week 8
+      # - section: "Statistics-II"
+      #   contents:
+      #     - href: pages/Stats2/Quiz2_keyconcepts.qmd
+      #       text: Key concepts in Statistics-II from Week 5 to Week 8
           # - href: pages/Stats2/Quiz2_practicequestions.qmd
           #   text: Quiz 2 Practice Questions
-      - section: "DBMS"
-        contents:
-          - href: pages/DBMS/w2.qmd
-            text: Week 2
-          - href: pages/DBMS/w3.ipynb
-            text: Week 3
-          - href: pages/DBMS/w4.qmd
-            text: Week 4
+      # - section: "DBMS"
+      #   contents:
+      #     - href: pages/DBMS/w2.qmd
+      #       text: Week 2
+      #     - href: pages/DBMS/w3.ipynb
+      #       text: Week 3
+      #     - href: pages/DBMS/w4.qmd
+      #       text: Week 4
       - section: "PDSA"
         contents:
           # - href: pages/PDSA/w2.qmd
@@ -33,6 +33,8 @@ website:
             text: Analysis of Algorithms
           - href: pages/PDSA/binarysearch.qmd
             text: Binary Search
+          - href: pages/PDSA/sorting_algorithms.qmd
+            text: Sorting Algorithms
       # - section: "MAD-2"
       #   contents:
       #     - href: pages/MAD-2/w1.qmd

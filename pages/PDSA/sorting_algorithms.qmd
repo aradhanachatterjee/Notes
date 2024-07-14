@@ -1,0 +1,477 @@
+---
+title: "Sorting Algorithms"
+format: 
+    html: 
+        toc: true
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+execute: 
+  echo: false
+---
+
+## Why do we need sorting algorithms?
+
+- Sorting a list makes many other computations easier, such as:
+  - Binary search for a value
+  - Finding the median value
+  - Checking for duplicates in a list
+  - Building a histogram of values
+- Sorting is a general first step which makes many subsequent computations easier.
+- There are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.
+- How do we sort a list?
+
+
+## Selection Sort
+
+::: columns
+::: {.column width="50%"}
+
+- Start with the first element: Consider the first element of the list as the minimum.
+- Find the minimum: Scan through the list to find the smallest element.
+- Swap: Swap the smallest element found with the first element.
+- Repeat for the next position: Move to the next position and repeat the process for the remaining elements.
+
+:::
+
+::: {.column width="50%"}
+
+``` python
+def SelectionSort(L):
+    n = len(L)
+    if n < 1:
+        return(L)
+    for i in range(n):
+        # Assume L[:i] is sorted
+        mpos = i
+        # mpos: position of minimum in L[i:]
+        for j in range(i+1,n):
+            if L[j] < L[mpos]:
+            mpos = j
+        # L[mpos] : smallest value in L[i:]
+        # Exchange L[mpos] and L[i]
+        (L[i],L[mpos]) = (L[mpos],L[i])
+        # Now L[:i+1] is sorted
+    return(L)
+```
+
+:::
+:::
+
+### Analysis of Selection Sort
+
+::: columns
+::: {.column width="50%"}
+
+- Correctness follows from the invariant - at the end of the $i$-th iteration, the first $i$ elements are sorted.
+- Efficiency
+  - Outer loop runs $n$ times
+  - Inner loop runs $n-i$ times to find minimum in `L[i:]`
+  - $T(n) = n + (n-1) + (n-2) + \ldots + 1$
+  - $T(n) = \frac{n(n+1)}{2}$
+- Selection sort is $O(n^2)$
+:::
+
+::: {.column width="50%"}
+
+``` python
+def SelectionSort(L):
+    n = len(L)
+    if n < 1:
+        return(L)
+    for i in range(n):
+        # Assume L[:i] is sorted
+        mpos = i
+        # mpos: position of minimum in L[i:]
+        for j in range(i+1,n):
+            if L[j] < L[mpos]:
+            mpos = j
+        # L[mpos] : smallest value in L[i:]
+        # Exchange L[mpos] and L[i]
+        (L[i],L[mpos]) = (L[mpos],L[i])
+        # Now L[:i+1] is sorted
+    return(L)
+```
+
+:::
+:::
+
+### Summary of Selection Sort
+
+- Selection sort repeatedly selects the smallest element from the unsorted portion of the list and moves it to the beginning.
+- Worst-case time complexity: $O(n^2)$
+  - Every input takes the same time to sort
+  - No advantage for partially sorted lists
+
+## Insertion Sort
+
+::: columns
+::: {.column width="50%"}
+
+- Start with the first element: Consider the first element of the list as sorted.
+- Take the next element: Pick the next element and compare it with the elements in the sorted part of the list.
+- Find the correct position: Shift all the elements in the sorted part that are greater than the element being compared, one position to the right.
+- Insert the element: Insert the element at its correct position.
+- Repeat: Repeat the process for all remaining elements.
+- An iterative formulation
+  - Assume `L[:i]` is sorted
+  - Insert `L[i]` in `L[:i]`
+:::
+
+::: {.column width="50%"}
+
+``` python
+def InsertionSort(L):
+    n = len(L)
+    if n < 1:
+        return(L)
+    for i in range(n):
+        # Assume L[:i] is sorted
+        # Move L[i] to correct position in L[:i]
+        j = i
+        while(j > 0 and L[j] < L[j-1]):
+            (L[j],L[j-1]) = (L[j-1],L[j])
+            j = j-1
+        # Now L[:i+1] is sorted
+    return(L)
+```
+
+:::
+:::
+
+### Analysis of Insertion Sort
+
+::: columns
+::: {.column width="50%"}
+
+- Correctness follows from the invariant
+- Efficiency
+  - Outer loop iterates $n$ times
+  - Inner loop: $i$ steps to insert `L[i]` in `L[:i]`
+  - $T(n) = 0 + 1 + \dots + (n − 1)$
+  - $T(n) = \frac{n(n-1)}{2}$
+- Insertion sort is $O(n^2)$
+:::
+
+::: {.column width="50%"}
+
+``` python
+def InsertionSort(L):
+    n = len(L)
+    if n < 1:
+        return(L)
+    for i in range(n):
+        # Assume L[:i] is sorted
+        # Move L[i] to correct position in L[:i]
+        j = i
+        while(j > 0 and L[j] < L[j-1]):
+            (L[j],L[j-1]) = (L[j-1],L[j])
+            j = j-1
+        # Now L[:i+1] is sorted
+    return(L)
+```
+
+:::
+:::
+
+### Summary of Insertion Sort
+
+- Insertion sort is another intuitive algorithm to sort a list
+- Create a new sorted list
+- Repeatedly insert elements into the sorted list
+- Worst case complexity is $O(n^2)$
+  - Unlike selection sort, not all cases take time $n^2$
+  - If list is already sorted, `Insert` stops in $1$ step
+  - Overall time can be close to $O(n)$ for partially sorted lists
+
+
+## Merge Sort
+
+- Both selection and insertion sort are $O(n^2)$
+- Merge sort is a divide-and-conquer algorithm
+  - Divide: Split the list into two halves
+  - Conquer: Recursively sort the two halves
+  - Combine: Merge the two sorted halves into a single sorted list
+
+### Merging sorted lists
+
+::: columns
+::: {.column width="50%"}
+
+- Combine two sorted lists `A` and `B` into `C`
+  - If `A` is empty, copy `B` into `C`
+  - If `B` is empty, copy `A` into `C`
+  - Otherwise, compare first elements of `A` and `B`
+    - Move the smaller of the two to `C`
+  - Repeat till all elements of `A` and `B` have been moved
+:::
+
+::: {.column width="50%"}
+
+``` python
+def merge(A,B):
+    (m,n) = (len(A),len(B))
+    (C,i,j,k) = ([],0,0,0)
+    while k < m+n:
+        if i == m:
+            C.extend(B[j:])
+            k = k + (n-j)
+        elif j == n:
+            C.extend(A[i:])
+            k = k + (m-i)
+        elif A[i] < B[j]:
+            C.append(A[i])
+            (i,k) = (i+1,k+1)
+        else:
+            C.append(B[j])
+            (j,k) = (j+1,k+1)
+    return(C)
+```
+
+:::
+:::
+
+### Merge sort
+
+::: columns
+::: {.column width="50%"}
+
+- To sort `A` into `B`, both of length $n$
+- If $n \leq 1$, nothing to be done
+- Otherwise
+  - Sort `A[:n//2]` into `L`
+  - Sort `A[n//2:]` into `R`
+  - Merge `L` and `R` into `B`
+:::
+
+::: {.column width="50%"}
+
+``` python
+def mergesort(A):
+    n = len(A)
+    if n <= 1:
+        return(A)
+    L = mergesort(A[:n//2])
+    R = mergesort(A[n//2:])
+    B = merge(L,R)
+    return(B)
+```
+
+:::
+:::
+
+### Analysing merge
+
+::: columns
+::: {.column width="50%"}
+
+- Merge `A` of length $m$, `B` of length $n$
+- Output list `C` has length $m + n$
+- In each iteration we add (at least) one element to `C`
+- Hence `merge` takes time $O(m + n)$
+- Recall that $m + n \leq 2(max(m, n))$
+- If $m \approx n$, merge take time $O(n)$
+:::
+
+::: {.column width="50%"}
+
+``` python
+def merge(A,B):
+    (m,n) = (len(A),len(B))
+    (C,i,j,k) = ([],0,0,0)
+    while k < m+n:
+        if i == m:
+            C.extend(B[j:])
+            k = k + (n-j)
+        elif j == n:
+            C.extend(A[i:])
+            k = k + (m-i)
+        elif A[i] < B[j]:
+            C.append(A[i])
+            (i,k) = (i+1,k+1)
+        else:
+            C.append(B[j])
+            (j,k) = (j+1,k+1)
+    return(C)
+```
+
+:::
+:::
+
+### Analysing merge sort
+
+::: columns
+::: {.column width="60%"}
+
+- Let $T(n)$ be the time taken for input of size $n$
+  - For simplicity, assume $n = 2^k$ for some $k$
+- Recurrence
+  - $T(0) = T(1) = 1$
+  - $T(n) = 2T(\frac{n}{2}) + n$
+    - Solve two subproblems of size $\frac{n}{2}$
+    - Merge the solutions in time $\frac{n}{2} + \frac{n}{2} = n$
+- Unwind the recurrence to solve
+$$
+\begin{aligned}
+    T(n) &= 2T(\frac{n}{2}) + n \\
+    &=\ 2[2T(\frac{n}{4}) + \frac{n}{2}] + n =\ 2^2T(\frac{n}{2^2}) + 2n \\
+    &=\ 2^{2}[2T(\frac{n}{2^3}) + \frac{n}{2^2}] + 2n =\ 2^3T(\frac{n}{2^3}) + 3n \\
+    &=\ \dotsc \\
+    &=\ 2^kT(\frac{n}{2^k}) + kn \\
+    &=\ 2^{\log n}T(\frac{n}{2^{\log n}}) + n \log n, \text{ for } \ k = \log n \\
+    &=\ n T(1) + n \log n \\
+    &=\ n + n\log n =\ O(n\log n) \\
+\end{aligned}
+$$
+:::
+
+::: {.column width="40%"}
+
+``` python
+def mergesort(A):
+    n = len(A)
+    if n <= 1:
+        return(A)
+    L = mergesort(A[:n//2])
+    R = mergesort(A[n//2:])
+    B = merge(L,R)
+    return(B)
+```
+
+:::
+:::
+
+### Summary of Merge Sort
+
+- Merge sort takes time $O(n \log n)$ so can be used effectively on large inputs
+- Variations on merge are possible
+  - Union of two sorted lists — discard duplicates, if `A[i] == B[j]` move just one copy to `C` and increment both `i` and `j`
+  - Intersection of two sorted lists — when `A[i] == B[j]`, move one copy to `C`, otherwise discard the smaller of `A[i]`, `B[j]`
+  - List difference — elements in `A` but not in `B`
+- Merge needs to create a new list to hold the merged elements
+  - No obvious way to efficiently merge two lists in place
+  - Extra storage can be costly
+- Inherently recursive
+  - Recursive calls and returns are expensive
+
+
+## Quick Sort
+
+- Quick sort is a sorting algorithm that uses the divide-and-conquer strategy to sort the list of elements.
+- The basic idea of quick sort is to partition the input list into two sub-lists, one containing elements that are smaller than a chosen pivot element, and the other containing elements that are greater than or equal to the pivot.
+- This process is repeated recursively on each sub-list until the entire list is sorted.
+
+### Quick Sort Algorithm
+
+- Choose a pivot element from the list. This can be any element, but typically the first or last element is chosen.
+
+- Partition the list into two sub-list, one containing elements smaller than the pivot, and the other containing elements greater than or equal to the pivot. Steps for partition:
+  - Set pivot to the value of the element at the lower index of the list L.
+  - Initialize two indices i and j to lower and lower+1 respectively.
+  - Loop over the range from lower+1 to upper (inclusive) using the variable j.
+  - If the value at index j is less than or equal to the pivot value, increment i and swap the values at indices i and j in the list L.
+  - After the loop, swap the pivot value at index lower with the value at index i in the list L.
+  - Return the index i as the position of the pivot value.
+
+- Recursively apply steps 1 and 2 to each sub-list until the entire list is sorted.
+
+### Quick Sort Implementation
+
+``` python
+def partition(L,lower,upper):
+  # Select first element as a pivot 
+  pivot = L[lower]
+  i = lower
+  for j in range(lower+1,upper+1):
+    if L[j] <= pivot:
+      i += 1
+      L[i],L[j] = L[j],L[i]
+  L[lower],L[i]= L[i],L[lower]
+  # Return the position of pivot
+  return i
+
+def quicksort(L,lower,upper):
+  if(lower < upper):
+    pivot_pos = partition(L,lower,upper);
+    # Call the quick sort on leftside part of pivot
+    quicksort(L,lower,pivot_pos-1)
+    # Call the quick sort on rightside part of pivot
+    quicksort(L,pivot_pos+1,upper)
+  return L
+```
+
+### Lecture Implementation
+
+``` python
+def quicksort(L,l,r): # Sort L[l:r]
+    if (r - l <= 1):
+        return L
+    (pivot,lower,upper) = (L[l],l+1,l+1)
+    for i in range(l+1,r):
+        if L[i] > pivot:
+            # Extend upper segment
+            upper = upper+1
+        else:
+            # Exchange L[i] with start of upper segment
+            (L[i], L[lower]) = (L[lower], L[i])
+            # Shift both segments
+            (lower,upper) = (lower+1,upper+1)
+    # Move pivot between lower and upper
+    (L[l],L[lower-1]) = (L[lower-1],L[l])
+    lower = lower-1
+    
+    # Recursive calls
+    quicksort(L,l,lower)
+    quicksort(L,lower+1,upper)
+    return(L)
+```
+
+### Analysis of Quick Sort
+
+- Partitioning with respect to the pivot takes $O(n)$ time
+- If the pivot is the median
+ - $T(n) = 2T(\frac{n}{2}) + n$
+ - $T(n) = n \log n = O(n \log n)$
+
+- If the pivot is the smallest or largest element - worst case
+  - Partitions are of size $0$ and $n-1$
+  - $T(n) = T(n-1) + n$
+  - $T(n) = n + (n-1) + \ldots + 1$
+  - $T(n) = \frac{n(n+1)}{2} = O(n^2)$
+  - Already sorted list is the worst case.
+
+- However, average case is $O(n \log n)$
+
+- Sorting is a rare situation where we can compute the average case time complexity
+  - Values don't matter, only the relative order is important
+  - Analyse behaviour over permutations of ${1,2,\ldots,n}$
+  - Each permutation is equally likely
+
+- Expected running time of quick sort is $O(n \log n)$
+
+### Summary of Quick Sort
+
+- Quick sort has a worst-case time complexity of $O(n^2)$, but an average-case time complexity of $O(n \log n)$.
+- Randomized quick sort can be used to avoid the worst-case scenario by randomly selecting the pivot element.
+- Quick sort is an in-place sorting algorithm, which means it does not require any additional memory to sort the list.
+- It can be implemented iteratively.
+- Quick sort is widely used in practice due to its efficiency and simplicity.
+  - Good example of a situation when the worst case upper bound is pessimistic.
+
+## Stability of Sorting Algorithms
+
+- A sorting algorithm is said to be stable if the relative order of equal elements is preserved in the sorted list.
+- For example, if we have two elements with the same value, the one that appears first in the original list should appear first in the sorted list.
+- Selection sort and quick sort are not stable, while insertion sort and merge sort are stable.
+- **Stability** of sorting is crucial in many applications, such as sorting by multiple keys.
+
+## Comparison of Sorting Algorithms
+
+|    Parameter     | Selection Sort | Insertion Sort |  Merge Sort   |  Quick Sort   |
+|:----------------:|:--------------:|:--------------:|:-------------:|:-------------:|
+|  **Best case**   |    $O(n^2)$    |     $O(n)$     | $O(n \log n)$ | $O(n \log n)$ |
+| **Average case** |    $O(n^2)$    |    $O(n^2)$    | $O(n \log n)$ | $O(n \log n)$ |
+|  **Worst case**  |    $O(n^2)$    |    $O(n^2)$    | $O(n \log n)$ |   $O(n^2)$    |
+|   **In-place**   |      Yes       |      Yes       |      No       |      Yes      |
+|    **Stable**    |       No       |      Yes       |      Yes      |      No       |
+

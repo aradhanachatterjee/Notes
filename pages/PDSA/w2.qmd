@@ -741,7 +741,7 @@ def InsertionSort(L):
 - Efficiency
   - Outer loop iterates $n$ times
   - Inner loop: $i$ steps to insert `L[i]` in `L[:i]`
-  - $T(n) = 0 + 1 + · · · + (n − 1)$
+  - $T(n) = 0 + 1 + \dots + (n − 1)$
   - $T(n) = \frac{n(n-1)}{2}$
 - Insertion sort is $O(n^2)$
 :::

@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notes - Sorting Algorithms</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/sorting_algorithms.html">Sorting Algorithms</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Notes</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">PDSA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binary Search</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/sorting_algorithms.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Sorting Algorithms</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Random</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Series Representations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-do-we-need-sorting-algorithms" id="toc-why-do-we-need-sorting-algorithms" class="nav-link active" data-scroll-target="#why-do-we-need-sorting-algorithms">Why do we need sorting algorithms?</a></li>
+  <li><a href="#selection-sort" id="toc-selection-sort" class="nav-link" data-scroll-target="#selection-sort">Selection Sort</a>
+  <ul class="collapse">
+  <li><a href="#analysis-of-selection-sort" id="toc-analysis-of-selection-sort" class="nav-link" data-scroll-target="#analysis-of-selection-sort">Analysis of Selection Sort</a></li>
+  <li><a href="#summary-of-selection-sort" id="toc-summary-of-selection-sort" class="nav-link" data-scroll-target="#summary-of-selection-sort">Summary of Selection Sort</a></li>
+  </ul></li>
+  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort">Insertion Sort</a>
+  <ul class="collapse">
+  <li><a href="#analysis-of-insertion-sort" id="toc-analysis-of-insertion-sort" class="nav-link" data-scroll-target="#analysis-of-insertion-sort">Analysis of Insertion Sort</a></li>
+  <li><a href="#summary-of-insertion-sort" id="toc-summary-of-insertion-sort" class="nav-link" data-scroll-target="#summary-of-insertion-sort">Summary of Insertion Sort</a></li>
+  </ul></li>
+  <li><a href="#merge-sort" id="toc-merge-sort" class="nav-link" data-scroll-target="#merge-sort">Merge Sort</a>
+  <ul class="collapse">
+  <li><a href="#merging-sorted-lists" id="toc-merging-sorted-lists" class="nav-link" data-scroll-target="#merging-sorted-lists">Merging sorted lists</a></li>
+  <li><a href="#merge-sort-1" id="toc-merge-sort-1" class="nav-link" data-scroll-target="#merge-sort-1">Merge sort</a></li>
+  <li><a href="#analysing-merge" id="toc-analysing-merge" class="nav-link" data-scroll-target="#analysing-merge">Analysing merge</a></li>
+  <li><a href="#analysing-merge-sort" id="toc-analysing-merge-sort" class="nav-link" data-scroll-target="#analysing-merge-sort">Analysing merge sort</a></li>
+  <li><a href="#summary-of-merge-sort" id="toc-summary-of-merge-sort" class="nav-link" data-scroll-target="#summary-of-merge-sort">Summary of Merge Sort</a></li>
+  </ul></li>
+  <li><a href="#quick-sort" id="toc-quick-sort" class="nav-link" data-scroll-target="#quick-sort">Quick Sort</a>
+  <ul class="collapse">
+  <li><a href="#quick-sort-algorithm" id="toc-quick-sort-algorithm" class="nav-link" data-scroll-target="#quick-sort-algorithm">Quick Sort Algorithm</a></li>
+  <li><a href="#quick-sort-implementation" id="toc-quick-sort-implementation" class="nav-link" data-scroll-target="#quick-sort-implementation">Quick Sort Implementation</a></li>
+  <li><a href="#lecture-implementation" id="toc-lecture-implementation" class="nav-link" data-scroll-target="#lecture-implementation">Lecture Implementation</a></li>
+  <li><a href="#analysis-of-quick-sort" id="toc-analysis-of-quick-sort" class="nav-link" data-scroll-target="#analysis-of-quick-sort">Analysis of Quick Sort</a></li>
+  <li><a href="#summary-of-quick-sort" id="toc-summary-of-quick-sort" class="nav-link" data-scroll-target="#summary-of-quick-sort">Summary of Quick Sort</a></li>
+  </ul></li>
+  <li><a href="#stability-of-sorting-algorithms" id="toc-stability-of-sorting-algorithms" class="nav-link" data-scroll-target="#stability-of-sorting-algorithms">Stability of Sorting Algorithms</a></li>
+  <li><a href="#comparison-of-sorting-algorithms" id="toc-comparison-of-sorting-algorithms" class="nav-link" data-scroll-target="#comparison-of-sorting-algorithms">Comparison of Sorting Algorithms</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/sorting_algorithms.html">Sorting Algorithms</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Sorting Algorithms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="why-do-we-need-sorting-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-sorting-algorithms">Why do we need sorting algorithms?</h2>
+<ul>
+<li>Sorting a list makes many other computations easier, such as:
+<ul>
+<li>Binary search for a value</li>
+<li>Finding the median value</li>
+<li>Checking for duplicates in a list</li>
+<li>Building a histogram of values</li>
+</ul></li>
+<li>Sorting is a general first step which makes many subsequent computations easier.</li>
+<li>There are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.</li>
+<li>How do we sort a list?</li>
+</ul>
+</section>
+<section id="selection-sort" class="level2">
+<h2 class="anchored" data-anchor-id="selection-sort">Selection Sort</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Start with the first element: Consider the first element of the list as the minimum.</li>
+<li>Find the minimum: Scan through the list to find the smallest element.</li>
+<li>Swap: Swap the smallest element found with the first element.</li>
+<li>Repeat for the next position: Move to the next position and repeat the process for the remaining elements.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SelectionSort(L):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(L)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(L)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Assume L[:i] is sorted</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        mpos <span class="op">=</span> i</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># mpos: position of minimum in L[i:]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>,n):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[j] <span class="op">&lt;</span> L[mpos]:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            mpos <span class="op">=</span> j</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># L[mpos] : smallest value in L[i:]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Exchange L[mpos] and L[i]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        (L[i],L[mpos]) <span class="op">=</span> (L[mpos],L[i])</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now L[:i+1] is sorted</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="analysis-of-selection-sort" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-selection-sort">Analysis of Selection Sort</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Correctness follows from the invariant - at the end of the <span class="math inline">i</span>-th iteration, the first <span class="math inline">i</span> elements are sorted.</li>
+<li>Efficiency
+<ul>
+<li>Outer loop runs <span class="math inline">n</span> times</li>
+<li>Inner loop runs <span class="math inline">n-i</span> times to find minimum in <code>L[i:]</code></li>
+<li><span class="math inline">T(n) = n + (n-1) + (n-2) + \ldots + 1</span></li>
+<li><span class="math inline">T(n) = \frac{n(n+1)}{2}</span></li>
+</ul></li>
+<li>Selection sort is <span class="math inline">O(n^2)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SelectionSort(L):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(L)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(L)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Assume L[:i] is sorted</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        mpos <span class="op">=</span> i</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># mpos: position of minimum in L[i:]</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>,n):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[j] <span class="op">&lt;</span> L[mpos]:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            mpos <span class="op">=</span> j</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># L[mpos] : smallest value in L[i:]</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Exchange L[mpos] and L[i]</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        (L[i],L[mpos]) <span class="op">=</span> (L[mpos],L[i])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now L[:i+1] is sorted</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="summary-of-selection-sort" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-selection-sort">Summary of Selection Sort</h3>
+<ul>
+<li>Selection sort repeatedly selects the smallest element from the unsorted portion of the list and moves it to the beginning.</li>
+<li>Worst-case time complexity: <span class="math inline">O(n^2)</span>
+<ul>
+<li>Every input takes the same time to sort</li>
+<li>No advantage for partially sorted lists</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="insertion-sort" class="level2">
+<h2 class="anchored" data-anchor-id="insertion-sort">Insertion Sort</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Start with the first element: Consider the first element of the list as sorted.</li>
+<li>Take the next element: Pick the next element and compare it with the elements in the sorted part of the list.</li>
+<li>Find the correct position: Shift all the elements in the sorted part that are greater than the element being compared, one position to the right.</li>
+<li>Insert the element: Insert the element at its correct position.</li>
+<li>Repeat: Repeat the process for all remaining elements.</li>
+<li>An iterative formulation
+<ul>
+<li>Assume <code>L[:i]</code> is sorted</li>
+<li>Insert <code>L[i]</code> in <code>L[:i]</code></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> InsertionSort(L):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(L)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(L)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Assume L[:i] is sorted</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Move L[i] to correct position in L[:i]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span>(j <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> L[j] <span class="op">&lt;</span> L[j<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            (L[j],L[j<span class="op">-</span><span class="dv">1</span>]) <span class="op">=</span> (L[j<span class="op">-</span><span class="dv">1</span>],L[j])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> j<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now L[:i+1] is sorted</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="analysis-of-insertion-sort" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-insertion-sort">Analysis of Insertion Sort</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Correctness follows from the invariant</li>
+<li>Efficiency
+<ul>
+<li>Outer loop iterates <span class="math inline">n</span> times</li>
+<li>Inner loop: <span class="math inline">i</span> steps to insert <code>L[i]</code> in <code>L[:i]</code></li>
+<li><span class="math inline">T(n) = 0 + 1 + \dots + (n − 1)</span></li>
+<li><span class="math inline">T(n) = \frac{n(n-1)}{2}</span></li>
+</ul></li>
+<li>Insertion sort is <span class="math inline">O(n^2)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> InsertionSort(L):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(L)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(L)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Assume L[:i] is sorted</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Move L[i] to correct position in L[:i]</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span>(j <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> L[j] <span class="op">&lt;</span> L[j<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            (L[j],L[j<span class="op">-</span><span class="dv">1</span>]) <span class="op">=</span> (L[j<span class="op">-</span><span class="dv">1</span>],L[j])</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> j<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now L[:i+1] is sorted</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="summary-of-insertion-sort" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-insertion-sort">Summary of Insertion Sort</h3>
+<ul>
+<li>Insertion sort is another intuitive algorithm to sort a list</li>
+<li>Create a new sorted list</li>
+<li>Repeatedly insert elements into the sorted list</li>
+<li>Worst case complexity is <span class="math inline">O(n^2)</span>
+<ul>
+<li>Unlike selection sort, not all cases take time <span class="math inline">n^2</span></li>
+<li>If list is already sorted, <code>Insert</code> stops in <span class="math inline">1</span> step</li>
+<li>Overall time can be close to <span class="math inline">O(n)</span> for partially sorted lists</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="merge-sort" class="level2">
+<h2 class="anchored" data-anchor-id="merge-sort">Merge Sort</h2>
+<ul>
+<li>Both selection and insertion sort are <span class="math inline">O(n^2)</span></li>
+<li>Merge sort is a divide-and-conquer algorithm
+<ul>
+<li>Divide: Split the list into two halves</li>
+<li>Conquer: Recursively sort the two halves</li>
+<li>Combine: Merge the two sorted halves into a single sorted list</li>
+</ul></li>
+</ul>
+<section id="merging-sorted-lists" class="level3">
+<h3 class="anchored" data-anchor-id="merging-sorted-lists">Merging sorted lists</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Combine two sorted lists <code>A</code> and <code>B</code> into <code>C</code>
+<ul>
+<li>If <code>A</code> is empty, copy <code>B</code> into <code>C</code></li>
+<li>If <code>B</code> is empty, copy <code>A</code> into <code>C</code></li>
+<li>Otherwise, compare first elements of <code>A</code> and <code>B</code>
+<ul>
+<li>Move the smaller of the two to <code>C</code></li>
+</ul></li>
+<li>Repeat till all elements of <code>A</code> and <code>B</code> have been moved</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge(A,B):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    (m,n) <span class="op">=</span> (<span class="bu">len</span>(A),<span class="bu">len</span>(B))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    (C,i,j,k) <span class="op">=</span> ([],<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> k <span class="op">&lt;</span> m<span class="op">+</span>n:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">==</span> m:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            C.extend(B[j:])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> k <span class="op">+</span> (n<span class="op">-</span>j)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> j <span class="op">==</span> n:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            C.extend(A[i:])</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> k <span class="op">+</span> (m<span class="op">-</span>i)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> A[i] <span class="op">&lt;</span> B[j]:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            C.append(A[i])</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            (i,k) <span class="op">=</span> (i<span class="op">+</span><span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            C.append(B[j])</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            (j,k) <span class="op">=</span> (j<span class="op">+</span><span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="merge-sort-1" class="level3">
+<h3 class="anchored" data-anchor-id="merge-sort-1">Merge sort</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>To sort <code>A</code> into <code>B</code>, both of length <span class="math inline">n</span></li>
+<li>If <span class="math inline">n \leq 1</span>, nothing to be done</li>
+<li>Otherwise
+<ul>
+<li>Sort <code>A[:n//2]</code> into <code>L</code></li>
+<li>Sort <code>A[n//2:]</code> into <code>R</code></li>
+<li>Merge <code>L</code> and <code>R</code> into <code>B</code></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mergesort(A):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(A)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> mergesort(A[:n<span class="op">//</span><span class="dv">2</span>])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> mergesort(A[n<span class="op">//</span><span class="dv">2</span>:])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> merge(L,R)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="analysing-merge" class="level3">
+<h3 class="anchored" data-anchor-id="analysing-merge">Analysing merge</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Merge <code>A</code> of length <span class="math inline">m</span>, <code>B</code> of length <span class="math inline">n</span></li>
+<li>Output list <code>C</code> has length <span class="math inline">m + n</span></li>
+<li>In each iteration we add (at least) one element to <code>C</code></li>
+<li>Hence <code>merge</code> takes time <span class="math inline">O(m + n)</span></li>
+<li>Recall that <span class="math inline">m + n \leq 2(max(m, n))</span></li>
+<li>If <span class="math inline">m \approx n</span>, merge take time <span class="math inline">O(n)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge(A,B):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (m,n) <span class="op">=</span> (<span class="bu">len</span>(A),<span class="bu">len</span>(B))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (C,i,j,k) <span class="op">=</span> ([],<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> k <span class="op">&lt;</span> m<span class="op">+</span>n:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">==</span> m:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            C.extend(B[j:])</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> k <span class="op">+</span> (n<span class="op">-</span>j)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> j <span class="op">==</span> n:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            C.extend(A[i:])</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> k <span class="op">+</span> (m<span class="op">-</span>i)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> A[i] <span class="op">&lt;</span> B[j]:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            C.append(A[i])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            (i,k) <span class="op">=</span> (i<span class="op">+</span><span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            C.append(B[j])</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            (j,k) <span class="op">=</span> (j<span class="op">+</span><span class="dv">1</span>,k<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="analysing-merge-sort" class="level3">
+<h3 class="anchored" data-anchor-id="analysing-merge-sort">Analysing merge sort</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Let <span class="math inline">T(n)</span> be the time taken for input of size <span class="math inline">n</span>
+<ul>
+<li>For simplicity, assume <span class="math inline">n = 2^k</span> for some <span class="math inline">k</span></li>
+</ul></li>
+<li>Recurrence
+<ul>
+<li><span class="math inline">T(0) = T(1) = 1</span></li>
+<li><span class="math inline">T(n) = 2T(\frac{n}{2}) + n</span>
+<ul>
+<li>Solve two subproblems of size <span class="math inline">\frac{n}{2}</span></li>
+<li>Merge the solutions in time <span class="math inline">\frac{n}{2} + \frac{n}{2} = n</span></li>
+</ul></li>
+</ul></li>
+<li>Unwind the recurrence to solve <span class="math display">
+\begin{aligned}
+  T(n) &amp;= 2T(\frac{n}{2}) + n \\
+  &amp;=\ 2[2T(\frac{n}{4}) + \frac{n}{2}] + n =\ 2^2T(\frac{n}{2^2}) + 2n \\
+  &amp;=\ 2^{2}[2T(\frac{n}{2^3}) + \frac{n}{2^2}] + 2n =\ 2^3T(\frac{n}{2^3}) + 3n \\
+  &amp;=\ \dotsc \\
+  &amp;=\ 2^kT(\frac{n}{2^k}) + kn \\
+  &amp;=\ 2^{\log n}T(\frac{n}{2^{\log n}}) + n \log n, \text{ for } \ k = \log n \\
+  &amp;=\ n T(1) + n \log n \\
+  &amp;=\ n + n\log n =\ O(n\log n) \\
+\end{aligned}
+</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mergesort(A):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(A)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> mergesort(A[:n<span class="op">//</span><span class="dv">2</span>])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> mergesort(A[n<span class="op">//</span><span class="dv">2</span>:])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> merge(L,R)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="summary-of-merge-sort" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-merge-sort">Summary of Merge Sort</h3>
+<ul>
+<li>Merge sort takes time <span class="math inline">O(n \log n)</span> so can be used effectively on large inputs</li>
+<li>Variations on merge are possible
+<ul>
+<li>Union of two sorted lists — discard duplicates, if <code>A[i] == B[j]</code> move just one copy to <code>C</code> and increment both <code>i</code> and <code>j</code></li>
+<li>Intersection of two sorted lists — when <code>A[i] == B[j]</code>, move one copy to <code>C</code>, otherwise discard the smaller of <code>A[i]</code>, <code>B[j]</code></li>
+<li>List difference — elements in <code>A</code> but not in <code>B</code></li>
+</ul></li>
+<li>Merge needs to create a new list to hold the merged elements
+<ul>
+<li>No obvious way to efficiently merge two lists in place</li>
+<li>Extra storage can be costly</li>
+</ul></li>
+<li>Inherently recursive
+<ul>
+<li>Recursive calls and returns are expensive</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="quick-sort" class="level2">
+<h2 class="anchored" data-anchor-id="quick-sort">Quick Sort</h2>
+<ul>
+<li>Quick sort is a sorting algorithm that uses the divide-and-conquer strategy to sort the list of elements.</li>
+<li>The basic idea of quick sort is to partition the input list into two sub-lists, one containing elements that are smaller than a chosen pivot element, and the other containing elements that are greater than or equal to the pivot.</li>
+<li>This process is repeated recursively on each sub-list until the entire list is sorted.</li>
+</ul>
+<section id="quick-sort-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="quick-sort-algorithm">Quick Sort Algorithm</h3>
+<ul>
+<li><p>Choose a pivot element from the list. This can be any element, but typically the first or last element is chosen.</p></li>
+<li><p>Partition the list into two sub-list, one containing elements smaller than the pivot, and the other containing elements greater than or equal to the pivot. Steps for partition:</p>
+<ul>
+<li>Set pivot to the value of the element at the lower index of the list L.</li>
+<li>Initialize two indices i and j to lower and lower+1 respectively.</li>
+<li>Loop over the range from lower+1 to upper (inclusive) using the variable j.</li>
+<li>If the value at index j is less than or equal to the pivot value, increment i and swap the values at indices i and j in the list L.</li>
+<li>After the loop, swap the pivot value at index lower with the value at index i in the list L.</li>
+<li>Return the index i as the position of the pivot value.</li>
+</ul></li>
+<li><p>Recursively apply steps 1 and 2 to each sub-list until the entire list is sorted.</p></li>
+</ul>
+</section>
+<section id="quick-sort-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="quick-sort-implementation">Quick Sort Implementation</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> partition(L,lower,upper):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select first element as a pivot </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  pivot <span class="op">=</span> L[lower]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> lower</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(lower<span class="op">+</span><span class="dv">1</span>,upper<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> L[j] <span class="op">&lt;=</span> pivot:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>      i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>      L[i],L[j] <span class="op">=</span> L[j],L[i]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  L[lower],L[i]<span class="op">=</span> L[i],L[lower]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the position of pivot</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quicksort(L,lower,upper):</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(lower <span class="op">&lt;</span> upper):</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    pivot_pos <span class="op">=</span> partition(L,lower,upper)<span class="op">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the quick sort on leftside part of pivot</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    quicksort(L,lower,pivot_pos<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the quick sort on rightside part of pivot</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    quicksort(L,pivot_pos<span class="op">+</span><span class="dv">1</span>,upper)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lecture-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-implementation">Lecture Implementation</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quicksort(L,l,r): <span class="co"># Sort L[l:r]</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (r <span class="op">-</span> l <span class="op">&lt;=</span> <span class="dv">1</span>):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> L</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    (pivot,lower,upper) <span class="op">=</span> (L[l],l<span class="op">+</span><span class="dv">1</span>,l<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(l<span class="op">+</span><span class="dv">1</span>,r):</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> L[i] <span class="op">&gt;</span> pivot:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Extend upper segment</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            upper <span class="op">=</span> upper<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Exchange L[i] with start of upper segment</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            (L[i], L[lower]) <span class="op">=</span> (L[lower], L[i])</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Shift both segments</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            (lower,upper) <span class="op">=</span> (lower<span class="op">+</span><span class="dv">1</span>,upper<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move pivot between lower and upper</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    (L[l],L[lower<span class="op">-</span><span class="dv">1</span>]) <span class="op">=</span> (L[lower<span class="op">-</span><span class="dv">1</span>],L[l])</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    lower <span class="op">=</span> lower<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recursive calls</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    quicksort(L,l,lower)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    quicksort(L,lower<span class="op">+</span><span class="dv">1</span>,upper)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="analysis-of-quick-sort" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-quick-sort">Analysis of Quick Sort</h3>
+<ul>
+<li><p>Partitioning with respect to the pivot takes <span class="math inline">O(n)</span> time</p></li>
+<li><p>If the pivot is the median</p></li>
+<li><p><span class="math inline">T(n) = 2T(\frac{n}{2}) + n</span></p></li>
+<li><p><span class="math inline">T(n) = n \log n = O(n \log n)</span></p></li>
+<li><p>If the pivot is the smallest or largest element - worst case</p>
+<ul>
+<li>Partitions are of size <span class="math inline">0</span> and <span class="math inline">n-1</span></li>
+<li><span class="math inline">T(n) = T(n-1) + n</span></li>
+<li><span class="math inline">T(n) = n + (n-1) + \ldots + 1</span></li>
+<li><span class="math inline">T(n) = \frac{n(n+1)}{2} = O(n^2)</span></li>
+<li>Already sorted list is the worst case.</li>
+</ul></li>
+<li><p>However, average case is <span class="math inline">O(n \log n)</span></p></li>
+<li><p>Sorting is a rare situation where we can compute the average case time complexity</p>
+<ul>
+<li>Values don’t matter, only the relative order is important</li>
+<li>Analyse behaviour over permutations of <span class="math inline">{1,2,\ldots,n}</span></li>
+<li>Each permutation is equally likely</li>
+</ul></li>
+<li><p>Expected running time of quick sort is <span class="math inline">O(n \log n)</span></p></li>
+</ul>
+</section>
+<section id="summary-of-quick-sort" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-quick-sort">Summary of Quick Sort</h3>
+<ul>
+<li>Quick sort has a worst-case time complexity of <span class="math inline">O(n^2)</span>, but an average-case time complexity of <span class="math inline">O(n \log n)</span>.</li>
+<li>Randomized quick sort can be used to avoid the worst-case scenario by randomly selecting the pivot element.</li>
+<li>Quick sort is an in-place sorting algorithm, which means it does not require any additional memory to sort the list.</li>
+<li>It can be implemented iteratively.</li>
+<li>Quick sort is widely used in practice due to its efficiency and simplicity.
+<ul>
+<li>Good example of a situation when the worst case upper bound is pessimistic.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="stability-of-sorting-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="stability-of-sorting-algorithms">Stability of Sorting Algorithms</h2>
+<ul>
+<li>A sorting algorithm is said to be stable if the relative order of equal elements is preserved in the sorted list.</li>
+<li>For example, if we have two elements with the same value, the one that appears first in the original list should appear first in the sorted list.</li>
+<li>Selection sort and quick sort are not stable, while insertion sort and merge sort are stable.</li>
+<li><strong>Stability</strong> of sorting is crucial in many applications, such as sorting by multiple keys.</li>
+</ul>
+</section>
+<section id="comparison-of-sorting-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-sorting-algorithms">Comparison of Sorting Algorithms</h2>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: center;">Selection Sort</th>
+<th style="text-align: center;">Insertion Sort</th>
+<th style="text-align: center;">Merge Sort</th>
+<th style="text-align: center;">Quick Sort</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Best case</strong></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n \log n)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n \log n)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Average case</strong></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n \log n)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n \log n)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Worst case</strong></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n \log n)</span></td>
+<td style="text-align: center;"><span class="math inline">O(n^2)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>In-place</strong></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Stable</strong></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

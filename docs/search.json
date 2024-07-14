@@ -640,7 +640,7 @@
     "href": "pages/PDSA/w2.html#analysis-of-iterative-insertion-sort",
     "title": "PDSA - Week 2",
     "section": "Analysis of iterative Insertion Sort",
-    "text": "Analysis of iterative Insertion Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop iterates n times\nInner loop: i steps to insert L[i] in L[:i]\nT(n) = 0 + 1 + · · · + (n − 1)\nT(n) = \\frac{n(n-1)}{2}\n\nInsertion sort is O(n^2)\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)"
+    "text": "Analysis of iterative Insertion Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop iterates n times\nInner loop: i steps to insert L[i] in L[:i]\nT(n) = 0 + 1 + \\dots + (n − 1)\nT(n) = \\frac{n(n-1)}{2}\n\nInsertion sort is O(n^2)\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)"
   },
   {
     "objectID": "pages/PDSA/w2.html#analysis-of-recursive-insertion-sort",
@@ -2341,253 +2341,161 @@
     "href": "pages/MAD-2/w2.html",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration\n\n\n\n\n\nGo over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions\n\n\n\n\n\nFunctions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose\n\n\n\n\nMaps: proper dictionary-like objects\nWeakMaps\nSets\n\n\n\n\n\nSimple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects\n\n\n\n\n\nFunctions that yield values one at a time\nComputed iterables\nDynamically generate iterators",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration\n\n\n\n\n\nGo over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions\n\n\n\n\n\nFunctions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose\n\n\n\n\nMaps: proper dictionary-like objects\nWeakMaps\nSets\n\n\n\n\n\nSimple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects\n\n\n\n\n\nFunctions that yield values one at a time\nComputed iterables\nDynamically generate iterators"
   },
   {
     "objectID": "pages/MAD-2/w2.html#basic-arrays",
     "href": "pages/MAD-2/w2.html#basic-arrays",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Collection of objects of any type\n\nCan even be a mix of types (numbers, strings, objects, functions, etc.)\n\nElement access\nLength property\nHoles\nIteration"
   },
   {
     "objectID": "pages/MAD-2/w2.html#iteration",
     "href": "pages/MAD-2/w2.html#iteration",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Go over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Go over all elements in a collection\nConcepts:\n\nIterable: an object whose contents can be accessed sequentially\nIterator: pointer to the next element in the collection\n\nIterable objects:\n\nArrays\nStrings\nMaps\nSets\nBrowser DOM - tree structure\n\nObjects: Object.keys(obj), Object.values(obj), Object.entries(obj) - helper functions"
   },
   {
     "objectID": "pages/MAD-2/w2.html#iterations-and-transformations",
     "href": "pages/MAD-2/w2.html#iterations-and-transformations",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Functions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Functions that take functions as arguments/input\nmap, filter, find\n\nApply a callback function over each element in the collection\n\nElements of functional programming: create a transformation chain\n\nCallback: important concept - a function that is passed as an argument to another function, to be called back for some purpose"
   },
   {
     "objectID": "pages/MAD-2/w2.html#other-collections",
     "href": "pages/MAD-2/w2.html#other-collections",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Maps: proper dictionary-like objects\nWeakMaps\nSets",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Maps: proper dictionary-like objects\nWeakMaps\nSets"
   },
   {
     "objectID": "pages/MAD-2/w2.html#destructuring",
     "href": "pages/MAD-2/w2.html#destructuring",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Simple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Simple syntax to split an array into multiple variables\nEasier to pass and collect arguments etc.\nAlso works with objects"
   },
   {
     "objectID": "pages/MAD-2/w2.html#generators",
     "href": "pages/MAD-2/w2.html#generators",
     "title": "Modern Application Development II - Week 2",
     "section": "",
-    "text": "Functions that yield values one at a time\nComputed iterables\nDynamically generate iterators",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Functions that yield values one at a time\nComputed iterables\nDynamically generate iterators"
   },
   {
     "objectID": "pages/MAD-2/w2.html#modules",
     "href": "pages/MAD-2/w2.html#modules",
     "title": "Modern Application Development II - Week 2",
     "section": "Modules",
-    "text": "Modules\n\nCollect related functions, objects, values together\n“export” values for use by other scripts\n“import” values from other scripts, packages",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Modules\n\nCollect related functions, objects, values together\n“export” values for use by other scripts\n“import” values from other scripts, packages"
   },
   {
     "objectID": "pages/MAD-2/w2.html#ways-of-implementing",
     "href": "pages/MAD-2/w2.html#ways-of-implementing",
     "title": "Modern Application Development II - Week 2",
     "section": "Ways of implementing",
-    "text": "Ways of implementing\n\nscript - directly include script inside browser\nCommonJS - introduced for server-side modules\n\nsynchronous load: server blocks till module is loaded\n\nAMD - asynchronous module definition\n\nused for browser-side modules\n\n\nECMAScript 6 and above:\n\nES6 modules\n\nBoth servers and browsers\nAsynchronous loading",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Ways of implementing\n\nscript - directly include script inside browser\nCommonJS - introduced for server-side modules\n\nsynchronous load: server blocks till module is loaded\n\nAMD - asynchronous module definition\n\nused for browser-side modules\n\n\nECMAScript 6 and above:\n\nES6 modules\n\nBoth servers and browsers\nAsynchronous loading"
   },
   {
     "objectID": "pages/MAD-2/w2.html#npm",
     "href": "pages/MAD-2/w2.html#npm",
     "title": "Modern Application Development II - Week 2",
     "section": "npm",
-    "text": "npm\n\nNode Package Manager\nNode:\n\ncommand line interface for JS\nMainly used for backend code, can also be used for testing\n\nnpm can also be used to package modules for frontend\n\n“Bundle” managers - webpack, rollup, etc.",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "npm\n\nNode Package Manager\nNode:\n\ncommand line interface for JS\nMainly used for backend code, can also be used for testing\n\nnpm can also be used to package modules for frontend\n\n“Bundle” managers - webpack, rollup, etc."
   },
   {
     "objectID": "pages/MAD-2/w2.html#objects",
     "href": "pages/MAD-2/w2.html#objects",
     "title": "Modern Application Development II - Week 2",
     "section": "Objects",
-    "text": "Objects\n\nEverything in JavaScript is an object\nObject literals\n\nAssign values to named parameters in an object\n\nObject methods\n\nAssign functions that can be called on the object\n\nSpecial variable this - refers to the object itself\nFunction methods\n\ncall(), apply(), bind()\n\nObject.keys(), values(), entries()\n\nuse as dictionary\niterators",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Objects\n\nEverything in JavaScript is an object\nObject literals\n\nAssign values to named parameters in an object\n\nObject methods\n\nAssign functions that can be called on the object\n\nSpecial variable this - refers to the object itself\nFunction methods\n\ncall(), apply(), bind()\n\nObject.keys(), values(), entries()\n\nuse as dictionary\niterators"
   },
   {
     "objectID": "pages/MAD-2/w2.html#prototype-based-inheritance",
     "href": "pages/MAD-2/w2.html#prototype-based-inheritance",
     "title": "Modern Application Development II - Week 2",
     "section": "Prototype based inheritance",
-    "text": "Prototype based inheritance\n\nObjects can have a “prototype”\nAutomatically inherit properties and methods of parent object\nSingle inheritance track",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Prototype based inheritance\n\nObjects can have a “prototype”\nAutomatically inherit properties and methods of parent object\nSingle inheritance track"
   },
   {
     "objectID": "pages/MAD-2/w2.html#class",
     "href": "pages/MAD-2/w2.html#class",
     "title": "Modern Application Development II - Week 2",
     "section": "Class",
-    "text": "Class\n\nBetter syntax - still prototype based inheritance\nconstructor must explicitly call super()\nMultiple inheritance of Mixins",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Class\n\nBetter syntax - still prototype based inheritance\nconstructor must explicitly call super()\nMultiple inheritance of Mixins"
   },
   {
     "objectID": "pages/MAD-2/w2.html#function-calls",
     "href": "pages/MAD-2/w2.html#function-calls",
     "title": "Modern Application Development II - Week 2",
     "section": "Function calls",
-    "text": "Function calls\n\n\n\nFunction is like a “branch”\n\nbut must save present state so we can return\n\nCall stack:\n\nKeep track of chain of functions called up to now\nPop back up out of the stack\n\n\n\n\nmain() on stack - current - calls f()\nf() goes on stack - calls g()\ng() goes on stack - calls h()\nh() goes on stack - executes\nreturn from h -&gt; pop into g\nreturn from g -&gt; pop into f\nreturn from f -&gt; pop into main",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Function calls\n\n\n\nFunction is like a “branch”\n\nbut must save present state so we can return\n\nCall stack:\n\nKeep track of chain of functions called up to now\nPop back up out of the stack\n\n\n\n\nmain() on stack - current - calls f()\nf() goes on stack - calls g()\ng() goes on stack - calls h()\nh() goes on stack - executes\nreturn from h -&gt; pop into g\nreturn from g -&gt; pop into f\nreturn from f -&gt; pop into main"
   },
   {
     "objectID": "pages/MAD-2/w2.html#call-stack",
     "href": "pages/MAD-2/w2.html#call-stack",
     "title": "Modern Application Development II - Week 2",
     "section": "Call Stack",
-    "text": "Call Stack\nExplanatory video\nVisualize the call stack",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Call Stack\nExplanatory video\nVisualize the call stack"
   },
   {
     "objectID": "pages/MAD-2/w2.html#event-loop-and-task-queue",
     "href": "pages/MAD-2/w2.html#event-loop-and-task-queue",
     "title": "Modern Application Development II - Week 2",
     "section": "Event Loop and Task Queue",
-    "text": "Event Loop and Task Queue\n\nTask Queue: store next task to be executed\n\nTasks are pushed into the queue by events (clicks, input, network etc.)\n\nEvent loop:\n\nWait for call stack to be empty\nPop next task from queue and push onto stack, start executing\n\nRun-to-completion\n\nGuarantee from JavaScript runtime\nEach task will run to completion before next task is picked up",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Event Loop and Task Queue\n\nTask Queue: store next task to be executed\n\nTasks are pushed into the queue by events (clicks, input, network etc.)\n\nEvent loop:\n\nWait for call stack to be empty\nPop next task from queue and push onto stack, start executing\n\nRun-to-completion\n\nGuarantee from JavaScript runtime\nEach task will run to completion before next task is picked up"
   },
   {
     "objectID": "pages/MAD-2/w2.html#blocking-the-browser",
     "href": "pages/MAD-2/w2.html#blocking-the-browser",
     "title": "Modern Application Development II - Week 2",
     "section": "Blocking the browser",
-    "text": "Blocking the browser\nhttps://exploringjs.com/impatient-js/ch_async-js.html#how-to-avoid-blocking-the-javascript-process",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Blocking the browser\nhttps://exploringjs.com/impatient-js/ch_async-js.html#how-to-avoid-blocking-the-javascript-process"
   },
   {
     "objectID": "pages/MAD-2/w2.html#why-callbacks",
     "href": "pages/MAD-2/w2.html#why-callbacks",
     "title": "Modern Application Development II - Week 2",
     "section": "Why callbacks?",
-    "text": "Why callbacks?\n\nLong running code\n\nWill block execution till it finishes\n\nPush long running code into a separate “thread” or “task”\n\nLet main code proceed\nCall back when task is done",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Why callbacks?\n\nLong running code\n\nWill block execution till it finishes\n\nPush long running code into a separate “thread” or “task”\n\nLet main code proceed\nCall back when task is done"
   },
   {
     "objectID": "pages/MAD-2/w2.html#example-reading-files---synchronous",
     "href": "pages/MAD-2/w2.html#example-reading-files---synchronous",
     "title": "Modern Application Development II - Week 2",
     "section": "Example: reading files - synchronous",
-    "text": "Example: reading files - synchronous\nconst fs = require('fs');\n\ntry {\n    const data = fs.readFileSync('file.txt', 'utf8');\n    console.log(data);\n} catch (err) {\n    console.error(err);\n}",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Example: reading files - synchronous\nconst fs = require('fs');\n\ntry {\n    const data = fs.readFileSync('file.txt', 'utf8');\n    console.log(data);\n} catch (err) {\n    console.error(err);\n}"
   },
   {
     "objectID": "pages/MAD-2/w2.html#example-reading-files---asynchronous",
     "href": "pages/MAD-2/w2.html#example-reading-files---asynchronous",
     "title": "Modern Application Development II - Week 2",
     "section": "Example: reading files - asynchronous",
-    "text": "Example: reading files - asynchronous\nconst fs = require('fs');\n\nfs.readFile('file.txt', 'utf8', (err, data) =&gt; {\n    if (err) {\n        console.error(err);\n        return;\n    }\n    console.log(data);\n});",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Example: reading files - asynchronous\nconst fs = require('fs');\n\nfs.readFile('file.txt', 'utf8', (err, data) =&gt; {\n    if (err) {\n        console.error(err);\n        return;\n    }\n    console.log(data);\n});"
   },
   {
     "objectID": "pages/MAD-2/w2.html#asynchronous-code",
     "href": "pages/MAD-2/w2.html#asynchronous-code",
     "title": "Modern Application Development II - Week 2",
     "section": "Asynchronous Code",
-    "text": "Asynchronous Code\n\nVery powerful - allows JS to have high performance even though it is single-threaded\nCan be difficult to comprehend\n\nFocus on using async libraries and functions before writing your own\n\nPromises, async function calls, etc.\n\nImportant and useful concepts\nDeferred for now",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "Asynchronous Code\n\nVery powerful - allows JS to have high performance even though it is single-threaded\nCan be difficult to comprehend\n\nFocus on using async libraries and functions before writing your own\n\nPromises, async function calls, etc.\n\nImportant and useful concepts\nDeferred for now"
   },
   {
     "objectID": "pages/MAD-2/w2.html#json",
     "href": "pages/MAD-2/w2.html#json",
     "title": "Modern Application Development II - Week 2",
     "section": "JSON",
-    "text": "JSON\n\nObject Notation - for serialization, communication\nNotation is frozen\n\nMeans even problem cases will remain (trailing “.” could ve useful but will not be used)\n\nUsage through JSON API",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "JSON\n\nObject Notation - for serialization, communication\nNotation is frozen\n\nMeans even problem cases will remain (trailing “.” could ve useful but will not be used)\n\nUsage through JSON API"
   },
   {
     "objectID": "pages/MAD-2/w2.html#json-api",
     "href": "pages/MAD-2/w2.html#json-api",
     "title": "Modern Application Development II - Week 2",
     "section": "JSON API",
-    "text": "JSON API\n\nGlobal namespace object JSON\nMain methods:\n\nJSON.stringify()\nJSON.parse()",
-    "crumbs": [
-      "MAD-2",
-      "Week 2"
-    ]
+    "text": "JSON API\n\nGlobal namespace object JSON\nMain methods:\n\nJSON.stringify()\nJSON.parse()"
   },
   {
     "objectID": "pages/DBMS/w3.html",
@@ -5726,6 +5634,133 @@
     "crumbs": [
       "PDSA",
       "Binary Search"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sortingalgorithms.html",
+    "href": "pages/PDSA/sortingalgorithms.html",
+    "title": "Sorting Algorithms",
+    "section": "",
+    "text": "Sorting a list makes many other computations easier, such as:\n\nBinary search for a value\nFinding the median value\nChecking for duplicates in a list\nBuilding a histogram of values\n\nSorting is a general first step which makes many subsequent computations easier.\nThere are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.\nHow do we sort a list?"
+  },
+  {
+    "objectID": "pages/PDSA/sortingalgorithms.html#why-do-we-need-sorting-algorithms",
+    "href": "pages/PDSA/sortingalgorithms.html#why-do-we-need-sorting-algorithms",
+    "title": "Sorting Algorithms",
+    "section": "",
+    "text": "Sorting a list makes many other computations easier, such as:\n\nBinary search for a value\nFinding the median value\nChecking for duplicates in a list\nBuilding a histogram of values\n\nSorting is a general first step which makes many subsequent computations easier.\nThere are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.\nHow do we sort a list?"
+  },
+  {
+    "objectID": "pages/PDSA/sortingalgorithms.html#problem-statement",
+    "href": "pages/PDSA/sortingalgorithms.html#problem-statement",
+    "title": "Sorting Algorithms",
+    "section": "Problem Statement",
+    "text": "Problem Statement\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers are in random order\nYour task is to sort the papers in ascending order of marks"
+  },
+  {
+    "objectID": "pages/PDSA/sortingalgorithms.html#selection-sort",
+    "href": "pages/PDSA/sortingalgorithms.html#selection-sort",
+    "title": "Sorting Algorithms",
+    "section": "Selection Sort",
+    "text": "Selection Sort\n\n\n\nSelect the next element in sorted order\nAppend it to the final sorted list\nAvoid using a second list\n\nSwap the minimum element into the first position\nSwap the second minimum element into the second position\n…\n\nEventually the list is rearranged in place in ascending order\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)\n\n\n\nAnalysis of Selection Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop runs n times\nInner loop runs n-i times to find minimum in L[i:]\nT(n) = n + (n-1) + (n-2) + \\ldots + 1\nT(n) = \\frac{n(n+1)}{2}\n\nSelection sort is O(n^2)\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)"
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html",
+    "href": "pages/PDSA/sorting_algorithms.html",
+    "title": "Sorting Algorithms",
+    "section": "",
+    "text": "Sorting a list makes many other computations easier, such as:\n\nBinary search for a value\nFinding the median value\nChecking for duplicates in a list\nBuilding a histogram of values\n\nSorting is a general first step which makes many subsequent computations easier.\nThere are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.\nHow do we sort a list?",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#why-do-we-need-sorting-algorithms",
+    "href": "pages/PDSA/sorting_algorithms.html#why-do-we-need-sorting-algorithms",
+    "title": "Sorting Algorithms",
+    "section": "",
+    "text": "Sorting a list makes many other computations easier, such as:\n\nBinary search for a value\nFinding the median value\nChecking for duplicates in a list\nBuilding a histogram of values\n\nSorting is a general first step which makes many subsequent computations easier.\nThere are many ways to sort a list, and the choice of sorting algorithm can have a big impact on the efficiency of the computation.\nHow do we sort a list?",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#problem-statement",
+    "href": "pages/PDSA/sorting_algorithms.html#problem-statement",
+    "title": "Sorting Algorithms",
+    "section": "Problem Statement",
+    "text": "Problem Statement\n\nYou are the TA for a course\n\nInstructor has a pile of evaluated exam papers\nPapers are in random order\nYour task is to sort the papers in ascending order of marks",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#selection-sort",
+    "href": "pages/PDSA/sorting_algorithms.html#selection-sort",
+    "title": "Sorting Algorithms",
+    "section": "Selection Sort",
+    "text": "Selection Sort\n\n\n\nStart with the first element: Consider the first element of the list as the minimum.\nFind the minimum: Scan through the list to find the smallest element.\nSwap: Swap the smallest element found with the first element.\nRepeat for the next position: Move to the next position and repeat the process for the remaining elements.\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)\n\n\n\nAnalysis of Selection Sort\n\n\n\nCorrectness follows from the invariant - at the end of the i-th iteration, the first i elements are sorted.\nEfficiency\n\nOuter loop runs n times\nInner loop runs n-i times to find minimum in L[i:]\nT(n) = n + (n-1) + (n-2) + \\ldots + 1\nT(n) = \\frac{n(n+1)}{2}\n\nSelection sort is O(n^2)\n\n\ndef SelectionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        mpos = i\n        # mpos: position of minimum in L[i:]\n        for j in range(i+1,n):\n            if L[j] &lt; L[mpos]:\n            mpos = j\n        # L[mpos] : smallest value in L[i:]\n        # Exchange L[mpos] and L[i]\n        (L[i],L[mpos]) = (L[mpos],L[i])\n        # Now L[:i+1] is sorted\n    return(L)\n\n\n\n\nSummary of Selection Sort\n\nSelection sort repeatedly selects the smallest element from the unsorted portion of the list and moves it to the beginning.\nWorst-case time complexity: O(n^2)\n\nEvery input takes the same time to sort\nNo advantage for partially sorted lists",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#insertion-sort",
+    "href": "pages/PDSA/sorting_algorithms.html#insertion-sort",
+    "title": "Sorting Algorithms",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort\n\n\n\nStart with the first element: Consider the first element of the list as sorted.\nTake the next element: Pick the next element and compare it with the elements in the sorted part of the list.\nFind the correct position: Shift all the elements in the sorted part that are greater than the element being compared, one position to the right.\nInsert the element: Insert the element at its correct position.\nRepeat: Repeat the process for all remaining elements.\nAn iterative formulation\n\nAssume L[:i] is sorted\nInsert L[i] in L[:i]\n\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)\n\n\n\nAnalysis of Insertion Sort\n\n\n\nCorrectness follows from the invariant\nEfficiency\n\nOuter loop iterates n times\nInner loop: i steps to insert L[i] in L[:i]\nT(n) = 0 + 1 + \\dots + (n − 1)\nT(n) = \\frac{n(n-1)}{2}\n\nInsertion sort is O(n^2)\n\n\ndef InsertionSort(L):\n    n = len(L)\n    if n &lt; 1:\n        return(L)\n    for i in range(n):\n        # Assume L[:i] is sorted\n        # Move L[i] to correct position in L[:i]\n        j = i\n        while(j &gt; 0 and L[j] &lt; L[j-1]):\n            (L[j],L[j-1]) = (L[j-1],L[j])\n            j = j-1\n        # Now L[:i+1] is sorted\n    return(L)\n\n\n\n\nSummary of Insertion Sort\n\nInsertion sort is another intuitive algorithm to sort a list\nCreate a new sorted list\nRepeatedly insert elements into the sorted list\nWorst case complexity is O(n^2)\n\nUnlike selection sort, not all cases take time n^2\nIf list is already sorted, Insert stops in 1 step\nOverall time can be close to O(n) for partially sorted lists",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#merge-sort",
+    "href": "pages/PDSA/sorting_algorithms.html#merge-sort",
+    "title": "Sorting Algorithms",
+    "section": "Merge Sort",
+    "text": "Merge Sort\n\nBoth selection and insertion sort are O(n^2)\nMerge sort is a divide-and-conquer algorithm\n\nDivide: Split the list into two halves\nConquer: Recursively sort the two halves\nCombine: Merge the two sorted halves into a single sorted list\n\n\n\nMerging sorted lists\n\n\n\nCombine two sorted lists A and B into C\n\nIf A is empty, copy B into C\nIf B is empty, copy A into C\nOtherwise, compare first elements of A and B\n\nMove the smaller of the two to C\n\nRepeat till all elements of A and B have been moved\n\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)\n\n\n\n\nMerge sort\n\n\n\nTo sort A into B, both of length n\nIf n \\leq 1, nothing to be done\nOtherwise\n\nSort A[:n//2] into L\nSort A[n//2:] into R\nMerge L and R into B\n\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)\n\n\n\n\nAnalysing merge\n\n\n\nMerge A of length m, B of length n\nOutput list C has length m + n\nIn each iteration we add (at least) one element to C\nHence merge takes time O(m + n)\nRecall that m + n \\leq 2(max(m, n))\nIf m \\approx n, merge take time O(n)\n\n\ndef merge(A,B):\n    (m,n) = (len(A),len(B))\n    (C,i,j,k) = ([],0,0,0)\n    while k &lt; m+n:\n        if i == m:\n            C.extend(B[j:])\n            k = k + (n-j)\n        elif j == n:\n            C.extend(A[i:])\n            k = k + (m-i)\n        elif A[i] &lt; B[j]:\n            C.append(A[i])\n            (i,k) = (i+1,k+1)\n        else:\n            C.append(B[j])\n            (j,k) = (j+1,k+1)\n    return(C)\n\n\n\n\nAnalysing merge sort\n\n\n\nLet T(n) be the time taken for input of size n\n\nFor simplicity, assume n = 2^k for some k\n\nRecurrence\n\nT(0) = T(1) = 1\nT(n) = 2T(\\frac{n}{2}) + n\n\nSolve two subproblems of size \\frac{n}{2}\nMerge the solutions in time \\frac{n}{2} + \\frac{n}{2} = n\n\n\nUnwind the recurrence to solve \n\\begin{aligned}\n  T(n) &= 2T(\\frac{n}{2}) + n \\\\\n  &=\\ 2[2T(\\frac{n}{4}) + \\frac{n}{2}] + n =\\ 2^2T(\\frac{n}{2^2}) + 2n \\\\\n  &=\\ 2^{2}[2T(\\frac{n}{2^3}) + \\frac{n}{2^2}] + 2n =\\ 2^3T(\\frac{n}{2^3}) + 3n \\\\\n  &=\\ \\dotsc \\\\\n  &=\\ 2^kT(\\frac{n}{2^k}) + kn \\\\\n  &=\\ 2^{\\log n}T(\\frac{n}{2^{\\log n}}) + n \\log n, \\text{ for } \\ k = \\log n \\\\\n  &=\\ n T(1) + n \\log n \\\\\n  &=\\ n + n\\log n =\\ O(n\\log n) \\\\\n\\end{aligned}\n\n\n\ndef mergesort(A):\n    n = len(A)\n    if n &lt;= 1:\n        return(A)\n    L = mergesort(A[:n//2])\n    R = mergesort(A[n//2:])\n    B = merge(L,R)\n    return(B)\n\n\n\n\nSummary of Merge Sort\n\nMerge sort takes time O(n \\log n) so can be used effectively on large inputs\nVariations on merge are possible\n\nUnion of two sorted lists — discard duplicates, if A[i] == B[j] move just one copy to C and increment both i and j\nIntersection of two sorted lists — when A[i] == B[j], move one copy to C, otherwise discard the smaller of A[i], B[j]\nList difference — elements in A but not in B\n\nMerge needs to create a new list to hold the merged elements\n\nNo obvious way to efficiently merge two lists in place\nExtra storage can be costly\n\nInherently recursive\n\nRecursive calls and returns are expensive",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#quick-sort",
+    "href": "pages/PDSA/sorting_algorithms.html#quick-sort",
+    "title": "Sorting Algorithms",
+    "section": "Quick Sort",
+    "text": "Quick Sort\n\nQuick sort is a sorting algorithm that uses the divide-and-conquer strategy to sort the list of elements.\nThe basic idea of quick sort is to partition the input list into two sub-lists, one containing elements that are smaller than a chosen pivot element, and the other containing elements that are greater than or equal to the pivot.\nThis process is repeated recursively on each sub-list until the entire list is sorted.\n\n\nQuick Sort Algorithm\n\nChoose a pivot element from the list. This can be any element, but typically the first or last element is chosen.\nPartition the list into two sub-list, one containing elements smaller than the pivot, and the other containing elements greater than or equal to the pivot. Steps for partition:\n\nSet pivot to the value of the element at the lower index of the list L.\nInitialize two indices i and j to lower and lower+1 respectively.\nLoop over the range from lower+1 to upper (inclusive) using the variable j.\nIf the value at index j is less than or equal to the pivot value, increment i and swap the values at indices i and j in the list L.\nAfter the loop, swap the pivot value at index lower with the value at index i in the list L.\nReturn the index i as the position of the pivot value.\n\nRecursively apply steps 1 and 2 to each sub-list until the entire list is sorted.\n\n\n\nQuick Sort Implementation\ndef partition(L,lower,upper):\n  # Select first element as a pivot \n  pivot = L[lower]\n  i = lower\n  for j in range(lower+1,upper+1):\n    if L[j] &lt;= pivot:\n      i += 1\n      L[i],L[j] = L[j],L[i]\n  L[lower],L[i]= L[i],L[lower]\n  # Return the position of pivot\n  return i\n\ndef quicksort(L,lower,upper):\n  if(lower &lt; upper):\n    pivot_pos = partition(L,lower,upper);\n    # Call the quick sort on leftside part of pivot\n    quicksort(L,lower,pivot_pos-1)\n    # Call the quick sort on rightside part of pivot\n    quicksort(L,pivot_pos+1,upper)\n  return L\n\n\nLecture Implementation\ndef quicksort(L,l,r): # Sort L[l:r]\n    if (r - l &lt;= 1):\n        return L\n    (pivot,lower,upper) = (L[l],l+1,l+1)\n    for i in range(l+1,r):\n        if L[i] &gt; pivot:\n            # Extend upper segment\n            upper = upper+1\n        else:\n            # Exchange L[i] with start of upper segment\n            (L[i], L[lower]) = (L[lower], L[i])\n            # Shift both segments\n            (lower,upper) = (lower+1,upper+1)\n    # Move pivot between lower and upper\n    (L[l],L[lower-1]) = (L[lower-1],L[l])\n    lower = lower-1\n    \n    # Recursive calls\n    quicksort(L,l,lower)\n    quicksort(L,lower+1,upper)\n    return(L)\n\n\nAnalysis of Quick Sort\n\nPartitioning with respect to the pivot takes O(n) time\nIf the pivot is the median\nT(n) = 2T(\\frac{n}{2}) + n\nT(n) = n \\log n = O(n \\log n)\nIf the pivot is the smallest or largest element - worst case\n\nPartitions are of size 0 and n-1\nT(n) = T(n-1) + n\nT(n) = n + (n-1) + \\ldots + 1\nT(n) = \\frac{n(n+1)}{2} = O(n^2)\nAlready sorted list is the worst case.\n\nHowever, average case is O(n \\log n)\nSorting is a rare situation where we can compute the average case time complexity\n\nValues don’t matter, only the relative order is important\nAnalyse behaviour over permutations of {1,2,\\ldots,n}\nEach permutation is equally likely\n\nExpected running time of quick sort is O(n \\log n)\n\n\n\nSummary of Quick Sort\n\nQuick sort has a worst-case time complexity of O(n^2), but an average-case time complexity of O(n \\log n).\nRandomized quick sort can be used to avoid the worst-case scenario by randomly selecting the pivot element.\nQuick sort is an in-place sorting algorithm, which means it does not require any additional memory to sort the list.\nIt can be implemented iteratively.\nQuick sort is widely used in practice due to its efficiency and simplicity.\n\nGood example of a situation when the worst case upper bound is pessimistic.",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#comparison-of-sorting-algorithms",
+    "href": "pages/PDSA/sorting_algorithms.html#comparison-of-sorting-algorithms",
+    "title": "Sorting Algorithms",
+    "section": "Comparison of Sorting Algorithms",
+    "text": "Comparison of Sorting Algorithms\n\n\n\n\n\n\n\n\n\n\nParameter\nSelection Sort\nInsertion Sort\nMerge Sort\nQuick Sort\n\n\n\n\nBest case\nO(n^2)\nO(n)\nO(n \\log n)\nO(n \\log n)\n\n\nAverage case\nO(n^2)\nO(n^2)\nO(n \\log n)\nO(n \\log n)\n\n\nWorst case\nO(n^2)\nO(n^2)\nO(n \\log n)\nO(n^2)\n\n\nIn-place\nYes\nYes\nNo\nYes\n\n\nStable\nNo\nYes\nYes\nNo",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
+    ]
+  },
+  {
+    "objectID": "pages/PDSA/sorting_algorithms.html#stability-of-sorting-algorithms",
+    "href": "pages/PDSA/sorting_algorithms.html#stability-of-sorting-algorithms",
+    "title": "Sorting Algorithms",
+    "section": "Stability of Sorting Algorithms",
+    "text": "Stability of Sorting Algorithms\n\nA sorting algorithm is said to be stable if the relative order of equal elements is preserved in the sorted list.\nFor example, if we have two elements with the same value, the one that appears first in the original list should appear first in the sorted list.\nSelection sort and quick sort are not stable, while insertion sort and merge sort are stable.\nStability of sorting is crucial in many applications, such as sorting by multiple keys.",
+    "crumbs": [
+      "PDSA",
+      "Sorting Algorithms"
     ]
   }
 ]
