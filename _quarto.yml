@@ -47,9 +47,9 @@ website:
             text: Vectors in Alternate Basis
       - section: "Statistics"
         contents:
-          - href: pages/Stats2/Probability-Basics.qmd
+          - href: pages/Stats/Probability-Basics.qmd
             text: Basic Concepts of Probability
-          # - href: pages/Stats2/Prob-Dist-RV.qmd
+          # - href: pages/Stats/Prob-Dist-RV.qmd
           #   text: Probability Distributions and Random Variables
   # open-graph: true
             
