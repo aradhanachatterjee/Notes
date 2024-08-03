@@ -39,7 +39,7 @@ website:
       #       text: Week 2
       #     - href: pages/MAD-2/w3.qmd
       #       text: Week 3
-      - section: "Random"
+      - section: "Random Math"
         contents:
           - href: pages/random/Fourier.qmd
             text: Fourier Series Representations
