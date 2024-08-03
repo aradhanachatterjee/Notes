@@ -1,0 +1,97 @@
+---
+title: "Probability Distributions and Random Variables"
+format:
+    html:
+        toc: true
+        toc-depth: 2
+---
+
+## Random Variable
+
+**Definition**: A random variable is a function with domain as the sample space of an experiment and range as the real numbers, i.e. a function from the sample space to the real line.
+
+If $X$ is a random variable, $$(X < x) = \{s \in S: X(s) < x\} \text{is an event for all real }x.$$
+$$\text{So, } (X > x), (X=x), (X \leq x), (X \geq x) \text{ are all events.}$$
+
+##### Example - Roll a die
+
+- Sample space $S = \{1,2,3,4,5,6\}$
+- Random variable $E$: $E(2)=E(4)=E(6)=1$, $E(1)=E(3)=E(5)=0$
+  - $E=0$: event $\{1,3,5\}$
+  - $E=1$: event $\{2,4,6\}$
+  - $E<0$: null event
+  - $E\leq 1$: event $\{1,2,3,4,5,6\}$
+- Note: not all events can be expressed in terms of $E$
+
+## Range of a Random Variable
+
+**Definition**: The range of a random variable is the set of values taken by it. Range is a subset of the real line.
+
+## Discrete Random Variables
+
+**Definition**: A random variable is said to be discrete if its range is a discrete set.
+
+- What is a discrete set?
+  - All finite subsets of the real line are discrete
+  - Integers are discrete
+  - Set of all integer multiples of a real number is discrete
+  - Any subset of a discrete set is discrete
+
+- What is not a discrete set?
+  - Any interval of not discrete, i.e. $(a,b)$ is not discrete for $a < b$
+  - Any subset that contains a non-discrete set is not discrete
+
+## Distribution of a Discrete Random Variable: Probability Mass Function (PMF)
+
+**Definition**: The probability mass function (PMF) of a discrete random variable (r.v.) $X$ with range set $T$ is the function $f_X: T \to [0,1]$ defined as $$f_X(t) = P(X=t) \text{ for } t \in T.$$
+
+- $(X=t)$ is an event $$P(X=t) = P(\text{all outcomes that result in } X \text{ taking the value } t)$$
+
+- Let $B$ be a subset of $T$. Consider the event $(X \in B)$
+$$\begin{aligned}
+P(X \in B) &= P(\text{all outcomes that result in } X \text{ taking values in } B) \\
+&= \sum_{t \in B} P(X=t) \\
+&= \sum_{t \in B} f_X(t) \\
+\end{aligned}$$
+
+## Properties of PMF
+
+- Random variable $X$ with range $T = \{t_1, t_2, \ldots, t_k\}$, PMF $f_X$
+  
+  |     $t$    |      $t_1$     |      $t_2$     | $\ldots$ |      $t_k$     |
+  |:----------:|:--------------:|:--------------:|:--------:|:--------------:|
+  | $f_{X}(t)$ | $f_{X}(t_{1})$ | $f_{X}(t_{2})$ |          | $f_{X}(t_{k})$ |
+
+  : PMF $f_X$ of a discrete random variable $X$
+
+- $0 \leq f_X(t) \leq 1$ for all $t \in T$
+- $\sum_{t \in T} f_X(t) = 1$
+
+## A single Bernoulli Trial
+
+- Occurence of Event $A$ in a sample space is considered a "success". Non occurence of $A$ is considered a "failure".
+
+- Let $p = P(A)$.
+
+- Bernoulli trial: Sample space is ${\text{success, failure}}$ with $P(\text{success}) = p$ or ${0,1}$ with $P(1) = p$, $P(0) = 1-p$
+  - This distribution is denoted $\text{Bernoulli}(p)$.
+
+## Repeated Bernoulli Trials
+
+- Perform $n$ independent $\text{Bernoulli}(p)$ trials
+- Outcome: $0$ or $1$ (Trial 1), $0$ or $1$ (Trial 2), $\ldots$, $0$ or $1$ (Trial $n$)
+- Sample space: $2^n$ outcomes
+
+##### Example - Toss a fair coin 5 times
+
+- Toss a fair coin $5$ times. H is $0$, T is $1$. Sample space has $2^5 = 32$ equally likely outcomes.
+- For instance, $P(00000) = P(01010) = \frac{1}{32}$
+- $P(0 \text{ tails}) = P(00000) = \frac{1}{32}$
+- $P(1 \text{ tail}) = P({00001, 00010, 00100, 01000, 10000}) = \frac{5}{32}$
+- $P(2 \text{ tails}) = P({00011, 00101, 01001, 10001, 00110, 01010, 10010, 01100, 10100, 11000}) = \frac{10}{32}$
+- $P(3 \text{ tails}) = P({00111, 01011, 10011, 01101, 10101, 11001, 01110, 10110, 11010, 11100}) = \frac{10}{32}$
+- $P(4 \text{ tails}) = P({01111, 10111, 11011, 11101, 11110}) = \frac{5}{32}$
+- $P(5 \text{ tails}) = P(11111) = \frac{1}{32}$
+
+## Binomial Distribution
+

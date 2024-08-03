@@ -11,12 +11,12 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      # - section: "Statistics-II"
-      #   contents:
-      #     - href: pages/Stats2/Quiz2_keyconcepts.qmd
-      #       text: Key concepts in Statistics-II from Week 5 to Week 8
-          # - href: pages/Stats2/Quiz2_practicequestions.qmd
-          #   text: Quiz 2 Practice Questions
+      - section: "Statistics"
+        contents:
+          - href: pages/Stats2/Probability-Basics.qmd
+            text: Basic Concepts of Probability
+          # - href: pages/Stats2/Prob-Dist-RV.qmd
+          #   text: Probability Distributions and Random Variables
       # - section: "DBMS"
       #   contents:
       #     - href: pages/DBMS/w2.qmd
@@ -47,11 +47,14 @@ website:
         contents:
           - href: pages/random/Fourier.qmd
             text: Fourier Series Representations
+          - href: pages/random/Vectors-in-alternate-basis.qmd
+            text: Vectors in Alternate Basis
   # open-graph: true
             
 
 format:
   html:
+    smooth-scroll: true
     theme:
       light: flatly
       dark: darkly

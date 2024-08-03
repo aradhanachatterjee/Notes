@@ -5434,11 +5434,7 @@
     "href": "pages/Stats2/Quiz2_keyconcepts.html",
     "title": "Key concepts in Statistics-II from Week 5 to Week 8",
     "section": "",
-    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervals in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable.",
-    "crumbs": [
-      "Statistics-II",
-      "Key concepts in Statistics-II from Week 5 to Week 8"
-    ]
+    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervals in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable."
   },
   {
     "objectID": "pages/Stats2/Quiz2_keyconcepts.html#functions-of-a-continuous-random-variable",
@@ -5452,22 +5448,14 @@
     "href": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.1-functions-of-a-continuous-random-variable",
     "title": "Key concepts in Statistics-II from Week 5 to Week 8",
     "section": "",
-    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervals in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable.",
-    "crumbs": [
-      "Statistics-II",
-      "Key concepts in Statistics-II from Week 5 to Week 8"
-    ]
+    "text": "The CDF F_Y of Y = g(X), where X is a continuous random variable with PDF f_X, is given by: F_y(y) = P(Y \\leq y) = P(g(X) \\leq y) = P(X \\in \\{x:g(x) \\leq y\\})\n\nTo evaluate the above probability,\n\nConvert the subset A_y = \\{x:g(x) \\leq y\\} into intervals in real line\nFind the probability of X falling in the interval\nF_Y(y) = P(X \\in A_y) = \\int_{A_y} f_X(x) dx\n\n\nFor monotonic, differentiable functions Y=g(X) only, the PDF of Y is given by: f_Y(y) = \\frac{1}{\\left | g'(g^{-1}(y)) \\right|} \\cdot f_X(g^{-1}(y)) \n\nTranslation: Y=X+a f_Y(y) = f_X(y-a)\nScaling: Y=aX f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y}{a})\nAffine: Y=aX+b f_Y(y) = \\frac{1}{|a|} f_X(\\frac{y-b}{a})\n\nAffine transformation of normal distributions\n\nX \\sim N(0,1) (Standard normal) f_X(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-x^2/2}\n\nY = \\sigma X + \\mu f_Y(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-(y-\\mu)^2/2\\sigma^2}\n\nY \\sim N(\\mu, \\sigma^2)\n\n\nX \\sim N(\\mu, \\sigma^2)\n\nY=\\frac{X-\\mu}{\\sigma} \\sim N(0,1)\n\n\n\n\n\n\n\n\n\nResult\n\n\n\nAffine transformation of a normal random variable is also a normal random variable."
   },
   {
     "objectID": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.2-expectations-of-continuous-random-variable",
     "href": "pages/Stats2/Quiz2_keyconcepts.html#lecture-5.2-expectations-of-continuous-random-variable",
     "title": "Key concepts in Statistics-II from Week 5 to Week 8",
     "section": "Lecture 5.2: Expectations of continuous random variable",
-    "text": "Lecture 5.2: Expectations of continuous random variable",
-    "crumbs": [
-      "Statistics-II",
-      "Key concepts in Statistics-II from Week 5 to Week 8"
-    ]
+    "text": "Lecture 5.2: Expectations of continuous random variable"
   },
   {
     "objectID": "pages/PDSA/analysis_of_algorithms.html",
@@ -5762,5 +5750,352 @@
       "PDSA",
       "Sorting Algorithms"
     ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html",
+    "href": "pages/Stats2/Probability-Basics.html",
+    "title": "Basic Concepts of Probability",
+    "section": "",
+    "text": "Experiment\n\nProcess or phenomenon that we wish to study statistically\n\n\n\nOutcome\n\nResult of the experiment (in as much detail as necessary)",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#sample-space",
+    "href": "pages/Stats2/Probability-Basics.html#sample-space",
+    "title": "Basic Concepts of Probability",
+    "section": "Sample Space",
+    "text": "Sample Space\nDefinition: A sample space S is a set that contains all possible outcomes of an experiment.\n\nSample space is a set, typically denoted S\nExamples:\n\nFlipping a coin: S = \\{\\text{Heads}, \\text{Tails}\\}\nRolling a die: S = \\{1, 2, 3, 4, 5, 6\\}",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#experiment-and-outcome",
+    "href": "pages/Stats2/Probability-Basics.html#experiment-and-outcome",
+    "title": "Basic Concepts of Probability",
+    "section": "",
+    "text": "Experiment\n\nProcess or phenomenon that we wish to study statistically\n\n\n\nOutcome\n\nResult of the experiment (in as much detail as necessary)",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#event",
+    "href": "pages/Stats2/Probability-Basics.html#event",
+    "title": "Basic Concepts of Probability",
+    "section": "Event",
+    "text": "Event\nDefinition: An event is a subset of the sample space.\n\nExamples:\n\nToss a coin: S = \\{\\text{Heads}, \\text{Tails}\\}\n\nEvents: \\emptyset, \\{\\text{Heads}\\}, \\{\\text{Tails}\\}, \\{\\text{Heads}, \\text{Tails}\\}\n4 events\n\nThrow a die: S = \\{1, 2, 3, 4, 5, 6\\}\n\nEvents: \\emptyset, \\{1\\}, \\{2\\}, \\{3\\}, \\{4\\}, \\{5\\}, \\{6\\}, \\{1, 2\\}, \\{1, 3\\}, \\ldots, \\{1, 2, 3, 4, 5, 6\\}\n64 events\n\n\nAn event is said to have “occurred” if the actual outcome of the experiment belongs to the event.\nEvents are sets\n\nAll set theory notions apply to events\n\nOne event can be contained in another, i.e. A \\subseteq B\n\nThrow a die: A = \\{2, 6\\}, B = \\text{Even number}\nIf A occured, B has also occured\nIf B occured, A may or may not have occured\n\nComplement of an event A, denoted A^c = \\{\\text{outcomes in } S \\text{ not in } A\\} = (S \\setminus A)\n\nThrow a die: A = \\{2, 4, 6\\} (even), A^c = \\{1, 3, 5\\} (odd)\nIf A occured, A^c did not occur\nIf A^c occured, A did not occur\n\n\n\nCombining events to create new events\n\nUnion of events A and B, denoted A \\cup B = \\{x: x \\in A \\text{ or } x \\in B\\}\n\nThrow a die: A = \\{1, 2, 3\\}, B = \\{3, 4, 5\\}, A \\cup B = \\{1, 2, 3, 4, 5\\}\n\nIntersection of events A and B, denoted A \\cap B = \\{x: x \\in A \\text{ and } x \\in B\\}\n\nThrow a die: A = \\{1, 2, 3\\}, B = \\{3, 4, 5\\}, A \\cap B = \\{3\\}\n\n\n\n\nDisjoint events\n\nTwo events with an empty intersection are said to be disjoint or mutually exclusive events\n\nThrow a die: even number, odd number are disjoint\n\nSuppose A and B are disjoint events\n\nIf A occured, B did not occur\nIf B occured, A did not occur\n\nEvent and its complement\n\nA and A^c are disjoint, i.e. A \\cap A^c = \\emptyset\nTogether, they cover the entire sample space, i.e. A \\cup A^c = S\n\nEither A or A^c must occur\n\nA and A^c are an example of a partition of the sample space\n\nPartition: Collection of disjoint sets that together cover the entire sample space\n\n\nMultiple events: E_1, E_2, \\ldots, E_n are disjoint if, for any i \\neq j, E_i \\cap E_j = \\emptyset",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#probability",
+    "href": "pages/Stats2/Probability-Basics.html#probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Probability",
+    "text": "Probability\nDefinition: “Probability” is a function P that assigns to each event a real number between 0 and 1. The entire probability space (sample space, events and probability function) should satisfy the following two axioms:\n\nP(S) = 1 (probability of the entire sample space equals 1)\nIf E_1, E_2, E_3, \\ldots are disjoint events (how many events? Could be infinitely many), P(E_1 \\cup E_2 \\cup E_3 \\cup \\ldots) = P(E_1) + P(E_2) + P(E_3) + \\ldots",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#basic-properties-of-probability",
+    "href": "pages/Stats2/Probability-Basics.html#basic-properties-of-probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Basic Properties of Probability",
+    "text": "Basic Properties of Probability\n\nTheorem 1 (Basic Properties of Probability) Let P be a probability on a sample space S. Then,\n\nP(\\emptyset) = 0\nLet E^c be the complement of Event E. Then, \\newline P(E^c) = 1 - P(E)\nIf Event E is a subset of Event F, i.e. E \\subseteq F, then \\newline P(F) = P(E) + P(F \\setminus E)\\text{,} which implies that P(E) \\leq P(F)\n3.a. If E and F are events, then P(E) = P(E \\cap F) + P(E \\setminus F) \\text{,} P(F) = P(E \\cap F) + P(F \\setminus E)\nIf E and F are events, then P(E \\cup F) = P(E) + P(F) - P(E \\cap F)\n\n\n\nProof. \n\n\n\\emptyset^c = S and \\emptyset, S are disjoint and \\emptyset \\cup S = S.\nBy Axiom 2, P(\\emptyset \\cup S) = P(\\emptyset) + P(S) or P(S) = P(\\emptyset) + P(S) or P(\\emptyset) = 0.\n\n\nE and E^c are disjoint and E \\cup E^c = S.\nBy Axiom 2, P(E \\cup E^c) = P(E) + P(E^c) or P(S) = P(E) + P(E^c)\nBy Axiom 1, 1 = P(S) = P(E) + P(E^c)\nSo, P(E^c) = 1 - P(E)\n\n\nF \\setminus E = F \\cap E^c (outside of E and inside of F)\nE and F \\setminus E are disjoint and E \\cup (F \\setminus E) = F\nBy Axiom 2, P(E \\cup (F \\setminus E)) = P(E) + P(F \\setminus E) or P(F) = P(E) + P(F \\setminus E)\n\n3.a.\n\nE \\cap F is a subset of E\nBy subset property, P(E) = P(E \\cap F) + P(E \\setminus (E \\cap F))\nNow, E \\setminus (E \\cap F) = E \\setminus F\nSo, P(E) = P(E \\cap F) + P(E \\setminus F)\n\n\nE \\cup F = (E \\setminus F) \\cup (E \\cap F) \\cup (F \\setminus E) and the 3 events on RHS are disjoint\nP(E \\cup F) = P(E \\setminus F) + P(E \\cap F) + P(F \\setminus E)\nUse P(E \\setminus F) = P(E) - P(E \\cap F) and P(F \\setminus E) = P(F) - P(E \\cap F)",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#conditional-probability",
+    "href": "pages/Stats2/Probability-Basics.html#conditional-probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nConsider a probability space: Sample space S, collection of events, and a probability function P. Let B be an event with P(B) &gt; 0.\n\nDefinition 4 (Conditional Probability Space Given B) \\newlineSample space: B \\newlineEvents: A \\cap B for every event A in the original space\n\\text{Probability function: } \\frac{P(A \\cap B)}{P(B)}\n\\newline(denoted P(A|B) and called conditional probability of A given B)\n\nFor any event A in the original space, P(A \\cap B) = P(B) \\cdot P(A|B)"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#conditional-probability-space",
+    "href": "pages/Stats2/Probability-Basics.html#conditional-probability-space",
+    "title": "Basic Concepts of Probability",
+    "section": "Conditional Probability Space",
+    "text": "Conditional Probability Space\nDefinition: Consider a probability space: Sample space S, collection of events, and a probability function P. Let B be an event with P(B) &gt; 0.\n\\newlineSample space: B \\newlineEvents: A \\cap B for every event A in the original space\n\\text{Probability function: } \\frac{P(A \\cap B)}{P(B)}\n\\newline(denoted P(A|B) and called conditional probability of A given B)\nFor any event A in the original space, P(A \\cap B) = P(B) \\cdot P(A|B)",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#law-of-total-probability",
+    "href": "pages/Stats2/Probability-Basics.html#law-of-total-probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Law of Total Probability",
+    "text": "Law of Total Probability\n\nTheorem 2 (Law of Total Probability) B_1, B_2, \\ldots \\text{ : Partition of } S  P(A) = P(A \\cap B_1) + P(A \\cap B_2) + \\ldots = P(A|B_1) P(B_1) + P(A|B_2) P(B_2) + \\ldots\n\n\nProof. \n\nA: disjoint union of A \\cap B_1, A \\cap B_2, \\ldots\nBy Axiom 2, P(A) = P(A \\cap B_1) + P(A \\cap B_2) + \\ldots\nUsing conditional probability on each term above, we get the result",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#law-of-total-probability-2",
+    "href": "pages/Stats2/Probability-Basics.html#law-of-total-probability-2",
+    "title": "Basic Concepts of Probability",
+    "section": "Law of Total Probability",
+    "text": "Law of Total Probability"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#bayes-theorem",
+    "href": "pages/Stats2/Probability-Basics.html#bayes-theorem",
+    "title": "Basic Concepts of Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem\n\nTheorem 3 (Bayes’ Theorem)  A,B \\text{: Events with } P(A) &gt; 0 \\text{, } P(B) &gt; 0 P(A \\cap B) = P(B)P(A|B) = P(A)P(B|A) P(A|B) = \\frac{P(B|A)P(A)}{P(B)}\n\n\nProof. \n\nBayes’ Theorem may be derived from the definition of conditional probability: P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\text{, if } P(B) \\neq 0,\nwhere P(A \\cap B) is the probability of both A and B being true. Similarly, P(B|A) = \\frac{P(A \\cap B)}{P(A)} \\text{, if } P(A) \\neq 0.\nSolving for P(A \\cap B) and substituting into the above expression for P(A|B) yields Bayes’ Theorem: P(A|B) = \\frac{P(B|A)P(A)}{P(B)} \\text{, if } P(B) \\neq 0.",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#bayes-theorem-1",
+    "href": "pages/Stats2/Probability-Basics.html#bayes-theorem-1",
+    "title": "Basic Concepts of Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem\n A,B \\text{: Events with } P(A) &gt; 0 \\text{, } P(B) &gt; 0 P(A \\cap B) = P(B)P(A|B) = P(A)P(B|A) P(B|A) = \\frac{P(B)P(A|B)}{P(A)}"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#independence-of-events",
+    "href": "pages/Stats2/Probability-Basics.html#independence-of-events",
+    "title": "Basic Concepts of Probability",
+    "section": "Independence of Events",
+    "text": "Independence of Events\nDefinition: Two events A and B are independent if P(A \\cap B) = P(A)P(B)\n\nIf P(B) &gt; 0, P(A|B) = P(A)\nDisjoint events are never independent\nFor events to be independent, they should have a non-empty intersection",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#mutual-independence-of-multiple-events",
+    "href": "pages/Stats2/Probability-Basics.html#mutual-independence-of-multiple-events",
+    "title": "Basic Concepts of Probability",
+    "section": "Mutual independence of multiple events",
+    "text": "Mutual independence of multiple events\nDefinition: Events A_1, A_2, \\ldots, A_n are mutually independent if, for all i_1, i_2, \\ldots, i_k, P(A_{i_1} \\cap A_{i_2} \\cap \\ldots \\cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \\ldots P(A_{i_k})\n\nA and B are independent \\implies A and B^c are independent\n\nP(A \\cap B^c) = P(A \\setminus B) = P(A) - P(A \\cap B) = P(A)(1 - P(B)) = P(A)P(B^c)\nIntuitive: B does not affect A \\implies B^c does not affect A\nTwo events are independent \\implies Complement of one event is independent of the other\n\nUsing the above twice: A and B are independent \\implies A^c and B^c are independent\nExtension: n events are mutually independent \\implies any subset with or without complementing are independent as well",
+    "crumbs": [
+      "Statistics-II",
+      "Basic Concepts of Probability"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics.html#mutual-independence",
+    "href": "pages/Stats2/Probability-Basics.html#mutual-independence",
+    "title": "Basic Concepts of Probability",
+    "section": "Mutual Independence",
+    "text": "Mutual Independence\nEvents A_1, A_2, \\ldots, A_n are mutually independent if, for all i_1, i_2, \\ldots, i_k, P(A_{i_1} \\cap A_{i_2} \\cap \\ldots \\cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \\ldots P(A_{i_k})"
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html",
+    "href": "pages/Stats2/Prob-Dist-RV.html",
+    "title": "Probability Distributions and Random Variables",
+    "section": "",
+    "text": "Definition: A random variable is a function with domain as the sample space of an experiment and range as the real numbers, i.e. a function from the sample space to the real line.\nIf X is a random variable, (X &lt; x) = \\{s \\in S: X(s) &lt; x\\} \\text{is an event for all real }x. \\text{So, } (X &gt; x), (X=x), (X \\leq x), (X \\geq x) \\text{ are all events.}\n\n\n\nSample space S = \\{1,2,3,4,5,6\\}\nRandom variable E: E(2)=E(4)=E(6)=1, E(1)=E(3)=E(5)=0\n\nE=0: event \\{1,3,5\\}\nE=1: event \\{2,4,6\\}\nE&lt;0: null event\nE\\leq 1: event \\{1,2,3,4,5,6\\}\n\nNote: not all events can be expressed in terms of E",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#a-single-bernoulli-trial",
+    "href": "pages/Stats2/Prob-Dist-RV.html#a-single-bernoulli-trial",
+    "title": "Probability Distributions and Random Variables",
+    "section": "A single Bernoulli Trial",
+    "text": "A single Bernoulli Trial\n\nOccurence of Event A in a sample space is considered a “success”. Non occurence of A is considered a “failure”.\nLet p = P(A).\nBernoulli trial: Sample space is {\\text{success, failure}} with P(\\text{success}) = p or {0,1} with P(1) = p, P(0) = 1-p\n\nThis distribution is denoted \\text{Bernoulli}(p).",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#repeated-bernoulli-trials",
+    "href": "pages/Stats2/Prob-Dist-RV.html#repeated-bernoulli-trials",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Repeated Bernoulli Trials",
+    "text": "Repeated Bernoulli Trials\n\nPerform n independent \\text{Bernoulli}(p) trials\nOutcome: 0 or 1 (Trial 1), 0 or 1 (Trial 2), \\ldots, 0 or 1 (Trial n)\nSample space: 2^n outcomes\n\n\nExample - Toss a fair coin 5 times\n\nToss a fair coin 5 times. H is 0, T is 1. Sample space has 2^5 = 32 equally likely outcomes.\nFor instance, P(00000) = P(01010) = \\frac{1}{32}\nP(0 \\text{ tails}) = P(00000) = \\frac{1}{32}\nP(1 \\text{ tail}) = P({00001, 00010, 00100, 01000, 10000}) = \\frac{5}{32}\nP(2 \\text{ tails}) = P({00011, 00101, 01001, 10001, 00110, 01010, 10010, 01100, 10100, 11000}) = \\frac{10}{32}\nP(3 \\text{ tails}) = P({00111, 01011, 10011, 01101, 10101, 11001, 01110, 10110, 11010, 11100}) = \\frac{10}{32}\nP(4 \\text{ tails}) = P({01111, 10111, 11011, 11101, 11110}) = \\frac{5}{32}\nP(5 \\text{ tails}) = P(11111) = \\frac{1}{32}",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#n4-bernoulli-trials",
+    "href": "pages/Stats2/Prob-Dist-RV.html#n4-bernoulli-trials",
+    "title": "Probability Distributions and Random Variables",
+    "section": "n=4 Bernoulli Trials",
+    "text": "n=4 Bernoulli Trials",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#random-variables",
+    "href": "pages/Stats2/Prob-Dist-RV.html#random-variables",
+    "title": "Probability Distributions and Random Variables",
+    "section": "",
+    "text": "Definition 1 (Random Variable) A random variable is a function with domain as the sample space of an experiment and range as the real numbers, i.e. a function from the sample space to the real line.\nIf X is a random variable, (X &lt; x) = \\{s \\in S: X(s) &lt; x\\} \\text{is an event for all real }x. \\text{So, } (X &gt; x), (X=x), (X \\leq x), (X \\geq x) \\text{ are all events.}\n\n\nExample 1 (Random Variable)  \n\nRoll a die, Sample space S = \\{1,2,3,4,5,6\\}\nRandom variable E: E(2)=E(4)=E(6)=1, E(1)=E(3)=E(5)=0\n\nE=0: event \\{1,3,5\\}\nE=1: event \\{2,4,6\\}\nE&lt;0: null event\nE\\leq 1: event \\{1,2,3,4,5,6\\}\n\nNote: not all events can be expressed in terms of E",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#binomial-distribution",
+    "href": "pages/Stats2/Prob-Dist-RV.html#binomial-distribution",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Binomial Distribution",
+    "text": "Binomial Distribution",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#range-of-a-random-variable",
+    "href": "pages/Stats2/Prob-Dist-RV.html#range-of-a-random-variable",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Range of a Random Variable",
+    "text": "Range of a Random Variable\nDefinition: The range of a random variable is the set of values taken by it. Range is a subset of the real line.",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#discrete-random-variables",
+    "href": "pages/Stats2/Prob-Dist-RV.html#discrete-random-variables",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Discrete Random Variables",
+    "text": "Discrete Random Variables\nDefinition: A random variable is said to be discrete if its range is a discrete set.\n\nWhat is a discrete set?\n\nAll finite subsets of the real line are discrete\nIntegers are discrete\nSet of all integer multiples of a real number is discrete\nAny subset of a discrete set is discrete\n\nWhat is not a discrete set?\n\nAny interval of not discrete, i.e. (a,b) is not discrete for a &lt; b\nAny subset that contains a non-discrete set is not discrete",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#distribution-of-a-discrete-random-variable-probability-mass-function-pmf",
+    "href": "pages/Stats2/Prob-Dist-RV.html#distribution-of-a-discrete-random-variable-probability-mass-function-pmf",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Distribution of a Discrete Random Variable: Probability Mass Function (PMF)",
+    "text": "Distribution of a Discrete Random Variable: Probability Mass Function (PMF)\nDefinition: The probability mass function (PMF) of a discrete random variable (r.v.) X with range set T is the function f_X: T \\to [0,1] defined as f_X(t) = P(X=t) \\text{ for } t \\in T.\n\n(X=t) is an event P(X=t) = P(\\text{all outcomes that result in } X \\text{ taking the value } t)\nLet B be a subset of T. Consider the event (X \\in B) \\begin{aligned}\nP(X \\in B) &= P(\\text{all outcomes that result in } X \\text{ taking values in } B) \\\\\n&= \\sum_{t \\in B} P(X=t) \\\\\n&= \\sum_{t \\in B} f_X(t) \\\\\n\\end{aligned}",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#properties-of-pmf",
+    "href": "pages/Stats2/Prob-Dist-RV.html#properties-of-pmf",
+    "title": "Probability Distributions and Random Variables",
+    "section": "Properties of PMF",
+    "text": "Properties of PMF\n\nRandom variable X with range T = \\{t_1, t_2, \\ldots, t_k\\}, PMF f_X\n\nPMF f_X of a discrete random variable X\n\n\n\n\n\n\n\n\n\nt\nt_1\nt_2\n\\ldots\nt_k\n\n\n\n\nf_{X}(t)\nf_{X}(t_{1})\nf_{X}(t_{2})\n\nf_{X}(t_{k})\n\n\n\n0 \\leq f_X(t) \\leq 1 for all t \\in T\n\\sum_{t \\in T} f_X(t) = 1",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Prob-Dist-RV.html#random-variable",
+    "href": "pages/Stats2/Prob-Dist-RV.html#random-variable",
+    "title": "Probability Distributions and Random Variables",
+    "section": "",
+    "text": "Definition: A random variable is a function with domain as the sample space of an experiment and range as the real numbers, i.e. a function from the sample space to the real line.\nIf X is a random variable, (X &lt; x) = \\{s \\in S: X(s) &lt; x\\} \\text{is an event for all real }x. \\text{So, } (X &gt; x), (X=x), (X \\leq x), (X \\geq x) \\text{ are all events.}\n\n\n\nSample space S = \\{1,2,3,4,5,6\\}\nRandom variable E: E(2)=E(4)=E(6)=1, E(1)=E(3)=E(5)=0\n\nE=0: event \\{1,3,5\\}\nE=1: event \\{2,4,6\\}\nE&lt;0: null event\nE\\leq 1: event \\{1,2,3,4,5,6\\}\n\nNote: not all events can be expressed in terms of E",
+    "crumbs": [
+      "Statistics-II",
+      "Probability Distributions and Random Variables"
+    ]
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html",
+    "href": "pages/Stats2/Probability-Basics copy.html",
+    "title": "Basic Concepts of Probability",
+    "section": "",
+    "text": "Experiment\n\nProcess or phenomenon that we wish to study statistically\n\n\n\nOutcome\n\nResult of the experiment (in as much detail as necessary)"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#experiment-and-outcome",
+    "href": "pages/Stats2/Probability-Basics copy.html#experiment-and-outcome",
+    "title": "Basic Concepts of Probability",
+    "section": "",
+    "text": "Experiment\n\nProcess or phenomenon that we wish to study statistically\n\n\n\nOutcome\n\nResult of the experiment (in as much detail as necessary)"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#sample-space",
+    "href": "pages/Stats2/Probability-Basics copy.html#sample-space",
+    "title": "Basic Concepts of Probability",
+    "section": "Sample Space",
+    "text": "Sample Space\nDefinition: A sample space S is a set that contains all possible outcomes of an experiment.\n\nSample space is a set, typically denoted S\nExamples:\n\nFlipping a coin: S = \\{\\text{Heads}, \\text{Tails}\\}\nRolling a die: S = \\{1, 2, 3, 4, 5, 6\\}"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#event",
+    "href": "pages/Stats2/Probability-Basics copy.html#event",
+    "title": "Basic Concepts of Probability",
+    "section": "Event",
+    "text": "Event\nDefinition: An event is a subset of the sample space.\n\nExamples:\n\nToss a coin: S = \\{\\text{Heads}, \\text{Tails}\\}\n\nEvents: \\emptyset, \\{\\text{Heads}\\}, \\{\\text{Tails}\\}, \\{\\text{Heads}, \\text{Tails}\\}\n4 events\n\nThrow a die: S = \\{1, 2, 3, 4, 5, 6\\}\n\nEvents: \\emptyset, \\{1\\}, \\{2\\}, \\{3\\}, \\{4\\}, \\{5\\}, \\{6\\}, \\{1, 2\\}, \\{1, 3\\}, \\ldots, \\{1, 2, 3, 4, 5, 6\\}\n64 events\n\n\nAn event is said to have “occurred” if the actual outcome of the experiment belongs to the event.\nEvents are sets\n\nAll set theory notions apply to events\n\nOne event can be contained in another, i.e. A \\subseteq B\n\nThrow a die: A = \\{2, 6\\}, B = \\text{Even number}\nIf A occured, B has also occured\nIf B occured, A may or may not have occured\n\nComplement of an event A, denoted A^c = \\{\\text{outcomes in } S \\text{ not in } A\\} = (S \\setminus A)\n\nThrow a die: A = \\{2, 4, 6\\} (even), A^c = \\{1, 3, 5\\} (odd)\nIf A occured, A^c did not occur\nIf A^c occured, A did not occur\n\n\n\nCombining events to create new events\n\nUnion of events A and B, denoted A \\cup B = \\{x: x \\in A \\text{ or } x \\in B\\}\n\nThrow a die: A = \\{1, 2, 3\\}, B = \\{3, 4, 5\\}, A \\cup B = \\{1, 2, 3, 4, 5\\}\n\nIntersection of events A and B, denoted A \\cap B = \\{x: x \\in A \\text{ and } x \\in B\\}\n\nThrow a die: A = \\{1, 2, 3\\}, B = \\{3, 4, 5\\}, A \\cap B = \\{3\\}\n\n\n\n\nDisjoint events\n\nTwo events with an empty intersection are said to be disjoint or mutually exclusive events\n\nThrow a die: even number, odd number are disjoint\n\nSuppose A and B are disjoint events\n\nIf A occured, B did not occur\nIf B occured, A did not occur\n\nEvent and its complement\n\nA and A^c are disjoint, i.e. A \\cap A^c = \\emptyset\nTogether, they cover the entire sample space, i.e. A \\cup A^c = S\n\nEither A or A^c must occur\n\nA and A^c are an example of a partition of the sample space\n\nPartition: Collection of disjoint sets that together cover the entire sample space\n\n\nMultiple events: E_1, E_2, \\ldots, E_n are disjoint if, for any i \\neq j, E_i \\cap E_j = \\emptyset"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#probability",
+    "href": "pages/Stats2/Probability-Basics copy.html#probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Probability",
+    "text": "Probability\nDefinition: “Probability” is a function P that assigns to each event a real number between 0 and 1. The entire probability space (sample space, events and probability function) should satisfy the following two axioms:\n\nP(S) = 1 (probability of the entire sample space equals 1)\nIf E_1, E_2, E_3, \\ldots are disjoint events (how many events? Could be infinitely many), P(E_1 \\cup E_2 \\cup E_3 \\cup \\ldots) = P(E_1) + P(E_2) + P(E_3) + \\ldots"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#basic-properties-of-probability",
+    "href": "pages/Stats2/Probability-Basics copy.html#basic-properties-of-probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Basic Properties of Probability",
+    "text": "Basic Properties of Probability\n\nTheorem 1 (Basic Properties of Probability) Let P be a probability on a sample space S. Then,\n\nP(\\emptyset) = 0\nLet E^c be the complement of Event E. Then, \\newline P(E^c) = 1 - P(E)\nIf Event E is a subset of Event F, i.e. E \\subseteq F, then \\newline P(F) = P(E) + P(F \\setminus E)\\text{,} which implies that P(E) \\leq P(F)\n3.a. If E and F are events, then P(E) = P(E \\cap F) + P(E \\setminus F) \\text{,} P(F) = P(E \\cap F) + P(F \\setminus E)\nIf E and F are events, then P(E \\cup F) = P(E) + P(F) - P(E \\cap F)\n\n\n\nProof. \n\n\n\\emptyset^c = S and \\emptyset, S are disjoint and \\emptyset \\cup S = S.\nBy Axiom 2, P(\\emptyset \\cup S) = P(\\emptyset) + P(S) or P(S) = P(\\emptyset) + P(S) or P(\\emptyset) = 0.\n\n\nE and E^c are disjoint and E \\cup E^c = S.\nBy Axiom 2, P(E \\cup E^c) = P(E) + P(E^c) or P(S) = P(E) + P(E^c)\nBy Axiom 1, 1 = P(S) = P(E) + P(E^c)\nSo, P(E^c) = 1 - P(E)\n\n\nF \\setminus E = F \\cap E^c (outside of E and inside of F)\nE and F \\setminus E are disjoint and E \\cup (F \\setminus E) = F\nBy Axiom 2, P(E \\cup (F \\setminus E)) = P(E) + P(F \\setminus E) or P(F) = P(E) + P(F \\setminus E)\n\n3.a.\n\nE \\cap F is a subset of E\nBy subset property, P(E) = P(E \\cap F) + P(E \\setminus (E \\cap F))\nNow, E \\setminus (E \\cap F) = E \\setminus F\nSo, P(E) = P(E \\cap F) + P(E \\setminus F)\n\n\nE \\cup F = (E \\setminus F) \\cup (E \\cap F) \\cup (F \\setminus E) and the 3 events on RHS are disjoint\nP(E \\cup F) = P(E \\setminus F) + P(E \\cap F) + P(F \\setminus E)\nUse P(E \\setminus F) = P(E) - P(E \\cap F) and P(F \\setminus E) = P(F) - P(E \\cap F)"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#conditional-probability-space",
+    "href": "pages/Stats2/Probability-Basics copy.html#conditional-probability-space",
+    "title": "Basic Concepts of Probability",
+    "section": "Conditional Probability Space",
+    "text": "Conditional Probability Space\nDefinition: Consider a probability space: Sample space S, collection of events, and a probability function P. Let B be an event with P(B) &gt; 0.\n\\newlineSample space: B \\newlineEvents: A \\cap B for every event A in the original space\n\\text{Probability function: } \\frac{P(A \\cap B)}{P(B)}\n\\newline(denoted P(A|B) and called conditional probability of A given B)\nFor any event A in the original space, P(A \\cap B) = P(B) \\cdot P(A|B)"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#law-of-total-probability",
+    "href": "pages/Stats2/Probability-Basics copy.html#law-of-total-probability",
+    "title": "Basic Concepts of Probability",
+    "section": "Law of Total Probability",
+    "text": "Law of Total Probability\n\nTheorem 2 (Law of Total Probability) B_1, B_2, \\ldots \\text{ : Partition of } S  P(A) = P(A \\cap B_1) + P(A \\cap B_2) + \\ldots = P(A|B_1) P(B_1) + P(A|B_2) P(B_2) + \\ldots\n\n\nProof. \n\nA: disjoint union of A \\cap B_1, A \\cap B_2, \\ldots\nBy Axiom 2, P(A) = P(A \\cap B_1) + P(A \\cap B_2) + \\ldots\nUsing conditional probability on each term above, we get the result"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#bayes-theorem",
+    "href": "pages/Stats2/Probability-Basics copy.html#bayes-theorem",
+    "title": "Basic Concepts of Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem\n\nTheorem 3 (Bayes’ Theorem)  A,B \\text{: Events with } P(A) &gt; 0 \\text{, } P(B) &gt; 0 P(A \\cap B) = P(B)P(A|B) = P(A)P(B|A) P(A|B) = \\frac{P(B|A)P(A)}{P(B)}\n\n\nProof. \n\nBayes’ Theorem may be derived from the definition of conditional probability: P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\text{, if } P(B) \\neq 0,\nwhere P(A \\cap B) is the probability of both A and B being true. Similarly, P(B|A) = \\frac{P(A \\cap B)}{P(A)} \\text{, if } P(A) \\neq 0.\nSolving for P(A \\cap B) and substituting into the above expression for P(A|B) yields Bayes’ Theorem: P(A|B) = \\frac{P(B|A)P(A)}{P(B)} \\text{, if } P(B) \\neq 0."
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#independence-of-events",
+    "href": "pages/Stats2/Probability-Basics copy.html#independence-of-events",
+    "title": "Basic Concepts of Probability",
+    "section": "Independence of Events",
+    "text": "Independence of Events\nDefinition: Two events A and B are independent if P(A \\cap B) = P(A)P(B)\n\nIf P(B) &gt; 0, P(A|B) = P(A)\nDisjoint events are never independent\nFor events to be independent, they should have a non-empty intersection"
+  },
+  {
+    "objectID": "pages/Stats2/Probability-Basics copy.html#mutual-independence-of-multiple-events",
+    "href": "pages/Stats2/Probability-Basics copy.html#mutual-independence-of-multiple-events",
+    "title": "Basic Concepts of Probability",
+    "section": "Mutual independence of multiple events",
+    "text": "Mutual independence of multiple events\nDefinition: Events A_1, A_2, \\ldots, A_n are mutually independent if, for all i_1, i_2, \\ldots, i_k, P(A_{i_1} \\cap A_{i_2} \\cap \\ldots \\cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \\ldots P(A_{i_k})\n\nA and B are independent \\implies A and B^c are independent\n\nP(A \\cap B^c) = P(A \\setminus B) = P(A) - P(A \\cap B) = P(A)(1 - P(B)) = P(A)P(B^c)\nIntuitive: B does not affect A \\implies B^c does not affect A\nTwo events are independent \\implies Complement of one event is independent of the other\n\nUsing the above twice: A and B are independent \\implies A^c and B^c are independent\nExtension: n events are mutually independent \\implies any subset with or without complementing are independent as well"
   }
 ]
