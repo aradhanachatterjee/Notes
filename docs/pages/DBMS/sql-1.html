@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notes - Introduction to SQL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-1.html">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-1.html">Introduction to Relational Databases and SQL</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Notes</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">DBMS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction to Relational Databases and SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Examples, Intermediate and Advanced SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/formal-rel-query-lang.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formal Relational Query Languages</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">PDSA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binary Search</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/sorting_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sorting Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graphs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Random</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Series Representations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/random/Vectors-in-alternate-basis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors in Alternate Basis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/Stats2/Probability-Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Concepts of Probability</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-relational-model---part-1" id="toc-introduction-to-relational-model---part-1" class="nav-link active" data-scroll-target="#introduction-to-relational-model---part-1">Introduction to Relational Model - Part 1</a>
+  <ul class="collapse">
+  <li><a href="#relational-schema-and-instance" id="toc-relational-schema-and-instance" class="nav-link" data-scroll-target="#relational-schema-and-instance">Relational Schema and Instance</a></li>
+  <li><a href="#relations-are-unordered-with-unique-tuples" id="toc-relations-are-unordered-with-unique-tuples" class="nav-link" data-scroll-target="#relations-are-unordered-with-unique-tuples">Relations are Unordered with Unique Tuples</a></li>
+  <li><a href="#keys" id="toc-keys" class="nav-link" data-scroll-target="#keys">Keys</a></li>
+  <li><a href="#keys---example" id="toc-keys---example" class="nav-link" data-scroll-target="#keys---example">Keys - Example</a></li>
+  <li><a href="#keys-contd." id="toc-keys-contd." class="nav-link" data-scroll-target="#keys-contd.">Keys (Contd.)</a></li>
+  <li><a href="#relational-query-languages" id="toc-relational-query-languages" class="nav-link" data-scroll-target="#relational-query-languages">Relational Query Languages</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-relational-model---part-2" id="toc-introduction-to-relational-model---part-2" class="nav-link" data-scroll-target="#introduction-to-relational-model---part-2">Introduction to Relational Model - Part 2</a>
+  <ul class="collapse">
+  <li><a href="#basic-properties-of-relations" id="toc-basic-properties-of-relations" class="nav-link" data-scroll-target="#basic-properties-of-relations">Basic Properties of Relations</a></li>
+  <li><a href="#select-operation---selection-of-rows-tuples" id="toc-select-operation---selection-of-rows-tuples" class="nav-link" data-scroll-target="#select-operation---selection-of-rows-tuples">Select Operation - selection of rows (tuples)</a></li>
+  <li><a href="#project-operation---selection-of-columns-attributes" id="toc-project-operation---selection-of-columns-attributes" class="nav-link" data-scroll-target="#project-operation---selection-of-columns-attributes">Project Operation - selection of columns (attributes)</a></li>
+  <li><a href="#union-of-two-relations" id="toc-union-of-two-relations" class="nav-link" data-scroll-target="#union-of-two-relations">Union of two relations</a></li>
+  <li><a href="#set-difference-of-two-relations" id="toc-set-difference-of-two-relations" class="nav-link" data-scroll-target="#set-difference-of-two-relations">Set Difference of two relations</a></li>
+  <li><a href="#set-intersection-of-two-relations" id="toc-set-intersection-of-two-relations" class="nav-link" data-scroll-target="#set-intersection-of-two-relations">Set Intersection of two relations</a></li>
+  <li><a href="#joining-two-relations---cartesian-product" id="toc-joining-two-relations---cartesian-product" class="nav-link" data-scroll-target="#joining-two-relations---cartesian-product">Joining two relations - Cartesian Product</a></li>
+  <li><a href="#renaming-a-table" id="toc-renaming-a-table" class="nav-link" data-scroll-target="#renaming-a-table">Renaming a table</a></li>
+  <li><a href="#composition-of-operations" id="toc-composition-of-operations" class="nav-link" data-scroll-target="#composition-of-operations">Composition of Operations</a></li>
+  <li><a href="#joining-two-relations---natural-join" id="toc-joining-two-relations---natural-join" class="nav-link" data-scroll-target="#joining-two-relations---natural-join">Joining two relations - Natural Join</a></li>
+  <li><a href="#natural-join-example" id="toc-natural-join-example" class="nav-link" data-scroll-target="#natural-join-example">Natural Join Example</a></li>
+  <li><a href="#aggregate-operators" id="toc-aggregate-operators" class="nav-link" data-scroll-target="#aggregate-operators">Aggregate Operators</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-sql---part-1" id="toc-introduction-to-sql---part-1" class="nav-link" data-scroll-target="#introduction-to-sql---part-1">Introduction to SQL - Part 1</a>
+  <ul class="collapse">
+  <li><a href="#history-of-query-language" id="toc-history-of-query-language" class="nav-link" data-scroll-target="#history-of-query-language">History of Query Language</a></li>
+  <li><a href="#history-of-query-language-2-compliance" id="toc-history-of-query-language-2-compliance" class="nav-link" data-scroll-target="#history-of-query-language-2-compliance">History of Query Language (2): Compliance</a></li>
+  <li><a href="#history-of-query-language-3-alternatives" id="toc-history-of-query-language-3-alternatives" class="nav-link" data-scroll-target="#history-of-query-language-3-alternatives">History of Query Language (3): Alternatives</a></li>
+  <li><a href="#history-of-query-language-4-derivatives" id="toc-history-of-query-language-4-derivatives" class="nav-link" data-scroll-target="#history-of-query-language-4-derivatives">History of Query Language (4): Derivatives</a></li>
+  <li><a href="#data-definition-language-ddl" id="toc-data-definition-language-ddl" class="nav-link" data-scroll-target="#data-definition-language-ddl">Data Definition Language (DDL)</a></li>
+  <li><a href="#domain-types-in-sql" id="toc-domain-types-in-sql" class="nav-link" data-scroll-target="#domain-types-in-sql">Domain Types in SQL</a></li>
+  <li><a href="#create-table-construct" id="toc-create-table-construct" class="nav-link" data-scroll-target="#create-table-construct">Create Table Construct</a></li>
+  <li><a href="#based-on-a-question-from-practice-assignment-2" id="toc-based-on-a-question-from-practice-assignment-2" class="nav-link" data-scroll-target="#based-on-a-question-from-practice-assignment-2">Based on a question from Practice Assignment 2</a></li>
+  <li><a href="#superkeys-involving-textenrollment_num" id="toc-superkeys-involving-textenrollment_num" class="nav-link" data-scroll-target="#superkeys-involving-textenrollment_num">Superkeys involving <span class="math inline">\{\text{enrollment\_num}\}</span>:</a></li>
+  <li><a href="#superkeys-involving-textclass-textsection-textroll" id="toc-superkeys-involving-textclass-textsection-textroll" class="nav-link" data-scroll-target="#superkeys-involving-textclass-textsection-textroll">Superkeys involving <span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span>:</a></li>
+  <li><a href="#correct-count-of-superkeys" id="toc-correct-count-of-superkeys" class="nav-link" data-scroll-target="#correct-count-of-superkeys">Correct Count of Superkeys:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-1.html">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-1.html">Introduction to Relational Databases and SQL</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introduction to SQL</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-relational-model---part-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-relational-model---part-1">Introduction to Relational Model - Part 1</h2>
+<section id="relational-schema-and-instance" class="level3">
+<h3 class="anchored" data-anchor-id="relational-schema-and-instance">Relational Schema and Instance</h3>
+<ul>
+<li><span class="math inline">A_{1},A_{2},...,A_{n}</span> are attributes</li>
+<li><span class="math inline">R=(A_{1},A_{2},...,A_{n})</span> is a <em>relational schema</em>
+<ul>
+<li>Example: <span class="math inline">instructor(ID, name, dept_name, salary)</span></li>
+</ul></li>
+<li>Formally, given sets <span class="math inline">D_{1},D_{2},...,D_{n}</span>, a <em>relation</em> <span class="math inline">r</span> is a subset of <span class="math display">
+D_{1} \times D_{2} \times ... \times D_{n}
+</span> Thus, a relation is a set of <span class="math inline">n</span>-tuples <span class="math inline">(a_{1},a_{2},...,a_{n})</span> where each <span class="math inline">a_{i} \in D_{i}</span></li>
+<li>The current values (relation instance) of a relation are specified in a table</li>
+<li>Example: <span class="math inline">instuctor \equiv (String(5) \times String \times String \times Number+)</span>, where <span class="math inline">ID \in String(5)</span>, <span class="math inline">name \in String</span>, <span class="math inline">dept\_name \in String</span>, <span class="math inline">salary \in Number+</span></li>
+</ul>
+</section>
+<section id="relations-are-unordered-with-unique-tuples" class="level3">
+<h3 class="anchored" data-anchor-id="relations-are-unordered-with-unique-tuples">Relations are Unordered with Unique Tuples</h3>
+<ul>
+<li>Order of tuples/rows in a relation is irrelevant (tuples may be stored in an arbitrary order)</li>
+<li>No two tuples in a relation are the same (i.e., no duplicate tuples)</li>
+<li>Example: <em>instructor</em> relation with unordered tuples</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>name</th>
+<th>dept_name</th>
+<th>salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>22222</td>
+<td>Einstein</td>
+<td>Physics</td>
+<td>95000</td>
+</tr>
+<tr class="even">
+<td>12121</td>
+<td>Wu</td>
+<td>Finance</td>
+<td>90000</td>
+</tr>
+<tr class="odd">
+<td>32343</td>
+<td>El Said</td>
+<td>History</td>
+<td>60000</td>
+</tr>
+<tr class="even">
+<td>45565</td>
+<td>Katz</td>
+<td>Comp. Sci.</td>
+<td>75000</td>
+</tr>
+<tr class="odd">
+<td>98345</td>
+<td>Kim</td>
+<td>Elec. Eng.</td>
+<td>80000</td>
+</tr>
+<tr class="even">
+<td>76766</td>
+<td>Crick</td>
+<td>Biology</td>
+<td>72000</td>
+</tr>
+<tr class="odd">
+<td>10101</td>
+<td>Srinivasan</td>
+<td>Comp. Sci.</td>
+<td>65000</td>
+</tr>
+<tr class="even">
+<td>58583</td>
+<td>Califieri</td>
+<td>History</td>
+<td>62000</td>
+</tr>
+<tr class="odd">
+<td>82821</td>
+<td>Brandt</td>
+<td>Comp. Sci.</td>
+<td>92000</td>
+</tr>
+<tr class="even">
+<td>15151</td>
+<td>Mozart</td>
+<td>Music</td>
+<td>40000</td>
+</tr>
+<tr class="odd">
+<td>33456</td>
+<td>Gold</td>
+<td>Physics</td>
+<td>87000</td>
+</tr>
+<tr class="even">
+<td>76543</td>
+<td>Singh</td>
+<td>Finance</td>
+<td>80000</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="keys" class="level3">
+<h3 class="anchored" data-anchor-id="keys">Keys</h3>
+<ul>
+<li>Let <span class="math inline">K \subseteq R</span>, where <span class="math inline">R</span> is the set of attributes in the relation.</li>
+<li><span class="math inline">K</span> is a <em>superkey</em> of <span class="math inline">R</span> if values for <span class="math inline">K</span> are sufficient to identify a unique tuple of each possible relation <span class="math inline">r(R)</span>
+<ul>
+<li>Example: <span class="math inline">\{ID\}</span> and <span class="math inline">\{ID, name\}</span> are both superkeys of <span class="math inline">instructor</span></li>
+</ul></li>
+<li>Superkey <span class="math inline">K</span> is a <em>candidate key</em> if <span class="math inline">K</span> is minimal
+<ul>
+<li>Example: <span class="math inline">\{ID\}</span> is a candidate key for <span class="math inline">instructor</span></li>
+</ul></li>
+<li>One of the candidate keys is chosen as the <em>primary key</em>
+<ul>
+<li>Which one?</li>
+</ul></li>
+<li>A <em>surrogate key</em> or <em>synthetic key</em> in a database is a unique identifier for either an entity in the modeled world or an object in the database.
+<ul>
+<li>The surrogate key is not derived from application data, unlike a natural (or business) key which is derived from application data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="keys---example" class="level3">
+<h3 class="anchored" data-anchor-id="keys---example">Keys - Example</h3>
+<ul>
+<li><em>Students = Roll#, First Name, Last Name, DoB, Passport#, Aadhaar#, Department</em></li>
+<li><em>Super Key</em>: Roll#, {Roll#, DoB}</li>
+<li><em>Candidate Keys</em>: Roll#, {First Name, Last Name}, Aadhaar#
+<ul>
+<li>Passport# cannot be a key. Why?</li>
+<li>Null values are allowed for Passport# (a student may not have a passport)</li>
+</ul></li>
+<li><em>Primary Key</em>: Roll#
+<ul>
+<li>Can we use Aadhaar# as the primary key?</li>
+<li>It may suffice for unique identification. But Roll# may have additional useful information. For example: 14CS92P01
+<ul>
+<li>Read 14CS92P01 as 14-CS-92-P-01</li>
+<li>14: Admission in 2014</li>
+<li>CS: Department = CS</li>
+<li>92: Category of Student</li>
+<li>P: Type of admission: <em>Project</em></li>
+<li>01: Serial Number</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="keys-contd." class="level3">
+<h3 class="anchored" data-anchor-id="keys-contd.">Keys (Contd.)</h3>
+<ul>
+<li><em>Foreign key constraint</em>: Value in one relation must appear in another
+<ul>
+<li><em>Referencing</em> relation
+<ul>
+<li>Enrolment: Foreign keys - Roll#, Course#</li>
+</ul></li>
+<li><em>Referenced</em> relation
+<ul>
+<li>Students, Courses</li>
+</ul></li>
+</ul></li>
+<li>A <em>compound key</em> consists of more than one attribute to uniquely identify an entity occurrence
+<ul>
+<li>Each attribute, which makes up the key, is a simple key in its own right</li>
+<li>{Roll#, Course#}</li>
+</ul></li>
+</ul>
+<table class="table">
+<caption>Students</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Roll #</th>
+<th style="text-align: center;">First Name</th>
+<th style="text-align: center;">Last Name</th>
+<th style="text-align: center;">DoB</th>
+<th style="text-align: center;">Passport #</th>
+<th style="text-align: center;">Aadhaar #</th>
+<th style="text-align: center;">Department</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<caption>Courses</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Course #</th>
+<th style="text-align: center;">Course Name</th>
+<th style="text-align: center;">Credits</th>
+<th style="text-align: center;">L-T-P</th>
+<th style="text-align: center;">Department</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<caption>Enrolment</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Roll #</th>
+<th style="text-align: center;">Course #</th>
+<th style="text-align: center;">Instructor ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="relational-query-languages" class="level3">
+<h3 class="anchored" data-anchor-id="relational-query-languages">Relational Query Languages</h3>
+<p><strong>Procedural viz-a-viz Non-procedural or Declarative Paradigms</strong> - Procedural programming requires that the programmer specify the exact steps to be taken to solve a problem. - That is, <em>how</em> to get the output for the range of required inputs - The programmer must know an appropriate algorithm</p>
+<ul>
+<li>Declarative programming requires a more descriptive approach.
+<ul>
+<li>The programmer must know <em>what</em> relationships hold between various entities</li>
+</ul></li>
+<li>Example - Square root of <span class="math inline">n</span>
+<ul>
+<li>Procedural
+<ul>
+<li>Guess <span class="math inline">x_0</span> (close to root of <span class="math inline">n</span>)</li>
+<li><span class="math inline">i \leftarrow 0</span></li>
+<li><span class="math inline">x_{i+1} \leftarrow \frac{(x_i + \frac{n}{x_i})}{2}</span></li>
+<li>Repeat Step 2 if <span class="math inline">|x_{i+1} - x_i| &gt; \delta</span></li>
+</ul></li>
+<li>Declarative
+<ul>
+<li>Root of <span class="math inline">n</span> is <span class="math inline">m</span> such that <span class="math inline">m^2 = n</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="introduction-to-relational-model---part-2" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-relational-model---part-2">Introduction to Relational Model - Part 2</h2>
+<section id="basic-properties-of-relations" class="level3">
+<h3 class="anchored" data-anchor-id="basic-properties-of-relations">Basic Properties of Relations</h3>
+<ul>
+<li>A relation is a set. Hence,</li>
+<li>Ordering of tuples is immaterial</li>
+<li>All rows/tuples must be distinct</li>
+</ul>
+</section>
+<section id="select-operation---selection-of-rows-tuples" class="level3">
+<h3 class="anchored" data-anchor-id="select-operation---selection-of-rows-tuples">Select Operation - selection of rows (tuples)</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">12</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">23</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\sigma_{A=B \wedge D &gt; 5}(r)</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">23</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="project-operation---selection-of-columns-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="project-operation---selection-of-columns-attributes">Project Operation - selection of columns (attributes)</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">30</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">40</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\pi_{A,C}(r)</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="union-of-two-relations" class="level3">
+<h3 class="anchored" data-anchor-id="union-of-two-relations">Union of two relations</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r \cup s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="set-difference-of-two-relations" class="level3">
+<h3 class="anchored" data-anchor-id="set-difference-of-two-relations">Set Difference of two relations</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r - s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="set-intersection-of-two-relations" class="level3">
+<h3 class="anchored" data-anchor-id="set-intersection-of-two-relations">Set Intersection of two relations</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r \cap s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: <span class="math inline">r \cap s = r-(r-s)</span></p>
+</section>
+<section id="joining-two-relations---cartesian-product" class="level3">
+<h3 class="anchored" data-anchor-id="joining-two-relations---cartesian-product">Joining two relations - Cartesian Product</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r \times s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cartesian Product</strong>: Naming issue</p>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r \times s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">r.B</span></th>
+<th style="text-align: center;"><span class="math inline">s.B</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="renaming-a-table" class="level3">
+<h3 class="anchored" data-anchor-id="renaming-a-table">Renaming a table</h3>
+<p>Renaming a table allows us to refer to a relation, say <span class="math inline">E</span>, by more than one name. The operator <span class="math display">
+\rho_{X}(E) </span> renames relation <span class="math inline">E</span> as <span class="math inline">X</span>.</p>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">r \times \rho_{s}(r)</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">r.A</span></th>
+<th style="text-align: center;"><span class="math inline">r.B</span></th>
+<th style="text-align: center;"><span class="math inline">s.A</span></th>
+<th style="text-align: center;"><span class="math inline">s.B</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="composition-of-operations" class="level3">
+<h3 class="anchored" data-anchor-id="composition-of-operations">Composition of Operations</h3>
+<p>Can build expressions using multiple operations</p>
+<p>Example: <span class="math inline">\sigma_{A=C}(r \times s)</span></p>
+<p><span class="math inline">r \times s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\sigma_{A=C}(r \times s)</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">20</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="joining-two-relations---natural-join" class="level3">
+<h3 class="anchored" data-anchor-id="joining-two-relations---natural-join">Joining two relations - Natural Join</h3>
+<ul>
+<li>Let <span class="math inline">r</span> and <span class="math inline">s</span> be relations on schemas <span class="math inline">R</span> and <span class="math inline">S</span> respectively. Then, the “<strong>natural join</strong>” of relations <span class="math inline">R</span> and <span class="math inline">S</span> is a relation on schema <span class="math inline">R \cup S</span> obtained as follows:</li>
+<li>Consider each pair of tuples <span class="math inline">t_{r}</span> from <span class="math inline">r</span> and <span class="math inline">t_{s}</span> from <span class="math inline">s</span></li>
+<li>If <span class="math inline">t_{r}</span> and <span class="math inline">t_{s}</span> have the same value on each of the attributes in <span class="math inline">R \cap S</span>, add a tuple <span class="math inline">t</span> to the result, where
+<ul>
+<li><span class="math inline">t</span> has the same value as <span class="math inline">t_{r}</span> on <span class="math inline">r</span></li>
+<li><span class="math inline">t</span> has the same value as <span class="math inline">t_{s}</span> on <span class="math inline">s</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="natural-join-example" class="level3">
+<h3 class="anchored" data-anchor-id="natural-join-example">Natural Join Example</h3>
+<p>Relation <span class="math inline">r</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\delta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relation <span class="math inline">s</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+<td style="text-align: center;"><span class="math inline">\delta</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+<td style="text-align: center;"><span class="math inline">\epsilon</span></td>
+</tr>
+</tbody>
+</table>
+<p>Natural join - <span class="math inline">r \bowtie s</span></p>
+<table class="table">
+<caption><span class="math inline">\pi_{A,r.B,C,r.D,E}(\sigma_{r.B=s.B \wedge r.D=s.D}(r \times s))</span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">A</span></th>
+<th style="text-align: center;"><span class="math inline">B</span></th>
+<th style="text-align: center;"><span class="math inline">C</span></th>
+<th style="text-align: center;"><span class="math inline">D</span></th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\alpha</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+<td style="text-align: center;"><span class="math inline">\text{a}</span></td>
+<td style="text-align: center;"><span class="math inline">\gamma</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\delta</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta</span></td>
+<td style="text-align: center;"><span class="math inline">\text{b}</span></td>
+<td style="text-align: center;"><span class="math inline">\delta</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="aggregate-operators" class="level3">
+<h3 class="anchored">Aggregate Operators</h3>
+<p>Can compute: - SUM - AVG - MAX - MIN</p>
+<ul>
+<li><p>Relational operators always return a relation.</p></li>
+<li><h2 id="aggregate-operators-return-a-single-value." class="anchored" data-anchor-id="aggregate-operators">Aggregate operators return a single value.</h2></li>
+</ul>
+</section>
+</section>
+<section id="introduction-to-sql---part-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-sql---part-1">Introduction to SQL - Part 1</h2>
+<section id="history-of-query-language" class="level3">
+<h3 class="anchored" data-anchor-id="history-of-query-language">History of Query Language</h3>
+<ul>
+<li>IBM developed <em>Structured English Query Language</em> (<strong>SEQUEL</strong>) as a part of System R project. Renamed Structured Query Language (<strong>SQL</strong>: pronounced as “sequel”)</li>
+<li>ANSI and ISO standards for SQL:</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 94%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>SQL-86</strong></td>
+<td>First formalized by <strong>ANSI</strong></td>
+</tr>
+<tr class="even">
+<td>SQL-89</td>
+<td>+ <strong>Integrity constraints</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>SQL-92</strong></td>
+<td>Major revision (<strong>ISO/IEC 9075 standard</strong>), <strong>De-facto Industry Standard</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SQL:1999</strong></td>
+<td>+ <strong>Regular Expression Matching</strong>, <strong>Recursive Queries</strong>, <strong>Triggers</strong>, <strong>Support for Procedural and Control Flow Statements</strong>, Nonscalar types (Arrays), and Some OO features (structured types), <strong>Embedding SQL in Java (SQL/OLB)</strong>, and <strong>Embedding Java in SQL (SQL/JRT)</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>SQL:2003</strong></td>
+<td>+ <strong>XML features (SQL/XML)</strong>, Window Functions, Standardized Sequences, and Columns with Auto-generated Values (identity columns)</td>
+</tr>
+<tr class="even">
+<td><strong>SQL:2006</strong></td>
+<td>+ Ways of <strong>importing and storing XML data</strong> in an SQL database, <strong>manipulating</strong> it within the database, and <strong>publishing both XML and conventional SQL-data in XML form</strong></td>
+</tr>
+<tr class="odd">
+<td>SQL:2008</td>
+<td>Legalizes ORDER BY outside Cursor Definitions<br>
++ INSTEAD OF Triggers, TRUNCATE Statement, and FETCH Clause</td>
+</tr>
+<tr class="even">
+<td>SQL:2011</td>
+<td>+ Temporal Data (PERIOD FOR)<br>
+Enhancements to Window Functions, and Enhancements to FETCH Clause</td>
+</tr>
+<tr class="odd">
+<td>SQL:2016</td>
+<td>+ Row Pattern Matching, Polymorphic Table Functions, and <strong>JSON</strong></td>
+</tr>
+<tr class="even">
+<td>SQL:2019</td>
+<td>+ Multi-Dimensional Arrays (MDarray type and operators)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="history-of-query-language-2-compliance" class="level3">
+<h3 class="anchored" data-anchor-id="history-of-query-language-2-compliance">History of Query Language (2): Compliance</h3>
+<ul>
+<li>SQL is the de-facto standard today for relational or structured data systems</li>
+<li>Commercial systems as well as open systems may be fully or partially compliant to one or more standards from SQL-92 onwards</li>
+<li>Not all examples here may work on your particular system. Check your system’s SQL documentation</li>
+</ul>
+</section>
+<section id="history-of-query-language-3-alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="history-of-query-language-3-alternatives">History of Query Language (3): Alternatives</h3>
+<ul>
+<li>There aren’t any alternatives to SQL for speaking to a relational database (that is, SQL as a protocol), but there are many alternatives to writing SQL in the applications</li>
+<li>These alternatives have been implemented in the form of frontends for working with relational databases. Some examples of a frontend include (for a section of languages):
+<ul>
+<li>SchemeQL and CLSQL, which are probably the most flexible, owing to their Lisp heritage, but they also look a lot more like SQL than other frontends</li>
+<li>LINQ (in .NET)</li>
+<li>ScalaQL and ScalaQuery (in Scala)</li>
+<li>SqlStatement, ActiveRecord and many others in Ruby</li>
+<li>HaskellDB</li>
+<li>…the list goes on for many other languages</li>
+</ul></li>
+</ul>
+</section>
+<section id="history-of-query-language-4-derivatives" class="level3">
+<h3 class="anchored" data-anchor-id="history-of-query-language-4-derivatives">History of Query Language (4): Derivatives</h3>
+<ul>
+<li>There are several query languages that are derived from or inspired by SQL. Of these, the most popular and effective is SPARQL.
+<ul>
+<li>SPARQL (pronounced “sparkle”, a recursive acronym for SPARQL Protocol and RDF Query Language) is an RDF query language
+<ul>
+<li>A semantic query language for databases - able to retrieve and manipulate data stored in Resource Description Framework (RDF) format.</li>
+<li>It has been standardized by the W3C as key technology of the Semantic Web</li>
+<li>Versions:
+<ul>
+<li>SPARQL 1.0 (January 2008)</li>
+<li>SPARQL 1.1 (March 2013)</li>
+</ul></li>
+<li>Used as the query language for several NoSQL systems - particularly the graph databases that use RDF as storage format</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-definition-language-ddl" class="level3">
+<h3 class="anchored" data-anchor-id="data-definition-language-ddl">Data Definition Language (DDL)</h3>
+<p>The SQL data definition language (DDL) allwos the specification of information about relations, including: - The Schema for each Relation - The Domain of values associated with each Attribute - Integrity Constraints - Also other information such as: - The set of Indices to be maintained for each relation - Security and Authorization information for each relation - The Physical Storage Structure for each relation on disk</p>
+</section>
+<section id="domain-types-in-sql" class="level3">
+<h3 class="anchored" data-anchor-id="domain-types-in-sql">Domain Types in SQL</h3>
+<ul>
+<li><em>char(n)</em>: Fixed-length character string, with user-specified length <span class="math inline">n</span></li>
+<li><em>varchar(n)</em>: Variable-length character strings, with user-specified maximum length <span class="math inline">n</span></li>
+<li><em>int</em>: Integer (a finite subset of the integers that is machine-dependent)</li>
+<li><em>smallint(n)</em>: Small integer (a machine-dependent subset of the integer domain type)</li>
+<li><em>numeric(p,d)</em>: Fixed-point number, with user-specified precision of <span class="math inline">p</span> digits, with <span class="math inline">d</span> digits to the right of the decimal point. (Example: <strong>numeric</strong>(3,1), allows 44.5 to be stored exactly but not 444.5 or 0.32)</li>
+<li><em>real, double precision</em>: Floating-point and double-precision floating-point numbers with machine-dependent precision</li>
+<li><em>float(n)</em>: Floating-point number, with user-specified precision of at least <span class="math inline">n</span> bits</li>
+</ul>
+</section>
+<section id="create-table-construct" class="level3">
+<h3 class="anchored" data-anchor-id="create-table-construct">Create Table Construct</h3>
+<ul>
+<li><p>An SQL relation is defined using the <em>create table</em> command:</p>
+<p><strong>create table</strong> <span class="math inline">r</span> ( <span class="math display"> (A_{1}D_{1}, A_{2}D_{2}, ..., A_{n}D_{n}), </span> <span class="math display"> (\text{integrity-constraint}_1), </span> <span class="math display">...</span> <span class="math display"> (\text{integrity-constraint}_k)); </span></p>
+<ul>
+<li><span class="math inline">r</span> is the name of the relation</li>
+<li>each <span class="math inline">A_i</span> is an attribute name in the schema of relation <span class="math inline">r</span></li>
+<li><span class="math inline">D_i</span> is the data type of values in the domain of attribute <span class="math inline">A_i</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="based-on-a-question-from-practice-assignment-2" class="level3">
+<h3 class="anchored" data-anchor-id="based-on-a-question-from-practice-assignment-2">Based on a question from Practice Assignment 2</h3>
+<p>Given the schema:</p>
+<p><span class="math display">
+\text{studentInfo}(\text{enrollment\_num}, \text{class}, \text{section}, \text{roll}, \text{name})
+</span></p>
+<p>and the candidate keys:</p>
+<ol type="1">
+<li><span class="math inline">\{\text{enrollment\_num}\}</span></li>
+<li><span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span></li>
+</ol>
+</section>
+<section id="superkeys-involving-textenrollment_num" class="level3">
+<h3 class="anchored" data-anchor-id="superkeys-involving-textenrollment_num">Superkeys involving <span class="math inline">\{\text{enrollment\_num}\}</span>:</h3>
+<p>For the candidate key <span class="math inline">\{\text{enrollment\_num}\}</span>, we can form a superkey by combining it with any subset of the remaining attributes <span class="math inline">\{\text{class}, \text{section}, \text{roll}, \text{name}\}</span>. The number of such subsets is <span class="math inline">2^4 = 16</span>, which includes the empty set.</p>
+</section>
+<section id="superkeys-involving-textclass-textsection-textroll" class="level3">
+<h3 class="anchored" data-anchor-id="superkeys-involving-textclass-textsection-textroll">Superkeys involving <span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span>:</h3>
+<p>For the candidate key <span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span>, we can form a superkey by combining it with any subset of the remaining attributes <span class="math inline">\{\text{enrollment\_num}, \text{name}\}</span>. The number of such subsets is <span class="math inline">2^2 = 4</span>, which includes the empty set.</p>
+<p>However, we must ensure we do not double count the combination of both candidate keys. Specifically, the combination <span class="math inline">\{\text{enrollment\_num}, \text{class}, \text{section}, \text{roll}\}</span> is a superkey common to both sets.</p>
+</section>
+<section id="correct-count-of-superkeys" class="level3">
+<h3 class="anchored" data-anchor-id="correct-count-of-superkeys">Correct Count of Superkeys:</h3>
+<ol type="1">
+<li>Superkeys involving <span class="math inline">\{\text{enrollment\_num}\}</span>:
+<ul>
+<li><span class="math inline">16</span> superkeys (including <span class="math inline">\{\text{enrollment\_num}\}</span> itself).</li>
+</ul></li>
+<li>Superkeys involving <span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span>:
+<ul>
+<li><span class="math inline">4</span> superkeys (including <span class="math inline">\{\text{class}, \text{section}, \text{roll}\}</span> itself).</li>
+</ul></li>
+</ol>
+<p>Totaling these gives us <span class="math inline">16 + 4 = 20</span> superkeys.</p>
+<p>However, we must subtract 2 for the overlap between the two candidate keys:</p>
+<p><span class="math display">
+20 - 2 = 18
+</span></p>
+<p>Thus, the maximum number of possible superkeys of studentInfo is 18.</p>
+<hr>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

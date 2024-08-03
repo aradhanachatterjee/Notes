@@ -1,5 +1,5 @@
 ---
-title: "Week 2"
+title: "Introduction to SQL"
 format:
     html:    
         toc: true
@@ -12,7 +12,7 @@ execute:
 
 ---
 
-## Lecture 2.1: Introduction to Relational Model/1
+## Introduction to Relational Model - Part 1
 
 ### Relational Schema and Instance
 
@@ -125,7 +125,7 @@ execute:
     -   Declarative
         -   Root of $n$ is $m$ such that $m^2 = n$
 
-## Lecture 2.2: Introduction to Relational Model/2
+## Introduction to Relational Model - Part 2
 
 ### Basic Properties of Relations
 
@@ -407,7 +407,7 @@ Can compute: - SUM - AVG - MAX - MIN
 
     ## Aggregate operators return a single value.
 
-## Lecture 2.3: Introduction to SQL/1
+## Introduction to SQL - Part 1
 
 ### History of Query Language
 

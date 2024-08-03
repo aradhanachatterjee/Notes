@@ -1,0 +1,57 @@
+---
+title: "Graphs"
+format: 
+    html: 
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+execute:
+    echo: false
+---
+
+## Graphs, formally
+
+$G = (V, E)$
+
+- $V$ is a set of vertices (nodes)
+- $E$ is a set of edges (connections between nodes)
+  - $E$ is a subset of pairs of vertices in $V$ (i.e., $E \subseteq V \times V$)
+  - For undirected graphs, $(u, v)$ is the same as $(v, u)$
+  - For directed graphs, $(u, v)$ is an edge from $u$ to $v$ (does not imply $(v, u)$)
+
+## Graph representations
+
+### Adjacency matrix
+
+- Let $n = |V|$
+  - We can assume that the vertices are numbered from $0$ to $n-1$
+- Each edge is now a pair $(i, j)$, where $i, j \in \{0, 1, \ldots, n-1\}$
+- The **adjacency matrix** is a $n \times n$ matrix $A$ such that
+  - $A[i][j] = 1$ if $(i, j) \in E$
+  - $A[i][j] = 0$ otherwise
+- For undirected graphs, $A$ is symmetric ($A[i][j] = A[j][i]$)
+
+### An alternative representation
+
+- Adjacency matrix is not space-efficient
+- Size of the matrix is $n^2$ regardless of the number of edges
+- Maximum number of edges in an undirected graph is $n(n-1)/2$ if there are no self-loops
+- Maximum number of edges in a directed graph is $n(n-1)$ if there are no self-loops or multiple edges between two vertices
+
+### Adjacency list
+
+- For each vertex $v$, store a list of vertices that are adjacent to $v$
+
+### Comparing representations
+
+- Adjacency list typically uses less space
+- **Is $j$ a neighbour of $i$?**
+  - Just check if $A[i][j] = 1$ in adjacency matrix
+  - Need to scan the list of neighbours in adjacency list
+- **Enumerating neighbours of $i$**
+  - Scan all $n$ columns in adjacency matrix
+  - Takes time proportional to the number of neighbours in adjacency list
+
+## Breadth-first search (BFS)

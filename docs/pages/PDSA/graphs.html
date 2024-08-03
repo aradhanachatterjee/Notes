@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes - About</title>
+<title>Notes - Graphs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,8 +70,51 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -83,9 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Notes
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/graphs.html">Graphs</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -100,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Notes</a> 
+      <a href="../../">Notes</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -115,14 +156,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Statistics</span></a>
+ <span class="menu-text">DBMS</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -130,8 +171,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/Stats2/Probability-Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Concepts of Probability</span></a>
+  <a href="../../pages/DBMS/sql-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Relational Databases and SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Examples, Intermediate and Advanced SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/formal-rel-query-lang.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formal Relational Query Languages</span></a>
   </div>
 </li>
       </ul>
@@ -147,20 +200,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analysis of Algorithms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Binary Search</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/PDSA/sorting_algorithms.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/PDSA/sorting_algorithms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sorting Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/graphs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Graphs</span></a>
   </div>
 </li>
       </ul>
@@ -176,14 +235,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Series Representations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/random/Vectors-in-alternate-basis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/random/Vectors-in-alternate-basis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vectors in Alternate Basis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/Stats2/Probability-Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Concepts of Probability</span></a>
   </div>
 </li>
       </ul>
@@ -194,14 +270,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#graphs-formally" id="toc-graphs-formally" class="nav-link active" data-scroll-target="#graphs-formally">Graphs, formally</a></li>
+  <li><a href="#graph-representations" id="toc-graph-representations" class="nav-link" data-scroll-target="#graph-representations">Graph representations</a>
+  <ul class="collapse">
+  <li><a href="#adjacency-matrix" id="toc-adjacency-matrix" class="nav-link" data-scroll-target="#adjacency-matrix">Adjacency matrix</a></li>
+  <li><a href="#an-alternative-representation" id="toc-an-alternative-representation" class="nav-link" data-scroll-target="#an-alternative-representation">An alternative representation</a></li>
+  <li><a href="#adjacency-list" id="toc-adjacency-list" class="nav-link" data-scroll-target="#adjacency-list">Adjacency list</a></li>
+  <li><a href="#comparing-representations" id="toc-comparing-representations" class="nav-link" data-scroll-target="#comparing-representations">Comparing representations</a></li>
+  </ul></li>
+  <li><a href="#breadth-first-search-bfs" id="toc-breadth-first-search-bfs" class="nav-link" data-scroll-target="#breadth-first-search-bfs">Breadth-first search (BFS)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/PDSA/analysis_of_algorithms.html">PDSA</a></li><li class="breadcrumb-item"><a href="../../pages/PDSA/graphs.html">Graphs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Graphs</h1>
 </div>
 
 
@@ -218,9 +308,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<section id="graphs-formally" class="level2">
+<h2 class="anchored" data-anchor-id="graphs-formally">Graphs, formally</h2>
+<p><span class="math inline">G = (V, E)</span></p>
+<ul>
+<li><span class="math inline">V</span> is a set of vertices (nodes)</li>
+<li><span class="math inline">E</span> is a set of edges (connections between nodes)
+<ul>
+<li><span class="math inline">E</span> is a subset of pairs of vertices in <span class="math inline">V</span> (i.e., <span class="math inline">E \subseteq V \times V</span>)</li>
+<li>For undirected graphs, <span class="math inline">(u, v)</span> is the same as <span class="math inline">(v, u)</span></li>
+<li>For directed graphs, <span class="math inline">(u, v)</span> is an edge from <span class="math inline">u</span> to <span class="math inline">v</span> (does not imply <span class="math inline">(v, u)</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="graph-representations" class="level2">
+<h2 class="anchored" data-anchor-id="graph-representations">Graph representations</h2>
+<section id="adjacency-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="adjacency-matrix">Adjacency matrix</h3>
+<ul>
+<li>Let <span class="math inline">n = |V|</span>
+<ul>
+<li>We can assume that the vertices are numbered from <span class="math inline">0</span> to <span class="math inline">n-1</span></li>
+</ul></li>
+<li>Each edge is now a pair <span class="math inline">(i, j)</span>, where <span class="math inline">i, j \in \{0, 1, \ldots, n-1\}</span></li>
+<li>The <strong>adjacency matrix</strong> is a <span class="math inline">n \times n</span> matrix <span class="math inline">A</span> such that
+<ul>
+<li><span class="math inline">A[i][j] = 1</span> if <span class="math inline">(i, j) \in E</span></li>
+<li><span class="math inline">A[i][j] = 0</span> otherwise</li>
+</ul></li>
+<li>For undirected graphs, <span class="math inline">A</span> is symmetric (<span class="math inline">A[i][j] = A[j][i]</span>)</li>
+</ul>
+</section>
+<section id="an-alternative-representation" class="level3">
+<h3 class="anchored" data-anchor-id="an-alternative-representation">An alternative representation</h3>
+<ul>
+<li>Adjacency matrix is not space-efficient</li>
+<li>Size of the matrix is <span class="math inline">n^2</span> regardless of the number of edges</li>
+<li>Maximum number of edges in an undirected graph is <span class="math inline">n(n-1)/2</span> if there are no self-loops</li>
+<li>Maximum number of edges in a directed graph is <span class="math inline">n(n-1)</span> if there are no self-loops or multiple edges between two vertices</li>
+</ul>
+</section>
+<section id="adjacency-list" class="level3">
+<h3 class="anchored" data-anchor-id="adjacency-list">Adjacency list</h3>
+<ul>
+<li>For each vertex <span class="math inline">v</span>, store a list of vertices that are adjacent to <span class="math inline">v</span></li>
+</ul>
+</section>
+<section id="comparing-representations" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-representations">Comparing representations</h3>
+<ul>
+<li>Adjacency list typically uses less space</li>
+<li><strong>Is <span class="math inline">j</span> a neighbour of <span class="math inline">i</span>?</strong>
+<ul>
+<li>Just check if <span class="math inline">A[i][j] = 1</span> in adjacency matrix</li>
+<li>Need to scan the list of neighbours in adjacency list</li>
+</ul></li>
+<li><strong>Enumerating neighbours of <span class="math inline">i</span></strong>
+<ul>
+<li>Scan all <span class="math inline">n</span> columns in adjacency matrix</li>
+<li>Takes time proportional to the number of neighbours in adjacency list</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="breadth-first-search-bfs" class="level2">
+<h2 class="anchored" data-anchor-id="breadth-first-search-bfs">Breadth-first search (BFS)</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -759,5 +914,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

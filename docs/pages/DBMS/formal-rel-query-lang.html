@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes - Week 4</title>
+<title>Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,9 +129,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Notes
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-2.qmd">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/formal-rel-query-lang.html">Formal Relational Query Languages</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -185,12 +183,41 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">PDSA</span></a>
+ <span class="menu-text">DBMS</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Relational Databases and SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Examples, Intermediate and Advanced SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/formal-rel-query-lang.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Formal Relational Query Languages</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">PDSA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
@@ -213,13 +240,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Random</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
@@ -244,9 +271,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#formal-relational-query-language" id="toc-formal-relational-query-language" class="nav-link active" data-scroll-target="#formal-relational-query-language">Formal Relational Query Language</a>
-  <ul class="collapse">
-  <li><a href="#relational-algebra" id="toc-relational-algebra" class="nav-link" data-scroll-target="#relational-algebra">Relational Algebra</a></li>
+  <li><a href="#relational-algebra" id="toc-relational-algebra" class="nav-link active" data-scroll-target="#relational-algebra">Relational Algebra</a></li>
   <li><a href="#select-operation" id="toc-select-operation" class="nav-link" data-scroll-target="#select-operation">Select Operation</a>
   <ul class="collapse">
   <li><a href="#select-example" id="toc-select-example" class="nav-link" data-scroll-target="#select-example">Select Example</a></li>
@@ -303,16 +328,15 @@ window.Quarto = {
   <li><a href="#natural-join" id="toc-natural-join" class="nav-link" data-scroll-target="#natural-join">Natural Join</a></li>
   <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division">Division</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/DBMS/sql-2.qmd">DBMS</a></li><li class="breadcrumb-item"><a href="../../pages/DBMS/formal-rel-query-lang.html">Formal Relational Query Languages</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 4</h1>
+<h1 class="title">Formal Relational Query Language</h1>
 </div>
 
 
@@ -329,8 +353,6 @@ window.Quarto = {
 </header>
 
 
-<section id="formal-relational-query-language" class="level1">
-<h1>Formal Relational Query Language</h1>
 <ul>
 <li>Relational Algebra
 <ul>
@@ -376,8 +398,8 @@ window.Quarto = {
 </ul>
 <section id="select-example" class="level3">
 <h3 class="anchored" data-anchor-id="select-example">Select Example</h3>
-<div id="da8aa904" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="6da8dcef" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -419,8 +441,8 @@ window.Quarto = {
 <p><span class="math display">
 r
 </span></p>
-<div id="e80b42cf" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="e738c679" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -462,8 +484,8 @@ r
 </ul>
 <section id="project-example" class="level3">
 <h3 class="anchored" data-anchor-id="project-example">Project Example</h3>
-<div id="461bcb83" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="136bfa55" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -500,8 +522,8 @@ r
 <p><span class="math display">
 r
 </span></p>
-<div id="4b96c0f5" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="1ac92485" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -544,8 +566,8 @@ r
 </ul>
 <section id="union-example" class="level3">
 <h3 class="anchored" data-anchor-id="union-example">Union Example</h3>
-<div id="4fb51881" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="d3cf7bb1" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -573,8 +595,8 @@ r
 <p><span class="math display">
 r
 </span></p>
-<div id="ebfd7865" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="4b656646" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -598,8 +620,8 @@ r
 <p><span class="math display">
 s
 </span></p>
-<div id="f1e3c3dc" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="031e0fa9" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -662,8 +684,8 @@ r \cup s
 </ul>
 <section id="difference-example" class="level3">
 <h3 class="anchored" data-anchor-id="difference-example">Difference Example</h3>
-<div id="b7c2af33" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="24fc2ddb" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -691,8 +713,8 @@ r \cup s
 <p><span class="math display">
 r
 </span></p>
-<div id="6ca0e2a6" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="8e9ff655" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -716,7 +738,7 @@ r
 <p><span class="math display">
 s
 </span></p>
-<div id="c0fd633e" class="cell" data-execution_count="10">
+<div id="dbb0065e" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -757,8 +779,8 @@ r - s
 </ul>
 <section id="intersection-example" class="level3">
 <h3 class="anchored" data-anchor-id="intersection-example">Intersection Example</h3>
-<div id="58b6f00e" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="c1a79bc2" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -786,8 +808,8 @@ r - s
 <p><span class="math display">
 r
 </span></p>
-<div id="ca40d176" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="40da78d3" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -811,7 +833,7 @@ r
 <p><span class="math display">
 s
 </span></p>
-<div id="16c0bbbf" class="cell" data-execution_count="13">
+<div id="a6bbd91a" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -844,7 +866,7 @@ r \cap s
 </ul>
 <section id="cartesian-product-example" class="level3">
 <h3 class="anchored" data-anchor-id="cartesian-product-example">Cartesian-Product Example</h3>
-<div id="9f753fe0" class="cell" data-execution_count="14">
+<div id="dd561c7a" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -869,7 +891,7 @@ r \cap s
 <p><span class="math display">
 r
 </span></p>
-<div id="de380492" class="cell" data-execution_count="15">
+<div id="e7bd6d1e" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -907,7 +929,7 @@ r
 <p><span class="math display">
 s
 </span></p>
-<div id="80deef3d" class="cell" data-execution_count="16">
+<div id="9fc605de" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -1001,7 +1023,7 @@ r \times s
 </ul>
 <section id="rename-example" class="level3">
 <h3 class="anchored" data-anchor-id="rename-example">Rename Example</h3>
-<div id="568178df" class="cell" data-execution_count="17">
+<div id="cc5e84a4" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -1026,7 +1048,7 @@ r \times s
 <p><span class="math display">
 r
 </span></p>
-<div id="1c63a072" class="cell" data-execution_count="18">
+<div id="4bc1b32e" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -1088,8 +1110,8 @@ r \times \rho_{s}(r)
 <h3 class="anchored" data-anchor-id="division-examples">Division Examples</h3>
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
-<div id="1dbab7c0" class="cell" data-execution_count="19">
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div id="4a66ce5a" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1129,8 +1151,8 @@ r \times \rho_{s}(r)
 <p><span class="math display">
 R
 </span></p>
-<div id="182a9390" class="cell" data-execution_count="20">
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div id="55e36c1a" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1148,7 +1170,7 @@ R
 <p><span class="math display">
 S
 </span></p>
-<div id="e262f90f" class="cell" data-execution_count="21">
+<div id="3278576e" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -1173,8 +1195,8 @@ R \mid S
 </section>
 <section id="example-2" class="level4">
 <h4 class="anchored" data-anchor-id="example-2">Example 2</h4>
-<div id="d3fce73e" class="cell" data-execution_count="22">
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div id="9cdd6b4d" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1214,8 +1236,8 @@ R \mid S
 <p><span class="math display">
 R
 </span></p>
-<div id="491b0bd1" class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="16b61253" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1236,7 +1258,7 @@ R
 <p><span class="math display">
 S
 </span></p>
-<div id="cb64ae74" class="cell" data-execution_count="24">
+<div id="bd60d2e9" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -1501,7 +1523,6 @@ R \mid S
 </ul>
 
 
-</section>
 </section>
 </section>
 

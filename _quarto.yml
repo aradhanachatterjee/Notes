@@ -11,20 +11,14 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - section: "Statistics"
+      - section: "DBMS"
         contents:
-          - href: pages/Stats2/Probability-Basics.qmd
-            text: Basic Concepts of Probability
-          # - href: pages/Stats2/Prob-Dist-RV.qmd
-          #   text: Probability Distributions and Random Variables
-      # - section: "DBMS"
-      #   contents:
-      #     - href: pages/DBMS/w2.qmd
-      #       text: Week 2
-      #     - href: pages/DBMS/w3.ipynb
-      #       text: Week 3
-      #     - href: pages/DBMS/w4.qmd
-      #       text: Week 4
+          - href: pages/DBMS/sql-1.qmd
+            text: Introduction to Relational Databases and SQL
+          - href: pages/DBMS/sql-2.ipynb
+            text: SQL Examples, Intermediate and Advanced SQL
+          - href: pages/DBMS/formal-rel-query-lang.qmd
+            text: Formal Relational Query Languages
       - section: "PDSA"
         contents:
           # - href: pages/PDSA/w2.qmd
@@ -35,6 +29,8 @@ website:
             text: Binary Search
           - href: pages/PDSA/sorting_algorithms.qmd
             text: Sorting Algorithms
+          - href: pages/PDSA/graphs.qmd
+            text: Graphs
       # - section: "MAD-2"
       #   contents:
       #     - href: pages/MAD-2/w1.qmd
@@ -49,6 +45,12 @@ website:
             text: Fourier Series Representations
           - href: pages/random/Vectors-in-alternate-basis.qmd
             text: Vectors in Alternate Basis
+      - section: "Statistics"
+        contents:
+          - href: pages/Stats2/Probability-Basics.qmd
+            text: Basic Concepts of Probability
+          # - href: pages/Stats2/Prob-Dist-RV.qmd
+          #   text: Probability Distributions and Random Variables
   # open-graph: true
             
 
