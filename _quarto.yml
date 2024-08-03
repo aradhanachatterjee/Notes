@@ -31,14 +31,6 @@ website:
             text: Sorting Algorithms
           - href: pages/PDSA/graphs.qmd
             text: Graphs
-      # - section: "MAD-2"
-      #   contents:
-      #     - href: pages/MAD-2/w1.qmd
-      #       text: Week 1
-      #     - href: pages/MAD-2/w2.qmd
-      #       text: Week 2
-      #     - href: pages/MAD-2/w3.qmd
-      #       text: Week 3
       - section: "Random Math"
         contents:
           - href: pages/random/Fourier.qmd

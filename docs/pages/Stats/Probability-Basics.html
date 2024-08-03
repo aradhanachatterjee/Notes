@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes - Binary Search</title>
+<title>Notes - Basic Concepts of Probability</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -160,9 +126,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Notes
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats/Probability-Basics.html">Statistics</a></li><li class="breadcrumb-item"><a href="../../pages/Stats/Probability-Basics.html">Basic Concepts of Probability</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -199,7 +163,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Statistics-II</span></a>
+ <span class="menu-text">DBMS</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -207,8 +171,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/Stats2/Quiz2_keyconcepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Key concepts in Statistics-II from Week 5 to Week 8</span></a>
+  <a href="../../pages/DBMS/sql-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Relational Databases and SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/sql-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Examples, Intermediate and Advanced SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/DBMS/formal-rel-query-lang.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formal Relational Query Languages</span></a>
   </div>
 </li>
       </ul>
@@ -216,7 +192,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">DBMS</span></a>
+ <span class="menu-text">PDSA</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -224,20 +200,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/DBMS/w2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
+  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of Algorithms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/DBMS/w3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
+  <a href="../../pages/PDSA/binarysearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binary Search</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/DBMS/w4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
+  <a href="../../pages/PDSA/sorting_algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sorting Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/PDSA/graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graphs</span></a>
   </div>
 </li>
       </ul>
@@ -245,7 +227,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">PDSA</span></a>
+ <span class="menu-text">Random Math</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -253,8 +235,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/PDSA/analysis_of_algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Analysis of Algorithms</span></a>
+  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Series Representations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/random/Vectors-in-alternate-basis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors in Alternate Basis</span></a>
   </div>
 </li>
       </ul>
@@ -262,7 +250,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Random</span></a>
+ <span class="menu-text">Statistics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -270,8 +258,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pages/random/Fourier.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier Series Representations</span></a>
+  <a href="../../pages/Stats/Probability-Basics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Basic Concepts of Probability</span></a>
   </div>
 </li>
       </ul>
@@ -285,23 +273,26 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#searching-in-a-list" id="toc-searching-in-a-list" class="nav-link active" data-scroll-target="#searching-in-a-list">Searching in a list</a></li>
-  <li><a href="#searching-in-a-sorted-list" id="toc-searching-in-a-sorted-list" class="nav-link" data-scroll-target="#searching-in-a-sorted-list">Searching in a sorted list</a></li>
-  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search">Binary search</a>
   <ul class="collapse">
-  <li><a href="#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" id="toc-an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" class="nav-link" data-scroll-target="#an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences">An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul></li>
+  <li><a href="#experiment-and-outcome" id="toc-experiment-and-outcome" class="nav-link active" data-scroll-target="#experiment-and-outcome">Experiment and Outcome</a></li>
+  <li><a href="#sample-space" id="toc-sample-space" class="nav-link" data-scroll-target="#sample-space">Sample Space</a></li>
+  <li><a href="#event" id="toc-event" class="nav-link" data-scroll-target="#event">Event</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
+  <li><a href="#basic-properties-of-probability" id="toc-basic-properties-of-probability" class="nav-link" data-scroll-target="#basic-properties-of-probability">Basic Properties of Probability</a></li>
+  <li><a href="#conditional-probability-space" id="toc-conditional-probability-space" class="nav-link" data-scroll-target="#conditional-probability-space">Conditional Probability Space</a></li>
+  <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
+  <li><a href="#independence-of-events" id="toc-independence-of-events" class="nav-link" data-scroll-target="#independence-of-events">Independence of Events</a></li>
+  <li><a href="#mutual-independence-of-multiple-events" id="toc-mutual-independence-of-multiple-events" class="nav-link" data-scroll-target="#mutual-independence-of-multiple-events">Mutual independence of multiple events</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pages/Stats/Probability-Basics.html">Statistics</a></li><li class="breadcrumb-item"><a href="../../pages/Stats/Probability-Basics.html">Basic Concepts of Probability</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Binary Search</h1>
+<h1 class="title">Basic Concepts of Probability</h1>
 </div>
 
 
@@ -318,153 +309,224 @@ window.Quarto = {
 </header>
 
 
-<section id="searching-in-a-list" class="level2">
-<h2 class="anchored" data-anchor-id="searching-in-a-list">Searching in a list</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="experiment-and-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-and-outcome">Experiment and Outcome</h2>
 <ul>
-<li>Is a value <code>v</code> present in a list <code>l</code>?</li>
-<li>Naive search: check each element in the list</li>
-<li>Input size is <code>n</code>, the number of elements in the list</li>
-<li>Worst case scenario: <code>v</code> is not in the list</li>
-<li>Worst-case time complexity is <code>O(n)</code></li>
+<li><dl>
+<dt>Experiment</dt>
+<dd>
+Process or phenomenon that we wish to study statistically
+</dd>
+</dl></li>
+<li><dl>
+<dt>Outcome</dt>
+<dd>
+Result of the experiment (in as much detail as necessary)
+</dd>
+</dl></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> naivesearch(v, l):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> l:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v <span class="op">==</span> x:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sample-space" class="level2">
+<h2 class="anchored" data-anchor-id="sample-space">Sample Space</h2>
+<p><strong>Definition</strong>: A sample space <span class="math inline">S</span> is a set that contains all possible outcomes of an experiment.</p>
+<ul>
+<li>Sample space is a set, typically denoted <span class="math inline">S</span></li>
+<li>Examples:
+<ul>
+<li>Flipping a coin: <span class="math inline">S = \{\text{Heads}, \text{Tails}\}</span></li>
+<li>Rolling a die: <span class="math inline">S = \{1, 2, 3, 4, 5, 6\}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="event" class="level2">
+<h2 class="anchored" data-anchor-id="event">Event</h2>
+<p><strong>Definition</strong>: An event is a subset of the sample space.</p>
+<ul>
+<li>Examples:
+<ul>
+<li>Toss a coin: <span class="math inline">S = \{\text{Heads}, \text{Tails}\}</span>
+<ul>
+<li>Events: <span class="math inline">\emptyset</span>, <span class="math inline">\{\text{Heads}\}</span>, <span class="math inline">\{\text{Tails}\}</span>, <span class="math inline">\{\text{Heads}, \text{Tails}\}</span></li>
+<li><span class="math inline">4</span> events</li>
+</ul></li>
+<li>Throw a die: <span class="math inline">S = \{1, 2, 3, 4, 5, 6\}</span>
+<ul>
+<li>Events: <span class="math inline">\emptyset</span>, <span class="math inline">\{1\}</span>, <span class="math inline">\{2\}</span>, <span class="math inline">\{3\}</span>, <span class="math inline">\{4\}</span>, <span class="math inline">\{5\}</span>, <span class="math inline">\{6\}</span>, <span class="math inline">\{1, 2\}</span>, <span class="math inline">\{1, 3\}</span>, <span class="math inline">\ldots</span>, <span class="math inline">\{1, 2, 3, 4, 5, 6\}</span></li>
+<li><span class="math inline">64</span> events</li>
+</ul></li>
+</ul></li>
+<li>An event is said to have “occurred” if the actual outcome of the experiment belongs to the event.</li>
+<li>Events are sets
+<ul>
+<li>All set theory notions apply to events</li>
+</ul></li>
+<li>One event can be contained in another, i.e.&nbsp;<span class="math inline">A \subseteq B</span>
+<ul>
+<li>Throw a die: <span class="math inline">A = \{2, 6\}</span>, <span class="math inline">B = \text{Even number}</span></li>
+<li>If <span class="math inline">A</span> occured, <span class="math inline">B</span> has also occured</li>
+<li>If <span class="math inline">B</span> occured, <span class="math inline">A</span> may or may not have occured</li>
+</ul></li>
+<li>Complement of an event <span class="math inline">A</span>, denoted <span class="math inline">A^c = \{\text{outcomes in } S \text{ not in } A\} = (S \setminus A)</span>
+<ul>
+<li>Throw a die: <span class="math inline">A = \{2, 4, 6\}</span> (even), <span class="math inline">A^c = \{1, 3, 5\}</span> (odd)</li>
+<li>If <span class="math inline">A</span> occured, <span class="math inline">A^c</span> did not occur</li>
+<li>If <span class="math inline">A^c</span> occured, <span class="math inline">A</span> did not occur</li>
+</ul></li>
+</ul>
+<section id="combining-events-to-create-new-events" class="level3">
+<h3 class="anchored" data-anchor-id="combining-events-to-create-new-events">Combining events to create new events</h3>
+<ul>
+<li>Union of events <span class="math inline">A</span> and <span class="math inline">B</span>, denoted <span class="math inline">A \cup B = \{x: x \in A \text{ or } x \in B\}</span>
+<ul>
+<li>Throw a die: <span class="math inline">A = \{1, 2, 3\}</span>, <span class="math inline">B = \{3, 4, 5\}</span>, <span class="math inline">A \cup B = \{1, 2, 3, 4, 5\}</span></li>
+</ul></li>
+<li>Intersection of events <span class="math inline">A</span> and <span class="math inline">B</span>, denoted <span class="math inline">A \cap B = \{x: x \in A \text{ and } x \in B\}</span>
+<ul>
+<li>Throw a die: <span class="math inline">A = \{1, 2, 3\}</span>, <span class="math inline">B = \{3, 4, 5\}</span>, <span class="math inline">A \cap B = \{3\}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="disjoint-events" class="level3">
+<h3 class="anchored" data-anchor-id="disjoint-events">Disjoint events</h3>
+<ul>
+<li>Two events with an empty intersection are said to be disjoint or mutually exclusive events
+<ul>
+<li>Throw a die: even number, odd number are disjoint</li>
+</ul></li>
+<li>Suppose <span class="math inline">A</span> and <span class="math inline">B</span> are disjoint events
+<ul>
+<li>If <span class="math inline">A</span> occured, <span class="math inline">B</span> did not occur</li>
+<li>If <span class="math inline">B</span> occured, <span class="math inline">A</span> did not occur</li>
+</ul></li>
+<li>Event and its complement
+<ul>
+<li><span class="math inline">A</span> and <span class="math inline">A^c</span> are disjoint, i.e.&nbsp;<span class="math inline">A \cap A^c = \emptyset</span></li>
+<li>Together, they cover the entire sample space, i.e.&nbsp;<span class="math inline">A \cup A^c = S</span>
+<ul>
+<li>Either <span class="math inline">A</span> or <span class="math inline">A^c</span> must occur</li>
+</ul></li>
+<li><span class="math inline">A</span> and <span class="math inline">A^c</span> are an example of a partition of the sample space
+<ul>
+<li>Partition: Collection of disjoint sets that together cover the entire sample space</li>
+</ul></li>
+</ul></li>
+<li>Multiple events: <span class="math inline">E_1, E_2, \ldots, E_n</span> are disjoint if, for any <span class="math inline">i \neq j</span>, <span class="math inline">E_i \cap E_j = \emptyset</span></li>
+</ul>
+</section>
+</section>
+<section id="probability" class="level2">
+<h2 class="anchored" data-anchor-id="probability">Probability</h2>
+<p><strong>Definition</strong>: “Probability” is a function <span class="math inline">P</span> that assigns to each event a real number between <span class="math inline">0</span> and <span class="math inline">1</span>. The entire probability space (sample space, events and probability function) should satisfy the following two axioms:</p>
+<ol type="1">
+<li><p><span class="math inline">P(S) = 1</span> (probability of the entire sample space equals <span class="math inline">1</span>)</p></li>
+<li><p>If <span class="math inline">E_1, E_2, E_3, \ldots</span> are disjoint events (how many events? Could be infinitely many), <span class="math display">P(E_1 \cup E_2 \cup E_3 \cup \ldots) = P(E_1) + P(E_2) + P(E_3) + \ldots</span></p></li>
+</ol>
+</section>
+<section id="basic-properties-of-probability" class="level2">
+<h2 class="anchored" data-anchor-id="basic-properties-of-probability">Basic Properties of Probability</h2>
+<div id="thm-basic-properties-probability" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Basic Properties of Probability)</strong></span> Let <span class="math inline">P</span> be a probability on a sample space <span class="math inline">S</span>. Then,</p>
+<ol type="1">
+<li><p><span class="math inline">P(\emptyset) = 0</span></p></li>
+<li><p>Let <span class="math inline">E^c</span> be the complement of Event <span class="math inline">E</span>. Then, <span class="math display">\newline P(E^c) = 1 - P(E)</span></p></li>
+<li><p>If Event <span class="math inline">E</span> is a subset of Event <span class="math inline">F</span>, i.e.&nbsp;<span class="math inline">E \subseteq F</span>, then <span class="math inline">\newline</span> <span class="math display">P(F) = P(E) + P(F \setminus E)\text{,}</span> which implies that <span class="math inline">P(E) \leq P(F)</span></p>
+<p>3.a. If <span class="math inline">E</span> and <span class="math inline">F</span> are events, then <span class="math display">P(E) = P(E \cap F) + P(E \setminus F) \text{,}</span> <span class="math display">P(F) = P(E \cap F) + P(F \setminus E)</span></p></li>
+<li><p>If <span class="math inline">E</span> and <span class="math inline">F</span> are events, then <span class="math display">P(E \cup F) = P(E) + P(F) - P(E \cap F)</span></p></li>
+</ol>
 </div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol class="example" type="1">
+<li><ul>
+<li><span class="math inline">\emptyset^c = S</span> and <span class="math inline">\emptyset</span>, <span class="math inline">S</span> are disjoint and <span class="math inline">\emptyset \cup S = S</span>.</li>
+<li>By Axiom 2, <span class="math inline">P(\emptyset \cup S) = P(\emptyset) + P(S)</span> or <span class="math inline">P(S) = P(\emptyset) + P(S)</span> or <span class="math inline">P(\emptyset) = 0</span>.</li>
+</ul></li>
+<li><ul>
+<li><span class="math inline">E</span> and <span class="math inline">E^c</span> are disjoint and <span class="math inline">E \cup E^c = S</span>.</li>
+<li>By Axiom 2, <span class="math inline">P(E \cup E^c) = P(E) + P(E^c)</span> or <span class="math inline">P(S) = P(E) + P(E^c)</span></li>
+<li>By Axiom 1, <span class="math inline">1 = P(S) = P(E) + P(E^c)</span></li>
+<li>So, <span class="math inline">P(E^c) = 1 - P(E)</span></li>
+</ul></li>
+<li><ul>
+<li><span class="math inline">F \setminus E = F \cap E^c</span> (outside of <span class="math inline">E</span> and inside of <span class="math inline">F</span>)</li>
+<li><span class="math inline">E</span> and <span class="math inline">F \setminus E</span> are disjoint and <span class="math inline">E \cup (F \setminus E) = F</span></li>
+<li>By Axiom 2, <span class="math inline">P(E \cup (F \setminus E)) = P(E) + P(F \setminus E)</span> or <span class="math inline">P(F) = P(E) + P(F \setminus E)</span></li>
+</ul>
+3.a.
+<ul>
+<li><span class="math inline">E \cap F</span> is a subset of <span class="math inline">E</span></li>
+<li>By subset property, <span class="math inline">P(E) = P(E \cap F) + P(E \setminus (E \cap F))</span></li>
+<li>Now, <span class="math inline">E \setminus (E \cap F) = E \setminus F</span></li>
+<li>So, <span class="math inline">P(E) = P(E \cap F) + P(E \setminus F)</span></li>
+</ul></li>
+<li><ul>
+<li><span class="math inline">E \cup F = (E \setminus F) \cup (E \cap F) \cup (F \setminus E)</span> and the <span class="math inline">3</span> events on RHS are disjoint</li>
+<li><span class="math inline">P(E \cup F) = P(E \setminus F) + P(E \cap F) + P(F \setminus E)</span></li>
+<li>Use <span class="math inline">P(E \setminus F) = P(E) - P(E \cap F)</span> and <span class="math inline">P(F \setminus E) = P(F) - P(E \cap F)</span></li>
+</ul></li>
+</ol>
 </div>
 </section>
-<section id="searching-in-a-sorted-list" class="level2">
-<h2 class="anchored" data-anchor-id="searching-in-a-sorted-list">Searching in a sorted list</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>If the list is sorted in ascending order, we can do better.</li>
-<li>Compare <code>v</code> with the midpoint of the list.
-<ul>
-<li>If <code>v</code> is equal to the midpoint, the value is found.</li>
-<li>If <code>v</code> is less than the midpoint, search the left half.</li>
-<li>If <code>v</code> is greater than the midpoint, search the right half.</li>
-<li>Repeat the process until the value is found or the list is empty.</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binarysearch(v, l):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> []:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(l) <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> l[m]:</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">&lt;</span> l[m]:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> binarysearch(v, l[:m])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> binarysearch(v, l[m<span class="op">+</span><span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="conditional-probability-space" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-probability-space">Conditional Probability Space</h2>
+<p><strong>Definition</strong>: Consider a probability space: Sample space <span class="math inline">S</span>, collection of events, and a probability function <span class="math inline">P</span>. Let <span class="math inline">B</span> be an event with <span class="math inline">P(B) &gt; 0</span>.</p>
+<p><span class="math inline">\newline</span>Sample space: B <span class="math inline">\newline</span>Events: <span class="math inline">A \cap B</span> for every event <span class="math inline">A</span> in the original space</p>
+<p><span class="math display">\text{Probability function: } \frac{P(A \cap B)}{P(B)}</span></p>
+<p><span class="math inline">\newline</span>(denoted <span class="math inline">P(A|B)</span> and called <em>conditional probability</em> of <span class="math inline">A</span> given <span class="math inline">B</span>)</p>
+<p>For any event <span class="math inline">A</span> in the original space, <span class="math display">P(A \cap B) = P(B) \cdot P(A|B)</span></p>
+</section>
+<section id="law-of-total-probability" class="level2">
+<h2 class="anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h2>
+<div id="thm-law-total-probability" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (Law of Total Probability)</strong></span> <span class="math display">B_1, B_2, \ldots \text{ : Partition of } S</span> <span class="math display"> P(A) = P(A \cap B_1) + P(A \cap B_2) + \ldots = P(A|B_1) P(B_1) + P(A|B_2) P(B_2) + \ldots</span></p>
 </div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ul>
+<li><span class="math inline">A</span>: disjoint union of <span class="math inline">A \cap B_1, A \cap B_2, \ldots</span></li>
+<li>By Axiom 2, <span class="math inline">P(A) = P(A \cap B_1) + P(A \cap B_2) + \ldots</span></li>
+<li>Using conditional probability on each term above, we get the result</li>
+</ul>
 </div>
 </section>
-<section id="binary-search" class="level2">
-<h2 class="anchored" data-anchor-id="binary-search">Binary search</h2>
-<ul>
-<li>How long does it take to search for a value in a list of size <span class="math inline">n</span>?
-<ul>
-<li>In the worst case, the list is halved at each step.</li>
-<li>The number of steps is the number of times we can halve <span class="math inline">n</span> before reaching <span class="math inline">1</span>, which is <span class="math inline">O(\log n)</span></li>
-</ul></li>
-<li>Calculating <span class="math inline">T(n)</span> - the time to search in a list of size <span class="math inline">n</span>
-<ul>
-<li>Identify the basic operation: the comparison <code>v == l[m]</code>
-<ul>
-<li>Let the time taken to perform the basic operation be <span class="math inline">T(1)=1</span></li>
-</ul></li>
-<li>Recurrence relation: <span class="math inline">T(n) = T(\frac{n}{2}) + 1</span></li>
-</ul></li>
-<li>Solve by “unwinding” <span class="math display">
-\begin{aligned}
-  T(n) &amp;= T(\frac{n}{2}) + 1 \\
-  &amp;=\ (T(\frac{n}{4}) + 1) + 1 =\ T\left(\frac{n}{2^2}\right) + \underbrace{1 + 1}_{2} \\
-  &amp;=\ \dotsc \\
-  &amp;=\ T\left(\frac{n}{2^k}\right) + \underbrace{1 +\dots + 1}_{k} \\
-  &amp;=\ T(1) + k, \text{ for } \ k = \log n \\
-  &amp;=\ 1 + \log n = O(\log n) \\
-  \end{aligned}
-</span></li>
-</ul>
-<section id="an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences" class="level3">
-<h3 class="anchored" data-anchor-id="an-alternate-calculation-using-the-master-theorem-for-divide-and-conquer-recurrences">An alternate calculation using the Master Theorem for Divide-and-Conquer Recurrences</h3>
-<ul>
-<li><p><strong>Identify the Basic Operation</strong>: <code>v == l[m]</code></p></li>
-<li><p><strong>Determine the Number of Subproblems and Their Size</strong>:</p>
-<ul>
-<li>Each recursive call splits the list in half.</li>
-<li>The size of each subproblem is approximately half the size of the original problem: <span class="math inline">\frac{n}{2}</span>.</li>
-</ul></li>
-<li><p><strong>Form the Recurrence Relation</strong>:</p>
-<ul>
-<li><p>The recurrence relation for the running time <span class="math inline">T(n)</span> of binary search can be written as: <span class="math display">
-T(n) = T\left(\frac{n}{2}\right) + O(1)
-</span></p></li>
-<li><p>Here, <span class="math inline">T(\frac{n}{2})</span> represents the time complexity of searching in a sublist of size <span class="math inline">\frac{n}{2}</span>, and <span class="math inline">O(1)</span> is the time complexity of the basic operation (comparison).</p></li>
-</ul></li>
-<li><p><strong>Solve the Recurrence Relation</strong>:</p>
-<ul>
-<li>This type of recurrence relation is a common form and can be solved using the <span class="citation" data-cites="master-theorem">@master-theorem</span>.</li>
-</ul></li>
-</ul>
-<div id="master-theorem" class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<section id="bayes-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h2>
+<div id="thm-bayes-theorem" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3 (Bayes’ Theorem)</strong></span> <span class="math display"> A,B \text{: Events with } P(A) &gt; 0 \text{, } P(B) &gt; 0</span> <span class="math display">P(A \cap B) = P(B)P(A|B) = P(A)P(B|A)</span> <span class="math display">P(A|B) = \frac{P(B|A)P(A)}{P(B)}</span></p>
 </div>
-<div class="callout-title-container flex-fill">
-Master Theorem
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Master Theorem applies to recurrences of the form: <span class="math display">
-T(n) = aT\left(\frac{n}{b}\right) + f(n)
-</span> where:</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ul>
-<li><span class="math inline">a \geq 1</span> is the number of subproblems in the recursion.</li>
-<li><span class="math inline">\frac{n}{b}</span> is the size of each subproblem.</li>
-<li><span class="math inline">f(n)</span> is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.</li>
-</ul>
-<p>According to the Master Theorem:</p>
-<ul>
-<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c &lt; \log_b{a}</span>, then <span class="math inline">T(n) = O(n^{\log_b{a}})</span>.</li>
-<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c = \log_b{a}</span>, then <span class="math inline">T(n) = O(n^{\log_b{a}} \log{n})</span>.</li>
-<li>If <span class="math inline">f(n) = O(n^c)</span> where <span class="math inline">c &gt; \log_b{a}</span>, then <span class="math inline">T(n) = O(f(n))</span>.</li>
+<li><p>Bayes’ Theorem may be derived from the definition of conditional probability: <span class="math display">P(A|B) = \frac{P(A \cap B)}{P(B)} \text{, if } P(B) \neq 0,</span></p></li>
+<li><p>where <span class="math inline">P(A \cap B)</span> is the probability of both <span class="math inline">A</span> and <span class="math inline">B</span> being true. Similarly, <span class="math display">P(B|A) = \frac{P(A \cap B)}{P(A)} \text{, if } P(A) \neq 0.</span></p></li>
+<li><p>Solving for <span class="math inline">P(A \cap B)</span> and substituting into the above expression for <span class="math inline">P(A|B)</span> yields Bayes’ Theorem: <span class="math display">P(A|B) = \frac{P(B|A)P(A)}{P(B)} \text{, if } P(B) \neq 0.</span></p></li>
 </ul>
 </div>
-</div>
-</div>
-<!-- The Master Theorem applies to recurrences of the form:
-$$
-T(n) = aT\left(\frac{n}{b}\right) + f(n)
-$$
-where:
-- $a \geq 1$ is the number of subproblems in the recursion.
-- $\frac{n}{b}$ is the size of each subproblem.
-- $f(n)$ is the cost outside the recursive calls, which includes the time to divide the problem and combine the results of the subproblems.
+</section>
+<section id="independence-of-events" class="level2">
+<h2 class="anchored" data-anchor-id="independence-of-events">Independence of Events</h2>
+<p><strong>Definition</strong>: Two events <span class="math inline">A</span> and <span class="math inline">B</span> are independent if <span class="math display">P(A \cap B) = P(A)P(B)</span></p>
+<ul>
+<li>If <span class="math inline">P(B) &gt; 0</span>, <span class="math inline">P(A|B) = P(A)</span></li>
+<li>Disjoint events are never independent</li>
+<li>For events to be independent, they should have a non-empty intersection</li>
+</ul>
+</section>
+<section id="mutual-independence-of-multiple-events" class="level2">
+<h2 class="anchored" data-anchor-id="mutual-independence-of-multiple-events">Mutual independence of multiple events</h2>
+<p><strong>Definition</strong>: Events <span class="math inline">A_1, A_2, \ldots, A_n</span> are mutually independent if, for all <span class="math inline">i_1, i_2, \ldots, i_k</span>, <span class="math display">P(A_{i_1} \cap A_{i_2} \cap \ldots \cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \ldots P(A_{i_k})</span></p>
+<ul>
+<li><span class="math inline">A</span> and <span class="math inline">B</span> are independent <span class="math inline">\implies</span> <span class="math inline">A</span> and <span class="math inline">B^c</span> are independent
+<ul>
+<li><span class="math inline">P(A \cap B^c) = P(A \setminus B) = P(A) - P(A \cap B) = P(A)(1 - P(B)) = P(A)P(B^c)</span></li>
+<li>Intuitive: <span class="math inline">B</span> does not affect <span class="math inline">A \implies</span> <span class="math inline">B^c</span> does not affect <span class="math inline">A</span></li>
+<li>Two events are independent <span class="math inline">\implies</span> Complement of one event is independent of the other</li>
+</ul></li>
+<li>Using the above twice: <span class="math inline">A</span> and <span class="math inline">B</span> are independent <span class="math inline">\implies</span> <span class="math inline">A^c</span> and <span class="math inline">B^c</span> are independent</li>
+<li>Extension: <span class="math inline">n</span> events are mutually independent <span class="math inline">\implies</span> any subset with or without complementing are independent as well</li>
+</ul>
 
-According to the Master Theorem:
-- If $f(n) = O(n^c)$ where $c < \log_b{a}$, then $T(n) = O(n^{\log_b{a}})$.
-- If $f(n) = O(n^c)$ where $c = \log_b{a}$, then $T(n) = O(n^{\log_b{a}} \log{n})$.
-- If $f(n) = O(n^c)$ where $c > \log_b{a}$, then $T(n) = O(f(n))$. -->
-<p>For binary search: - <span class="math inline">a = 1</span>, <span class="math inline">b = 2</span>, <span class="math inline">\log_b{a} = \log_2{1} = 0</span>. - ( f(n) = O(1) ), which is ( O(n^0) ).</p>
-<p>Here, ( c = 0 ) and ( _b{a} = 0 ), so they are equal. Therefore, according to the Master Theorem, ( T(n) = O(n^0 ) = O() ).</p>
-</section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
-<p>The time complexity of the recursive binary search is ( O() ).</p>
 
-
-</section>
 </section>
 
 </main> <!-- /main -->
