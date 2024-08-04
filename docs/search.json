@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Notes",
     "section": "",
-    "text": "Notes",
+    "text": "Noteworthy :)\n\n\n\n\nReferences\n\nMerriam-Webster.com Dictionary. 2024. “Noteworthy.” https://www.merriam-webster.com/dictionary/noteworthy.",
     "crumbs": [
       "Home"
     ]
@@ -7205,5 +7205,43 @@
     "title": "Probability Distributions and Random Variables",
     "section": "Binomial Distribution",
     "text": "Binomial Distribution"
+  },
+  {
+    "objectID": "pages/PDSA/stack-queue.html",
+    "href": "pages/PDSA/stack-queue.html",
+    "title": "Data Structures: Stack and Queue",
+    "section": "",
+    "text": "Stack and Queue are two fundamental data structures. This note provides an overview of these structures, their key features, and use cases."
+  },
+  {
+    "objectID": "pages/PDSA/stack-queue.html#introduction",
+    "href": "pages/PDSA/stack-queue.html#introduction",
+    "title": "Data Structures: Stack and Queue",
+    "section": "",
+    "text": "Stack and Queue are two fundamental data structures. This note provides an overview of these structures, their key features, and use cases."
+  },
+  {
+    "objectID": "pages/PDSA/stack-queue.html#stack",
+    "href": "pages/PDSA/stack-queue.html#stack",
+    "title": "Data Structures: Stack and Queue",
+    "section": "Stack",
+    "text": "Stack\n\nDefinition\nA stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means the last element added to the stack will be the first one to be removed.\n\n\nKey Features\n\nLIFO Order: The most recently added element is the first to be removed.\nPush Operation: Adds an element to the top of the stack.\nPop Operation: Removes the top element from the stack.\nPeek Operation: Returns the top element without removing it.\nSize: Returns the number of elements in the stack.\nIsEmpty: Checks if the stack is empty.\n\n\n\nUse Cases\n\nFunction Call Management: Keeps track of function calls in recursion.\nExpression Evaluation: Used in parsing and evaluating expressions (e.g., postfix and prefix).\nUndo Mechanisms: Implements undo functionality in applications by storing previous states.\n\n\n\nExample (Python)\nclass Stack:\n    def __init__(self):\n        self.items = []\n\n    def push(self, item):\n        self.items.append(item)\n\n    def pop(self):\n        if not self.is_empty():\n            return self.items.pop()\n\n    def peek(self):\n        if not self.is_empty():\n            return self.items[-1]\n\n    def is_empty(self):\n        return len(self.items) == 0\n\n    def size(self):\n        return len(self.items)"
+  },
+  {
+    "objectID": "pages/PDSA/stack-queue.html#queue",
+    "href": "pages/PDSA/stack-queue.html#queue",
+    "title": "Data Structures: Stack and Queue",
+    "section": "Queue",
+    "text": "Queue\n\nDefinition\nA queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means the first element added to the queue will be the first one to be removed.\n\n\nKey Features\n\nFIFO Order: The oldest added element is the first to be removed.\nEnqueue Operation: Adds an element to the end of the queue.\nDequeue Operation: Removes the element from the front of the queue.\nFront: Returns the front element without removing it.\nSize: Returns the number of elements in the queue.\nIsEmpty: Checks if the queue is empty.\n\n\n\nUse Cases\n\nScheduling Algorithms: Manages processes in operating systems.\nBreadth-First Search (BFS): Traverses or searches tree or graph data structures.\nPrint Queue Management: Handles print jobs in printers.\n\n\n\nExample (Python)\nclass Queue:\n    def __init__(self):\n        self.items = []\n\n    def enqueue(self, item):\n        self.items.append(item)\n\n    def dequeue(self):\n        if not self.is_empty():\n            return self.items.pop(0)\n\n    def front(self):\n        if not self.is_empty():\n            return self.items[0]\n\n    def is_empty(self):\n        return len(self.items) == 0\n\n    def size(self):\n        return len(self.items)"
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Notes",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMerriam-Webster.com Dictionary (2024)↩︎",
+    "crumbs": [
+      "Home"
+    ]
   }
 ]

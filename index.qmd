@@ -1,5 +1,10 @@
 ---
-title: "Notes"
+# title: "Notes"
+bibliography: refs.bib
 ---
 
-Notes
+Noteworthy :)
+---
+nocite: |
+  @merriam-webster-noteworthy
+---

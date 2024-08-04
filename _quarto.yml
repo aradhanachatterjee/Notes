@@ -29,6 +29,8 @@ website:
             text: Binary Search
           - href: pages/PDSA/sorting_algorithms.qmd
             text: Sorting Algorithms
+          - href: pages/PDSA/stack-queue.qmd
+            text: Stacks and Queues
           - href: pages/PDSA/graphs.qmd
             text: Graphs
       - section: "Random Math"

@@ -1,0 +1,107 @@
+---
+title: "Data Structures: Stack and Queue"
+format: 
+    html: 
+        toc: true
+        number_sections: true
+        smooth-scroll: true
+        code-fold: true
+execute: 
+  echo: false
+---
+
+## Introduction
+
+**Stack** and **Queue** are two fundamental data structures. This note provides an overview of these structures, their key features, and use cases.
+
+## Stack
+
+### Definition
+
+A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means the last element added to the stack will be the first one to be removed.
+
+### Key Features
+
+- **LIFO Order**: The most recently added element is the first to be removed.
+- **Push Operation**: Adds an element to the top of the stack.
+- **Pop Operation**: Removes the top element from the stack.
+- **Peek Operation**: Returns the top element without removing it.
+- **Size**: Returns the number of elements in the stack.
+- **IsEmpty**: Checks if the stack is empty.
+
+### Use Cases
+
+- **Function Call Management**: Keeps track of function calls in recursion.
+- **Expression Evaluation**: Used in parsing and evaluating expressions (e.g., postfix and prefix).
+- **Undo Mechanisms**: Implements undo functionality in applications by storing previous states.
+
+### Example (Python)
+
+```python
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def size(self):
+        return len(self.items)
+```
+
+## Queue
+
+### Definition
+
+A queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means the first element added to the queue will be the first one to be removed.
+
+### Key Features
+
+- **FIFO Order**: The oldest added element is the first to be removed.
+- **Enqueue Operation**: Adds an element to the end of the queue.
+- **Dequeue Operation**: Removes the element from the front of the queue.
+- **Front**: Returns the front element without removing it.
+- **Size**: Returns the number of elements in the queue.
+- **IsEmpty**: Checks if the queue is empty.
+
+### Use Cases
+
+- **Scheduling Algorithms**: Manages processes in operating systems.
+- **Breadth-First Search (BFS)**: Traverses or searches tree or graph data structures.
+- **Print Queue Management**: Handles print jobs in printers.
+
+### Example (Python)
+
+```python
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0)
+
+    def front(self):
+        if not self.is_empty():
+            return self.items[0]
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def size(self):
+        return len(self.items)
+```
